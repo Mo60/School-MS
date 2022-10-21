@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "js-crud-sql-server": "file:backend"
+  }
+}
