@@ -14,9 +14,9 @@ import Bootstrap from './components/bootstrap.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  
+
   <HelloWorld msg="Vite + Vue" />
-  <Bootstrap msg2="Bootstrap"/>  
+  <Bootstrap msg="Bootstrap"/>  
 
 </template>
 
