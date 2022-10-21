@@ -10,8 +10,8 @@ defineProps({
 
 <template>
 
-  <h1>{{ msg }}</h1>
-   <div class="card">
+  <h1 class="text-center">{{ msg }}</h1>
+   <div class="text-center">
       <h1>Hello, Bootstrap and Vite!</h1>
       <button class="btn btn-primary">Primary button</button>
     </div>
