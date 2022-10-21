@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "art-class-program": "file:frondend",
-    "js-crud-sql-server": "file:backend"
-  }
-}
