@@ -20,6 +20,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     Notes: {
       type: Sequelize.STRING
+      }
   });
 
   return Parents;
