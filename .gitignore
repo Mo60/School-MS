@@ -35,3 +35,6 @@ backend/dist-ssr
 
 package.json
 package-lock.json
+
+**/db.config.js
+backend/app/config/db.config.js

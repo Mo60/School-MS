@@ -32,3 +32,5 @@ backend/dist-ssr
 *.sw?
 
 .env
+
+**/db.config.js
