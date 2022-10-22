@@ -19,9 +19,9 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
-db.parents = require("./parent.model.js")(sequelize, Sequelize);
-db.students = require("./student.model.js")(sequelize, Sequelize);
-db.users = require("./user.model.js")(sequelize, Sequelize);
+db.parent = require("./parent.model.js")(sequelize, Sequelize);
+db.student = require("./student.model.js")(sequelize, Sequelize);
+db.user = require("./user.model.js")(sequelize, Sequelize);
 db.enrollment = require("./enrollment.model.js")(sequelize, Sequelize);
 db.invoice = require("./invoice.model.js")(sequelize, Sequelize);
 db.teacher = require("./teacher.model.js")(sequelize, Sequelize);
