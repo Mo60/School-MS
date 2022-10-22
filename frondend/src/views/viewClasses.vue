@@ -13,6 +13,7 @@
          <th>Notes</th>
         </tr>
       </thead>  
+  </table></div>   
 </template>       
         
     
