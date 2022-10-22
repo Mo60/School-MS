@@ -17,5 +17,5 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  return Invoices;
+  return Invoice;
 };

@@ -20,5 +20,5 @@ module.exports = (sequelize, Sequelize) => {
       }
   });
 
-  return Teachers;
+  return Teacher;
 };
