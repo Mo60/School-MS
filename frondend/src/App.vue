@@ -7,7 +7,7 @@ import pages from '~pages'
      <p v-for="component in pages" :key="pages.component">
                   {{ pages.component}}egrgrgr
      </p>
-     <p>efefe `$pages`fefe</p> 
+     <p>eee {{pages}}  eee</p> 
     <router-link to="/">Home</router-link> | <router-link to="/about">About</router-link> |
     <router-link to="/contact">Contact</router-link>
   </nav>
