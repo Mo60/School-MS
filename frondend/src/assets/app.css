@@ -1,0 +1,11 @@
+.links{
+     display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20%;
+}
+
+li{
+    list-style: none;
+    color: lightgray;
+}
