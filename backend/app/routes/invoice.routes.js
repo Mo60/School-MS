@@ -1,28 +1,25 @@
 module.exports = app => {
-    const invoice = require("../controllers/invoice.controller.js");
+    const invoices = require("../controllers/invoice.controller.js");
   
     var router = require("express").Router();
   
-    // Create a new Tutorial
+    // Create a new invoice
     router.post("/", invoice.create);
   
     // Retrieve all invoice
     router.get("/", invoice.findAll);
   
-    // Retrieve all published invoice
-    router.get("/published", invoice.findAllPublished);
-  
-    // Retrieve a single Tutorial with id
+    // Retrieve a single invoice with id
     router.get("/:id", invoice.findOne);
   
-    // Update a Tutorial with id
+    // Update a invoice with id
     router.put("/:id", invoice.update);
   
-    // Delete a Tutorial with id
+    // Delete a invoice with id
     router.delete("/:id", invoice.delete);
   
     // Delete all invoice
     router.delete("/", invoice.deleteAll);
   
-    app.use('/api/invoice', router);
+    app.use('/api/invoices', router);
   };
