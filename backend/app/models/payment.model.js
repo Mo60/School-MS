@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Payment = sequelize.define("parent", {
+  const Payment = sequelize.define("payment", {
     PaymentID: {
       type: Sequelize.STRING
     },
@@ -17,5 +17,5 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  return Payments;
+  return Payment;
 };
