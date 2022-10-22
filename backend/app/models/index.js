@@ -20,5 +20,12 @@ db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
 db.parents = require("./parent.model.js")(sequelize, Sequelize);
+db.students = require("./student.model.js")(sequelize, Sequelize);
+db.users = require("./user.model.js")(sequelize, Sequelize);
+db.enrollment = require("./enrollment.model.js")(sequelize, Sequelize);
+db.invoice = require("./invoice.model.js")(sequelize, Sequelize);
+db.teacher = require("./teacher.model.js")(sequelize, Sequelize);
+db.class = require("./class.model.js")(sequelize, Sequelize);
+db.payment = require("./payment.model.js")(sequelize, Sequelize);
 
 module.exports = db;
