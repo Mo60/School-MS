@@ -26,7 +26,22 @@ const router= createRouter({
     {path:"/addstudent",
   name:"addstudent",
 name:"addstudent",
-component:()=>import("../views/addStudent.vue")}
+component:()=>import("../views/addStudent.vue")},
+    {path:"/EditStudent",
+    name:"EditStudent",
+    component:()=>import("../views/EditStudent.vue")},
+    {path:"/EditParent",
+    name:"EditParent",
+    component:()=>import("../views/EditParent.vue")},
+    {path:"/EditTeacher",
+    name:"EditTeacher",
+    component:()=>import("../views/EditTeacher.vue")},
+    {path:"/EditClass",
+    name:"EditClass",
+    component:()=>import("../views/EditClass.vue")},
+    {path:"/EditInvoice",
+    name:"EditInvoice",
+    component:()=>import("../views/EditInvoice.vue")},
   ]
   
 
