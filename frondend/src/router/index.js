@@ -28,7 +28,25 @@ const router= createRouter({
 name:"addstudent",
 component:()=>import("../views/addStudent.vue")}
   ]
+  
+// Import create views
+import CreateStudentView from '../views/CreateViews/CreateStudentView.vue'
+import CreateParentView from '../views/CreateViews/CreateParentView.vue'
+import CreateTeacherView from '../views/CreateViews/CreateTeacherView.vue'
+import CreateClassView from '../views/CreateViews/CreateClassView.vue'
+import CreateInvoiceView from '../views/CreateViews/CreateInvoiceView.vue'
 
 })
+
+// Import edit views
+import EditStudentView from '../views/EditViews/EditStudentView.vue'
+import EditParenttView from '../views/EditViews/EditParentView.vue'
+import EditTeacherView from '../views/EditViews/EditTeacherView.vue'
+import EditClassView from '../views/EditViews/EditClassView.vue'
+import EditInvoiceView from '../views/EditViews/EditInvoiceView.vue'
+
+
+
+
 
 export default router
