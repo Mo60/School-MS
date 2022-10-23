@@ -1,7 +1,7 @@
 <template>
    <h1>Hello</h1>
    <div class="row justify-content-center">
-   <h1 class="mb-3 mt-3">Invoices</h1>
+   <h1 class="mb-3 mt-3">Students</h1>
       <table class="table table-striped">
       <thead class="table-dark">
         <tr>
