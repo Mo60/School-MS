@@ -25,7 +25,7 @@ const router= createRouter({
     component:()=>import("../views/viewInvoices.vue")},
   ]
   
-  // Import create views
+// Import create views
 import CreateStudentView from '../views/CreateViews/CreateStudentView.vue'
 import CreateParentView from '../views/CreateViews/CreateParentView.vue'
 import CreateTeacherView from '../views/CreateViews/CreateTeacherView.vue'
