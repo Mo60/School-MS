@@ -23,6 +23,10 @@ const router= createRouter({
     {path:"/invoices",
     name:"invoices",
     component:()=>import("../views/viewInvoices.vue")},
+    {path:"/addstudent",
+  name:"addstudent",
+name:"addstudent",
+component:()=>import("../views/addStudent.vue")}
   ]
 
 })

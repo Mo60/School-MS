@@ -1,11 +1,94 @@
-.links{
-     display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 20%;
+li {
+  list-style: none;
+  color: lightgray;
 }
 
-li{
-    list-style: none;
-    color: lightgray;
+#app {
+  background-color: #734429;
+  height: 100vh;
+  overflow: scroll;
+}
+nav {
+  background-color: #888c64;
+}
+
+ul.dropdown-menu {
+  background-color: #260f01;
+}
+
+.dropdown-menu > .dropdown-item:hover {
+  background-color: #888c64;
+}
+
+.dropdown-menu > li > a:hover {
+  background-image: none;
+  background-color: #ba521246;
+}
+
+h1 {
+  text-align: center;
+  color: lightgray;
+}
+
+h2 {
+  text-align: center;
+  color: lightgray;
+}
+
+.wrapper {
+  width: 70%;
+  margin: 40px auto;
+}
+.student-display {
+  width: 30vw;
+  background-color: #888c64;
+  margin: 20px auto;
+  border-radius: 15px;
+  padding: 10px 20px;
+  color: #260f01;
+  filter: drop-shadow(1px 5px 3px rgb(65, 63, 63));
+}
+
+#name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.top {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.body {
+  margin-top: 10px;
+}
+
+.rows {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.rows .btn {
+  margin: 4px auto;
+  background-color: #b4bfaa;
+  padding: 3px;
+  border-radius: 2px;
+  color: #260f01;
+  font-weight: 600;
+}
+form > .btn {
+  background-color: #888c64;
+}
+
+form > .btn:hover {
+  background-color: #b4bfaa;
+}
+.input-group {
+  margin-left: 10px;
 }
