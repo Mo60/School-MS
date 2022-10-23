@@ -55,15 +55,8 @@ const router= createRouter({
     {path:"/EditInvoice",
     name:"EditInvoice",
     component:()=>import("../views/EditInvoice.vue")},
-  ]
-<<<<<<< HEAD:frontend/src/router/index.js
-})
+  ]})
+;
 // Import create views
-=======
-  
-
-
-
->>>>>>> 9f8ad45ff1afae5510710b4656db26e7ace0dafa:frondend/src/router/index.js
 
 export default router
