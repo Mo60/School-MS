@@ -8,11 +8,12 @@
         <option  v-for="(student,index) in students" :key="index" :value="student.studentID">{{student.studentName}}</option>
       </select>
       <label for="" class="form-label">Class</label>
-      <select name="" id="" v-model="className" class="form-control">
+      <select name="" id="" v-model="className" class="form-control mb-3">
         <option  v-for="(Class,index) in classes" :key="index" :value="Class.classID">{{Class.className}}</option>
     </select>
-      <button class="btn mt-3">Enroll Student</button>
+      
     </fieldset>
+    <button class="btn mt-3">Enroll Student</button>
   </form>
 </template>
 

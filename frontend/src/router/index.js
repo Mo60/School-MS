@@ -30,7 +30,7 @@ const router= createRouter({
     {path:"/addClass",
     name:"addclass",
     component:()=>import("../views/addClass.vue")},
-    {path:"/addsTeacher",
+    {path:"/addTeacher",
     name:"addteacher",
     component:()=>import("../views/addTeacher.vue")},
     {path:"/addInvoice",

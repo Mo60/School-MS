@@ -44,6 +44,10 @@ h2 {
   margin: auto;
 
 }
+.wrapper3{
+  width: 45%;
+  margin: 40px auto;
+}
 .student-display {
   width: 30vw;
   background-color: #888c64;
@@ -89,9 +93,11 @@ h2 {
 }
 form > .btn ,fieldset>.btn{
   background-color: #888c64;
+  font-weight:600;
+  color: lightgray;
 }
 
-form > .btn:hover {
+form > .btn:hover, fieldset>.btn:hover {
   background-color: #b4bfaa;
 }
 .input-group {

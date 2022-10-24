@@ -1,40 +1,45 @@
 <template>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-          <h3 class="text-center">Update Teachers</h3>
-                      <form @submit.prevent="handleUpdateForm" class="mb-5 pb-5">
-                <div class="form-group">
-                    <label>Teacher ID</label>
-                    <input type="number" class="form-control"  required>
-                </div>
-               <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" class="form-control"  required>
-                </div>
-                <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" class="form-control"  required>
-                </div>
-                <div class="form-group">
-                    <label>Teacher Email</label>
-                    <input type="text" class="form-control"  required>
-                </div>
-                <div class="form-group">
-                    <label>Teacher Phone Number</label>
-                    <input type="number" class="form-control"  required>
-                </div     
-                <div class="form-group">
-                    <label>Notes</label>
-                    <input type="text" class="form-control" 
-                    required>
-                </div>
-
-                <div class="text-center m-3">
-                <button class="btn btn-danger mt-3">Add</button>
-                </div>
+   
+        
+          <h1 class="mt-5">Add Teacher</h1>
+          <div class="wrapper3">
+                      <form @submit.prevent="handleUpdateForm" >
+             <fieldset class="form-control">
+                   
+                 <div class="row mb-3" >
+                       <div class="col">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control"  required>
+                       </div >
+                       <div class="col">   
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control"  required>
+                       </div >
+                 </div >
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control"  required>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Phone Number</label>
+                            <input type="number" class="form-control"  required>
+                        </div> 
+                 </div>
+                    <div class="row mb-3">    
+                    <div class="col">
+                        <label class="form-label">Notes</label>
+                        <textarea name="" id="" class="form-control"></textarea>
+                    </div>
+    </div>
+                    <div class="text-center m-3">
+                   
+                    </div>  
+             </fieldset >
+             <button class="btn mt-4">Add</button>
             </form>
         </div>
-    </div>
+ 
 </template>
 
 <script>
@@ -44,11 +49,11 @@
         data() {
             return {
                Teacher: { 
-                     teacherID"",
-                    first name: "",
-                    last name:"",
-                    teacher email:"",
-                    teacher phone number: "",
+                     teacherID:"",
+                    firstName: "",
+                    lastName:"",
+                    email:"",
+                    phoneNumber: "",
                     notes: ""
                 }, 
             };
