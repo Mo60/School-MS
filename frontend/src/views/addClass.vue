@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="text-center m-3">
-                <button class="btn btn-danger mt-3">Add</button>
+                <button class="btn btn-danger mt-3">Submit</button>
                 </div>
             </form>
         </div>
@@ -87,10 +87,10 @@
                 
                 let apiURL = '';
                 
-                axios.post(apiURL, this.classInfo).then(() => {
+                axios.post(apiURL, this.class).then(() => {
                     //changing the view to the list
-                  this.$router.push('/classes')
-                  this.classInfo = {
+                  this.$router.push('/')
+                  this.class = {
                     classID:"",
                     teacherID: "",
                     classdate:"",
@@ -98,7 +98,7 @@
                     numstudents: "",
                     maxcapacity:"",
                     lesson:"",
-                    notes: ""
+                    notes: "''
                   }
                 }).catch(error => {
                     console.log(error)
@@ -107,6 +107,5 @@
         } 
            
     }
-    
     
 </script>
