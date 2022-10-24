@@ -1,22 +1,22 @@
 module.exports = (sequelize, Sequelize) => {
   const Class = sequelize.define("class", {
     ClassID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     TeacherID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     ClassDate: {
-      type: Sequelize.STRING
+      type: Sequelize.DATE
     },
     ClassTime: {
-      type: Sequelize.STRING
+      type: Sequelize.TIME
     },
     NumStudents: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     MaxCapacity: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     Notes: {
       type: Sequelize.STRING
