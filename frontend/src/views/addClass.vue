@@ -39,9 +39,18 @@
                 </div>
                 
                 <div class="form-group">
+                    <label>Lesson</label>
+                    <input type="text" class="form-control" required>
+                    <datalist id="Lesson">
+                        <option value="Drawing"> </option>
+                        <option value="Painting"></option>
+                        <option value="Both"> </option>
+                        
+                    </datalist>
+                </div>
+                <div class="form-group">
                     <label>Notes</label>
-                    <input type="text" class="form-control" 
-                    required>
+                    <input type="text" class="form-control" required>
                 </div>
 
                 <div class="text-center m-3">
@@ -65,10 +74,39 @@
                     classtime:"",
                     numstudents: "",
                     maxcapacity:"",
+                    lesson:"",
                     notes: ""
                 }, 
             };
         },
         
     }
+    
+    methods: {
+            handleSubmitForm() {
+                
+                let apiURL = '';
+                
+                axios.post(apiURL, this.classInfo).then(() => {
+                    //changing the view to the list
+                  this.$router.push('/classes')
+                  this.classInfo = {
+                    classID:"",
+                    teacherID: "",
+                    classdate:"",
+                    classtime:"",
+                    numstudents: "",
+                    maxcapacity:"",
+                    lesson:"",
+                    notes: ""
+                  }
+                }).catch(error => {
+                    console.log(error)
+                });
+            }
+        } 
+           
+    }
+    
+    
 </script>
