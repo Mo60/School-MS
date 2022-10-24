@@ -1,5 +1,5 @@
 module.exports = app => {
-    const enrollments = require("../controllers/enrollment.controller.js");
+    const enrollment = require("../controllers/enrollment.controller.js");
   
     var router = require("express").Router();
   
@@ -21,5 +21,5 @@ module.exports = app => {
     // Delete all enrollment
     router.delete("/", enrollment.deleteAll);
   
-    app.use('/api/enrollments', router);
+    app.use('/api/enrollment', router);
   };
