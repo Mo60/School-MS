@@ -1,21 +1,33 @@
 module.exports = (sequelize, Sequelize) => {
   const Parent = sequelize.define("parent", {
     ParentsID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
-    ParentName: {
+    FirstName: {
       type: Sequelize.STRING
     },
     FirstName: {
       type: Sequelize.STRING
     },
-    LastName: {
+    PhoneType: {
       type: Sequelize.STRING
     },
-    ParentPhoneNumber: {
+    PhoneNumber: {
       type: Sequelize.STRING
     },
     Email: {
+      type: Sequelize.STRING
+    },
+    Street: {
+      type: Sequelize.STRING
+    },
+    City: {
+      type: Sequelize.STRING
+    },
+    Zip: {
+      type: Sequelize.INTEGER
+    },
+    Reference: {
       type: Sequelize.STRING
     },
     Notes: {
