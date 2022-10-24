@@ -20,6 +20,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     Notes: {
       type: Sequelize.STRING
+      },
+  Lesson: {
+      type: Sequelize.STRING
       }
   });
 
