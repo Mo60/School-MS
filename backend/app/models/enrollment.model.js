@@ -1,13 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
   const Enrollment = sequelize.define("enrollment", {
     EnrollmentID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     ClassID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     StudentID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     }
   });
 
