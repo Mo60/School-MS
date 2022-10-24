@@ -29,7 +29,7 @@
                 </div>
                 
                 <div class="text-center m-3">
-                <button class="btn btn-danger mt-3">Add</button>
+                <button class="btn btn-danger mt-3">Submit</button>
                 </div>
             </form>
         </div>
