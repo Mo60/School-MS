@@ -1,5 +1,5 @@
 module.exports = app => {
-    const invoices = require("../controllers/invoice.controller.js");
+    const invoice = require("../controllers/invoice.controller.js");
   
     var router = require("express").Router();
   
@@ -21,5 +21,5 @@ module.exports = app => {
     // Delete all invoice
     router.delete("/", invoice.deleteAll);
   
-    app.use('/api/invoices', router);
+    app.use('/api/invoice', router);
   };
