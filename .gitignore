@@ -30,7 +30,7 @@ backend/dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+.vs
 .env
 
 package.json
