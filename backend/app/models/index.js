@@ -18,14 +18,14 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
-db.parents = require("./parent.model.js")(sequelize, Sequelize);
-db.students = require("./student.model.js")(sequelize, Sequelize);
-db.users = require("./user.model.js")(sequelize, Sequelize);
-db.enrollments = require("./enrollment.model.js")(sequelize, Sequelize);
-db.invoices = require("./invoice.model.js")(sequelize, Sequelize);
-db.teachers = require("./teacher.model.js")(sequelize, Sequelize);
-db.classes = require("./class.model.js")(sequelize, Sequelize);
-db.payments = require("./payment.model.js")(sequelize, Sequelize);
+db.tutorial = require("./tutorial.model.js")(sequelize, Sequelize);
+db.parent = require("./parent.model.js")(sequelize, Sequelize);
+db.student = require("./student.model.js")(sequelize, Sequelize);
+db.user = require("./user.model.js")(sequelize, Sequelize);
+db.enrollment = require("./enrollment.model.js")(sequelize, Sequelize);
+db.invoice = require("./invoice.model.js")(sequelize, Sequelize);
+db.teacher = require("./teacher.model.js")(sequelize, Sequelize);
+db.class = require("./class.model.js")(sequelize, Sequelize);
+db.payment = require("./payment.model.js")(sequelize, Sequelize);
 
 module.exports = db;
