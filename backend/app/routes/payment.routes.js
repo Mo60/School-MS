@@ -1,5 +1,5 @@
 module.exports = app => {
-    const payments = require("../controllers/payment.controller.js");
+    const payment = require("../controllers/payment.controller.js");
   
     var router = require("express").Router();
   
@@ -21,5 +21,5 @@ module.exports = app => {
     // Delete all payment
     router.delete("/", payment.deleteAll);
   
-    app.use('/api/payments', router);
+    app.use('/api/payment', router);
   };
