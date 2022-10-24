@@ -1,4 +1,4 @@
-make a local fiel on your machine here called db.config.js
+make a local file on your machine here called db.config.js
 witht the connection  information 
 
 module.exports = {
