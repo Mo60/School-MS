@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER
     },
     ClassDate: {
-      type: Sequelize.DATE
+      type: Sequelize.STRING
     },
     ClassTime: {
       type: Sequelize.TIME
