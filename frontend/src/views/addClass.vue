@@ -79,11 +79,9 @@
                 }, 
             };
         },
-        
-    }
     
     methods: {
-            handleSubmitForm() {
+            handleSubmitForm(){
                 
                 let apiURL = '';
                 
@@ -98,14 +96,12 @@
                     numstudents: "",
                     maxcapacity:"",
                     lesson:"",
-                    notes: "''
+                    notes: ""
                   }
                 }).catch(error => {
                     console.log(error)
                 });
             }
-        } 
-           
-    }
-    
+        }
+    } 
 </script>

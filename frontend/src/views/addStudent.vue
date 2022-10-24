@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import router from '../router';
+
 
 export default{
 data(){
@@ -105,7 +105,6 @@ data(){
 methods:{
      submitForm(){
           this.$router.push("/addparent")
-          
      }
 }
 }

@@ -55,6 +55,16 @@ const router= createRouter({
     {path:"/EditInvoice",
     name:"EditInvoice",
     component:()=>import("../views/EditInvoice.vue")},
+    {path:"/auth",
+      name:"Login",
+      component:()=>import("../auth/UserAuth.vue"),
+      meta:{
+        hideNavbar:true
+      }
+    },
+    {path:"/enroll",
+  name:"enroll",
+component:()=>import("../views/enroll.vue")}
   ]})
 ;
 // Import create views

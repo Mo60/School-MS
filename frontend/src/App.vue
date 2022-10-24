@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark ">
+  <nav class="navbar navbar-expand-lg navbar-dark " v-if="!$route.meta.hideNavbar">
   <div class="container-fluid">
     
         <a class="navbar-brand" href="/">The Woodlands Academy of Art</a>
@@ -86,7 +86,7 @@
                     </li>
                     <li>
                       <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/"></router-link>
+                        <router-link class="nav-link" to="/enroll">Enrollment</router-link>
                       </a>
                     </li>
                     <li>
