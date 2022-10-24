@@ -7,7 +7,7 @@
    <div class="rows"> <span class="label">Date of Birth:</span> <span>01/01/1997</span></div >
    <div class="rows"> <span class="label">Lesson Day: </span >Tu/Th </div >
     <div class="rows"><span class="label">Lesson Time:</span > 3:45 - 6:00</div >
-        <div class="rows"><button class="btn">View Profile</button></div>
+        <div class="rows mb-2"><button class="btn">View Profile</button><button class="btn">Edit Student</button></div>
     
 </div>
     </div>
@@ -18,8 +18,8 @@
 <div class="body">
    <div class="rows"> <span class="label">Date of Birth:</span> <span>01/01/1997</span></div >
    <div class="rows"> <span class="label">Lesson Day: </span >Mon/Wed/Fri </div >
-    <div class="rows"><span class="label">Lesson Time:</span > 1:15 - 3:00</div >
-        <div class="rows"><button class="btn">View Profile</button></div>
+    <div class="rows mb-2"><span class="label">Lesson Time:</span > 1:15 - 3:00</div >
+        <div class="rows"><button class="btn">View Profile</button> <button class="btn">Edit Student</button></div>
     
 </div>
     </div>

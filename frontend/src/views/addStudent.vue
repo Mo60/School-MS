@@ -60,17 +60,17 @@
                          <label for="" class="form-label">Contact Name</label>
                          <input type="text" class="form-control">
                     </div>
-                    <div class="col"><label for="" class="form-label">Phone Number</label><input type="tel" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></div>
+                    <div class="col mb-4"><label for="" class="form-label">Phone Number</label><input type="tel" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></div>
               </div >
             </fieldset>
 
             <fieldset class="form-control mt-5">
             <legend >   Medical Information </legend >
-               <div class="col"><textarea class="form-control"></textarea></div>
+               <div class="col mb-4"><textarea class="form-control"></textarea></div>
             </fieldset>
             <fieldset class="form-control mt-5">
             <legend >   Notes </legend >
-               <div class="col"><textarea class="form-control"></textarea></div>
+               <div class="col mb-4"><textarea class="form-control"></textarea></div>
             </fieldset>
 
             <button class="btn mt-4">Next</button>
