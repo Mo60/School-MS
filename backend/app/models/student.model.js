@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   const Student = sequelize.define("student", {
     StudentID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     FirstName: {
       type: Sequelize.STRING
@@ -10,10 +10,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     DOB: {
-      type: Sequelize.STRING
+      type: Sequelize.DATE
     },
     StartDate: {
-      type: Sequelize.STRING
+      type: Sequelize.DATE
     },
     EmergencyContactName: {
       type: Sequelize.STRING
@@ -34,7 +34,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     ParentsID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
       }
   });
 
