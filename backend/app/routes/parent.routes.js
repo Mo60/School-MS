@@ -1,5 +1,5 @@
 module.exports = app => {
-    const parents = require("../controllers/parent.controller.js");
+    const parent = require("../controllers/parent.controller.js");
   
     var router = require("express").Router();
   
@@ -21,5 +21,5 @@ module.exports = app => {
     // Delete all parent
     router.delete("/", parent.deleteAll);
   
-    app.use('/api/parents', router);
+    app.use('/api/parent', router);
   };
