@@ -1,19 +1,19 @@
 module.exports = (sequelize, Sequelize) => {
   const Invoice = sequelize.define("invoice", {
     InvoiceID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     Total: {
-      type: Sequelize.STRING
+      type: Sequelize.DECIMAL
     },
     TotalPayment: {
-      type: Sequelize.STRING
+      type: Sequelize.DECIMAL
     },
     DueDate: {
-      type: Sequelize.STRING
+      type: Sequelize.DATE
     },
     StudentID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     }
   });
 
