@@ -2,7 +2,7 @@
     <h1 class="mt-5">Add a New Student</h1>
 
    <div class="wrapper">
-        <form @submit.prevent="">
+        <form @submit.prevent="submitForm">
             <fieldset class="form-control">
                 <legend > Student Information</legend>
 <div class="row mb-4"> 
@@ -77,3 +77,36 @@
         </form>
    </div>
 </template>
+
+<script>
+import router from '../router';
+
+export default{
+data(){
+     return {
+          Student:{
+               StudentID: "",
+               FirstName:"",
+               LastName:"",
+               DOB:"",
+               StartDate:"",
+               EmergencyContactName:"",
+               EmergencyContactPhone:"",
+               Medical:"",
+               Notes:"",
+               LessonDay:"",
+               LessonTime:"",
+               ParentsID:"",
+
+               
+          }
+     }
+},
+methods:{
+     submitForm(){
+          this.$router.push("/addparent")
+          
+     }
+}
+}
+</script>
