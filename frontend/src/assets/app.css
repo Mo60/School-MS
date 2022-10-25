@@ -6,7 +6,16 @@ li {
 #app {
 
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
+  background: hsla(46, 73%, 75%, 1);
+
+background: linear-gradient(180deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%);
+
+background: -moz-linear-gradient(180deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%);
+
+background: -webkit-linear-gradient(180deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EED991", endColorstr="#CCF7F4", GradientType=1 );
 }
 nav {
   background-color: #b1bea5;
@@ -106,3 +115,18 @@ form > .btn:hover, fieldset>.btn:hover {
 .input-group {
   margin-left: 10px;
 }
+.btns{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btns>.btn{
+  background-color:#888c64 ;
+  font-weight: 600;
+}
+
+.btns>.btn:hover{
+  background-color:#888c647d ;
+ 
+}
+
