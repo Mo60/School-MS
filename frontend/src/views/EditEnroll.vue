@@ -39,7 +39,7 @@
         },
         methods: {
           handleUpdateForm() {
-            let apiURL = ;
+            let apiURL = "";
             axios.put(apiURL, this.enrollment).then((res) => {
                 console.log(res)
                 this.$router.push()

@@ -46,7 +46,7 @@
         name: "EditTeacher",
         data() {
             return {
-               teacher: { 
+               teachers: { 
                     teacherID:"",
                     firstName:"",
                     lastName:"",
