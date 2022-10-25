@@ -19,6 +19,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EED991", en
 }
 nav {
   background-color: #b1bea5;
+ 
 }
 fieldset.form-control{
   background-color: #b1bea5;;
@@ -130,3 +131,12 @@ form > .btn:hover, fieldset>.btn:hover {
  
 }
 
+.links{
+ margin-right: 30px;
+ display: flex;
+ justify-content: space-between;
+}
+
+.rounded{
+  margin-left: 15px;
+}

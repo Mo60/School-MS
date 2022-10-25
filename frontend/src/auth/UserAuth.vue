@@ -42,6 +42,7 @@ export default {
       password: "",
       formIsValid: true,
       mode: "Login",
+    errorMsg:""
     };
   },
   computed:{
@@ -57,12 +58,10 @@ if(this.mode==='Login')
   },
   methods: {
     login() {
-      this.formIsValid = true;
-      if (this.userName === "" || this.password.length < 6) {
-        this.formIsValid = false;
-      } 
-
-     
+    //   this.formIsValid = true;
+    //   if (this.email === "" || this.password.length < 6) {
+    //     this.formIsValid = false;
+    //   } 
 
 const auth = getAuth();
 signInWithEmailAndPassword(auth, this.email, this.password)
@@ -74,7 +73,20 @@ signInWithEmailAndPassword(auth, this.email, this.password)
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-  });
+  }
+  );
+
+  switch (error.code){
+    case "auth/invalid-email":
+    this.errorMsg="Invalid Email"
+    break;
+    case "auth/user-not-found":
+        this.errorMsg="No account with that email was found"
+        break;
+        default:
+        this.errorMsg="Email or password was incorrect"
+        break;
+}
 
   this.$router.push("/")
     },

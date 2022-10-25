@@ -102,10 +102,10 @@
                   </ul>
                 </li>
               </ul>
-              <li class="nav-item"><a class="nav-link" href="/">Contact</a></li>
+              <li class="nav-item"><button class="btn"  @click="handleSignOut">Sign Out</button></li>
 
-              <div class="input-group col-xs-2">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+              <div class="col-md-4">
+  <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
  
 </div>
             </div>
@@ -124,4 +124,27 @@
 @import "./assets/app.css";
 </style>
 
-<script></script>
+<script>
+import { getAuth, signOut } from "firebase/auth";
+import { onMounted } from '@vue/runtime-core';
+let auth
+
+export default{
+data(){
+  return{
+isLoggedIn:""
+  }
+},
+
+methods:{
+ handleSignOut(){   
+  auth = getAuth();
+  signOut(auth).then(() => {
+  this.$router.push("/auth")
+}).catch((error) => {
+  console.log(error)
+})}
+}
+}
+
+</script>

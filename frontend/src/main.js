@@ -3,23 +3,17 @@ import App from './App.vue'
 import router from './router'
 // Import our custom CSS
 
-
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 // Import all of Bootstrap's JS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap"
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 const app= createApp(App)
 app.use(router)
 app.mount("#app")
 
-  // Import the functions you need from the SDKs you need
- 
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-  
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
   const firebaseConfig = {
     apiKey: "AIzaSyAvh1qv6ivO9-wvbKM4QQm8IwDzvhGgtIM",
     authDomain: "cis4375project-15020.firebaseapp.com",
@@ -30,3 +24,5 @@ app.mount("#app")
     measurementId: "G-8TJ0L0GTEL"
   };
   
+  
+const app2 = initializeApp(firebaseConfig);

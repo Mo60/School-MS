@@ -1,5 +1,5 @@
 <template>
-  <h1 class="mt-4 mb-5">Enroll</h1>
+  <h1 class="mt-5 mb-5">Enroll</h1>
 
   <form @submit.prevent="submitForm" class="wrapper2">
     <fieldset class="form-control">
