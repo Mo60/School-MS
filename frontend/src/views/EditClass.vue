@@ -5,39 +5,39 @@
                       <form @submit.prevent="handleUpdateForm" class="mb-5 pb-5">
                 <div class="form-group">
                     <label>Class ID</label>
-                    <input type="number" class="form-control" v-model="class.classID" required>
+                    <input type="number" class="form-control" v-model="Class.classID" required>
                 </div>
                 <div class="form-group">
                     <label>Teacher ID</label>
-                    <input type="number" class="form-control" v-model="class.teacherID" required>
+                    <input type="number" class="form-control" v-model="Class.teacherID" required>
                 </div>
                 <div class="form-group">
                     <label>Class Date</label>
-                    <input type="date" class="form-control" v-model="class.classdate" required>
+                    <input type="date" class="form-control" v-model="Class.classdate" required>
                 </div>
                 <div class="form-group">
                     <label>Class Time</label>
-                    <input type="time" class="form-control" v-model="class.classtime" 
+                    <input type="time" class="form-control" v-model="Class.classtime" 
                     required>
                 </div>
 
                 <div class="form-group">
                     <label>Teacher Phone Number</label>
-                    <input type="number" class="form-control" v-model="class.TeacherPhoneNumber" required>
+                    <input type="number" class="form-control" v-model="Class.TeacherPhoneNumber" required>
                 </div>
                 
                 <div class="form-group">
                     <label>Number of Students</label>
-                    <input type="number" class="form-control" v-model="class.numofstudents" required>
+                    <input type="number" class="form-control" v-model="Class.numofstudents" required>
                   </div>
                   
                  <div class="form-group">
                     <label>Max Capacity</label>
-                    <input type="number" class="form-control" v-model="class.maxcapacity" required>
+                    <input type="number" class="form-control" v-model="Class.maxcapacity" required>
                   </div>  
                 <div class="form-group">
                     <label>Notes</label>
-                    <input type="text" class="form-control" v-model="class.notes" required>
+                    <input type="text" class="form-control" v-model="Class.Notes" required>
                 </div> 
                 <div class="text-center m-3">
                 <button class="btn btn-danger mt-3">Update</button>
@@ -53,7 +53,7 @@
         name: "EditClass",
         data() {
             return {
-               class: { 
+               Class: { 
                     classID:"",
                     TeacherID:"",
                     classdate:"",
@@ -65,7 +65,7 @@
                 }, 
             };
         },
-        
+    } 
     // methods: {
     //         handleSubmitForm() {
                 
@@ -90,5 +90,5 @@
     //         }
     //     } 
            
-    }
+    
 </script>
