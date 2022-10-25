@@ -24,7 +24,8 @@ module.exports = (sequelize, Sequelize) => {
   Lesson: {
       type: Sequelize.STRING
       }
-  });
+  }, 
+  {tableName: "class"});
 
   return Class;
 };

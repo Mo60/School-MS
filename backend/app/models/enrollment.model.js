@@ -9,7 +9,8 @@ module.exports = (sequelize, Sequelize) => {
     StudentID: {
       type: Sequelize.INTEGER
     }
-  });
+  }, 
+  {tableName: "enrollment"});
 
   return Enrollment;
 };

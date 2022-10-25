@@ -15,7 +15,8 @@ module.exports = (sequelize, Sequelize) => {
     StudentID: {
       type: Sequelize.INTEGER
     }
-  });
+  }, 
+  {tableName: "invoice"});
 
   return Invoice;
 };

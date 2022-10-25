@@ -33,7 +33,9 @@ module.exports = (sequelize, Sequelize) => {
     Notes: {
       type: Sequelize.STRING
       }
-  });
+  }
+  , 
+  {tableName: "parent"});
 
   return Parent;
 };

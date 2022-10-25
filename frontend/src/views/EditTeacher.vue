@@ -28,7 +28,7 @@
                 
                 div class="form-group">
                     <label>Notes</label>
-                    <input type="text" class="form-control" v-model="student.notes" 
+                    <input type="text" class="form-control" v-model="teacher.notes" 
                     required>
                 </div>
 

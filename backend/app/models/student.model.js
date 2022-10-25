@@ -36,7 +36,8 @@ module.exports = (sequelize, Sequelize) => {
     ParentsID: {
       type: Sequelize.INTEGER
       }
-  });
+  }, 
+  {tableName: "student"});
 
   return Student;
 };

@@ -18,7 +18,8 @@ module.exports = (sequelize, Sequelize) => {
     Notes: {
       type: Sequelize.STRING
       }
-  });
+  }, 
+  {tableName: "teacher"});
 
   return Teacher;
 };
