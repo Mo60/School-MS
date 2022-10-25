@@ -1,19 +1,22 @@
 li {
   list-style: none;
-  color: lightgray;
+  
 }
 
 #app {
-  background-color: #734429;
+
   height: 100vh;
   overflow: scroll;
 }
 nav {
-  background-color: #888c64;
+  background-color: #b1bea5;
 }
-
+fieldset.form-control{
+  background-color: #b1bea5;;
+ 
+}
 ul.dropdown-menu {
-  background-color: #260f01;
+  background-color: #888c64;
 }
 
 .dropdown-menu > .dropdown-item:hover {
@@ -27,7 +30,7 @@ ul.dropdown-menu {
 
 h1 {
   text-align: center;
-  color: lightgray;
+  color: rgb(124, 122, 122);
 }
 
 h2 {

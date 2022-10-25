@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark " v-if="!$route.meta.hideNavbar">
+  <nav class="navbar navbar-expand-lg navbar " v-if="!$route.meta.hideNavbar">
   <div class="container-fluid">
     
         <a class="navbar-brand" href="/">The Woodlands Academy of Art</a>
@@ -61,12 +61,12 @@
                   <ul class="dropdown-menu " aria-labelledby="">
                     <li>
                       <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/addstudent">Students</router-link>
+                        <router-link class="nav-link" to="/addparent">Students</router-link>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item">
-                        <router-link class="nav-link" to="/addparent">Parents</router-link>
+                        <router-link class="nav-link" to="/addParent2">Parents</router-link>
                       </a>
                     </li>
                     <li>

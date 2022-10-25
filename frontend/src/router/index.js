@@ -39,6 +39,9 @@ const router= createRouter({
     {path:"/addParent",
     name:"addparent",
     component:()=>import("../views/addParent.vue")},
+    {path:"/addParent2",
+    name:"addparent2",
+    component:()=>import("../views/addparent2.vue")},
 // Import Edit views
     {path:"/EditStudent",
     name:"EditStudent",

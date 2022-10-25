@@ -1,10 +1,10 @@
 <template>
-    <h1 class="mt-5">Add a New Student</h1>
+    <h1 class="mt-5">Enter Student Information</h1>
 
    <div class="wrapper">
         <form @submit.prevent="submitForm">
             <fieldset class="form-control">
-                <legend > Student Information</legend>
+                <legend > Personal Information</legend>
 <div class="row mb-4"> 
    <div class="col">
         <label for="fName" class="form-label">First Name</label>
@@ -73,7 +73,7 @@
                <div class="col mb-4"><textarea class="form-control"></textarea></div>
             </fieldset>
 
-            <button class="btn mt-4">Next</button>
+            <button class="btn mt-4">Submit</button>
         </form>
    </div>
 </template>
