@@ -35,7 +35,7 @@
                     <label>Max Capacity</label>
                     <input type="number" class="form-control" v-model="class.maxcapacity" required>
                   </div>  
-                div class="form-group">
+                <div class="form-group">
                     <label>Notes</label>
                     <input type="text" class="form-control" v-model="class.notes" required>
                 </div> 
@@ -54,8 +54,8 @@
         data() {
             return {
                class: { 
-                    classID: "",
-                    TeacherID: "",
+                    classID:"",
+                    TeacherID:"",
                     classdate:"",
                     classtime:"",
                     TeacherPhoneNumber:"",
@@ -66,31 +66,29 @@
             };
         },
         
-    },
-    
-    methods: {
-            handleSubmitForm() {
+    // methods: {
+    //         handleSubmitForm() {
                 
-                let apiURL = '';
+    //             let apiURL = '';
                 
-                axios.post(apiURL, this.class).then(() => {
-                    //changing the view to the list
-                  this.$router.push('/')
-                  this.class = {
-                    classID: "",
-                    TeacherID: "",
-                    classdate:"",
-                    classtime:"",
-                    TeacherPhoneNumber:"",
-                    numofstudents:"",
-                    maxcapacity:"",
-                    notes: ""
-                  }
-                }).catch(error => {
-                    console.log(error)
-                });
-            }
-        } 
+    //             axios.post(apiURL, this.class).then(() => {
+    //                 //changing the view to the list
+    //               this.$router.push('/')
+    //               this.class = {
+    //                 classID: "",
+    //                 TeacherID: "",
+    //                 classdate:"",
+    //                 classtime:"",
+    //                 TeacherPhoneNumber:"",
+    //                 numofstudents:"",
+    //                 maxcapacity:"",
+    //                 notes: ""
+    //               }
+    //             }).catch(error => {
+    //                 console.log(error)
+    //             });
+    //         }
+    //     } 
            
     }
 </script>
