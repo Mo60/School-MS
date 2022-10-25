@@ -26,7 +26,7 @@
                     <input type="number" class="form-control" v-model="teacher.TeacherPhoneNumber" required>
                 </div>
                 
-                div class="form-group">
+                <div class="form-group">
                     <label>Notes</label>
                     <input type="text" class="form-control" v-model="teacher.notes" 
                     required>
@@ -46,7 +46,7 @@
         name: "EditTeacher",
         data() {
             return {
-               teacher: { 
+               teachers: { 
                     teacherID:"",
                     firstName:"",
                     lastName:"",

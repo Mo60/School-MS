@@ -1,13 +1,13 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-md-6">
-          <h3 class="text-center">Update Students</h3>
-                      <form @submit.prevent="handleUpdateForm" class="mb-5 pb-5">
+                     <h3 class="text-center">Update Students</h3>
+            <form @submit.prevent="handleUpdateForm" class="mb-5 pb-5">
                 <div class="form-group">
                     <label>Student ID</label>
                     <input type="number" class="form-control" v-model="student.studentID" required>
                 </div>
-               <div class="form-group">
+                <div class="form-group">
                     <label>Parent ID</label>
                     <input type="number" class="form-control" v-model="student.parentID" required>
                 </div>
@@ -35,31 +35,31 @@
                     <input type="number" class="form-control" v-model="student.ParentPhoneNumber" required>
                 </div>
                 
-                div class="form-group">
+                <div class="form-group">
                     <label>Street</label>
                     <input type="text" class="form-control" v-model="student.street" 
                     required>
                 </div>
 
-                div class="form-group">
+                <div class="form-group">
                     <label>City</label>
                     <input type="text" class="form-control" v-model="student.city" 
                     required>
                 </div>
                 
-                div class="form-group">
+                <div class="form-group">
                     <label>Zip</label>
                     <input type="number" class="form-control" v-model="student.zip" 
                     required>
                 </div>
                 
-                div class="form-group">
+                <div class="form-group">
                     <label>Reference</label>
                     <input type="text" class="form-control" v-model="student.reference" 
                     required>
                 </div>
                 
-                div class="form-group">
+                <div class="form-group">
                     <label>Notes</label>
                     <input type="text" class="form-control" v-model="student.notes" 
                     required>
