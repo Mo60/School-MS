@@ -15,7 +15,8 @@ module.exports = (sequelize, Sequelize) => {
     InvoiceID: {
       type: Sequelize.INTEGER
     }
-  });
+  }, 
+  {tableName: "payment"});
 
   return Payment;
 };
