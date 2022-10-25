@@ -61,8 +61,8 @@
         <legend>Others</legend>
         <div class="row mb-4">
           <div class="col-md-4">
-            <label for="" class="form-label">Reference</label
-            ><input type="text" class="form-control" />
+            <label for="" class="form-label">Reference</label>
+            <input type="text" class="form-control" />
           </div>
         </div>
         <div class="row mb-4">
