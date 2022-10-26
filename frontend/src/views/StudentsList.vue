@@ -10,13 +10,13 @@
                         <th>Student ID</th>
                         <th>Parent ID</th>
                         <th>First Name</th>
-                        <th>Middle Name</th>
                         <th>Last Name</th>
                         <th>DOB</th>
                         <th>StartDate</th>
                         <th>Emergency Contact Name</th>
                         <th>Emergency Contact Number</th>
                         <th>Lesson Day</th>
+                        <th>Lesson Time</th>
                         <th>Medical</th>
                         <th>Notes</th>
 
@@ -25,18 +25,17 @@
                 <tbody> 
                     <tr v-for="student in students" :key="student.studentID"> <!-- loops through the array of student using the key studentID -->
                         <td>{{ student.studentID }}</td>
-                        <td>{{ student.organizationID }}</td>
+                        <td>{{ student.parentID }}</td>
                         <td>{{ student.firstName }}</td>
-                        <td>{{ student.middleName }}</td>
                         <td>{{ student.lastName }}</td>
                         <td>{{ student.DOB }}</td>
                         <td>{{ student.startdate< }}</td>
                         <td>{{ student.emergencycontactname}}</td>
                         <td>{{ student.emergencycontactnumber}}</td>
-                         <td>{{ student.lessonday}}</td>
-                         <td>{{ student.lessontime}}</td>
-                         <td>{{ student.medical}}</td>
-                           <td>{{ student.notes}}</td>
+                        <td>{{ student.lessonday}}</td>
+                        <td>{{ student.lessontime}}</td>
+                        <td>{{ student.medical}}</td>
+                        <td>{{ student.notes}}</td>
                         <td>   
                         <router-link :to="{name: 'editStudent', params: { id: student.studentID }}" class="btn btn-success ">Edit</router-link>
                          <button @click.prevent="deleteStudent(student.studentID)" class="btn btn-danger mx-2">Delete</button>
