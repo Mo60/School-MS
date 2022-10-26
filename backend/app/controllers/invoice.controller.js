@@ -1,5 +1,5 @@
 const db = require("../models");
-const invoice = db.invoices;
+const invoice = db.invoice;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new invoice
