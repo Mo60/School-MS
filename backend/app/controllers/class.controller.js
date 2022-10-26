@@ -48,9 +48,16 @@ exports.create = (req, res) => {
   
     // Create a Class
     const Class = {
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      ClassID: req.body.ClassID,
+      TeacherID: req.body.TeacherID,
+      ClassDay: req.body.ClassDay,
+      ClassStartDate: req.body.ClassStartDate,
+      ClassEndDate: req.body.ClassEndDate,
+      ClassTime: req.body.ClassTime,
+      NumStudents: req.body.NumStudents,
+      MaxCapacity: req.body.MaxCapacity,
+      Notes: req.body.Notes,
+      Notes: req.body.Notes ? req.body.Notes : false
     };
   
     // Save Class in the database
