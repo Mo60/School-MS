@@ -1,5 +1,5 @@
 const db = require("../models");
-const class = db.classs;
+const class = db.class;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new class
