@@ -18,7 +18,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.tutorial = require("./tutorial.model.js")(sequelize, Sequelize);
+db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
 db.parent = require("./parent.model.js")(sequelize, Sequelize);
 db.student = require("./student.model.js")(sequelize, Sequelize);
 db.user = require("./user.model.js")(sequelize, Sequelize);
