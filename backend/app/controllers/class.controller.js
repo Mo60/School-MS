@@ -56,7 +56,6 @@ exports.create = (req, res) => {
       ClassTime: req.body.ClassTime,
       NumStudents: req.body.NumStudents,
       MaxCapacity: req.body.MaxCapacity,
-      Notes: req.body.Notes,
       Notes: req.body.Notes ? req.body.Notes : false
     };
   
