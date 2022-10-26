@@ -1,0 +1,175 @@
+const db = require("../models");
+const parent = db.parent;
+const Op = db.Sequelize.Op;
+
+// Create and Save a new parent
+exports.create = (req, res) => {
+  
+};
+
+// Retrieve all parents from the database.
+exports.findAll = (req, res) => {
+  
+};
+
+// Find a single parent with an id
+exports.findOne = (req, res) => {
+  
+};
+
+// Update a parent by the id in the request
+exports.update = (req, res) => {
+  
+};
+
+// Delete a parent with the specified id in the request
+exports.delete = (req, res) => {
+  
+};
+
+// Delete all parents from the database.
+exports.deleteAll = (req, res) => {
+  
+};
+
+// Find all published parents
+exports.findAllPublished = (req, res) => {
+  
+};
+
+exports.create = (req, res) => {
+    // Validate request
+    if (!req.body.title) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+  
+    // Create a parent
+    const parent = {
+      title: req.body.title,
+      description: req.body.description,
+      published: req.body.published ? req.body.published : false
+    };
+  
+    // Save parent in the database
+    parent.create(parent)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the parent."
+        });
+      });
+  };
+
+  exports.findAll = (req, res) => {
+    const title = req.query.title;
+    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  
+    parent.findAll({ where: condition })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving parents."
+        });
+      });
+  };
+
+  exports.findOne = (req, res) => {
+    const id = req.params.id;
+  
+    parent.findByPk(id)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error retrieving parent with id=" + id
+        });
+      });
+  };
+
+  exports.update = (req, res) => {
+    const id = req.params.id;
+  
+    parent.update(req.body, {
+      where: { id: id }
+    })
+      .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "parent was updated successfully."
+          });
+        } else {
+          res.send({
+            message: `Cannot update parent with id=${id}. Maybe parent was not found or req.body is empty!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error updating parent with id=" + id
+        });
+      });
+  };
+
+  exports.delete = (req, res) => {
+    const id = req.params.id;
+  
+    parent.destroy({
+      where: { id: id }
+    })
+      .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "parent was deleted successfully!"
+          });
+        } else {
+          res.send({
+            message: `Cannot delete parent with id=${id}. Maybe parent was not found!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Could not delete parent with id=" + id
+        });
+      });
+  };
+
+  
+  exports.deleteAll = (req, res) => {
+    parent.destroy({
+      where: {},
+      truncate: false
+    })
+      .then(nums => {
+        res.send({ message: `${nums} parents were deleted successfully!` });
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while removing all parents."
+        });
+      });
+  };
+
+  exports.findAllPublished = (req, res) => {
+    parent.findAll({ where: { published: true } })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving parents."
+        });
+      });
+  };

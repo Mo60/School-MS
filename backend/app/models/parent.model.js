@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
     FirstName: {
       type: Sequelize.STRING
     },
-    FirstName: {
+    LastName: {
       type: Sequelize.STRING
     },
     PhoneType: {
