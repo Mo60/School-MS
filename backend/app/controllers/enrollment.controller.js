@@ -1,5 +1,5 @@
 const db = require("../models");
-const enrollment = db.enrollments;
+const enrollment = db.enrollment;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new enrollment
