@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { getAuth,onAuthStateChanged } from "firebase/auth";
 import Home from '@/views/Home.vue'
+
+import { async } from '@firebase/util';
 
 const router= createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,57 +10,107 @@ const router= createRouter({
     {
       path: '/',
       component: Home,
+      meta:{
+        requiresAuth:true
+      }
     },  // import main views
     {path:"/students",
     name:"students",
-    component:()=>import("../views/viewStudents.vue")},
+    component:()=>import("../views/viewStudents.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/parents",
     name:"parents",
-    component:()=>import("../views/viewParents.vue")},
+    component:()=>import("../views/viewParents.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/teachers",
     name:"teachers",
-    component:()=>import("../views/viewTeachers.vue")},
+    component:()=>import("../views/viewTeachers.vue"),meta:{
+      requiresAuth:true
+    }},
     {path:"/classes",
     name:"classes",
-    component:()=>import("../views/viewClasses.vue")},
+    component:()=>import("../views/viewClasses.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/invoices",
     name:"invoices",
-    component:()=>import("../views/viewInvoices.vue")},
+    component:()=>import("../views/viewInvoices.vue"),
+    meta:{
+      requiresAuth:true
+    }},
  // import add views   
     {path:"/addStudent",
     name:"addstudent",
-    component:()=>import("../views/addStudent.vue")},
+    component:()=>import("../views/addStudent.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/addClass",
     name:"addclass",
-    component:()=>import("../views/addClass.vue")},
+    component:()=>import("../views/addClass.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/addTeacher",
     name:"addteacher",
-    component:()=>import("../views/addTeacher.vue")},
+    component:()=>import("../views/addTeacher.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/addInvoice",
    name:"addinvoice",
-   component:()=>import("../views/addInvoice.vue")},
+   component:()=>import("../views/addInvoice.vue"),
+   meta:{
+    requiresAuth:true
+  }},
     {path:"/addParent",
     name:"addparent",
-    component:()=>import("../views/addParent.vue")},
+    component:()=>import("../views/addParent.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/addParent2",
     name:"addparent2",
-    component:()=>import("../views/addparent2.vue")},
+    component:()=>import("../views/addparent2.vue"),
+    meta:{
+      requiresAuth:true
+    }},
 // Import Edit views
     {path:"/EditStudent",
     name:"EditStudent",
-    component:()=>import("../views/EditStudent.vue")},
+    component:()=>import("../views/EditStudent.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/EditParent",
     name:"EditParent",
-    component:()=>import("../views/EditParent.vue")},
+    component:()=>import("../views/EditParent.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/EditTeacher",
     name:"EditTeacher",
-    component:()=>import("../views/EditTeacher.vue")},
+    component:()=>import("../views/EditTeacher.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/EditClass",
     name:"EditClass",
-    component:()=>import("../views/EditClass.vue")},
+    component:()=>import("../views/EditClass.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/EditInvoice",
     name:"EditInvoice",
-    component:()=>import("../views/EditInvoice.vue")},
+    component:()=>import("../views/EditInvoice.vue"),
+    meta:{
+      requiresAuth:true
+    }},
     {path:"/auth",
       name:"Login",
       component:()=>import("../auth/UserAuth.vue"),
@@ -65,11 +118,48 @@ const router= createRouter({
         hideNavbar:true
       }
     },
+    {
+      path:"/signup",
+      name:"SignUp",
+      component:()=>import("../auth/signUp.vue"),
+      meta:{
+hideNavbar:true
+    }
+  },
     {path:"/enroll",
   name:"enroll",
-component:()=>import("../views/enroll.vue")}
+component:()=>import("../views/enroll.vue"),
+meta:{
+  requiresAuth:true
+}}
   ]})
 ;
-// Import create views
+
+const getCurrentUser=()=>{
+  return new Promise((resolve,reject)=>{
+    const removeListener=onAuthStateChanged(
+      getAuth(), 
+      (user)=>{
+        removeListener();
+        resolve(user)
+      },
+      reject
+    )
+    }
+  )
+  }
+
+router.beforeEach(async(to,from,next)=>{
+  if(to.matched.some((record)=>record.meta.requiresAuth)){
+if(await getCurrentUser()){
+  next();
+}
+else{
+  alert("You dont have access");
+  next("/auth")
+}
+  }
+  else next()
+})
 
 export default router

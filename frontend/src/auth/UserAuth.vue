@@ -19,8 +19,8 @@
             />
           </div>
           <div class="btns">
-            <button class="btn">{{submitButtonCaption}}</button>
-            <button class="btn" mode="flat" @click="switchAuthMode">{{swithModeButtonCaption}}</button>
+            <button input="submit" class="btn">Login</button>
+           <router-link to="/signup" class="btn">Sign Up</router-link >
           </div>
         </fieldset>
         <p v-if="!formIsValid">Please enter a valid email and password</p>
@@ -34,7 +34,9 @@
  
 <script>
 import router from "../router";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
+
+
 export default {
   data() {
     return {
@@ -42,6 +44,7 @@ export default {
       password: "",
       formIsValid: true,
       mode: "Login",
+     
     errorMsg:""
     };
   },
@@ -58,10 +61,6 @@ if(this.mode==='Login')
   },
   methods: {
     login() {
-    //   this.formIsValid = true;
-    //   if (this.email === "" || this.password.length < 6) {
-    //     this.formIsValid = false;
-    //   } 
 
 const auth = getAuth();
 signInWithEmailAndPassword(auth, this.email, this.password)
@@ -74,22 +73,10 @@ signInWithEmailAndPassword(auth, this.email, this.password)
     const errorCode = error.code;
     const errorMessage = error.message;
   }
-  );
-
-  switch (error.code){
-    case "auth/invalid-email":
-    this.errorMsg="Invalid Email"
-    break;
-    case "auth/user-not-found":
-        this.errorMsg="No account with that email was found"
-        break;
-        default:
-        this.errorMsg="Email or password was incorrect"
-        break;
-}
+  )
 
   this.$router.push("/")
-    },
+    }},
 
     switchAuthMode() {
       if (this.mode === "Login") {
@@ -99,8 +86,10 @@ signInWithEmailAndPassword(auth, this.email, this.password)
       else {
         this.mode="Login"
       }
-    },
-  },
+    }
+  ,
+
+ 
 };
 </script>
 

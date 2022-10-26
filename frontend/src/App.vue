@@ -125,7 +125,7 @@
 </style>
 
 <script>
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth,onAuthStateChanged ,signOut } from "firebase/auth";
 import { onMounted } from '@vue/runtime-core';
 let auth
 
@@ -136,6 +136,16 @@ isLoggedIn:""
   }
 },
 
+onMounted(){
+  auth = getAuth();
+  onAuthStateChanged(auth,(user)=>{
+    if(user){
+      this.isLoggedIn=true;
+    }
+    else this.isLoggedIn=false
+  })
+}
+,
 methods:{
  handleSignOut(){   
   auth = getAuth();
