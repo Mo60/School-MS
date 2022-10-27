@@ -1,5 +1,5 @@
 const db = require("../models");
-const enrollment = db.enrollment;
+const Enrollment = db.enrollments;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new enrollment
@@ -39,7 +39,7 @@ exports.findAllPublished = (req, res) => {
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.EnrollmentID) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -48,13 +48,13 @@ exports.create = (req, res) => {
   
     // Create a enrollment
     const enrollment = {
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      EnrollmentID: req.body.EnrollmentID,
+      ClassID: req.body.ClassID,
+      StudentID: req.body.StudentID
     };
   
     // Save enrollment in the database
-    enrollment.create(enrollment)
+    Enrollment.create(enrollment)
       .then(data => {
         res.send(data);
       })
@@ -67,10 +67,10 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-  
-    enrollment.findAll({ where: condition })
+    const EnrollmentID = req.query.EnrollmentID;
+    var condition = EnrollmentID ? { EnrollmentID: { [Op.like]: `%${EnrollmentID}%` } } : null;
+    
+    Enrollment.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -85,7 +85,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    enrollment.findByPk(id)
+    Enrollment.findByPk(id)
       .then(data => {
         res.send(data);
       })
@@ -99,7 +99,7 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    enrollment.update(req.body, {
+    Enrollment.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -123,7 +123,7 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    enrollment.destroy({
+    Enrollment.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -146,7 +146,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    enrollment.destroy({
+    Enrollment.destroy({
       where: {},
       truncate: false
     })
@@ -162,7 +162,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    enrollment.findAll({ where: { published: true } })
+    Enrollment.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })
