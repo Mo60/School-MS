@@ -1,5 +1,5 @@
 const db = require("../models");
-const student = db.student;
+const Student = db.student;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new student
@@ -39,7 +39,7 @@ exports.findAllPublished = (req, res) => {
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.LastName) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -48,13 +48,22 @@ exports.create = (req, res) => {
   
     // Create a student
     const student = {
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      StudentID: req.body.StudentID,
+      FirstName: req.body.FirstName,
+      LastName: req.body.LastName,
+      DOB: req.body.DOB,
+      StartDate: req.body.StartDate,
+      EmergencyContactName: req.body.EmergencyContactName,
+      EmergencyContactPhone: req.body.EmergencyContactPhone,
+      Medical: req.body.Medical,
+      Notes: req.body.Notes,
+      LessonDay: req.body.LessonDay,
+      LessonTime: req.body.LessonTime,
+      ParentsID: req.body.ParentsID
     };
   
     // Save student in the database
-    student.create(student)
+    Student.create(student)
       .then(data => {
         res.send(data);
       })
@@ -67,10 +76,10 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    const StudentID = req.query.StudentID;
+    var condition = StudentID ? { StudentID: { [Op.like]: `%${StudentID}%` } } : null;
   
-    student.findAll({ where: condition })
+    Student.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
