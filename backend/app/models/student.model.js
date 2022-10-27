@@ -36,8 +36,11 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     ParentsID: {
-      type: Sequelize.INTEGER
-      }
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'parent', 
+          key: 'ParentsID', 
+    }
   }, 
   {tableName: "student"});
 
