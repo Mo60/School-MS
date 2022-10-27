@@ -40,7 +40,9 @@ module.exports = (sequelize, Sequelize) => {
       references: {
           model: 'parent', 
           key: 'ParentsID', 
-    }
+        }
+        }
+  
   }, 
   {tableName: "student"});
 
