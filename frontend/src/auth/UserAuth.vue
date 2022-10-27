@@ -19,7 +19,7 @@
             />
           </div>
           <div class="btns">
-            <button input="submit" class="btn">Login</button>
+            <input type="submit" class="btn" value="Login">
            <router-link to="/signup" class="btn">Sign Up</router-link >
           </div>
         </fieldset>
@@ -43,22 +43,11 @@ export default {
       email: "",
       password: "",
       formIsValid: true,
-      mode: "Login",
      
     errorMsg:""
     };
   },
-  computed:{
-    submitButtonCaption(){
-if(this.mode==='Login')
-    return 'Login'
-    else return 'Sign Up'
-},
-    swithModeButtonCaption(){if(this.mode==='Login')
-    return 'Sign Up Instead'
-    else return 'Login Instead'
-}
-  },
+  
   methods: {
     login() {
 

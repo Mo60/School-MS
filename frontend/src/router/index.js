@@ -74,12 +74,6 @@ const router= createRouter({
     meta:{
       requiresAuth:true
     }},
-    {path:"/addParent2",
-    name:"addparent2",
-    component:()=>import("../views/addparent2.vue"),
-    meta:{
-      requiresAuth:true
-    }},
 // Import Edit views
     {path:"/EditStudent",
     name:"EditStudent",
