@@ -88,9 +88,9 @@ exports.create = (req, res) => {
   };
 
   exports.findOne = (req, res) => {
-    const id = req.params.ParentsId;
+    const id = req.params.id;
   
-    parent.findByPk(id)
+    Parent.findByPk(id)
       .then(data => {
         res.send(data);
       })
