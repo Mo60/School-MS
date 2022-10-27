@@ -12,7 +12,7 @@
 </div>
     </div>
 
-    <div class="student-display">
+    <div class="display">
       <div class="top">  <span id="name">Lauren Potter</span>
     <div id="id">2</div></div >
 <div class="body">

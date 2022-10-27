@@ -61,10 +61,10 @@ h2 {
   width: 45%;
   margin: 40px auto;
 }
-.student-display {
+.display {
   width: 30vw;
   background-color: #888c64;
-  margin: 20px auto;
+  margin: 50px auto;
   border-radius: 15px;
   padding: 10px 20px;
   color: #260f01;
@@ -89,7 +89,7 @@ h2 {
 .rows {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
 }
 
 .label {
