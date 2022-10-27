@@ -32,10 +32,7 @@ exports.deleteAll = (req, res) => {
   
 };
 
-// Find all published parents
-exports.findAllPublished = (req, res) => {
-  
-};
+;
 
 exports.create = (req, res) => {
     // Validate request
@@ -91,7 +88,7 @@ exports.create = (req, res) => {
   };
 
   exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const id = req.params.ParentsId;
   
     parent.findByPk(id)
       .then(data => {
