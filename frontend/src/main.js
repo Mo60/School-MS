@@ -4,7 +4,6 @@ import router from './router'
 // Import our custom CSS
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 // Import all of Bootstrap's JS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap"

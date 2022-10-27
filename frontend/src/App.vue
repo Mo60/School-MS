@@ -65,11 +65,6 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item">
-                        <router-link class="nav-link" to="/addParent2">Parents</router-link>
-                      </a>
-                    </li>
-                    <li>
                       <a  class="dropdown-item">
                         <router-link class="nav-link" to="/addteacher">Teachers</router-link>
                       </a>
@@ -81,7 +76,7 @@
                     </li>
                     <li>
                       <a class="dropdown-item">
-                        <router-link class="nav-link" to="/">Invoices</router-link>
+                        <router-link class="nav-link" to="/">Payments</router-link>
                       </a>
                     </li>
                     <li>
