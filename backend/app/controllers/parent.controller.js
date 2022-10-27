@@ -75,10 +75,10 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    const ParentsID = req.query.ParentsID;
+    var condition = ParentsID ? { ParentsID: { [Op.like]: `%${ParentsID}%` } } : null;
   
-    parent.findAll({ where: condition })
+    Parent.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
