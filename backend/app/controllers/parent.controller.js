@@ -1,5 +1,5 @@
 const db = require("../models");
-const parent = db.parent;
+const Parent = db.parent;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new parent
@@ -39,7 +39,7 @@ exports.findAllPublished = (req, res) => {
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.FirstName) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -48,13 +48,21 @@ exports.create = (req, res) => {
   
     // Create a parent
     const parent = {
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      ParentsID: req.body.ParentsID,
+      FirstName: req.body.FirstName,
+      LastName: req.body.LastName,
+      PhoneType: req.body.PhoneType,
+      PhoneNumber: req.body.PhoneNumber,
+      Email: req.body.Email,
+      Street: req.body.Street,
+      City: req.body.City,
+      Zip: req.body.Zip,
+      Reference: req.body.Reference,
+      Notes: req.body.Notes
     };
   
     // Save parent in the database
-    parent.create(parent)
+    Parent.create(parent)
       .then(data => {
         res.send(data);
       })
