@@ -36,7 +36,7 @@
                    
                     </div>  
              </fieldset >
-             <button class="btn mt-4">Add</button>
+             <button class="btn mt-4">Submit</button>
             </form>
         </div>
  
