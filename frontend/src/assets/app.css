@@ -35,7 +35,7 @@ ul.dropdown-menu {
 
 .dropdown-menu > li > a:hover {
   background-image: none;
-  background-color: #ba521246;
+  background-color: #b1bea5;
 }
 
 h1 {
@@ -54,7 +54,7 @@ h2 {
 }
 .wrapper2{
   width: 25%;
-  margin: auto;
+  margin:40px auto;
 
 }
 .wrapper3{

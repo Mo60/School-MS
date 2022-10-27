@@ -79,8 +79,7 @@
 </template>
 
 <script>
-
-
+import axios from "axios"
 export default{
 data(){
      return {
@@ -97,14 +96,18 @@ data(){
                LessonDay:"",
                LessonTime:"",
                ParentsID:"",
-
-               
           }
      }
 },
+created(){
+     this.ParentsID= this.$route.params.parentID
+},
+
 methods:{
      submitForm(){
-          this.$router.push("/addparent")
+let apiURL=`http://localhost:3000/api/student/`
+console.log(apiURL)
+        
      }
 }
 }

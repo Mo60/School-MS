@@ -7,21 +7,21 @@
         <div class="row mb-4">
           <div class="col">
             <label for="" class="form-label">First Name</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" v-model="FirstName"/>
           </div>
           <div class="col">
             <label for="" class="form-label">Last Name</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" v-model="LastName"/>
           </div>
           <div class="col">
             <label for="" class="form-label">Email</label>
-            <input type="email" class="form-control" />
+            <input type="email" class="form-control" v-model="email" />
           </div>
         </div>
         <div class="row mb-4">
           <div class="col">
             <label for="" class="form-label">Phone Type</label>
-            <select name="" id="" class="form-control">
+            <select name="" id="" class="form-control" v-model="PhoneType">
               <option value="" disabled selected>Select An Option</option>
               <option value="Mobile">Mobile</option>
               <option value="Home">Home</option>
@@ -35,6 +35,7 @@
               class="form-control"
               placeholder="123-456-7890"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              v-model="PhoneNumber"
             />
           </div>
         </div>
@@ -44,15 +45,15 @@
         <div class="row mb-4">
           <div class="col">
             <label class="form-label">Street</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" v-model="Street" />
           </div>
           <div class="col">
             <label for="" class="form-label">City</label
-            ><input type="text" class="form-control" />
+            ><input type="text" class="form-control" v-model="City"/>
           </div>
           <div class="col">
             <label for="" class="form-label">Zip</label
-            ><input type="number" class="form-control" />
+            ><input type="number" class="form-control" v-model="Zip" />
           </div>
         </div>
       </fieldset>
@@ -62,12 +63,12 @@
         <div class="row mb-4">
           <div class="col-md-4">
             <label for="" class="form-label">Reference</label>
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" v-model="Reference"/>
           </div>
         </div>
         <div class="row mb-4">
           <div class="col">
-            Notes<textarea name="" class="form-control"></textarea>
+            Notes<textarea name="" class="form-control" v-model="Notes"></textarea>
           </div>
         </div>
       </fieldset>
@@ -78,10 +79,51 @@
 </template>
 
 <script>
+    import axios from "axios";
+
 export default{
+  data(){
+    return{
+      parent:{
+        ParentID:"",
+        FirstName:"",
+        LastName:"",
+        PhoneType:"",
+        PhoneNumber:"",
+        Email:"",
+        Street:"",
+        City:"",
+        Zip:"",
+        Reference:"",
+        Notes:""
+      }
+    }
+  },
     methods:{
 submitForm(){
-    this.$router.push("/addstudent")
+
+let apiURL="http://172.26.54.21:8082/api/parent/"
+
+axios.post(apiURL,this.parent).then(()=>{
+    this.parent={
+        ParentID:"",
+        FirstName:"",
+        LastName:"",
+        PhoneType:"",
+        PhoneNumber:"",
+        Email:"",
+        Street:"",
+        City:"",
+        Zip:"",
+        Reference:"",
+        Notes:""
+}
+}).catch(error => {
+                    console.log(error)
+                });
+    this.$router.push({
+name:"addstudent",
+params:{parentID:this.parent.ParentID}})
 }
     }
 }

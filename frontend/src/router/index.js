@@ -62,9 +62,9 @@ const router= createRouter({
     meta:{
       requiresAuth:true
     }},
-    {path:"/addInvoice",
-   name:"addinvoice",
-   component:()=>import("../views/addInvoice.vue"),
+    {path:"/addPayment",
+   name:"addpayment",
+   component:()=>import("../views/addPayment.vue"),
    meta:{
     requiresAuth:true
   }},
@@ -125,7 +125,10 @@ hideNavbar:true
 component:()=>import("../views/enroll.vue"),
 meta:{
   requiresAuth:true
-}}
+}},
+{path:"/payments",
+name:"payments",
+component:()=>import("../views/addPayment.vue")}
   ]})
 ;
 

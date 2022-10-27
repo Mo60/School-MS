@@ -12,7 +12,8 @@ node_modules
 dist
 dist-ssr
 *.local
-
+package.json
+package-lock.json
 frontend/node_modules
 frontend/dist
 frontend/dist-ssr

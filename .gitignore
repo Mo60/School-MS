@@ -33,8 +33,8 @@ backend/dist-ssr
 .vs
 .env
 
-# package.json
-# package-lock.json
+package.json
+package-lock.json
 
 **/db.config.js
 backend/app/config/db.config.js

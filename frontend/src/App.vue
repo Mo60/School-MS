@@ -41,6 +41,11 @@
                     </li>
                     <li>
                       <a href="" class="dropdown-item">
+                        <router-link class="nav-link" to="/payments">Payments</router-link>
+                      </a>
+                    </li>
+                    <!-- <li> -->
+                      <!-- <a href="" class="dropdown-item">
                         <router-link class="nav-link" to="/"></router-link>
                       </a>
                     </li>
@@ -48,12 +53,7 @@
                       <a href="" class="dropdown-item">
                         <router-link class="nav-link" to="/"></router-link>
                       </a>
-                    </li>
-                    <li>
-                      <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/"></router-link>
-                      </a>
-                    </li>
+                    </li> -->
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -61,22 +61,22 @@
                   <ul class="dropdown-menu " aria-labelledby="">
                     <li>
                       <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/addparent">Students</router-link>
+                        <router-link class="nav-link" to="/addparent">Student</router-link>
                       </a>
                     </li>
                     <li>
                       <a  class="dropdown-item">
-                        <router-link class="nav-link" to="/addteacher">Teachers</router-link>
+                        <router-link class="nav-link" to="/addteacher">Teacher</router-link>
                       </a>
                     </li>
                     <li>
                       <a  class="dropdown-item">
-                        <router-link class="nav-link" to="/addClass">Classes</router-link>
+                        <router-link class="nav-link" to="/addClass">Class</router-link>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item">
-                        <router-link class="nav-link" to="/">Payments</router-link>
+                        <router-link class="nav-link" to="/addpayment">Payment</router-link>
                       </a>
                     </li>
                     <li>
@@ -86,14 +86,14 @@
                     </li>
                     <li>
                       <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/"></router-link>
+                        <router-link class="nav-link" to="/">Invoice</router-link>
                       </a>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a href="" class="dropdown-item">
                         <router-link class="nav-link" to="/"></router-link>
                       </a>
-                    </li>
+                    </li> -->
                   </ul>
                 </li>
               </ul>
