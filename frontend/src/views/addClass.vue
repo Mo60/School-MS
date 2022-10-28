@@ -96,7 +96,7 @@
     methods: {
             handleSubmitForm(){
                 
-                let apiURL = '';
+                let apiURL = 'http://172.26.54.21:8082/api/class/"';
                 
                 axios.post(apiURL, this.class).then(() => {
                     //changing the view to the list
