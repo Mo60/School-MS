@@ -111,15 +111,17 @@ export default {
           Reference: "",
           Notes: ""
         }
-       
+       console.log("success")
       }).catch(error => {
         console.log(error)
       });
 
       axios.get(apiURL,this.parent).then(res=>{
         this.allParents=res.data
+        console.log(this.allParents)
+console.log(this.parent.FirstName)
       }).then(()=>{
-        let index= this.allParents.findIndex(i=>i.FirstName===this.FirstName)
+        let index= this.allParents.findIndex(i=>i.FirstName===this.parent.FirstName)
             console.log(index)
       }).catch(error=>{
                 console.log(error)
@@ -128,7 +130,7 @@ export default {
            
       this.$router.push({
         name: "addstudent",
-        params: { parentID: this.index.ParentsID }
+        params: { parentID: index.ParentsID }
       })
     }
   }
