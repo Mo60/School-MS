@@ -3,12 +3,9 @@
   <div class="wrapper">
     <form @submit.prevent="submitForm">
       <fieldset class="form-control">
-        <legend>Invoice Information</legend>
+        <legend>Transaction Information</legend>
         <div class="row mb-4">
-          <div class="col">
-            <label for="" class="form-label">Payment ID</label>
-            <input type="number" class="form-control" v-model="payment.PaymentID" />
-          </div>
+         
           <div class="col">
             <label for="" class="form-label">Invoice ID</label>
             <input type="number" class="form-control" v-model="payment.InvoicetID" />
