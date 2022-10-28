@@ -1,7 +1,7 @@
 <template>
 
         
-          <h1 class="mt-5">Add Classes</h1>
+          <h1 class="mt-5">Add Class</h1>
           <div class="wrapper3 ">
                       <form @submit.prevent="handleUpdateForm" class="mb-5 pb-5">
             <fieldset class="form-control">
