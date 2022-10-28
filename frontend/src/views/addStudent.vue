@@ -8,34 +8,35 @@
 <div class="row mb-4"> 
    <div class="col">
         <label for="fName" class="form-label">First Name</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" v-model="FirstName">
    </div >
    <div class="col">
         <label for="lName" class="form-label">Last Name</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" v-model="LastName">
    </div >
    <div class="col">
         <label for="lName" class="form-label">Date of Birth</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" v-model="DOB">
    </div >
-   <div class="col">
-       <label for="sDate" class="form-label"> Start Date</label>
-     <input class="form-control" type="date">
-     </div>
+ 
 </div>
 </fieldset>
 <fieldset class="form-control mt-5">
      <legend>Class Information</legend>
 <div class="row mb-4">
-   <div class="col"> <label for="">Class Name</label>
-<input type="text" class="form-control"></div>
+     <div class="col">
+       <label for="sDate" class="form-label"> Start Date</label>
+     <input class="form-control" type="date" v-model="StartDate">
+     </div>
     <div class="col">
      <label for="" class="form-label">Lesson Days</label>
      <select name="days" id="" class="form-select">
           <option value="" disabled selected>Select an Option</option>
-          <option value="MWF">MWF</option>
-          <option value="Tu/Th">Tu/Th</option>
-          <option value="Everyday">Everyday</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
           <option value="Saturday">Saturday</option>
      </select>
     </div>
@@ -58,19 +59,19 @@
               <div class="row">
                     <div class="col">
                          <label for="" class="form-label">Contact Name</label>
-                         <input type="text" class="form-control">
+                         <input type="text" class="form-control" v-model="EmergencyContactName">
                     </div>
-                    <div class="col mb-4"><label for="" class="form-label">Phone Number</label><input type="tel" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"></div>
+                    <div class="col mb-4"><label for="" class="form-label">Phone Number</label><input type="tel" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" v-model="EmergencyContactPhone"></div>
               </div >
             </fieldset>
 
             <fieldset class="form-control mt-5">
             <legend >   Medical Information </legend >
-               <div class="col mb-4"><textarea class="form-control"></textarea></div>
+               <div class="col mb-4"><textarea class="form-control" v-model="Medical"></textarea></div>
             </fieldset>
             <fieldset class="form-control mt-5">
             <legend >   Notes </legend >
-               <div class="col mb-4"><textarea class="form-control"></textarea></div>
+               <div class="col mb-4"><textarea class="form-control" v-model="Notes"></textarea></div>
             </fieldset>
 
             <button class="btn mt-4">Submit</button>
@@ -83,7 +84,7 @@ import axios from "axios"
 export default{
 data(){
      return {
-          Student:{
+          student:{
                StudentID: "",
                FirstName:"",
                LastName:"",
@@ -107,8 +108,25 @@ methods:{
      submitForm(){
 let apiURL=`http://localhost:3000/api/student/`
 console.log(apiURL)
-        
+axios.post(apiURL,this.student).then(()=>{
+    this.student={
+               StudentID: "",
+               FirstName:"",
+               LastName:"",
+               DOB:"",
+               StartDate:"",
+               EmergencyContactName:"",
+               EmergencyContactPhone:"",
+               Medical:"",
+               Notes:"",
+               LessonDay:"",
+               LessonTime:"",
+               ParentsID:"",
+          }
+})
+} 
      }
 }
-}
+
+
 </script>

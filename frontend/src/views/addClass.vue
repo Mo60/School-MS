@@ -13,13 +13,13 @@
                                 <input type="number" class="form-control"  required>
                             </div>
                             <div class="col">
-                                <label class="form-label">Class Start Date</label>
+                                <label class="form-label">Start Date</label>
                                 <input type="date" class="form-control"  required>
                             </div>
                    
                         <div class="col">
                             <div class="col">
-                                <label class="form-label">Class End Date</label>
+                                <label class="form-label">End Date</label>
                                 <input type="date" class="form-control"  required>
                             </div>
                             
@@ -27,11 +27,11 @@
                    </div>
                    <div class="row mb-4">
                         <div class="col">
-                            <label class="form-label">Class Start Time</label>
+                            <label class="form-label">Start Time</label>
                            <input type="time" class="form-control">
                         </div>
                         <div class="col">
-                            <label class="form-label">Class End Time</label>
+                            <label class="form-label">End Time</label>
                            <input type="time" class="form-control">
                         </div>
                         <div class="col">
@@ -43,20 +43,14 @@
                <div class="row mb-4">
                     
                         <div class="col">
-                            <label>Max Capacity</label>
+                            <label class="form-label">Max Capacity</label>
                             <input type="number" class="form-control" 
                             required>
                         </div>
                         
                         <div class="col">
-                            <label>Lesson</label>
-                            <select id="Lesson" class="form-select">
-                                <option value="" selected disabled>Select an option</option>
-                                <option value="Drawing"> Drawing</option>
-                                <option value="Painting">Painting</option>
-                                <option value="Both"> </option>
-                                
-                            </select>
+                            <label class="form-label">Lesson</label>
+                          <input type="text" class="form-control">
                </div>
                     </div>
                     <div class="col">
