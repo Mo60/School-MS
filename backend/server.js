@@ -35,6 +35,11 @@ require("./app/routes/turorial.routes")(app);
 require("./app/routes/enrollment.routes")(app);
 require("./app/routes/parent.routes")(app);
 require("./app/routes/student.routes")(app);
+require("./app/routes/class.routes")(app);
+require("./app/routes/invoice.routes")(app);
+require("./app/routes/payment.routes")(app);
+require("./app/routes/teacher.routes")(app);
+require("./app/routes/user.routes")(app);
 // 
 require("./app/routes/report.routes")(app);
 

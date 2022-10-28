@@ -3,18 +3,15 @@
   <div class="wrapper">
     <form @submit.prevent="submitForm">
       <fieldset class="form-control">
-        <legend>Invoice Information</legend>
+        <legend>Transaction Information</legend>
         <div class="row mb-4">
-          <div class="col">
-            <label for="" class="form-label">Payment ID</label>
-            <input type="number" class="form-control" v-model="payment.PaymentID" />
-          </div>
+         
           <div class="col">
             <label for="" class="form-label">Invoice ID</label>
             <input type="number" class="form-control" v-model="payment.InvoicetID" />
           </div>
            <div class="col">
-            <label for="" class="form-label">PaymentMethod</label>
+            <label for="" class="form-label">Payment Method</label>
             <input type="num" class="form-control" v-model="payment.PaymentMethod" />
           </div>
           <div class="col">
@@ -29,7 +26,7 @@
         
       </fieldset>
 
-      <button class="btn mt-4">Next</button>
+      <button class="btn mt-4">Submit</button>
     </form>
   </div>
 </template>
@@ -39,6 +36,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+        payment:{
       PaymentID: "",
           invoiceID: "",
           PaymentMethod: "",
@@ -46,6 +44,7 @@ export default {
           Date: ""
       }
     }
+    
   },
   methods: {
     submitForm() {
@@ -62,9 +61,9 @@ export default {
         console.log(error)
       });
       this.$router.push({
-        name: "addpayment",
-        params: { PaymentID: this.payment.PayementID }
-      })
+        name: "addpayment"
+        }
+      )
     }
   }
 }

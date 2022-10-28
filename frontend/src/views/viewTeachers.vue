@@ -1,6 +1,6 @@
 <template>
+    <h1 class="mb-3 mt-3">Teachers</h1>
   <div class="row justify-content-center">
-   <h1 class="mb-3 mt-3">Teachers</h1>
       <table class="table table-striped">
       <thead class="table-dark">
         <tr>
@@ -13,6 +13,8 @@
         </tr>
       </thead>  
   </table></div>   
+
+</template>
   <script>
     import axios from "axios";
     export default {
@@ -52,5 +54,4 @@
     }
 </style>
 
-</template>
-<script></script>
+

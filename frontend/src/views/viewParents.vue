@@ -1,20 +1,31 @@
 <template>
-  <div class="row justify-content-center">
-   <h1 class="mb-3 mt-3">Parents</h1>
-      <table class="table table-striped">
-      <thead class="table-dark">
-        <tr>
-         <th>Parent ID</th>
-         <th>First Name</th>
-         <th>Last Name</th>
-         <th>Phone Number</th>
-         <th>Phone Type</th>
-         <th>Email</th>
-         <th>Address</th>
-         <th>Reference</th>
-         <th>Notes</th>
-        </tr>
-      </thead>  
-  </table></div>   
+  <h1 class="mt-5">Parents</h1>
+<div class="cont"><parentsCard :parents="p" :fName="p.FirstName" :lName= "p.LastName" :id="p.ParentsID" :phone="p.PhoneNumber" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div >
 </template>       
         
+<script>
+ import axios from "axios";
+ import parentsCard from "../components/parentsCard.vue";
+export default{
+  components:{parentsCard},
+  data(){
+return{
+parent:[]
+}},
+
+  created(){
+  let apiURL='http://172.26.54.21:8082/api/parent/'
+  axios
+      .get(apiURL)
+      .then((res) => {
+        this.parent = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+}
+
+
+  
+</script>

@@ -128,7 +128,10 @@ meta:{
 }},
 {path:"/payments",
 name:"payments",
-component:()=>import("../views/addPayment.vue")}
+component:()=>import("../views/addPayment.vue")},
+{path:"/addinvoice",
+name:"addinvoice",
+component:()=>import("../views/addInvoice.vue")}
   ]})
 ;
 

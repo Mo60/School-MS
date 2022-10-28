@@ -2,13 +2,13 @@
   <h1 class="mt-5 mb-5">Enroll</h1>
 
   <form @submit.prevent="submitForm" class="wrapper2">
-    <fieldset class="form-control">
+    <fieldset class="form-control p-4">
       <label for="" class="form-label">Student</label>
-      <select name="" id="" class="form-control mb-4" v-model="studentsID">
+      <select name="" id="" class="form-select mb-4" v-model="studentsID" >
         <option  v-for="(student,index) in students" :key="index" :value="student.studentID">{{student.studentName}}</option>
       </select>
       <label for="" class="form-label">Class</label>
-      <select name="" id="" v-model="className" class="form-control mb-3">
+      <select name="" id="" v-model="className" class="form-select mb-3">
         <option  v-for="(Class,index) in classes" :key="index" :value="Class.classID">{{Class.className}}</option>
     </select>
       
