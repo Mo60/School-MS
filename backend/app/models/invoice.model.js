@@ -1,7 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
   const Invoice = sequelize.define("invoice", {
     InvoiceID: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
     Total: {
       type: Sequelize.DECIMAL
