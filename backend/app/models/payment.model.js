@@ -1,7 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
   const Payment = sequelize.define("payment", {
     PaymentID: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
     },
     PaymentMethod: {
       type: Sequelize.STRING
