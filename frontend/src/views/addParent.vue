@@ -21,8 +21,8 @@
         <div class="row mb-4">
           <div class="col">
             <label for="" class="form-label">Phone Type</label>
-            <select name="" id="" class="form-control" v-model="PhoneType">
-              <option value="" disabled selected>Select An Option</option>
+            <select name="" id="" class="form-select" v-model="PhoneType">
+              <option value="" selected disabled>Select An Option</option>
               <option value="Mobile">Mobile</option>
               <option value="Home">Home</option>
               <option value="Work">Work</option>
@@ -59,7 +59,7 @@
       </fieldset>
 
       <fieldset class="form-control mt-5">
-        <legend>Others</legend>
+        <legend>Additional Information</legend>
         <div class="row mb-4">
           <div class="col-md-4">
             <label for="" class="form-label">Reference</label>

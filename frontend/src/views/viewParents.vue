@@ -1,6 +1,6 @@
 <template>
   <h1 class="mt-5">Parents</h1>
-<parentsCard :parents="p" :fName="p.FirstName" :lName= "p.LastName" :id="p.ParentsID" :phone="p.PhoneNumber" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard>
+<div class="cont"><parentsCard :parents="p" :fName="p.FirstName" :lName= "p.LastName" :id="p.ParentsID" :phone="p.PhoneNumber" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div >
 </template>       
         
 <script>

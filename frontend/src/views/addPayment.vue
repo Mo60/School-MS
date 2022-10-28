@@ -1,37 +1,43 @@
 <template>
        <h1 class="mt-5">Add Payment</h1> 
-        <div class="wrapper2">
+        <div class="wrapper3">
             <form @submit.prevent="handleSubmitForm"> 
-             <fieldset class="form-control">
-                    <div class="row">
+             <fieldset class="form-control p-4">
+                    <div class="row mb-3">
                         
                     
                  <div class="col">
-                        <label>Invoice ID</label>
+                        <label class="form-label">Invoice ID</label>
                         <input type="number" class="form-control" v-model="payment.invoiceID" required>
                     </div>   
                     <div class="col">
     
-                        <label>Payment Method</label>
-                        <input type="text" class="form-control" v-model="payment.paymentmethod" required>
+                        <label class="form-label">Payment Method</label>
+                        <select name="" id="" class="form-select"><option value="" selected disabled>Select an option</option>
+                        <option value="">Debit/Credit</option>
+                        <option value="">Cash</option>
+                        <option value="">Check</option>
+                    </select>
                     </div>
                     </div>
-                   <div class="row">
+                   <div class="row mb-3">
                           <div class="col">
         
-                            <label>Amount</label>
+                            <label class="form-label">Amount</label>
                             <input type="number" class="form-control" v-model="payment.Amount" required>
                         </div>
                         
                        <div class="col">
-                            <label>Date</label>
+                            <label class="form-label">Date</label>
                             <input type="date" class="form-control" v-model="payment.date" required>
                         </div> 
         
                     </div >
-                    <button class="btn mt-3">Create</button>        
+                    
              </fieldset >
+             <button class="btn mt-3">Create</button>   
             </form>
+               
              </div>
 
 </template>

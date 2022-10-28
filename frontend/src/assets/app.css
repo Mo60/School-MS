@@ -62,15 +62,27 @@ h2 {
   margin: 40px auto;
 }
 .display {
-  width: 30vw;
+  width: 25vw;
   background-color: #888c64;
   margin: 50px auto;
   border-radius: 15px;
-  padding: 10px 20px;
+  padding: 25px 20px;
   color: #260f01;
   filter: drop-shadow(1px 5px 3px rgb(65, 63, 63));
+  display: inline-block;
 }
 
+.cont{
+  
+  margin: auto;
+  display: grid;
+  width: 85%;
+  height: 40%;
+  overflow-y: auto;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+column-gap: 30px;
+}
 #name {
   font-size: 20px;
   font-weight: bold;
@@ -141,3 +153,6 @@ form > .btn:hover, fieldset>.btn:hover {
   margin-left: 15px;
 }
 
+.rows >a {
+  color:#260f01
+}

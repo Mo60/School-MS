@@ -31,7 +31,7 @@
 <input type="text" class="form-control"></div>
     <div class="col">
      <label for="" class="form-label">Lesson Days</label>
-     <select name="days" id="" class="form-control">
+     <select name="days" id="" class="form-select">
           <option value="" disabled selected>Select an Option</option>
           <option value="MWF">MWF</option>
           <option value="Tu/Th">Tu/Th</option>
@@ -41,7 +41,7 @@
     </div>
 <div class="col"> 
      <label for="" class="form-label">Class Time</label>
-     <select class="form-control">
+     <select class="form-select">
           <option value="" disabled selected>Select an Option</option>
           <option value="10:00AM - 11:15AM">10:00AM - 11:15AM </option>
           <option value="11:15AM - 12:30PM">11:15AM - 12:30PM </option>

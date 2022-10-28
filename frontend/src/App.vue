@@ -86,7 +86,7 @@
                     </li>
                     <li>
                       <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/">Invoice</router-link>
+                        <router-link class="nav-link" to="/addinvoice">Invoice</router-link>
                       </a>
                     </li>
                     <!-- <li>

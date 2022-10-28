@@ -4,7 +4,7 @@
           <h1 class="mt-5">Add Teacher</h1>
           <div class="wrapper3">
                       <form @submit.prevent="handleUpdateForm" >
-             <fieldset class="form-control">
+             <fieldset class="form-control p-3">
                    
                  <div class="row mb-3" >
                        <div class="col">
@@ -23,7 +23,8 @@
                         </div>
                         <div class="col">
                             <label class="form-label">Phone Number</label>
-                            <input type="number" class="form-control"  required>
+                            <input type="phone" class="form-control"  placeholder="123-456-7890"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                         </div> 
                  </div>
                     <div class="row mb-3">    
