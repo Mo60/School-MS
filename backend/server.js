@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const { QueryTypes } = require('sequelize');
 // to get the example
 ///https://www.bezkoder.com/node-js-sql-server-crud/
 //
@@ -35,6 +35,8 @@ require("./app/routes/turorial.routes")(app);
 require("./app/routes/enrollment.routes")(app);
 require("./app/routes/parent.routes")(app);
 require("./app/routes/student.routes")(app);
+// 
+require("./app/routes/report.routes")(app);
 
 
 // set port, listen for requests
