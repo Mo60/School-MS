@@ -89,7 +89,8 @@ export default {
         Zip: "",
         Reference: "",
         Notes: ""
-      }
+      },
+      allParents:[]
     }
   },
   methods: {
@@ -110,12 +111,24 @@ export default {
           Reference: "",
           Notes: ""
         }
+       
       }).catch(error => {
         console.log(error)
       });
+
+      axios.get(apiURL,this.parent).then(res=>{
+        this.allParents=res.data
+      }).then(()=>{
+        let index= this.allParents.findIndex(i=>i.FirstName===this.FirstName)
+            console.log(index)
+      }).catch(error=>{
+                console.log(error)
+            });
+
+           
       this.$router.push({
         name: "addstudent",
-        params: { parentID: this.parent.ParentsID }
+        params: { parentID: this.index.ParentsID }
       })
     }
   }
