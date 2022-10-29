@@ -1,5 +1,5 @@
 const db = require("../models");
-const invoice = db.invoice;
+const Invoice = db.invoice;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new invoice
@@ -39,7 +39,7 @@ exports.findAllPublished = (req, res) => {
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.InvoiceID) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -48,13 +48,15 @@ exports.create = (req, res) => {
   
     // Create a invoice
     const invoice = {
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      InvoiceID: req.body.InvoiceID,
+      Total: req.body.Total,
+      TotalPayment: req.body.TotalPayment,
+      DueDate: req.body.DueDate,
+      StudentID: req.body.StudentID
     };
   
     // Save invoice in the database
-    invoice.create(invoice)
+    Invoice.create(invoice)
       .then(data => {
         res.send(data);
       })
@@ -67,8 +69,8 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    const InvoiceID = req.query.InvoiceID;
+    var condition = InvoiceID ? { InvoiceID: { [Op.like]: `%${InvoiceID}%` } } : null;
   
     invoice.findAll({ where: condition })
       .then(data => {
