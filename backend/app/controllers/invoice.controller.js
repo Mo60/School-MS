@@ -100,7 +100,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Invoice.update(req.body, {
-      where: { id: id }
+      where: { InvoiceID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -124,7 +124,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Invoice.destroy({
-      where: { id: id }
+      where: { InvoiceID: id }
     })
       .then(num => {
         if (num == 1) {
