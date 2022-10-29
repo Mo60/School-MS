@@ -69,7 +69,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const title = req.query.PaymentID;
+    const PaymentID = req.query.PaymentID;
     var condition = PaymentID ? { PaymentID: { [Op.like]: `%${PaymentID}%` } } : null;
   
     Payment.findAll({ where: condition })
