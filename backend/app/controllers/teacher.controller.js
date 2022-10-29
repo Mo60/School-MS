@@ -102,7 +102,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Teacher.update(req.body, {
-      where: { id: id }
+      where: { TeacherID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -126,7 +126,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Teacher.destroy({
-      where: { id: id }
+      where: { TeacherID: id }
     })
       .then(num => {
         if (num == 1) {
