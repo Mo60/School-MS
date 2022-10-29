@@ -25,7 +25,7 @@
         },
         // this is using created hook 
         created() {
-            let apiURL = '';
+            let apiURL = 'http://172.26.54.21:8082/api/teacher/';
             axios.get(apiURL).then(res => {
                 this.Teachers = res.data;
             }).catch(error => {
@@ -34,7 +34,7 @@
         },
         methods: {
             deleteTeachers(id){
-                let apiURL = ``;
+                let apiURL = `http://172.26.54.21:8082/api/teacher/`;
                 let indexOfArrayItem = this.Teachers.findIndex(i => i.teacher_id === id);
                 if (window.confirm("Are you sure you want to delete?")) {
                     axios.delete(apiURL).then(() => {
@@ -53,5 +53,3 @@
         margin-right: 10px;
     }
 </style>
-
-
