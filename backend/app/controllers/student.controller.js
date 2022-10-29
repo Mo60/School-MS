@@ -94,7 +94,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    student.findByPk(id)
+    Student.findByPk(id)
       .then(data => {
         res.send(data);
       })
@@ -108,7 +108,7 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    student.update(req.body, {
+    Student.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -132,7 +132,7 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    student.destroy({
+    Student.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -155,7 +155,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    student.destroy({
+    Student.destroy({
       where: {},
       truncate: false
     })
@@ -171,7 +171,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    student.findAll({ where: { published: true } })
+    Student.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })
