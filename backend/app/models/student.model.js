@@ -1,8 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Student = sequelize.define("student", {
-    timestamps: false,
-    createdAt: false,
-    updatedAt: false,
+    
     
     StudentID: {
       type: Sequelize.INTEGER,
@@ -48,7 +46,10 @@ module.exports = (sequelize, Sequelize) => {
         }
   
   }, 
-  {tableName: "student"});
+  {tableName: "student",
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,});
 
   return Student;
 };
