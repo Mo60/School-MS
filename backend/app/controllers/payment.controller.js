@@ -102,7 +102,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Payment.update(req.body, {
-      where: { id: id }
+      where: { PaymentID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -126,7 +126,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Payment.destroy({
-      where: { id: id }
+      where: { PaymentID: id }
     })
       .then(num => {
         if (num == 1) {
