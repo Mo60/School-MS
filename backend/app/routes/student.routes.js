@@ -5,6 +5,7 @@ module.exports = app => {
   
     // Create a new student
     router.post("/", student.create);
+    router.post("/bulk", student.createmany);
   
     // Retrieve all student
     router.get("/", student.findAll);
