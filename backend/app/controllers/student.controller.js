@@ -75,6 +75,24 @@ exports.create = (req, res) => {
       });
   };
 
+// bulk
+ exports.createmany = (req, res) => {
+    // Create a parent
+    const students = req.body;
+  
+    // Save parent in the database
+    Student.bulkCreate(students)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the parent."
+        });
+      });
+  };
+
   exports.findAll = (req, res) => {
     const StudentID = req.query.StudentID;
     var condition = StudentID ? { StudentID: { [Op.like]: `%${StudentID}%` } } : null;
