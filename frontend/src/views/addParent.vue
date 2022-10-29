@@ -116,21 +116,11 @@ export default {
         console.log(error)
       });
 
-      axios.get(apiURL,this.parent).then(res=>{
-        this.allParents=res.data
-        console.log(this.allParents)
-console.log(this.parent.FirstName)
-      }).then(()=>{
-        let index= this.allParents.findIndex(i=>i.FirstName===this.parent.FirstName)
-            console.log(index)
-      }).catch(error=>{
-                console.log(error)
-            });
 
            
       this.$router.push({
         name: "addstudent",
-        params: { parentID: index.ParentsID }
+        params: { phone: this.parent.PhoneNumber }
       })
     }
   }

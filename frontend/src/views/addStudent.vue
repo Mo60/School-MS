@@ -61,7 +61,7 @@
                          <label for="" class="form-label">Contact Name</label>
                          <input type="text" class="form-control" v-model="student.EmergencyContactName">
                     </div>
-                    <div class="col mb-4"><label for="" class="form-label">Phone Number</label><input type="tel" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" v-model="EmergencyContactPhone"></div>
+                    <div class="col mb-4"><label for="" class="form-label">Phone Number</label><input type="tel" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" v-model="student.EmergencyContactPhone"></div>
               </div >
             </fieldset>
 
@@ -71,7 +71,7 @@
             </fieldset>
             <fieldset class="form-control mt-5">
             <legend >   Notes </legend >
-               <div class="col mb-4"><textarea class="form-control" v-model="studentNotes"></textarea></div>
+               <div class="col mb-4"><textarea class="form-control" v-model="student.Notes"></textarea></div>
             </fieldset>
 
             <button class="btn mt-4">Submit</button>
@@ -81,6 +81,7 @@
 
 <script>
 import axios from "axios"
+
 export default{
 data(){
      return {
@@ -97,11 +98,28 @@ data(){
                LessonDay:"",
                LessonTime:"",
                ParentsID:"",
-          }
+          },
+          phone:""
      }
 },
 created(){
-     this.ParentsID= this.$route.params.parentID
+     let apiURL2 = "http://172.26.54.21:8082/api/parent/"
+
+     this.phone= this.$route.params.phone
+           axios.get(apiURL2,this.parent).then(res=>{
+        this.allParents=res.data
+        console.log(this.allParents)
+      }).then(()=>{
+        let index= this.allParents.findIndex(i=>i.PhoneNumber===this.phone)
+            console.log(index)
+            console.log("hi")
+           
+            this.student.ParentsID=this.allParents[index].ParentsID
+            console.log(this.student.ParentsID)
+      }).catch(error=>{
+                console.log(error)
+            });
+
 },
 
 methods:{
