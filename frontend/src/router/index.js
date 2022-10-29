@@ -44,7 +44,7 @@ const router= createRouter({
       requiresAuth:true
     }},
  // import add views   
-    {path:"/addStudent/:phone",
+    {path:"/addStudent/:id",
     name:"addstudent",
     component:()=>import("../views/addStudent.vue"),
     meta:{

@@ -98,22 +98,22 @@ export default {
       let apiURL = "http://172.26.54.21:8082/api/parent/"
 
       axios.post(apiURL, this.parent).then((res) => {
-        this.$router.push({
-        name: "addstudent",
-        params: {id : this.res.data.ParentsID}
-         })
-        this.parent = {
-          FirstName: "",
-          LastName: "",
-          PhoneType: "",
-          PhoneNumber: "",
-          Email: "",
-          Street: "",
-          City: "",
-          Zip: "",
-          Reference: "",
-          Notes: ""
-        }
+       const ID= res.data.ParentsID
+        console.log(ID);
+        // this.parent = {
+        //   FirstName: "",
+        //   LastName: "",
+        //   PhoneType: "",
+        //   PhoneNumber: "",
+        //   Email: "",
+        //   Street: "",
+        //   City: "",
+        //   Zip: "",
+        //   Reference: "",
+        //   Notes: ""
+        // }
+
+        this.$router.push(`addstudent/${res.data.ParentsID}`)
        console.log("success")
       }).catch(error => {
         console.log(error)
