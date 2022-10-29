@@ -1,5 +1,5 @@
 const db = require("../models");
-const payment = db.payment;
+const Payment = db.payment;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new payment
@@ -39,7 +39,7 @@ exports.findAllPublished = (req, res) => {
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.Amount) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -48,13 +48,15 @@ exports.create = (req, res) => {
   
     // Create a payment
     const payment = {
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      PaymentID: req.body.PaymentID,
+      PaymentMethod: req.body.PaymentMethod,
+      Amount: req.body.Amount,
+      Date: req.body.Date,
+      InvoiceID: req.body.InvoiceID
     };
   
     // Save payment in the database
-    payment.create(payment)
+    Payment.create(payment)
       .then(data => {
         res.send(data);
       })
@@ -67,10 +69,10 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    const title = req.query.PaymentID;
+    var condition = PaymentID ? { PaymentID: { [Op.like]: `%${PaymentID}%` } } : null;
   
-    payment.findAll({ where: condition })
+    Payment.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -85,7 +87,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    payment.findByPk(id)
+    Payment.findByPk(id)
       .then(data => {
         res.send(data);
       })
