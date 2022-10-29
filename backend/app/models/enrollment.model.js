@@ -9,20 +9,25 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       references: {
           model: 'class', 
-          key: 'ClassID', 
+          key: 'ClassID',
+      } 
     },
     StudentID: {
       type: Sequelize.INTEGER,
       references: {
           model: 'student', 
-          key: 'StudentID', 
+          key: 'StudentID',
+      } 
     }
+  }
+  , 
     
-  }, 
   {tableName: "enrollment",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
   return Enrollment;
+
+
 };
