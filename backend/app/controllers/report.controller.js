@@ -23,4 +23,18 @@ exports.view_students = (req, res) => {
   });
   
 };
+//due_balance
+exports.due_balance = (req, res) => {
 
+  const due_balance = db.sequelize.query("SELECT * FROM due_balance", { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
