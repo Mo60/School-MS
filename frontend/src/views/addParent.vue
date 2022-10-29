@@ -73,6 +73,7 @@
 
 <script>
 import axios from "axios";
+import { boolean } from "webidl-conversions";
 
 export default {
   data() {
@@ -90,7 +91,8 @@ export default {
         Reference: "",
         Notes: ""
       },
-      allParents:[]
+      allParents:[],
+  success:boolean
     }
   },
   methods: {
@@ -111,17 +113,22 @@ export default {
           Reference: "",
           Notes: ""
         }
+       
        console.log("success")
+     this.success=true
       }).catch(error => {
         console.log(error)
+        this.success=false
       });
 
-
-           
+      if(this.success){
       this.$router.push({
         name: "addstudent",
         params: { phone: this.parent.PhoneNumber }
       })
+    }
+           
+   
     }
   }
 }
