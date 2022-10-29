@@ -21,7 +21,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
       }
   }, 
-  {tableName: "teacher"});
+  {tableName: "teacher",
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,});
 
   return Teacher;
 };
