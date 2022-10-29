@@ -91,41 +91,36 @@ export default {
         Reference: "",
         Notes: ""
       },
-      allParents:[],
-  success:boolean
+      id: ""
     }
   },
   methods: {
     submitForm() {
       let apiURL = "http://172.26.54.21:8082/api/parent/"
 
-      axios.post(apiURL, this.parent).then(() => {
-        this.parent = {
-          ParentsID:undefined,
-          FirstName: "",
-          LastName: "",
-          PhoneType: "",
-          PhoneNumber: "",
-          Email: "",
-          Street: "",
-          City: "",
-          Zip: "",
-          Reference: "",
-          Notes: ""
-        }
-       
+      axios.post(apiURL, this.parent).then((res) => {
+       const ID= res.data.ParentsID
+        console.log(ID);
+        // this.parent = {
+        //   FirstName: "",
+        //   LastName: "",
+        //   PhoneType: "",
+        //   PhoneNumber: "",
+        //   Email: "",
+        //   Street: "",
+        //   City: "",
+        //   Zip: "",
+        //   Reference: "",
+        //   Notes: ""
+        // }
+
+        this.$router.push(`addstudent/${res.data.ParentsID}`)
        console.log("success")
      this.success=true
       }).catch(error => {
         console.log(error)
         this.success=false
       });
-
-      if(this.success){
-      this.$router.push({
-        name: "addstudent",
-        params: { phone: this.parent.PhoneNumber }
-      })
     }
            
    

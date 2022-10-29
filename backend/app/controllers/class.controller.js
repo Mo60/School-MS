@@ -1,5 +1,5 @@
 const db = require("../models");
-const Class = db.Class;
+const Class = db.class;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Class
@@ -39,15 +39,15 @@ exports.findAllPublished = (req, res) => {
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
+    // if (!req.body.title) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    //   return;
+    // }
   
     // Create a Class
-    const Class = {
+    const _class = {
       ClassID: req.body.ClassID,
       TeacherID: req.body.TeacherID,
       ClassDay: req.body.ClassDay,
@@ -60,7 +60,7 @@ exports.create = (req, res) => {
     };
   
     // Save Class in the database
-    Class.create(Class)
+    Class.create(_class)
       .then(data => {
         res.send(data);
       })
