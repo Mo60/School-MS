@@ -17,8 +17,8 @@ module.exports = (sequelize, Sequelize) => {
     InvoiceID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'invoice'
-          key: 'InvoiceID'
+          model: 'invoice',
+          key: 'InvoiceID',
         }
     }
   }, 
