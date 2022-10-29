@@ -1,5 +1,5 @@
 const db = require("../models");
-const teacher = db.teacher;
+const Teacher = db.teacher;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new teacher
@@ -39,7 +39,7 @@ exports.findAllPublished = (req, res) => {
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.LastName) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -48,13 +48,15 @@ exports.create = (req, res) => {
   
     // Create a teacher
     const teacher = {
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      TeacherID: req.body.TeacherID,
+      FirstName: req.body.FirstName,
+      LastName: req.body.LastName,
+      TeacherPhoneNumber: req.body.TeacherPhoneNumber,
+      Notes: req.body.Notes
     };
   
     // Save teacher in the database
-    teacher.create(teacher)
+    Teacher.create(teacher)
       .then(data => {
         res.send(data);
       })
@@ -67,10 +69,10 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    const TeacherID = req.query.TeacherID;
+    var condition = TeacherID ? { TeacherID: { [Op.like]: `%${TeacherID}%` } } : null;
   
-    teacher.findAll({ where: condition })
+    Teacher.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -85,7 +87,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    teacher.findByPk(id)
+    Teacher.findByPk(id)
       .then(data => {
         res.send(data);
       })
@@ -99,8 +101,8 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    teacher.update(req.body, {
-      where: { id: id }
+    Teacher.update(req.body, {
+      where: { TeacherID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -123,8 +125,8 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    teacher.destroy({
-      where: { id: id }
+    Teacher.destroy({
+      where: { TeacherID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -146,7 +148,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    teacher.destroy({
+    Teacher.destroy({
       where: {},
       truncate: false
     })
@@ -162,7 +164,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    teacher.findAll({ where: { published: true } })
+    Teacher.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })

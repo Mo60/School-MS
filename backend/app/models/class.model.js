@@ -33,7 +33,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
       }
   }, 
-  {tableName: "class"});
+  {tableName: "class",
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,});
 
   return Class;
 };

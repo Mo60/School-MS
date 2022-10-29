@@ -75,6 +75,24 @@ exports.create = (req, res) => {
       });
   };
 
+// bulk
+ exports.createmany = (req, res) => {
+    // Create a parent
+    const students = req.body;
+  
+    // Save parent in the database
+    Student.bulkCreate(students)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the parent."
+        });
+      });
+  };
+
   exports.findAll = (req, res) => {
     const StudentID = req.query.StudentID;
     var condition = StudentID ? { StudentID: { [Op.like]: `%${StudentID}%` } } : null;
@@ -94,7 +112,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    student.findByPk(id)
+    Student.findByPk(id)
       .then(data => {
         res.send(data);
       })
@@ -108,8 +126,8 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    student.update(req.body, {
-      where: { id: id }
+    Student.update(req.body, {
+      where: { StudentID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -132,8 +150,8 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    student.destroy({
-      where: { id: id }
+    Student.destroy({
+      where: { StudentID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -155,7 +173,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    student.destroy({
+    Student.destroy({
       where: {},
       truncate: false
     })
@@ -171,7 +189,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    student.findAll({ where: { published: true } })
+    Student.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })

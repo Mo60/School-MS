@@ -1,5 +1,5 @@
 const db = require("../models");
-const Enrollment = db.enrollments;
+const Enrollment = db.enrollment;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new enrollment
@@ -100,7 +100,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Enrollment.update(req.body, {
-      where: { id: id }
+      where: { EnrollmentID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -124,7 +124,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Enrollment.destroy({
-      where: { id: id }
+      where: { EnrollmentID: id }
     })
       .then(num => {
         if (num == 1) {

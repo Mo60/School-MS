@@ -1,5 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   const Student = sequelize.define("student", {
+    
+    
     StudentID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -12,10 +14,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     DOB: {
-      type: Sequelize.DATE
+      type: Sequelize.STRING
     },
     StartDate: {
-      type: Sequelize.DATE
+      type: Sequelize.STRING
     },
     EmergencyContactName: {
       type: Sequelize.STRING
@@ -44,7 +46,10 @@ module.exports = (sequelize, Sequelize) => {
         }
   
   }, 
-  {tableName: "student"});
+  {tableName: "student",
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,});
 
   return Student;
 };

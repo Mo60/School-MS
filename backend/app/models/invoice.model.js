@@ -15,10 +15,17 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE
     },
     StudentID: {
-      type: Sequelize.INTEGER
-    }
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'student', 
+          key: 'StudentID', 
+        }
+        }
   }, 
-  {tableName: "invoice"});
+  {tableName: "invoice",
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,});
 
   return Invoice;
 };
