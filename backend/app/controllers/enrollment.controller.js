@@ -100,7 +100,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Enrollment.update(req.body, {
-      where: { id: id }
+      where: { EnrollmentID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -124,7 +124,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Enrollment.destroy({
-      where: { id: id }
+      where: { EnrollmentID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -146,7 +146,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    enrollment.destroy({
+    Enrollment.destroy({
       where: {},
       truncate: false
     })
@@ -162,7 +162,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    enrollment.findAll({ where: { published: true } })
+    Enrollment.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })
