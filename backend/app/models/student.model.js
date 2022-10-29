@@ -1,5 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
   const Student = sequelize.define("student", {
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false,
+    
     StudentID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
