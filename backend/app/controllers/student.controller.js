@@ -109,7 +109,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Student.update(req.body, {
-      where: { id: id }
+      where: { StudentID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -133,7 +133,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Student.destroy({
-      where: { id: id }
+      where: { StudentID: id }
     })
       .then(num => {
         if (num == 1) {
