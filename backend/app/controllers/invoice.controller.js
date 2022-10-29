@@ -39,12 +39,12 @@ exports.findAllPublished = (req, res) => {
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.InvoiceID) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
+    // if (!req.body.InvoiceID) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    //   return;
+    // }
   
     // Create a invoice
     const invoice = {
@@ -69,10 +69,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const InvoiceID = req.query.InvoiceID;
-    var condition = InvoiceID ? { InvoiceID: { [Op.like]: `%${InvoiceID}%` } } : null;
-  
-    Invoice.findAll({ where: condition })
+    Invoice.findAll()
       .then(data => {
         res.send(data);
       })
