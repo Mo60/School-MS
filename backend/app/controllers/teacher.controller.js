@@ -101,7 +101,7 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    teacher.update(req.body, {
+    Teacher.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -125,7 +125,7 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    teacher.destroy({
+    Teacher.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -148,7 +148,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    teacher.destroy({
+    Teacher.destroy({
       where: {},
       truncate: false
     })
@@ -164,7 +164,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    teacher.findAll({ where: { published: true } })
+    Teacher.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })
