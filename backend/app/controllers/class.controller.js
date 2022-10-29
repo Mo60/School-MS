@@ -73,8 +73,8 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    const ClassID = req.query.ClassID;
+    var condition = ClassID ? { ClassID: { [Op.like]: `%${ClassID}%` } } : null;
   
     Class.findAll({ where: condition })
       .then(data => {
@@ -106,7 +106,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Class.update(req.body, {
-      where: { id: id }
+      where: { ClassID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -130,7 +130,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Class.destroy({
-      where: { id: id }
+      where: { ClassID: id }
     })
       .then(num => {
         if (num == 1) {
