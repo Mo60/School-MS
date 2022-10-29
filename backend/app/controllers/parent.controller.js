@@ -35,13 +35,6 @@ exports.deleteAll = (req, res) => {
 ;
 
 exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.FirstName) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
   
     // Create a parent
     const parent = {
@@ -60,6 +53,23 @@ exports.create = (req, res) => {
   
     // Save parent in the database
     Parent.create(parent)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the parent."
+        });
+      });
+  };
+// bulk
+ exports.createmany = (req, res) => {
+    // Create a parent
+    const parents = req.body;
+  
+    // Save parent in the database
+    Parent.bulkCreate(parents)
       .then(data => {
         res.send(data);
       })
@@ -105,7 +115,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Parent.update(req.body, {
-      where: { id: id }
+      where: { ParentsID: id }
     })
       .then(num => {
         if (num == 1) {
@@ -129,7 +139,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Parent.destroy({
-      where: { id: id }
+      where: { ParentsID: id }
     })
       .then(num => {
         if (num == 1) {

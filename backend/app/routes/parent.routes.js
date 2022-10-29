@@ -5,6 +5,7 @@ module.exports = app => {
   
     // Create a new parent
     router.post("/", parent.create);
+    router.post("/bulk", parent.createmany);
   
     // Retrieve all parent
     router.get("/", parent.findAll);
