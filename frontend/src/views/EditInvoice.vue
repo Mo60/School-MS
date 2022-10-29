@@ -1,4 +1,4 @@
-template>
+<template>
     <div class="row justify-content-center">
         <div class="col-md-6">
           <h3 class="text-center">Update Invoice</h3>
