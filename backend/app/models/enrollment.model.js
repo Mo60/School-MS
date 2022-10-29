@@ -12,7 +12,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER
     }
   }, 
-  {tableName: "enrollment"});
+  {tableName: "enrollment",
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,});
 
   return Enrollment;
 };

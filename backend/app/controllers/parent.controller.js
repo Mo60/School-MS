@@ -104,7 +104,7 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    parent.update(req.body, {
+    Parent.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -128,7 +128,7 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    parent.destroy({
+    Parent.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -151,7 +151,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    parent.destroy({
+    Parent.destroy({
       where: {},
       truncate: false
     })
@@ -167,7 +167,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    parent.findAll({ where: { published: true } })
+    Parent.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })

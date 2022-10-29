@@ -85,7 +85,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     
-    invoice.findByPk(id)
+    Invoice.findByPk(id)
       .then(data => {
         res.send(data);
       })

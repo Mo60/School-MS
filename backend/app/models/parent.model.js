@@ -37,7 +37,10 @@ module.exports = (sequelize, Sequelize) => {
       }
   }
   , 
-  {tableName: "parent"});
+  {tableName: "parent",
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,});
 
   return Parent;
 };
