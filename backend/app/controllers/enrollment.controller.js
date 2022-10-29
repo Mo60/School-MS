@@ -1,5 +1,5 @@
 const db = require("../models");
-const Enrollment = db.enrollments;
+const Enrollment = db.enrollment;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new enrollment
@@ -146,7 +146,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    Enrollment.destroy({
+    enrollment.destroy({
       where: {},
       truncate: false
     })
@@ -162,7 +162,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    Enrollment.findAll({ where: { published: true } })
+    enrollment.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })
