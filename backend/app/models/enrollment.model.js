@@ -6,11 +6,18 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true
     },
     ClassID: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'class', 
+          key: 'ClassID', 
     },
     StudentID: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'student', 
+          key: 'StudentID', 
     }
+    
   }, 
   {tableName: "enrollment",
   timestamps: false,
