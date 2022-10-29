@@ -72,7 +72,7 @@ exports.create = (req, res) => {
     const InvoiceID = req.query.InvoiceID;
     var condition = InvoiceID ? { InvoiceID: { [Op.like]: `%${InvoiceID}%` } } : null;
   
-    invoice.findAll({ where: condition })
+    Invoice.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
@@ -87,6 +87,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
+    
     invoice.findByPk(id)
       .then(data => {
         res.send(data);
@@ -101,7 +102,7 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    invoice.update(req.body, {
+    Invoice.update(req.body, {
       where: { id: id }
     })
       .then(num => {
@@ -125,7 +126,7 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    invoice.destroy({
+    Invoice.destroy({
       where: { id: id }
     })
       .then(num => {
@@ -148,7 +149,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    invoice.destroy({
+    Invoice.destroy({
       where: {},
       truncate: false
     })
@@ -164,7 +165,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    invoice.findAll({ where: { published: true } })
+    Invoice.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })
