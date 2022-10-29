@@ -15,7 +15,11 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE
     },
     InvoiceID: {
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'invoice'
+          key: 'InvoiceID
+        }
     }
   }, 
   {tableName: "payment"});
