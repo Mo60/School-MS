@@ -22,7 +22,10 @@ module.exports = (sequelize, Sequelize) => {
         }
         }
   }, 
-  {tableName: "invoice"});
+  {tableName: "invoice",
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,});
 
   return Invoice;
 };
