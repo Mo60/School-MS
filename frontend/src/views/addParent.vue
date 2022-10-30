@@ -101,19 +101,7 @@ export default {
       axios.post(apiURL, this.parent).then((res) => {
        const ID= res.data.ParentsID
         console.log(ID);
-        // this.parent = {
-        //   FirstName: "",
-        //   LastName: "",
-        //   PhoneType: "",
-        //   PhoneNumber: "",
-        //   Email: "",
-        //   Street: "",
-        //   City: "",
-        //   Zip: "",
-        //   Reference: "",
-        //   Notes: ""
-        // }
-
+    
         this.$router.push(`addstudent/${res.data.ParentsID}`)
        console.log("success")
      this.success=true
@@ -126,5 +114,5 @@ export default {
    
     }
   }
-}
+
 </script>
