@@ -17,8 +17,11 @@ module.exports = (sequelize, Sequelize) => {
     ClassEndDate: {
       type: Sequelize.DATE
     },
-    ClassTime: {
-      type: Sequelize.TIME
+    ClassStartTime: {
+      type: Sequelize.STRING
+    },
+    ClassEndTime: {
+      type: Sequelize.STRING
     },
     NumStudents: {
       type: Sequelize.INTEGER
