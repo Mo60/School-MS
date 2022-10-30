@@ -1,6 +1,11 @@
 <template>
   <h1 class="mt-5">Parents</h1>
-<div class="cont"><parentsCard :parents="p" :fName="p.FirstName" :lName= "p.LastName" :id="p.ParentsID" :phone="p.PhoneNumber" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div >
+  <div class="empty-arr mt-5" v-if="parent.length == 0 && loaded">
+      <p>No Parents Found</p>
+      <a class="btn mt-3"><router-link :to="{name:'addparent'}">Add Parent</router-link></a>
+    </div>
+
+<div class="cont"><parentsCard :parents="p" :Name="p.Parent" :id="p.ParentsID" :phone="p.PhoneNumber" :student=p.Student :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div >
 </template>       
         
 <script>
@@ -10,11 +15,12 @@ export default{
   components:{parentsCard},
   data(){
 return{
-parent:[]
+parent:[],
+loaded:false
 }},
 
   created(){
-  let apiURL='http://172.26.54.21:8082/api/parent/'
+  let apiURL='http://172.26.54.21:8082/api/reports/view_students'
   axios
       .get(apiURL)
       .then((res) => {
@@ -23,6 +29,7 @@ parent:[]
       .catch((error) => {
         console.log(error);
       });
+      this.loaded=true;
   },
 }
 

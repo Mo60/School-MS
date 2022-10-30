@@ -97,7 +97,7 @@
                   </ul>
                 </li>
               </ul>
-              <li class="nav-item"><button class="btn"  @click="handleSignOut">Sign Out</button></li>
+              <li class="nav-item"></li>
 
               <div class="col-md-4">
   <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -120,36 +120,12 @@
 </style>
 
 <script>
-import { getAuth,onAuthStateChanged ,signOut } from "firebase/auth";
-import { onMounted } from '@vue/runtime-core';
-let auth
-
 export default{
 data(){
   return{
 isLoggedIn:""
   }
 },
-
-onMounted(){
-  auth = getAuth();
-  onAuthStateChanged(auth,(user)=>{
-    if(user){
-      this.isLoggedIn=true;
-    }
-    else this.isLoggedIn=false
-  })
-}
-,
-methods:{
- handleSignOut(){   
-  auth = getAuth();
-  signOut(auth).then(() => {
-  this.$router.push("/auth")
-}).catch((error) => {
-  console.log(error)
-})}
-}
 }
 
 </script>

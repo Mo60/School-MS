@@ -75,14 +75,16 @@
         data() {
             return {
                class: { 
-                    classID:"",
-                    teacherID: "",
-                    classdate:"",
-                    classtime:"",
-                    numstudents: "",
-                    maxcapacity:"",
-                    lesson:"",
-                    notes: ""
+                    ClassID:"",
+                    TeacherID: "",
+                    ClassStartDate:"",
+                    ClassEndDate:"",
+                    ClassStartTime:"",
+                    ClassEndTime:"",
+                    NumStudents: "",
+                    MaxCapacity:"",
+                    Lesson:"",
+                    Notes: ""
                 }, 
             };
         },
@@ -94,16 +96,18 @@
                 
                 axios.post(apiURL, this.class).then(() => {
                     //changing the view to the list
-                  this.$router.push('/')
+                  this.$router.push('/classes')
                   this.class = {
-                    classID:"",
-                    teacherID: "",
-                    classdate:"",
-                    classtime:"",
-                    numstudents: "",
-                    maxcapacity:"",
-                    lesson:"",
-                    notes: ""
+                    ClassID:"",
+                    TeacherID: "",
+                    ClassStartDate:"",
+                    ClassEndDate:"",
+                    ClassStartTime:"",
+                    ClassEndTime:"",
+                    NumStudents: "",
+                    MaxCapacity:"",
+                    Lesson:"",
+                    Notes: ""
                   }
                 }).catch(error => {
                     console.log(error)

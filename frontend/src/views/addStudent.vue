@@ -105,22 +105,6 @@ data(){
 created(){
      // debugging
      console.log(this.$route.params.id)
-     // let apiURL2 = "http://172.26.54.21:8082/api/parent/"
-
-     // this.phone= this.$route.params.phone
-     //       axios.get(apiURL2,this.parent).then(res=>{
-     //    this.allParents=res.data
-     //    console.log(this.allParents)
-     //  }).then(()=>{
-     //    let index= this.allParents.findIndex(i=>i.PhoneNumber===this.phone)
-     //        console.log(index)
-     //        console.log("hi")
-           
-     //        this.student.ParentsID=this.allParents[index].ParentsID
-     //        console.log(this.student.ParentsID)
-     //  }).catch(error=>{
-     //            console.log(error)
-     //        });
 
 },
 

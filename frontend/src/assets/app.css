@@ -61,6 +61,40 @@ h2 {
   width: 45%;
   margin: 40px auto;
 }
+
+.wrapper4{
+  width:85%;
+  margin: 40px auto;
+}
+.empty-arr {
+  height: 40vh;
+  width: 40vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background-color: white;
+  flex-direction: column;
+  border-radius: 15px;
+  text-align: center;
+
+}
+.empty-arr p {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.empty-arr a {
+  text-decoration: none;
+  color: black;
+}
+ a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+
+
 .display {
   width: 25vw;
   background-color: #888c64;
@@ -77,7 +111,9 @@ h2 {
   margin: auto;
   display: grid;
   width: 85%;
-  height: 80vh;
+  max-height: 80vh;
+  align-items: flex-start;
+  
   overflow-y: auto;
   grid-template-columns: auto auto auto;
 background-color: rgba(255, 255, 255, 0.16);
@@ -125,6 +161,15 @@ form > .btn ,fieldset>.btn{
 form > .btn:hover, fieldset>.btn:hover {
   background-color: #b4bfaa;
 }
+
+.empty-arr .btn{
+   background-color: #b1bea5;
+}
+
+.empty-arr .btn:hover{
+  background-color: #b4bfaa;
+
+}
 .input-group {
   margin-left: 10px;
 }
@@ -155,4 +200,8 @@ form > .btn:hover, fieldset>.btn:hover {
 
 .rows >a {
   color:#260f01
+}
+
+thead{
+  background-color: #b1bea5;
 }

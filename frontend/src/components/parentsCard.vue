@@ -1,8 +1,9 @@
 <template>
        <div class="display">
-      <div class="top">  <span id="name">{{fName}} {{lName}}</span>
+      <div class="top">  <span id="name">{{Name}}</span>
     <div id="id">{{id}}</div></div >
 <div class="body">
+    <div class="rows"><span class="label">Child:</span><span>{{student}}</span></div>
    <div class="rows"> <span class="label">Phone Number:</span> <span>{{phone}}</span></div >
    <div class="rows"> <span class="label">Email: </span><a v-bind:href="`mailto:${email}`">{{email}}</a></div >
    
@@ -14,5 +15,5 @@
 
 <script>
 export default{
-    props:['parents', "fName","lName","email","phone","id"]
+    props:['parents', "Name","student","email","phone","id"]
 }</script>
