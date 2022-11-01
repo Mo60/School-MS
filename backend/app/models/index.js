@@ -64,20 +64,7 @@ db.studentStatus = require("./studentStatus.model")(sequelize, Sequelize);
 
 
 
-// db.tutorial = require("./tutorial.model.js")(sequelize, Sequelize);
-// db.tag = require("./tag.model.js")(sequelize, Sequelize);
-
-// db.tag.belongsToMany(db.tutorial, {
-//   through: "tutorial_tag",
-//   as: "tutorials",
-//   foreignKey: "tag_id",
-// });
-// db.tutorial.belongsToMany(db.tag, {
-//   through: "tutorial_tag",
-//   as: "tags",
-//   foreignKey: "tutorial_id",
-// });
-
+//guardian - student
 // relationships
 db.student.belongsToMany(db.guardian, { through: "guardian_student" });
 db.guardian.belongsToMany(db.student,{through: "guardian_student"});
@@ -85,6 +72,8 @@ db.student.hasMany(db.guardian_student);
 db.guardian_student.belongsTo(db.student);
 db.guardian.hasMany(db.guardian_student);
 db.guardian_student.belongsTo(db.guardian);
+
+//
 
 console.log("this is in index")
 
