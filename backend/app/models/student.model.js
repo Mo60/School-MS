@@ -16,32 +16,23 @@ module.exports = (sequelize, Sequelize) => {
     DOB: {
       type: Sequelize.STRING
     },
-    StartDate: {
+    Street: {
       type: Sequelize.STRING
     },
-    EmergencyContactName: {
+    City: {
       type: Sequelize.STRING
     },
-    EmergencyContactPhone: {
+    State: {
       type: Sequelize.STRING
     },
-    Medical: {
+    Zip: {
       type: Sequelize.STRING
     },
-    Notes: {
-      type: Sequelize.STRING
-    },
-    LessonDay: {
-      type: Sequelize.STRING
-    },
-    LessonTime: {
-      type: Sequelize.STRING
-    },
-    ParentsID: {
+    StudentStatusID: {
       type: Sequelize.INTEGER,
             references: {
-          model: 'parent', 
-          key: 'ParentsID', 
+          model: 'StudentStatus', 
+          key: 'StudentStatusID', 
         }
         }
   
