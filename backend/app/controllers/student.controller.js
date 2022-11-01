@@ -1,5 +1,8 @@
+const { guardian } = require("../models");
 const db = require("../models");
+const parentRoutes = require("../routes/parent.routes");
 const Student = db.student;
+const Guardian = db.guardian
 const Op = db.Sequelize.Op;
 
 // Create and Save a new student
@@ -52,18 +55,16 @@ exports.create = (req, res) => {
       FirstName: req.body.FirstName,
       LastName: req.body.LastName,
       DOB: req.body.DOB,
-      StartDate: req.body.StartDate,
-      EmergencyContactName: req.body.EmergencyContactName,
-      EmergencyContactPhone: req.body.EmergencyContactPhone,
-      Medical: req.body.Medical,
-      Notes: req.body.Notes,
-      LessonDay: req.body.LessonDay,
-      LessonTime: req.body.LessonTime,
-      ParentsID: req.body.ParentsID
+      Street: req.body.Street,
+      City: req.body.City,
+      State: req.body.State,
+      Zip: req.body.Zip,
+      StudentStatusID: req.body.StudentStatusID,
+      guardians : req.body.guardians
     };
   
     // Save student in the database
-    Student.create(student)
+    Student.create(student, {include: Guardian})
       .then(data => {
         res.send(data);
       })
@@ -95,9 +96,8 @@ exports.create = (req, res) => {
 
   exports.findAll = (req, res) => {
     const StudentID = req.query.StudentID;
-    var condition = StudentID ? { StudentID: { [Op.like]: `%${StudentID}%` } } : null;
   
-    Student.findAll({ where: condition })
+    Student.findAll({include: guardian })
       .then(data => {
         res.send(data);
       })

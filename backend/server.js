@@ -8,7 +8,9 @@ const { QueryTypes } = require('sequelize');
 const app = express();
 
 const db = require("./app/models");
-db.sequelize.sync({force: true});
+db.sequelize.sync(
+ // {force: true}
+  );
 
 //In development, you may need to drop existing tables
 //and re-sync database. Just use force: true as following code:
