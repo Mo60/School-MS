@@ -32,4 +32,32 @@ db.guardian_student = require("./guardian_student.model")(sequelize, Sequelize);
 db.guardian = require("./guardian.model")(sequelize, Sequelize);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// relationships
+db.student.belongToMany((db.guardian, { through: this.guardian_student }));
+db.guardian.belongToMany((db.student,{through: this.guardian_student}));
+db.student.hasMany(db.guardian_student);
+db.guardian_student.belongsTo(db.student);
+db.guardian.hasMany(db.guardian_student);
+db.guardian_student.belongsTo(db.guardian);
+
+console.log("this is in index")
+
 module.exports = db;
