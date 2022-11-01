@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     }
   }, 
-  { tableName: "StudentStatus",
+  { tableName: "studentStatus",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
