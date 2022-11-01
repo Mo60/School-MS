@@ -1,0 +1,35 @@
+<template>
+  <h1 class="mt-5">guardian</h1>
+  <div class="empty-arr mt-5" v-if="guardian.length == 0 && loaded">
+      <p>No Guardian Found</p>
+      <a class="btn mt-3"><router-link :to="{name:'addguardian'}">Add Guardian</router-link></a>
+    </div>
+
+<div class="cont"><guardianCard :guardian="g" :FirstName="g.Guardian" :LastName="g.Guardian":id="g.GuardianID" :phone="g.PhoneNumber":phone="g.CellNumber":student=g.Student :email="g.Email" v-for="g in guardian" :key="g.id"></guardianCard></div >
+</template>       
+        
+<script>
+ import axios from "axios";
+ import guardianCard from "../components/guardianCard.vue";
+export default{
+  components:{guardianCard},
+  data(){
+return{
+guardian:[],
+loaded:false
+}},
+  created(){
+  let apiURL='http://172.26.54.21:8082/api/reports/view_students'
+  axios
+      .get(apiURL)
+      .then((res) => {
+        this.guardian = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      this.loaded=true;
+  },
+}
+  
+</script>
