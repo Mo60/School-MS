@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Student = sequelize.define("studentStatus", {
+  const StudentStatus = sequelize.define("studentStatus", {
     
     
     StudentStatusID: {
@@ -16,5 +16,5 @@ module.exports = (sequelize, Sequelize) => {
   createdAt: false,
   updatedAt: false,});
 
-  return Student;
+  return StudentStatus;
 };
