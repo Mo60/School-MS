@@ -1,5 +1,6 @@
 const db = require("../models");
 const Guardian = db.guardian;
+const Student = db.student;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new guardian
@@ -52,11 +53,12 @@ exports.create = (req, res) => {
       CanPickup: req.body.CanPickup,
       IsEmergency: req.body.IsEmergency,
       RelationshipID: req.body.RelationshipID,
-      GuardianStatusID: req.body.GuardianStatusID
+      GuardianStatusID: req.body.GuardianStatusID,
+      students: req.body.students
     };
   
     // Save guardian in the database
-    Guardian.create(guardian)
+    Guardian.create(guardian,{include: Student})
       .then(data => {
         res.send(data);
       })
@@ -87,9 +89,8 @@ exports.create = (req, res) => {
 
   exports.findAll = (req, res) => {
     const GuardianID = req.query.GuardianID;
-    var condition = GuardianID ? { GuardianID: { [Op.like]: `%${GuardianID}%` } } : null;
-  
-    Guardian.findAll({ where: condition })
+
+    Guardian.findAll({ include: Student })
       .then(data => {
         res.send(data);
       })
