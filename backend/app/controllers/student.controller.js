@@ -64,7 +64,9 @@ exports.create = (req, res) => {
     };
   
     // Save student in the database
-    Student.create(student, {include: Guardian})
+    if (Array.isArray(student.guardians)) {
+      console.log("Array is empty!") ;
+    Student.create(student)
       .then(data => {
         res.send(data);
       })
@@ -74,6 +76,17 @@ exports.create = (req, res) => {
             err.message || "Some error occurred while creating the student."
         });
       });
+    }
+    else {Student.create(student, {include: Guardian})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the student."
+      });
+    });}
   };
 
 // bulk

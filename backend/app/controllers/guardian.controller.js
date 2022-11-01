@@ -58,6 +58,22 @@ exports.create = (req, res) => {
     };
   
     // Save guardian in the database
+    //https://www.freecodecamp.org/news/check-if-javascript-array-is-empty-or-not-with-length/#:~:text=We%20can%20also%20explicitly%20check,Array%20is%20empty!%22)%20%7D
+    if (guardian.students === 'undefined' ) {
+       console.log("Array is empty!") ;
+    Guardian.create(guardian)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the guardian."
+      });
+    });
+  }
+   else { 
+    console.log(guardian.students) ;
     Guardian.create(guardian,{include: Student})
       .then(data => {
         res.send(data);
@@ -68,6 +84,8 @@ exports.create = (req, res) => {
             err.message || "Some error occurred while creating the guardian."
         });
       });
+    }
+
   };
 // bulk
  exports.createmany = (req, res) => {
