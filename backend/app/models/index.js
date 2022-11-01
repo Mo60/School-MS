@@ -28,4 +28,5 @@ db.teacher = require("./teacher.model.js")(sequelize, Sequelize);
 db.class = require("./class.model.js")(sequelize, Sequelize);
 db.payment = require("./payment.model.js")(sequelize, Sequelize);
 
+
 module.exports = db;
