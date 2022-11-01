@@ -38,9 +38,6 @@ module.exports = (sequelize, Sequelize) => {
     Notes: {
       type: Sequelize.STRING
     },
-    CanPickup: {
-      type: Sequelize.STRING
-    },
     IsEmergency: {
       type: Sequelize.STRING
     },
