@@ -30,14 +30,14 @@ db.payment = require("./payment.model.js")(sequelize, Sequelize);
 //new tables
 db.guardian_student = require("./guardian_student.model")(sequelize, Sequelize);
 db.guardian = require("./guardian.model")(sequelize, Sequelize);
-// db.guardianrelationship = require("./guardianrelationship.model")(sequelize, Sequelize);
-// db.guardianStatus = require("./guardianStatus.model")(sequelize, Sequelize);
+db.guardianRelationship = require("./guardianRelationship.model")(sequelize, Sequelize);
+db.guardianStatus = require("./guardianStatus.model")(sequelize, Sequelize);
 // db.semester = require("./semester.model")(sequelize, Sequelize);
 // db.timeblock = require("./timeblock.model")(sequelize, Sequelize);
 // db.days = require("./days.model")(sequelize, Sequelize);
 // db.course = require("./course.model")(sequelize, Sequelize);
 // db.classStatus = require("./classStatus.model")(sequelize, Sequelize);
-// db.studentStatus = require("./studentStatus.model")(sequelize, Sequelize);
+db.studentStatus = require("./studentStatus.model")(sequelize, Sequelize);
 // db.courseStatus = require("./courseStatus.model")(sequelize, Sequelize);
 // db.faculty_class = require("./faculty_class.model")(sequelize, Sequelize);
 // db.faculty = require("./faculty.model")(sequelize, Sequelize);

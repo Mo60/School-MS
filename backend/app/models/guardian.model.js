@@ -39,7 +39,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     IsEmergency: {
-      type: Sequelize.STRING
+      type: Sequelize.BOOLEAN
     },
     RelationshipID: {
       type: Sequelize.INTEGER,
