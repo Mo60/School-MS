@@ -42,12 +42,21 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     RelationshipID: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'guardianrelationship', 
+          key: 'RelationshipID', 
+        }
     },
     GuardianStatusID: {
-      type: Sequelize.STRING
-     }
-  },                            
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'student', 
+          key: 'StudentID', 
+        }
+        }
+    },
+                           
                                
   {tableName: "guardian",
   timestamps: false,
