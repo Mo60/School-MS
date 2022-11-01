@@ -44,15 +44,15 @@ module.exports = (sequelize, Sequelize) => {
     RelationshipID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'guardianrelationship', 
+          model: 'guardianRelationship', 
           key: 'RelationshipID', 
         }
     },
     GuardianStatusID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'student', 
-          key: 'StudentID', 
+          model: 'guardianStatus', 
+          key: 'GuardianStatusID', 
         }
         }
     },
