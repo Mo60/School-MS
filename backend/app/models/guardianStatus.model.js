@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const guardianStatus = sequelize.define("guardianStatus", {
+  const GuardianStatus = sequelize.define("guardianStatus", {
     
     
     GuardianStatusID: {
