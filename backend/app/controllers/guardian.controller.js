@@ -2,32 +2,32 @@ const db = require("../models");
 const Guardian = db.guardian;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new parent
+// Create and Save a new guardian
 exports.create = (req, res) => {
   
 };
 
-// Retrieve all parents from the database.
+// Retrieve all guardians from the database.
 exports.findAll = (req, res) => {
   
 };
 
-// Find a single parent with an id
+// Find a single guardian with an id
 exports.findOne = (req, res) => {
   
 };
 
-// Update a parent by the id in the request
+// Update a guardian by the id in the request
 exports.update = (req, res) => {
   
 };
 
-// Delete a parent with the specified id in the request
+// Delete a guardian with the specified id in the request
 exports.delete = (req, res) => {
   
 };
 
-// Delete all parents from the database.
+// Delete all guardians from the database.
 exports.deleteAll = (req, res) => {
   
 };
@@ -36,7 +36,7 @@ exports.deleteAll = (req, res) => {
 
 exports.create = (req, res) => {
   
-    // Create a parent
+    // Create a guardian
     const guardian = {
       GuardianID: req.body.GuardianID,
       FirstName: req.body.FirstName,
@@ -55,7 +55,7 @@ exports.create = (req, res) => {
       GuardianStatusID: req.body.GuardianStatusID
     };
   
-    // Save parent in the database
+    // Save guardian in the database
     Guardian.create(guardian)
       .then(data => {
         res.send(data);
@@ -72,7 +72,7 @@ exports.create = (req, res) => {
     // Create a guardian
     const guardians = req.body;
   
-    // Save parent in the database
+    // Save guardian in the database
     Guardian.bulkCreate(guardians)
       .then(data => {
         res.send(data);
@@ -80,7 +80,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the parent."
+            err.message || "Some error occurred while creating the guardian."
         });
       });
   };
@@ -89,14 +89,14 @@ exports.create = (req, res) => {
     const GuardianID = req.query.GuardianID;
     var condition = GuardianID ? { GuardianID: { [Op.like]: `%${GuardianID}%` } } : null;
   
-    Parent.findAll({ where: condition })
+    Guardian.findAll({ where: condition })
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving parents."
+            err.message || "Some error occurred while retrieving guardians."
         });
       });
   };
@@ -110,7 +110,7 @@ exports.create = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving parent with id=" + id
+          message: "Error retrieving guardian with id=" + id
         });
       });
   };
@@ -124,17 +124,17 @@ exports.create = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "parent was updated successfully."
+            message: "guardian was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update parent with id=${id}. Maybe parent was not found or req.body is empty!`
+            message: `Cannot update guardian with id=${id}. Maybe guardian was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating parent with id=" + id
+          message: "Error updating guardian with id=" + id
         });
       });
   };
@@ -148,17 +148,17 @@ exports.create = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "parent was deleted successfully!"
+            message: "guardian was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete parent with id=${id}. Maybe parent was not found!`
+            message: `Cannot delete guardian with id=${id}. Maybe guardian was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete parent with id=" + id
+          message: "Could not delete guardian with id=" + id
         });
       });
   };
@@ -175,7 +175,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all parents."
+            err.message || "Some error occurred while removing all guardians."
         });
       });
   };
@@ -188,7 +188,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving parents."
+            err.message || "Some error occurred while retrieving guardians."
         });
       });
   };
