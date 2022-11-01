@@ -72,12 +72,12 @@ db.studentStatus = require("./studentStatus.model")(sequelize, Sequelize);
 
 
 // relationships
-// db.student.belongsToMany((db.guardian, { through: this.db.guardian_student }));
-// db.guardian.belongsToMany((this.db.student,{through: this.db.guardian_student}));
-// db.student.hasMany(this.db.guardian_student);
-// db.guardian_student.belongsTo(this.db.student);
-// db.guardian.hasMany(this.db.guardian_student);
-// db.guardian_student.belongsTo(this.db.guardian);
+db.student.belongsToMany((db.guardian, { through: "guardian_student" }));
+db.guardian.belongsToMany((db.student,{through: "guardian_student"}));
+db.student.hasMany(db.guardian_student);
+db.guardian_student.belongsTo(db.student);
+db.guardian.hasMany(db.guardian_student);
+db.guardian_student.belongsTo(db.guardian);
 
 console.log("this is in index")
 
