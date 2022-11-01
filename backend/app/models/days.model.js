@@ -1,20 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
-  const guardianStatus = sequelize.define("guardianStatus", {
-    
-    
-    GuardianStatusID: {
+  const Days = sequelize.define("days", {
+    DayID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    status: {
-      type: Sequelize.STRING
-    }
   }, 
-  { tableName: "guardianStatus",
+  {tableName: "days",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
-  return GuardianStatus;
+  return Days;
 };

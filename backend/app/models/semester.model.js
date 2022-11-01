@@ -1,20 +1,18 @@
 module.exports = (sequelize, Sequelize) => {
-  const guardianStatus = sequelize.define("guardianStatus", {
-    
-    
-    GuardianStatusID: {
+  const Semester = sequelize.define("semester", {
+    SemesterID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    status: {
-      type: Sequelize.STRING
-    }
+    Semester: {
+      type: Sequelize.INTEGER
+    },
   }, 
-  { tableName: "guardianStatus",
+  {tableName: "semester",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
-  return GuardianStatus;
+  return Semester;
 };

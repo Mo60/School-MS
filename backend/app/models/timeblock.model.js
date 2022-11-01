@@ -1,20 +1,21 @@
 module.exports = (sequelize, Sequelize) => {
-  const GuardianRelationship = sequelize.define("guardianRealationship", {
-    
-    
-    RelationshipID: {
+  const Timeblock = sequelize.define("timeblock", {
+    TimeblockID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    status: {
+    StartTime: {
+      type: Sequelize.INTEGER
+    },
+    EndTime: {
       type: Sequelize.STRING
-    }
+    },
   }, 
-  { tableName: "guardianRelationship",
+  {tableName: "timeblock",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
-  return GuardianRelationship;
+  return Timeblock;
 };
