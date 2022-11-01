@@ -27,6 +27,9 @@ db.invoice = require("./invoice.model.js")(sequelize, Sequelize);
 db.teacher = require("./teacher.model.js")(sequelize, Sequelize);
 db.class = require("./class.model.js")(sequelize, Sequelize);
 db.payment = require("./payment.model.js")(sequelize, Sequelize);
+//new tables
+db.guardian_student = require("./guardian_student.model")(sequelize, Sequelize);
+db.guardian = require("./guardian.model")(sequelize, Sequelize);
 
 
 module.exports = db;
