@@ -5,7 +5,7 @@
       <a class="btn mt-3"><router-link :to="{name:'addguardian'}">Add Guardian</router-link></a>
     </div>
 
-<div class="cont"><guardianCard :guardian="g" :FirstName="g.Guardian" :LastName="g.Guardian":id="g.GuardianID" :phone="g.PhoneNumber":phone="g.CellNumber":student=g.Student :email="g.Email" v-for="g in guardian" :key="g.id"></guardianCard></div >
+<div class="cont"><guardianCard :guardian="g" :Name="g.Guardian":id="g.GuardianID" :phone="g.PhoneNumber":student=g.Student :email="g.Email" v-for="g in guardian" :key="g.id"></guardianCard></div >
 </template>       
         
 <script>
