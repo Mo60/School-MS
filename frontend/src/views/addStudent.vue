@@ -57,9 +57,10 @@
             ><input type="number" class="form-control" v-model="student.Zip" />
           </div>
         </div>
+        <button class="btn btn-info" @click="value = !value">{{value ? 'Hide guardian field' : 'Show guardian field'}}</button>
       </fieldset>
 
-      <fieldset class="form-control mt-5">
+      <fieldset v-show= value  class="form-control mt-5">
         <legend>
           Parent/Guardian
           <span
@@ -127,6 +128,7 @@ export default {
       
 
       },
+      value : false,
       studentguardian: {
         StudentID: "",
         ParentsID: "",
