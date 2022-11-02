@@ -46,6 +46,7 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/report.routes")(app);
 require("./app/routes/guardian.routes")(app);
 require("./app/routes/guardian_student.routes")(app);
+require("./app/routes/guardianRelationship.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8082;
