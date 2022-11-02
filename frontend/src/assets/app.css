@@ -66,6 +66,14 @@ h2 {
   width:85%;
   margin: 40px auto;
 }
+.flex-wrapper{
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+
+justify-content:center;
+ 
+}
 .empty-arr {
   height: 40vh;
   width: 40vw;
@@ -88,6 +96,7 @@ h2 {
   text-decoration: none;
   color: black;
 }
+ .empty-arr 
  a:hover {
   text-decoration: none;
   color: black;

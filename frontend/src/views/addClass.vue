@@ -9,8 +9,8 @@
                <div class="row mb-4">
                    
                            <div class="col">
-                                <label class="form-label">Teacher ID</label>
-                                <input type="number" class="form-control"  required>
+                                <label class="form-label">Teacher</label>
+                                <select name="" id="" class="form-select"><option value="{{teacher.TeacherID}}" v-for="teacher in TeacherList" :key="teacher.TeacherID">{{teacher.FirstName}} {{TeacherList.LastName}}</option></select>
                             </div>
                             <div class="col">
                                 <label class="form-label">Start Date</label>
@@ -69,7 +69,7 @@
 </template>
 
 <script>
-   // import axios from "axios";
+   import axios from "axios";
     export default {
         name: "AddClass",
         data() {
@@ -86,6 +86,7 @@
                     Lesson:"",
                     Notes: ""
                 }, 
+                TeacherList:[]
             };
         },
     
@@ -114,5 +115,16 @@
                 });
             }
         }
+        ,
+     created(){
+            let apiURL = 'http://172.26.54.21:8082/api/teacher/';
+            axios.get(apiURL).then(res => {
+                this.teacherList = res.data;
+                
+            }).catch(error => {
+                console.log(error)
+            });
+            
+        }, 
     } 
 </script>

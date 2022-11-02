@@ -69,7 +69,6 @@
       this.$router.push("/teachers")
 } 
      }
-            
         }
     
 </script>
