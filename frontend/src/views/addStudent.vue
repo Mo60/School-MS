@@ -57,9 +57,10 @@
             ><input type="number" class="form-control" v-model="student.Zip" />
           </div>
         </div>
+        <!-- this button show or hide guardian feild -->
         <button class="btn btn-info" @click="value = !value">{{value ? 'Hide guardian field' : 'Show guardian field'}}</button>
       </fieldset>
-
+      <!-- v-show show the element if true -->
       <fieldset v-show= value  class="form-control mt-5">
         <legend>
           Parent/Guardian
@@ -128,6 +129,7 @@ export default {
       
 
       },
+      // value is for v-show for the guardian feild
       value : false,
       studentguardian: {
         StudentID: "",
