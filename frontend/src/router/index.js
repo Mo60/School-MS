@@ -25,12 +25,8 @@ const router= createRouter({
     name:"classes",
     component:()=>import("../views/viewClasses.vue"),
   },
-    {path:"/invoices",
-    name:"invoices",
-    component:()=>import("../views/viewInvoices.vue"),
-  },
  // import add views   
-    {path:"/addStudent/:id",
+    {path:"/addStudent",
     name:"addstudent",
     component:()=>import("../views/addStudent.vue"),
   },
@@ -38,18 +34,23 @@ const router= createRouter({
     name:"addclass",
     component:()=>import("../views/addClass.vue"),
   },
+    {path:"/addCourse",
+    name:"addcourse",
+    component:()=>import("../views/addCourse.vue"),
+  },
     {path:"/addTeacher",
     name:"addteacher",
     component:()=>import("../views/addTeacher.vue"),
   },
-    {path:"/addPayment",
-   name:"addpayment",
-   component:()=>import("../views/addPayment.vue"),
-},
+
     {path:"/addParent",
     name:"addparent",
     component:()=>import("../views/addParent.vue"),
    },
+
+   {path:"/addParent/:studentID",
+  name:"addParent2",
+component:()=>import("../views/addParent.vue")},
 // Import Edit views
     {path:"/EditStudent",
     name:"EditStudent",
@@ -66,26 +67,13 @@ const router= createRouter({
     {path:"/EditClass",
     name:"EditClass",
     component:()=>import("../views/EditClass.vue"),
-   },
-    {path:"/EditInvoice",
-    name:"EditInvoice",
-    component:()=>import("../views/EditInvoice.vue"),
   
-  
-   
   },
     {path:"/enroll",
   name:"enroll",
 component:()=>import("../views/enroll.vue"),
 },
-{path:"/payments",
-name:"payments",
-component:()=>import("../views/addPayment.vue")},
-{path:"/addinvoice",
-name:"addinvoice",
-component:()=>import("../views/addInvoice.vue")}
-  ]})
-;
+]})
 
 
 

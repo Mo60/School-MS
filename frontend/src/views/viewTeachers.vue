@@ -1,13 +1,15 @@
 <template>
-    <h1 class="mb-3 mt-5">Teachers</h1>
-    <div class="empty-arr mt-5" v-if="teacher.length == 0 && loaded">
-      <p>No Teachers Found</p>
-      <a class="btn mt-3"><router-link :to="{name:'addteacher'}">Add Teacher</router-link></a>
-    </div>
+     <h1 class="mt-5">Teachers</h1>
+ <div class="flex-wrapper" v-if="teacher.length == 0 && loaded">
+        <div class="empty-arr" >
+          <p>No Teachers Found</p>
+          <a class="btn mt-3"><router-link :to="{name:'addteacher'}">Add Teacher</router-link></a>
+        </div>
+   </div> 
+      <div class="cont mt-5" v-else>
+        <teacherCard v-for="t in teacher" :key="t.TeacherID" :teacher="t" :id="t.TeacherID" :FName="t.FirstName" :LName="t.LastName" :Phone="t.TeacherPhoneNumber" :Email="t.TeacherEmail"></teacherCard>
+          </div>   
 
-  <div class="cont mt-5">
-    <teacherCard v-for="t in teacher" :key="t.TeacherID" :teacher="t" :id="t.TeacherID" :FName="t.FirstName" :LName="t.LastName" :phone="t.TeacherPhoneNumber" :email="t.TeacherEmail"></teacherCard>
-      </div>   
 
 </template>
   <script>
@@ -34,9 +36,6 @@
             });
             this.loaded=true
         },
-        methods: {
-            
-        }
     }
 </script>
 

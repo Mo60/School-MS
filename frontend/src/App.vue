@@ -36,14 +36,10 @@
                     </li>
                     <li>
                       <a class="dropdown-item">
-                        <router-link class="nav-link" to="/invoices">Invoices</router-link>
+                        <router-link class="nav-link" to="/courses">Courses</router-link>
                       </a>
                     </li>
-                    <li>
-                      <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/payments">Payments</router-link>
-                      </a>
-                    </li>
+                 
                     <!-- <li> -->
                       <!-- <a href="" class="dropdown-item">
                         <router-link class="nav-link" to="/"></router-link>
@@ -61,7 +57,7 @@
                   <ul class="dropdown-menu " aria-labelledby="">
                     <li>
                       <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/addparent">Student</router-link>
+                        <router-link class="nav-link" to="/addstudent">Student</router-link>
                       </a>
                     </li>
                     <li>
@@ -76,17 +72,12 @@
                     </li>
                     <li>
                       <a class="dropdown-item">
-                        <router-link class="nav-link" to="/addpayment">Payment</router-link>
+                        <router-link class="nav-link" to="/addcourse">Course</router-link>
                       </a>
                     </li>
                     <li>
                       <a href="" class="dropdown-item">
                         <router-link class="nav-link" to="/enroll">Enrollment</router-link>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/addinvoice">Invoice</router-link>
                       </a>
                     </li>
                     <!-- <li>
