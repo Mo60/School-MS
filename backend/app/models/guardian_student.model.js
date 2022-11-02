@@ -9,6 +9,13 @@ module.exports = (sequelize, Sequelize) => {
     },
     CanPickup: {
       type: Sequelize.BOOLEAN
+    },
+    RelationshipID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'guardianRelationship', 
+          key: 'RelationshipID', 
+        }
     }
   }, 
   { tableName: "guardian_student",
