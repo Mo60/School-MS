@@ -1,9 +1,9 @@
 <template>
-      <h1 class="mt-5">Parents</h1>
+      <h1 class="mt-5">Parents and Guardians</h1>
 <div class="flex-wrapper" v-if="parent.length == 0 && loaded">
 
     <div class="empty-arr" >
-        <p>No Parents Found</p>
+        <p>No Parents or Guardians Found</p>
         <a class="btn mt-3"><router-link :to="{name:'addparent'}">Add Parent</router-link></a>
       </div>
 
