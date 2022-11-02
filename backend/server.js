@@ -9,7 +9,7 @@ const app = express();
 
 const db = require("./app/models");
 db.sequelize.sync(
- // {force: true}
+//  {force: true}
   );
 
 //In development, you may need to drop existing tables
@@ -45,6 +45,7 @@ require("./app/routes/user.routes")(app);
 // 
 require("./app/routes/report.routes")(app);
 require("./app/routes/guardian.routes")(app);
+require("./app/routes/guardian_student.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8082;

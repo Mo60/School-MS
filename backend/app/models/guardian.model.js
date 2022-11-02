@@ -41,13 +41,6 @@ module.exports = (sequelize, Sequelize) => {
     IsEmergency: {
       type: Sequelize.BOOLEAN
     },
-    RelationshipID: {
-      type: Sequelize.INTEGER,
-      references: {
-          model: 'guardianRelationship', 
-          key: 'RelationshipID', 
-        }
-    },
     GuardianStatusID: {
       type: Sequelize.INTEGER,
       references: {

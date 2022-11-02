@@ -64,7 +64,7 @@ exports.create = (req, res) => {
     };
   
     // Save student in the database
-    if (Array.isArray(student.guardians)) {
+    if (!Array.isArray(student.guardians)) {
       console.log("Array is empty!") ;
     Student.create(student)
       .then(data => {
