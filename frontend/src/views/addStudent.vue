@@ -57,17 +57,16 @@
             ><input type="number" class="form-control" v-model="student.Zip" />
           </div>
         </div>
-        <!-- this button show or hide guardian feild -->
-        <button class="btn btn-info" @click="value = !value">{{value ? 'Hide guardian field' : 'Show guardian field'}}</button>
+       
       </fieldset>
+       <!-- this button show or hide guardian feild -->
+       <button class="btn" @click="value = !value">{{value ? 'Hide guardian field' : 'Show guardian field'}}</button>
       <!-- v-show show the element if true -->
       <fieldset v-show= value  class="form-control mt-5">
         <legend>
           Parent/Guardian
-          <span
-            >(Enter Guardian ID or Click "Register Parent" to register
-            parent)</span
-          >
+          <span>(Enter Guardian ID or Click "Register Parent" to register
+            parent)</span>
         </legend>
         <div class="row mt-5 mb-4">
           <div class="col-sm-2">
@@ -102,7 +101,7 @@
       </fieldset>
       <div class="d-flex">
         <button class="btn mt-4" @click="submitForm">Submit</button>
-        <button class="btn mt-4" @click="register">
+        <button class="btn mt-4 mx-3" @click="register">
           Submit and Register Parent
         </button>
       </div>
