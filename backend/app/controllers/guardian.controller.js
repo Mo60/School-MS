@@ -1,6 +1,7 @@
+//const { guardian_student } = require("../models");
 const db = require("../models");
 const Guardian = db.guardian;
-const Student = db.student;
+const guardian_student = db.guardian_student;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new guardian
@@ -54,7 +55,7 @@ exports.create = (req, res) => {
       IsEmergency: req.body.IsEmergency,
       RelationshipID: req.body.RelationshipID,
       GuardianStatusID: req.body.GuardianStatusID,
-      students: req.body.students
+      guardian_students: req.body.guardian_students
     };
   
     // Save guardian in the database
@@ -74,7 +75,7 @@ exports.create = (req, res) => {
   }
    else { 
     console.log(guardian.students) ;
-    Guardian.create(guardian,{include: Student})
+    Guardian.create(guardian,{include: guardian_student})
       .then(data => {
         res.send(data);
       })
@@ -108,7 +109,7 @@ exports.create = (req, res) => {
   exports.findAll = (req, res) => {
     const GuardianID = req.query.GuardianID;
 
-    Guardian.findAll({ include: Student })
+    Guardian.findAll({ include: guardian_student })
       .then(data => {
         res.send(data);
       })
