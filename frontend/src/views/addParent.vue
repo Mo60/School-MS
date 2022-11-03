@@ -50,8 +50,8 @@
       <fieldset class="form-control mt-5">
         <legend>Authorizations</legend>
         <div class="row mb-4">  
-          <div class="col"><label for="" class="form-label">Relationship to Child</label><select name="" id="" class="form-select" v-model="guardian.guardian_students[0].RelationshipID" ><option disabled selected value="">Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.status}}</option></select></div>
-        <div class="col"><label class="form-label">Authorized to Pick Up?</label><select class="form-select" v-model="guardian.guardian_students[0].CanPickup"><option disabled selected value="">Select an Option</option>
+          <div class="col"><label for="" class="form-label">Relationship to Child</label><select name="" id="" class="form-select" v-model="guardian_student.RelationshipID" ><option disabled selected value="">Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.status}}</option></select></div>
+        <div class="col"><label class="form-label">Authorized to Pick Up?</label><select class="form-select" v-model="guardian_student.CanPickup"><option disabled selected value="">Select an Option</option>
         <option value="true">Yes</option>
         <option value="false">No</option></select></div>
       <div class="col"><label class="form-label">Emergency Contact</label>
@@ -94,15 +94,14 @@ export default {
         City: "",
         Zip: "",
         Notes: "",
-        IsEmergency:boolean,
-        guardian_students:[{
-        CanPickup:boolean,
-        studentStudentID: this.$route.params.studentID,
-        guardianGuardianID:undefined,
-        RelationshipID:undefined
-      }]
+        IsEmergency:boolean
       },
-      
+      guardian_student:{
+      CanPickup:boolean,
+      studentStudentID:this.$route.params.studentID,
+      guardianGuardianID:"",
+      guardianRelationship:""
+      },
       relationships:[],
       
     }
@@ -111,25 +110,22 @@ export default {
   methods: {
     submitForm() {
       let apiURL = "http://172.26.54.21:8082/api/guardian/"
-        let apiURL2="http://172.26.54.21:8082/api/guardian_student/"
 
-      // axios.post(apiURL, this.guardian).then((res) => {
-      //  //this.guardian_student.guardianGuardianID= res.data.GuardianID
-      //  // console.log(guardian_student.guardianGuardianID);
+      axios.post(apiURL, this.guardian).then((res) => {
+       this.guardian_student.guardianGuardianID = res.data.GuardianID
+      // guardian.guardian_student.guardianGuardianID = 5;//res.data.GuardianID
+       console.log(this.guardian_student.guardianGuardianID);
+       console.log(res);
+        let apiURL2="http://172.26.54.21:8082/api/guardian_student/"
+        axios.post(apiURL2,this.guardian_student)
+        this.$router.push(`/parents`)
+       console.log("success")
     
-      //   this.$router.push(`/parents`)
-      //  console.log("success")
-      axios.post(apiURL,this.guardian).then((res) => {
-      this.guardian.guardian_students[0].guardianGuardianID= res.data.GuardianID
-      }).then(axios.post(apiURL2,this.guardian.guardian_students)).catch(error => {
-        console.log(error)  
+      }).catch(error => {
+        console.log(error)
+       
       });
 
-    
-// axios.post(apiURL2,this.guardian_student).catch(error => {
-//         console.log(error)
-      
-       
      }
     },
     created(){
