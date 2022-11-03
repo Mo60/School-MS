@@ -74,12 +74,12 @@
             ><input
               type="text"
               class="form-control"
-              v-model="studentguardian.ParentsID"
+              v-model="guardian_student.guardianGuardianID"
             />
           </div>
           <div class="col">
-            <label for="" class="form-label">Relationship</label
-            ><input type="text" class="form-control" />
+            <label for="" class="form-label">Relationship to Child</label
+            ><select name="" id="" class="form-select" v-model="guardian_student.RelationshipID" ><option disabled selected value="">Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.status}}</option></select>
           </div>
           <div class="col">
             <label for="" class="form-label">Emergency Contact</label
@@ -111,6 +111,7 @@
 
 <script>
 import axios from "axios";
+import { boolean } from "webidl-conversions";
 
 export default {
   data() {
@@ -124,22 +125,27 @@ export default {
         AddressLine2:"",
         City: "",
         Zip: "",
- 
-      
-
       },
       // value is for v-show for the guardian feild
       value : false,
-      studentguardian: {
-        StudentID: "",
-        ParentsID: "",
+      guardian_student:{
+      CanPickup:boolean,
+      studentStudentID:this.$route.params.studentID,
+      guardianGuardianID:"",
+      guardianRelationship:""
       },
+      relationships:[],
+      
       studentID: "",
-    };
+    }
   },
   created() {
-    // debugging
-    console.log(this.$route.params.id);
+    let apiURL="http://172.26.54.21:8082/api/guardianRelationship/"
+      axios.get(apiURL).then(res => {
+                this.relationships = res.data;             
+            }).catch(error => {
+                console.log(error)
+            });       
   },
 
   methods: {
