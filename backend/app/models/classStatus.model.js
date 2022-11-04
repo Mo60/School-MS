@@ -1,7 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const ClassStatus = sequelize.define("classStatus", {
     
-    
     ClassStatusID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
