@@ -41,7 +41,7 @@ module.exports = (sequelize, Sequelize) => {
         }
     },
     Capacity: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     }
   }, 
   {tableName: "class",
