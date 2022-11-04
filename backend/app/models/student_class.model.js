@@ -1,10 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
-  const Faculty_Class = sequelize.define("faculty_class", {
+  const Student_Class = sequelize.define("student_class", {
     
     _id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
+    },
+    StudentID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'student', 
+          key: 'StudentID', 
+        }
     },
     ClassID: {
       type: Sequelize.INTEGER,
@@ -13,18 +20,18 @@ module.exports = (sequelize, Sequelize) => {
           key: 'ClassID', 
         }
     },
-    FacultyID: {
+     StudentClassStatusID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'faculty', 
-          key: 'FacultyID', 
-        }
-        }
+          model: 'student_classStatus', 
+          key: 'StudentClassStatusID', 
+      }
+    }
   }, 
-  { tableName: "faculty_class",
+  { tableName: "student_class",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
-  return Faculty_Class;
+  return Student_Class;
 };

@@ -1,21 +1,20 @@
 module.exports = (sequelize, Sequelize) => {
-  const Timeblock = sequelize.define("timeblock", {
-    TimeblockID: {
+  const Medical = sequelize.define("medical", {
+    
+    MedicalID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    StartTime: {
+    Condition: {
       type: Sequelize.STRING
     },
-    EndTime: {
-      type: Sequelize.STRING
-    },
+  
   }, 
-  {tableName: "timeblock",
+  { tableName: "medical",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
-  return Timeblock;
+  return Medical;
 };

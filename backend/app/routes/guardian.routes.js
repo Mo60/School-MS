@@ -3,23 +3,23 @@ module.exports = app => {
   
     var router = require("express").Router();
   
-    // Create a new parent
+    // Create a new guaridan
     router.post("/", guardian.create);
     router.post("/bulk", guardian.createmany);
   
-    // Retrieve all parent
+    // Retrieve all guardian(s)
     router.get("/", guardian.findAll);
   
-    // Retrieve a single parent with id
+    // Retrieve a single guardian with id
     router.get("/:id", guardian.findOne);
   
-    // Update a parent with id
+    // Update a guardian with id
     router.put("/:id", guardian.update);
   
-    // Delete a parent with id
+    // Delete a guardian with id
     router.delete("/:id", guardian.delete);
   
-    // Delete all parent
+    // Delete all guardian(s)
     router.delete("/", guardian.deleteAll);
   
     app.use('/api/guardian', router);

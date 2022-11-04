@@ -125,7 +125,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    Student.findByPk(id)
+    Student.findByPk(id,{include: Guardian})
       .then(data => {
         res.send(data);
       })

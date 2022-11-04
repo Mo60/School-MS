@@ -1,6 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Faculty_Class = sequelize.define("faculty_class", {
-    
+  const Class_Room = sequelize.define("class_room", {
     _id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -13,18 +12,20 @@ module.exports = (sequelize, Sequelize) => {
           key: 'ClassID', 
         }
     },
-    FacultyID: {
+    RoomID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'faculty', 
-          key: 'FacultyID', 
+          model: 'room', 
+          key: 'RoomID', 
         }
-        }
-  }, 
-  { tableName: "faculty_class",
+    },
+  },
+                           
+                               
+  {tableName: "class_room",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
-  return Faculty_Class;
+  return Class_Room;
 };

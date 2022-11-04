@@ -6,6 +6,7 @@ module.exports = app => {
   // Retrieve all student eith view
   router.get("/view_students", Reports.view_students);   //
   router.get("/due_balance", Reports.due_balance);
+  router.get("/student_status", Reports.student_status);
   
   app.use('/api/reports', router);
 };
