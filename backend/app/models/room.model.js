@@ -1,34 +1,37 @@
 module.exports = (sequelize, Sequelize) => {
-  const Student_Medical = sequelize.define("student_medical", {
-    _id: {
+  const Room = sequelize.define("room", {
+    RoomID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    StudentID: {
+    LocationID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'student', 
-          key: 'StudentID', 
+          model: 'location', 
+          key: 'LocationID', 
         }
     },
-    MedicalID: {
-      type: Sequelize.INTEGER,
-      references: {
-          model: 'medical', 
-          key: 'MedicalID', 
-        }
-    },
-    Description: {
+    Capacity: {
       type: Sequelize.STRING
-    }
+    },
+    RoomName: {
+      type: Sequelize.STRING
+    },
+    RoomStatusID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'roomStatus', 
+          key: 'RoomStatusID', 
+        }
+    },
   }, 
                            
                                
-  {tableName: "student_medical",
+  {tableName: "room",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
-  return Student_Medical;
+  return Room;
 };

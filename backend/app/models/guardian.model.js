@@ -33,13 +33,13 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     City: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     State: {
       type: Sequelize.STRING
     },
     Zip: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     Notes: {
       type: Sequelize.STRING
