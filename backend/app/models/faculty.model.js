@@ -8,6 +8,9 @@ module.exports = (sequelize, Sequelize) => {
     FirstName: {
       type: Sequelize.STRING
     },
+    MiddleName: {
+      type: Sequelize.STRING
+    },
     LastName: {
       type: Sequelize.STRING
     },
