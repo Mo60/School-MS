@@ -37,7 +37,7 @@ exports.deleteAll = (req, res) => {
 exports.create = (req, res) => {
   
     // Create a guardian
-    const Day = {
+    const day = {
       DayID: req.body.DayID,
       WeekDay: req.body.WeekDay
     };
