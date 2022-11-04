@@ -1,7 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Student = sequelize.define("student", {
     
-    
     StudentID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -10,13 +9,19 @@ module.exports = (sequelize, Sequelize) => {
     FirstName: {
       type: Sequelize.STRING
     },
+    MiddleName: {
+      type: Sequelize.STRING
+    },
     LastName: {
       type: Sequelize.STRING
     },
     DOB: {
       type: Sequelize.STRING
     },
-    Street: {
+    AddressLine1: {
+      type: Sequelize.STRING
+    },
+    AddressLine2: {
       type: Sequelize.STRING
     },
     City: {
