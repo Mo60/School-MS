@@ -27,5 +27,5 @@ module.exports = (sequelize, Sequelize) => {
   createdAt: false,
   updatedAt: false,});
 
-  return Facukty_Class;
+  return Faculty_Class;
 };
