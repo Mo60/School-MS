@@ -39,7 +39,7 @@ exports.create = (req, res) => {
     // Create a guardian
     const guardianRelationship = {
       RelationshipID: req.body.RelationshipID,
-      status: req.body.status
+      Relationship: req.body.Relationship
     };
   
     // Save guardian in the database
