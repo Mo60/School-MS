@@ -1,7 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Course = sequelize.define("course", {
     
-    
     CourseID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
