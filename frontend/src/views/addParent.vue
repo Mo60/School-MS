@@ -34,10 +34,23 @@
       <fieldset class="form-control mt-5">
         <legend>Address</legend>
         <div class="row mb-4">
+        <div class="col">
+            <label class="form-label">Address Line 1</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="guardian.AddressLine1"
+              />
+        </div >
+          
           <div class="col">
-            <label class="form-label">Street</label>
-            <input type="text" class="form-control" v-model="guardian.Street" />
-          </div>
+            <label class="form-label">Address Line 2</label>
+            <input
+              type="text"
+              class="form-control"
+              v-model="guardian.AddressLine2"
+            />
+            </div>
           <div class="col">
             <label for="" class="form-label">City</label><input type="text" class="form-control" v-model="guardian.City" />
           </div>
@@ -45,6 +58,17 @@
             <label for="" class="form-label">Zip</label><input type="number" class="form-control" v-model="guardian.Zip" />
           </div>
         </div>
+        <div class="row">
+        <div class="col">
+            <div class="form-check">
+    <input class="form-check-input" type="checkbox" v-model="sameAddress" id="defaultCheck1">
+    <label class="form-check-label" for="defaultCheck1">
+      Same as child's 
+    </label>
+  </div>
+        </div >
+        </div>
+
       </fieldset>
 
       <fieldset class="form-control mt-5">
@@ -90,7 +114,8 @@ export default {
         CellNumber:"",
         PhoneNumber: "",
         Email: "",
-        Street: "",
+        AddressLine1: "",
+        AddressLine2:"",
         City: "",
         Zip: "",
         Notes: "",
@@ -103,9 +128,9 @@ export default {
       guardianRelationship:""
       },
       relationships:[],
-      
+      student:[],
+      sameAddress:false
     }
-  
   },
   methods: {
     submitForm() {
@@ -120,7 +145,6 @@ export default {
         axios.post(apiURL2,this.guardian_student)
         this.$router.push(`/parents`)
        console.log("success")
-    
       }).catch(error => {
         console.log(error)
        
@@ -128,13 +152,35 @@ export default {
 
      }
     },
+    watch:{
+      sameAddress(value){
+      if(value==true){
+this.guardian.AddressLine1=this.student.AddressLine1
+this.guardian.AddressLine2=this.student.AddressLine2
+this.guardian.City=this.student.City
+this.guardian.Zip=this.student.Zip
+      }
+      else{
+        this.guardian.AddressLine1=""
+this.guardian.AddressLine2=""
+this.guardian.City=""
+this.guardian.Zip=""
+      }
+      }
+    },
     created(){
   
       let apiURL="http://172.26.54.21:8082/api/guardianRelationship/"
       axios.get(apiURL).then(res => {
                 this.relationships = res.data;
                 
-            }).catch(error => {
+            }).then(res=>{
+                let apiURL2=`http://172.26.54.21:8082/api/student/${this.guardian_student.studentStudentID}`
+                axios.get(apiURL2).then(res=>{
+                  this.student=res.data
+                })
+            })
+            .catch(error => {
                 console.log(error)
             });
             
