@@ -5,9 +5,6 @@ module.exports = (sequelize, Sequelize) => {
       autoIncrement: true,
       primaryKey: true
     },
-    Description: {
-      type: Sequelize.STRING
-    },
     StudentID: {
       type: Sequelize.INTEGER,
       references: {
@@ -21,8 +18,11 @@ module.exports = (sequelize, Sequelize) => {
           model: 'medical', 
           key: 'MedicalID', 
         }
-        }
     },
+    Description: {
+      type: Sequelize.STRING
+    }
+  }, 
                            
                                
   {tableName: "student_medical",
