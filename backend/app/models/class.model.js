@@ -5,36 +5,44 @@ module.exports = (sequelize, Sequelize) => {
       autoIncrement: true,
       primaryKey: true
     },
-    TeacherID: {
-      type: Sequelize.INTEGER
+    CourseID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'course', 
+          key: 'CourseID', 
+        }
     },
-    ClassDay: {
+    SemesterID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'semester', 
+          key: 'SemesterID', 
+        }
+    },
+    TimeBlockID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'timeblock', 
+          key: 'TimeBlockID', 
+        }
+    },
+    DayID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'day', 
+          key: 'DayID', 
+        }
+    },
+    ClassStatusID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'classStatus', 
+          key: 'ClassStatusID', 
+        }
+    },
+    Capacity: {
       type: Sequelize.STRING
-    },
-    ClassStartDate: {
-      type: Sequelize.DATE
-    },
-    ClassEndDate: {
-      type: Sequelize.DATE
-    },
-    ClassStartTime: {
-      type: Sequelize.STRING
-    },
-    ClassEndTime: {
-      type: Sequelize.STRING
-    },
-    NumStudents: {
-      type: Sequelize.INTEGER
-    },
-    MaxCapacity: {
-      type: Sequelize.INTEGER
-    },
-    Notes: {
-      type: Sequelize.STRING
-      },
-  Lesson: {
-      type: Sequelize.STRING
-      }
+    }
   }, 
   {tableName: "class",
   timestamps: false,
