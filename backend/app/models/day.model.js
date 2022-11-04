@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     }, 
   }, 
-  {tableName: "days",
+  {tableName: "day",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
