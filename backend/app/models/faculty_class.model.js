@@ -9,18 +9,17 @@ module.exports = (sequelize, Sequelize) => {
     ClassID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'ClassID', 
-          key: 'class', 
+          model: 'class', 
+          key: 'ClassID', 
         }
     },
     FacultyID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'FacultyID', 
-          key: 'faculty', 
+          model: 'faculty', 
+          key: 'FacultyID', 
         }
         }
-    },
   }, 
   { tableName: "faculty_class",
   timestamps: false,

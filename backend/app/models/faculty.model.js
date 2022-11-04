@@ -29,8 +29,8 @@ module.exports = (sequelize, Sequelize) => {
     FacultyStatusID: {
       type: Sequelize.INTEGER,
       references: {
-          model: 'FacultyStatusID', 
-          key: 'facultyStatus', 
+          model: 'facultyStatus', 
+          key: 'FacultyStatusID', 
         }
     },
   },

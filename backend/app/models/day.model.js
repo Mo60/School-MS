@@ -7,10 +7,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     WeekDay: {
       type: Sequelize.STRING
-      }
-    }, 
+      } 
   }, 
-  {tableName: "days",
+  {tableName: "day",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
