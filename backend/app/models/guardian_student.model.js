@@ -1,14 +1,24 @@
 module.exports = (sequelize, Sequelize) => {
-  const Student = sequelize.define("guardian_student", {
-    
+  const Guardian_student = sequelize.define("guardian_student", {
     
     _id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    CanPickup: {
-      type: Sequelize.BOOLEAN
+    GuardianID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'guardian', 
+          key: 'GuardianID', 
+        }
+    },
+    StudentID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'student', 
+          key: 'StudentID', 
+        }
     },
     RelationshipID: {
       type: Sequelize.INTEGER,
@@ -16,6 +26,9 @@ module.exports = (sequelize, Sequelize) => {
           model: 'guardianRelationship', 
           key: 'RelationshipID', 
         }
+    },
+    CanPickup: {
+      type: Sequelize.BOOLEAN
     }
   }, 
   { tableName: "guardian_student",
@@ -23,5 +36,5 @@ module.exports = (sequelize, Sequelize) => {
   createdAt: false,
   updatedAt: false,});
 
-  return Student;
+  return Guardian_student;
 };
