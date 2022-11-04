@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
       autoIncrement: true,
       primaryKey: true
     },
-    status: {
+    Relationship: {
       type: Sequelize.STRING
     }
   }, 
