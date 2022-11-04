@@ -8,6 +8,9 @@ module.exports = (sequelize, Sequelize) => {
     FirstName: {
       type: Sequelize.STRING
     },
+    MiddleName: {
+      type: Sequelize.STRING
+    },
     LastName: {
       type: Sequelize.STRING
     },
@@ -23,14 +26,17 @@ module.exports = (sequelize, Sequelize) => {
     Email: {
       type: Sequelize.STRING
     },
-    Street: {
+    AddressLine1: {
+      type: Sequelize.STRING
+    },
+    AddressLine2: {
       type: Sequelize.STRING
     },
     City: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     State: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     Zip: {
       type: Sequelize.STRING
