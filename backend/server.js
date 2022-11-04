@@ -9,7 +9,7 @@ const app = express();
 
 const db = require("./app/models");
 db.sequelize.sync(
- {force: true}
+ //{force: true}
   );
 
 //In development, you may need to drop existing tables
