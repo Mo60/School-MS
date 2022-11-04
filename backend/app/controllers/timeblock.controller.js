@@ -44,7 +44,7 @@ exports.create = (req, res) => {
     };
   
     // Save guardian in the database
-    Timeblock.create(guardianStatus)
+    Timeblock.create(timeblock)
     .then(data => {
       res.send(data);
     })
