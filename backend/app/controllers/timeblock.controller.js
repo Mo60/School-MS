@@ -60,10 +60,10 @@ exports.create = (req, res) => {
 // bulk
  exports.createmany = (req, res) => {
     // Create a guardian
-    const guardians = req.body;
+    const timeblocks = req.body;
   
     // Save guardian in the database
-    Timeblock.bulkCreate(guardians)
+    Timeblock.bulkCreate(timeblocks)
       .then(data => {
         res.send(data);
       })
