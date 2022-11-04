@@ -1,8 +1,8 @@
 <template>
       <h1 class="mt-5">Parents and Guardians</h1>
-<div class="flex-wrapper" v-if="parent.length == 0 && loaded">
+<div class="flex-wrapper" v-if="parent.length == 0 && loaded" >
 
-    <div class="empty-arr" >
+    <div class="empty-arr" v-cloak >
         <p>No Parents or Guardians Found</p>
         <a class="btn mt-3"><router-link :to="{name:'addparent'}">Add Parent</router-link></a>
       </div>
@@ -28,9 +28,11 @@ loaded:false
       .get(apiURL)
       .then((res) => {
         this.parent = res.data;
+       
       })
       .catch((error) => {
         console.log(error);
+     
       });
       this.loaded=true;
   },

@@ -60,28 +60,27 @@
        
       </fieldset>
        <!-- this button show or hide guardian feild -->
-       <button class="btn" @click="value = !value">{{value ? 'Hide guardian field' : 'Show guardian field'}}</button>
+       <button class="btn mt-4" @click="value = !value">{{value ? 'Hide guardian field' : 'Show guardian field'}}</button>
       <!-- v-show show the element if true -->
-      <fieldset v-show= value  class="form-control mt-5">
+      <fieldset v-show= value  class="form-control mt-4">
         <legend>
           Parent/Guardian
           <span>(Enter Guardian ID or Click "Register Parent" to register
             parent)</span>
         </legend>
         <div class="row mt-5 mb-4">
-          <div class="col-sm-2">
-            <label for="" class="form-label">Guardian ID</label
-            ><input
-              type="text"
-              class="form-control"
-              v-model="guardian_student.guardianGuardianID"
-            />
+          <div class="col">
+            <label for="" class="form-label">Guardian ID</label>
+            <select name="" class="form-select" v-model="guardian_student.guardianGuardianID">
+              <option value="" disabled selected>Select an Option</option>
+              <option :value="g.GuardianID" class="form-select" v-for="g in guardian" :key="g.GuardianID">{{g.FirstName}} {{g.LastName}} - {{g.GuardianID}}</option>
+            </select>
           </div>
           <div class="col">
             <label for="" class="form-label">Relationship to Child</label
-            ><select name="" id="" class="form-select" v-model="guardian_student.RelationshipID" ><option disabled selected value="">Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.status}}</option></select>
+            ><select name="" class="form-select" v-model="guardian_student.guardianRelationship" ><option selected disabled>Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.status}}</option></select>
           </div>
-          <div class="col">
+          <div class="col-sm">
             <label for="" class="form-label">Emergency Contact</label
             ><select class="form-select">
               <option selected disabled>Select an Option</option>
@@ -89,7 +88,7 @@
               <option value="false">No</option>
             </select>
           </div>
-          <div class="col">
+          <div class="col-sm">
             <label for="" class="form-label">Can Pick Up</label
             ><select class="form-select">
               <option selected disabled>Select an Option</option>
@@ -135,19 +134,28 @@ export default {
       guardianRelationship:""
       },
       relationships:[],
-      
+      guardian:"",
       studentID: "",
     }
+
+
   },
   created() {
     let apiURL="http://172.26.54.21:8082/api/guardianRelationship/"
       axios.get(apiURL).then(res => {
-                this.relationships = res.data;             
+                this.relationships = res.data;        
+                  
+  let apiURL2="http://172.26.54.21:8082/api/guardian/"
+      axios.get(apiURL2).then(res2 => {
+                this.guardian = res2.data;             
+            }).catch(error => {
+                console.log(error)
+            });        
             }).catch(error => {
                 console.log(error)
             });       
+    
   },
-
   methods: {
     submitForm() {
       let apiURL = `http://172.26.54.21:8082/api/student/`;
@@ -156,10 +164,10 @@ export default {
         console.log(error);
       });
 
-      if (this.studentguardian.ParentsID != "") {
+      if (this.guardian_student.guardianGuardianID != "") {
         let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/`;
         axios
-          .post(apiURL2, this.studentguardian)
+          .post(apiURL2, this.guardian_student)
           .then(() => {
             this.studentID = res.data.StudentID;
             console.log(this.studentID)

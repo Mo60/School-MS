@@ -3,7 +3,7 @@
         
           <h1 class="mt-5">Add Class</h1>
           <div class="wrapper3 ">
-                      <form @submit.prevent="handleUpdateForm" class="mb-5 pb-5">
+                      <form @submit.prevent="handleUpdateForm" class="mb-5">
             <fieldset class="form-control">
 
                <div class="row mb-4">
