@@ -123,8 +123,8 @@ export default {
       },
       guardian_student:{
       CanPickup:boolean,
-      studentStudentID:this.$route.params.studentID,
-      guardianGuardianID:"",
+      StudentID:this.$route.params.studentID,
+      GuardianID:"",
       guardianRelationship:""
       },
       relationships:[],
@@ -137,9 +137,9 @@ export default {
       let apiURL = "http://172.26.54.21:8082/api/guardian/"
 
       axios.post(apiURL, this.guardian).then((res) => {
-       this.guardian_student.guardianGuardianID = res.data.GuardianID
-      // guardian.guardian_student.guardianGuardianID = 5;//res.data.GuardianID
-       console.log(this.guardian_student.guardianGuardianID);
+       this.guardian_student.GuardianID = res.data.GuardianID
+      // guardian.guardian_student.GuardianID = 5;//res.data.GuardianID
+       console.log(this.guardian_student.GuardianID);
        console.log(res);
         let apiURL2="http://172.26.54.21:8082/api/guardian_student/"
         axios.post(apiURL2,this.guardian_student)
@@ -175,7 +175,7 @@ this.guardian.Zip=""
                 this.relationships = res.data;
                 
             }).then(res=>{
-                let apiURL2=`http://172.26.54.21:8082/api/student/${this.guardian_student.studentStudentID}`
+                let apiURL2=`http://172.26.54.21:8082/api/student/${this.guardian_student.StudentID}`
                 axios.get(apiURL2).then(res=>{
                   this.student=res.data
                 })

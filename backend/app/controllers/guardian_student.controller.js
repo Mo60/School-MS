@@ -38,8 +38,8 @@ exports.create = (req, res) => {
   
     // Create a guardian
     const guardian_student = {
-      guardianGuardianID: req.body.guardianGuardianID,
-      studentStudentID: req.body.studentStudentID,
+      GuardianID: req.body.GuardianID,
+      StudentID: req.body.StudentID,
       RelationshipID: req.body.RelationshipID,
       CanPickup: req.body.CanPickup
     };

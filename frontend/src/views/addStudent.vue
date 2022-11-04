@@ -71,7 +71,7 @@
         <div class="row mt-5 mb-4">
           <div class="col">
             <label for="" class="form-label">Guardian ID</label>
-            <select name="" class="form-select" v-model="guardian_student.guardianGuardianID">
+            <select name="" class="form-select" v-model="guardian_student.GuardianID">
               <option value="" disabled selected>Select an Option</option>
               <option :value="g.GuardianID" class="form-select" v-for="g in guardian" :key="g.GuardianID">{{g.FirstName}} {{g.LastName}} - {{g.GuardianID}}</option>
             </select>
@@ -129,8 +129,8 @@ export default {
       value : false,
       guardian_student:{
       CanPickup: false,
-      studentStudentID: "",
-      guardianGuardianID:"",
+      StudentID: "",
+      GuardianID:"",
       guardianRelationship:""
       },
       relationships:[],
@@ -162,8 +162,8 @@ export default {
 
       axios.post(apiURL, this.student).then((res) => {
        // if guardian selected post information in the guardian_STUDENT TABLE 
-        if (this.guardian_student.guardianGuardianID != "") {
-          this.guardian_student.studentStudentID = res.data.StudentID ;
+        if (this.guardian_student.GuardianID != "") {
+          this.guardian_student.StudentID = res.data.StudentID ;
         let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/`;
         axios
           .post(apiURL2, this.guardian_student)

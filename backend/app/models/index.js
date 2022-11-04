@@ -66,15 +66,19 @@ db.roomStatus = require("./roomStatus.model")(sequelize, Sequelize);
 
 //guardian - student
 // relationships
-db.student.belongsToMany(db.guardian, { through: "guardian_student" });
-db.guardian.belongsToMany(db.student,{through: "guardian_student"});
-db.student.hasMany(db.guardian_student);
-db.guardian_student.belongsTo(db.student);
-db.guardian.hasMany(db.guardian_student);
-db.guardian_student.belongsTo(db.guardian);
+db.student.belongsToMany(db.guardian, { through: "guardian_student", foreignKey: 'StudentID', otherKey: 'GuardianID' });
+db.guardian.belongsToMany(db.student,{through: "guardian_student", foreignKey: 'GuardianID', otherKey: 'StudentID' });
+// db.student.hasMany(db.guardian_student);
+// db.guardian_student.belongsTo(db.student);
+// db.guardian.hasMany(db.guardian_student);
+// db.guardian_student.belongsTo(db.guardian);
 
-//
-
-console.log("this is in index")
+//student_class
+db.student.belongsToMany(db.class, { through: "student_class", foreignKey: 'StudentID', otherKey: 'ClassID' });
+db.class.belongsToMany(db.student,{through: "student_class", foreignKey: 'ClassID', otherKey: 'StudentID' });
+// db.student.hasMany(db.student_class);
+// db.student_class.belongsTo(db.student, {foreignKey: 'StudentID' });
+// db.class.hasMany(db.student_class);
+// db.student_class.belongsTo(db.class, {foreignKey: 'ClassID' });
 
 module.exports = db;
