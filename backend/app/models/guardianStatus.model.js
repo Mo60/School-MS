@@ -1,13 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
   const GuardianStatus = sequelize.define("guardianStatus", {
     
-    
     GuardianStatusID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    status: {
+    Status: {
       type: Sequelize.STRING
     }
   }, 
