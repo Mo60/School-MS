@@ -43,7 +43,7 @@ exports.create = (req, res) => {
     };
   
     // Save guardian in the database
-    Day.create(guardianStatus)
+    Day.create(day)
     .then(data => {
       res.send(data);
     })
