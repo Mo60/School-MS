@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true
     },
     StartTime: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     EndTime: {
       type: Sequelize.STRING
