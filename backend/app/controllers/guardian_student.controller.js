@@ -41,8 +41,7 @@ exports.create = (req, res) => {
       guardianGuardianID: req.body.guardianGuardianID,
       studentStudentID: req.body.studentStudentID,
       RelationshipID: req.body.RelationshipID,
-      CanPickup: req.body.CanPickup,
-      IsEmergency: req.body.IsEmergency
+      CanPickup: req.body.CanPickup
     };
   
     // Save guardian in the database
