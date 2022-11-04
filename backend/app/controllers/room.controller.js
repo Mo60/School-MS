@@ -1,6 +1,5 @@
 const db = require("../models");
-const Guardian = db.guardian;
-const Student = db.student;
+const Room = db.room;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new guardian
@@ -38,63 +37,35 @@ exports.deleteAll = (req, res) => {
 exports.create = (req, res) => {
   
     // Create a guardian
-    const guardian = {
-      GuardianID: req.body.GuardianID,
-      FirstName: req.body.FirstName,
-      MiddleName: req.body.MiddleName,
-      LastName: req.body.LastName,
-      DOB: req.body.DOB,
-      CellNumber: req.body.CellNumber,
-      PhoneNumber: req.body.PhoneNumber,
-      Email: req.body.Email,
-      AddressLine1: req.body.AddressLine1,
-      AddressLine2: req.body.AddressLine2,
-      City: req.body.City,
-      State: req.body.State,
-      Zip: req.body.Zip,
-      Notes: req.body.Notes,
-      IsEmergency: req.body.IsEmergency,
-      GuardianStatusID: req.body.GuardianStatusID,
-      students: req.body.students
+    const room = {
+      RoomID: req.body.RoomID,
+      LocationID: req.body.LocationID,
+      Capacity: req.body.Capacity,
+      RoomName: req.body.RoomName,
+      RoomStatusID: req.body.RoomStatusID
     };
   
     // Save guardian in the database
- 
-    if (!guardian.students) {
-       console.log("Array is empty!") ;
-    Guardian.create(guardian)
+    Room.create(room)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the guardian."
+          err.message || "Some error occurred while creating the guardianRelationship."
       });
     });
-  }
-   else { 
-    console.log(guardian.students) ;
-    Guardian.create(guardian,{include: Student})
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the guardian."
-        });
-      });
     }
 
-  };
+  ;
 // bulk
  exports.createmany = (req, res) => {
     // Create a guardian
-    const guardians = req.body;
+    const rooms = req.body;
   
     // Save guardian in the database
-    Guardian.bulkCreate(guardians)
+    Room.bulkCreate(rooms)
       .then(data => {
         res.send(data);
       })
@@ -107,9 +78,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const GuardianID = req.query.GuardianID;
-
-    Guardian.findAll({ include: Student })
+    Room.findAll()
       .then(data => {
         res.send(data);
       })
@@ -124,13 +93,13 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    Guardian.findByPk(id,{include: Student})
+    Room.findByPk(id)
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving guardian with id=" + id
+          message: "Error retrieving Guardian_student with id=" + id
         });
       });
   };
@@ -138,8 +107,8 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    Guardian.update(req.body, {
-      where: { GuardianID: id }
+    Room.update(req.body, {
+      where: { _id: id }
     })
       .then(num => {
         if (num == 1) {
@@ -162,8 +131,8 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    Guardian.destroy({
-      where: { GuardianID: id }
+    Room.destroy({
+      where: { _id: id }
     })
       .then(num => {
         if (num == 1) {
@@ -185,7 +154,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    Guardian.destroy({
+    Room.destroy({
       where: {},
       truncate: false
     })
@@ -201,7 +170,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    Guardian.findAll({ where: { published: true } })
+    Room.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })

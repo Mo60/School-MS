@@ -39,7 +39,7 @@ exports.create = (req, res) => {
     // Create a guardian
     const guardianRelationship = {
       RelationshipID: req.body.RelationshipID,
-      status: req.body.status
+      Relationship: req.body.Relationship
     };
   
     // Save guardian in the database
@@ -59,10 +59,10 @@ exports.create = (req, res) => {
 // bulk
  exports.createmany = (req, res) => {
     // Create a guardian
-    const guardians = req.body;
+    const guardianRelationships = req.body;
   
     // Save guardian in the database
-    GuardianRelationship.bulkCreate(guardians)
+    GuardianRelationship.bulkCreate(guardianRelationships)
       .then(data => {
         res.send(data);
       })
