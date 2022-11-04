@@ -37,7 +37,7 @@ exports.deleteAll = (req, res) => {
 exports.create = (req, res) => {
   
     // Create a guardian
-    const GuardianStatus = {
+    const guardianStatus = {
       GuardianStatusID: req.body.GuardianStatusID,
       Status: req.body.Status
     };
