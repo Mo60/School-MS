@@ -37,7 +37,7 @@ exports.deleteAll = (req, res) => {
 exports.create = (req, res) => {
   
     // Create a guardian
-    const Timeblock = {
+    const timeblock = {
       TimeblockID: req.body.TimeblockID,
       StartTime: req.body.StartTime,
       EndTime: req.body.EndTime
