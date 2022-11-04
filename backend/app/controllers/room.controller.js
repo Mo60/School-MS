@@ -1,5 +1,5 @@
 const db = require("../models");
-const GuardianStatus = db.guardianStatus;
+const Room = db.room;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new guardian
@@ -37,13 +37,16 @@ exports.deleteAll = (req, res) => {
 exports.create = (req, res) => {
   
     // Create a guardian
-    const guardianStatus = {
-      GuardianStatusID: req.body.GuardianStatusID,
-      Status: req.body.Status
+    const room = {
+      RoomID: req.body.RoomID,
+      LocationID: req.body.LocationID,
+      Capacity: req.body.Capacity,
+      RoomName: req.body.RoomName,
+      RoomStatusID: req.body.RoomStatusID
     };
   
     // Save guardian in the database
-    GuardianStatus.create(guardianStatus)
+    Room.create(room)
     .then(data => {
       res.send(data);
     })
@@ -59,10 +62,10 @@ exports.create = (req, res) => {
 // bulk
  exports.createmany = (req, res) => {
     // Create a guardian
-    const guardianStatuses = req.body;
+    const rooms = req.body;
   
     // Save guardian in the database
-    GuardianStatus.bulkCreate(guardianStatuses)
+    Room.bulkCreate(rooms)
       .then(data => {
         res.send(data);
       })
@@ -75,7 +78,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    GuardianStatus.findAll()
+    Room.findAll()
       .then(data => {
         res.send(data);
       })
@@ -90,7 +93,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    GuardianStatus.findByPk(id)
+    Room.findByPk(id)
       .then(data => {
         res.send(data);
       })
@@ -104,7 +107,7 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    GuardianStatus.update(req.body, {
+    Room.update(req.body, {
       where: { _id: id }
     })
       .then(num => {
@@ -128,7 +131,7 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    GuardianStatus.destroy({
+    Room.destroy({
       where: { _id: id }
     })
       .then(num => {
@@ -151,7 +154,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    GuardianStatus.destroy({
+    Room.destroy({
       where: {},
       truncate: false
     })
@@ -167,7 +170,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    GuardianStatus.findAll({ where: { published: true } })
+    Room.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })

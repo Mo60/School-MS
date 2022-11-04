@@ -41,8 +41,7 @@ exports.create = (req, res) => {
       guardianGuardianID: req.body.guardianGuardianID,
       studentStudentID: req.body.studentStudentID,
       RelationshipID: req.body.RelationshipID,
-      CanPickup: req.body.CanPickup,
-      IsEmergency: req.body.IsEmergency
+      CanPickup: req.body.CanPickup
     };
   
     // Save guardian in the database
@@ -62,10 +61,10 @@ exports.create = (req, res) => {
 // bulk
  exports.createmany = (req, res) => {
     // Create a guardian
-    const guardians = req.body;
+    const guardian_students = req.body;
   
     // Save guardian in the database
-    Guardian_student.bulkCreate(guardians)
+    Guardian_student.bulkCreate(guardian_students)
       .then(data => {
         res.send(data);
       })

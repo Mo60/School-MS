@@ -59,10 +59,10 @@ exports.create = (req, res) => {
 // bulk
  exports.createmany = (req, res) => {
     // Create a guardian
-    const guardians = req.body;
+    const guardianRelationships = req.body;
   
     // Save guardian in the database
-    GuardianRelationship.bulkCreate(guardians)
+    GuardianRelationship.bulkCreate(guardianRelationships)
       .then(data => {
         res.send(data);
       })

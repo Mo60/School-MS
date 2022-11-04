@@ -1,5 +1,5 @@
 const db = require("../models");
-const GuardianStatus = db.guardianStatus;
+const Semester = db.semester;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new guardian
@@ -37,13 +37,13 @@ exports.deleteAll = (req, res) => {
 exports.create = (req, res) => {
   
     // Create a guardian
-    const guardianStatus = {
-      GuardianStatusID: req.body.GuardianStatusID,
-      Status: req.body.Status
+    const semester = {
+      SemesterID: req.body.SemesterID,
+      Semester: req.body.Semester
     };
   
     // Save guardian in the database
-    GuardianStatus.create(guardianStatus)
+    Semester.create(semester)
     .then(data => {
       res.send(data);
     })
@@ -59,10 +59,10 @@ exports.create = (req, res) => {
 // bulk
  exports.createmany = (req, res) => {
     // Create a guardian
-    const guardianStatuses = req.body;
+    const semesters = req.body;
   
     // Save guardian in the database
-    GuardianStatus.bulkCreate(guardianStatuses)
+    Semester.bulkCreate(semesters)
       .then(data => {
         res.send(data);
       })
@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    GuardianStatus.findAll()
+    Semester.findAll()
       .then(data => {
         res.send(data);
       })
@@ -90,7 +90,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    GuardianStatus.findByPk(id)
+    Semester.findByPk(id)
       .then(data => {
         res.send(data);
       })
@@ -104,7 +104,7 @@ exports.create = (req, res) => {
   exports.update = (req, res) => {
     const id = req.params.id;
   
-    GuardianStatus.update(req.body, {
+    Semester.update(req.body, {
       where: { _id: id }
     })
       .then(num => {
@@ -128,7 +128,7 @@ exports.create = (req, res) => {
   exports.delete = (req, res) => {
     const id = req.params.id;
   
-    GuardianStatus.destroy({
+    Semester.destroy({
       where: { _id: id }
     })
       .then(num => {
@@ -151,7 +151,7 @@ exports.create = (req, res) => {
 
   
   exports.deleteAll = (req, res) => {
-    GuardianStatus.destroy({
+    Semester.destroy({
       where: {},
       truncate: false
     })
@@ -167,7 +167,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAllPublished = (req, res) => {
-    GuardianStatus.findAll({ where: { published: true } })
+    Semester.findAll({ where: { published: true } })
       .then(data => {
         res.send(data);
       })

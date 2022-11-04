@@ -53,6 +53,7 @@ exports.create = (req, res) => {
       State: req.body.State,
       Zip: req.body.Zip,
       Notes: req.body.Notes,
+      IsEmergency: req.body.IsEmergency,
       GuardianStatusID: req.body.GuardianStatusID,
       students: req.body.students
     };

@@ -50,10 +50,10 @@ exports.create = (req, res) => {
     const _class = {
       ClassID: req.body.ClassID,
       CourseID: req.body.CourseID,
+      SemesterID: req.body.SemesterID,
       TimeBlockID: req.body.TimeBlockID,
       DayID: req.body.DayID,
       ClassStatusID: req.body.ClassStatusID,
-      ClassTime: req.body.ClassTime,
       Capacity: req.body.Capacity
     };
   
