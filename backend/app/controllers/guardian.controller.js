@@ -123,7 +123,7 @@ exports.create = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    Guardian.findByPk(id)
+    Guardian.findByPk(id,{include: Student})
       .then(data => {
         res.send(data);
       })
