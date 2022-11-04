@@ -8,7 +8,32 @@
       </div>
 
     </div> 
-<div class="cont" v-else><parentsCard :parents="p" :fName="p.guardian_first_name" :lName="p.guardian_last_name" :id="p.GuardianID" :phone="p.PhoneNumber" :sFName="p.student_first_name" :sLName="p.student_last_name" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div >
+<!-- <div class="cont" v-else><parentsCard :parents="p" :fName="p.guardian_first_name" :lName="p.guardian_last_name" :id="p.GuardianID" :phone="p.PhoneNumber" :sFName="p.student_first_name" :sLName="p.student_last_name" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div > -->
+<div class="wrapper" v-else>
+    <table class="table table-striped mt-5">
+        <thead class="table">
+          <tr>
+           <th>ID</th>
+           <th>First Name</th>
+           <th>Last Name</th>
+           <th>Phone</th>
+           <th>Cell</th>
+           <th>Email</th>
+          </tr>
+        </thead>  
+        <tbody v-for="p in parent" :key=p.GuardianID>
+          
+           <tr><td>{{p.GuardianID}}</td>
+           <td>{{p.guardian_first_name}}</td>
+           <td>{{p.guardian_last_name}}</td>
+           <td>{{p.PhoneNumber}}</td>
+           <td>{{p.Cell}}</td>
+           <td><a v-bind:href="`mailto:${p.Email}`">{{p.Email}}</a></td>
+        </tr>
+      </tbody>
+      
+    </table>  
+</div> 
 </template>       
         
 <script>
