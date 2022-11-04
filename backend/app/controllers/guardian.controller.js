@@ -41,18 +41,18 @@ exports.create = (req, res) => {
     const guardian = {
       GuardianID: req.body.GuardianID,
       FirstName: req.body.FirstName,
+      MiddleName: req.body.MiddleName,
       LastName: req.body.LastName,
       DOB: req.body.DOB,
       CellNumber: req.body.CellNumber,
       PhoneNumber: req.body.PhoneNumber,
       Email: req.body.Email,
-      Street: req.body.Street,
+      AddressLine1: req.body.AddressLine1,
+      AddressLine2: req.body.AddressLine2,
       City: req.body.City,
       State: req.body.State,
       Zip: req.body.Zip,
-      CanPickup: req.body.CanPickup,
-      IsEmergency: req.body.IsEmergency,
-      RelationshipID: req.body.RelationshipID,
+      Notes: req.body.Notes,
       GuardianStatusID: req.body.GuardianStatusID,
       students: req.body.students
     };
