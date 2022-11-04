@@ -53,9 +53,11 @@ exports.create = (req, res) => {
     const student = {
       StudentID: req.body.StudentID,
       FirstName: req.body.FirstName,
+      MiddleName: req.body.MiddleName,
       LastName: req.body.LastName,
       DOB: req.body.DOB,
-      Street: req.body.Street,
+      AddressLine1: req.body.AddressLine1,
+      AddressLine2: req.body.AddressLine2,
       City: req.body.City,
       State: req.body.State,
       Zip: req.body.Zip,
