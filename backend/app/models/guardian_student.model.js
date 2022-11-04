@@ -29,6 +29,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     CanPickup: {
       type: Sequelize.BOOLEAN
+    },
+    IsEmergency: {
+      type: Sequelize.BOOLEAN
     }
   }, 
   { tableName: "guardian_student",

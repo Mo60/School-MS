@@ -44,9 +44,6 @@ module.exports = (sequelize, Sequelize) => {
     Notes: {
       type: Sequelize.STRING
     },
-    IsEmergency: {
-      type: Sequelize.BOOLEAN
-    },
     GuardianStatusID: {
       type: Sequelize.INTEGER,
       references: {
