@@ -128,8 +128,8 @@ export default {
       // value is for v-show for the guardian feild
       value : false,
       guardian_student:{
-      CanPickup:boolean,
-      studentStudentID:this.$route.params.studentID,
+      CanPickup: false,
+      studentStudentID: "",
       guardianGuardianID:"",
       guardianRelationship:""
       },
@@ -160,23 +160,27 @@ export default {
     submitForm() {
       let apiURL = `http://172.26.54.21:8082/api/student/`;
 
-      axios.post(apiURL, this.student).catch((error) => {
-        console.log(error);
-      });
-
-      if (this.guardian_student.guardianGuardianID != "") {
+      axios.post(apiURL, this.student).then((res) => {
+       // if guardian selected post information in the guardian_STUDENT TABLE 
+        if (this.guardian_student.guardianGuardianID != "") {
+          this.guardian_student.studentStudentID = res.data.StudentID ;
         let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/`;
         axios
           .post(apiURL2, this.guardian_student)
-          .then(() => {
-            this.studentID = res.data.StudentID;
-            console.log(this.studentID)
-          })
+
           .catch((error) => {
             console.log(error);
           });
       }
       this.$router.push("/");
+
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      
+      
     },
     register() {
       let apiURL = `http://172.26.54.21:8082/api/student/`;
