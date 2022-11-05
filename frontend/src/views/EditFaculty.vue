@@ -4,31 +4,41 @@
           <h3 class="text-center">Update Faculty</h3>
                       <form @submit.prevent="handleUpdateForm" class="mb-5 pb-5">
                 <div class="form-group">
-                    <label>Teacher ID</label>
-                    <input type="number" class="form-control" v-model="teacher.teacherID" required>
+                    <label>Faculty ID</label>
+                    <input type="number" class="form-control" v-model="faculty.FacultyID" required>
                 </div>
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control" v-model="teacher.firstName" required>
+                    <input type="text" class="form-control" v-model="faculty.FirstName" required>
                 </div>
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" v-model="teacher.lastName" required>
+                    <input type="text" class="form-control" v-model="faculty.LastName" required>
                 </div>
                 <div class="form-group">
-                    <label>Teacher Email</label>
-                    <input type="text" class="form-control" v-model="teacher.teacheremail" 
+                    <label>Email</label>
+                    <input type="text" class="form-control" v-model="faculty.Email" 
                     required>
                 </div>
 
                 <div class="form-group">
-                    <label>Teacher Phone Number</label>
-                    <input type="number" class="form-control" v-model="teacher.TeacherPhoneNumber" required>
+                    <label>Cell Number</label>
+                    <input type="number" class="form-control" v-model="faculty.CellNumber" required>
                 </div>
                 
                 <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="number" class="form-control" v-model="faculty.PhoneNumber" required>
+                </div>
+                
+                div class="col">
+                        <div class="form-label">Title</div>
+                        <input type="text" class="form-control" v-model="faculty.Title" required>
+                       </div>
+                
+                <div class="form-group">
                     <label>Notes</label>
-                    <input type="text" class="form-control" v-model="teacher.notes" 
+                    <input type="text" class="form-control" v-model="faculty.notes" 
                     required>
                 </div>
 
@@ -43,15 +53,17 @@
 <script>
     import axios from "axios";
     export default {
-        name: "EditTeacher",
+        name: "EditFaculty",
         data() {
             return {
                teachers: { 
-                    teacherID:"",
-                    firstName:"",
-                    lastName:"",
-                    teacheremail:"",
-                    TeacherPhoneNumber:"",
+                    FacultyID:"",
+                    FirstName:"",
+                    LastName:"",
+                    Email:"",
+                    CellNumber:"",
+                    PhoneNumber:"",
+                    Title:"",
                     notes: ""
                 }, 
             };
