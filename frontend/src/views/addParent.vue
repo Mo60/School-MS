@@ -10,15 +10,20 @@
             <input type="text" class="form-control" v-model="guardian.FirstName" />
           </div>
           <div class="col">
+            <label for="" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" v-model="guardian.MiddleName" />
+          </div>
+          <div class="col">
             <label for="" class="form-label">Last Name</label>
             <input type="text" class="form-control" v-model="guardian.LastName" />
           </div>
+         
+        </div>
+        <div class="row mb-4">
           <div class="col">
             <label for="" class="form-label">Email</label>
             <input type="email" class="form-control" v-model="guardian.Email" />
           </div>
-        </div>
-        <div class="row mb-4">
           <div class="col">
             <label for="" class="form-label">Cell Number</label>
             <input type="tel" class="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -74,7 +79,7 @@
       <fieldset class="form-control mt-5">
         <legend>Authorizations</legend>
         <div class="row mb-4">  
-          <div class="col"><label for="" class="form-label">Relationship to Child</label><select name="" id="" class="form-select" v-model="guardian_student.RelationshipID" ><option disabled selected value="">Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.status}}</option></select></div>
+          <div class="col"><label for="" class="form-label">Relationship to Child</label><select name="" id="" class="form-select" v-model="guardian_student.RelationshipID" ><option disabled selected value="">Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.Relationship}}</option></select></div>
         <div class="col"><label class="form-label">Authorized to Pick Up?</label><select class="form-select" v-model="guardian_student.CanPickup"><option disabled selected value="">Select an Option</option>
         <option value="true">Yes</option>
         <option value="false">No</option></select></div>
@@ -110,6 +115,7 @@ export default {
       guardian: {
         GuardianID:undefined,
         FirstName: "",
+        MiddleName:"",
         LastName: "",
         CellNumber:"",
         PhoneNumber: "",

@@ -43,7 +43,7 @@ exports.create = (req, res) => {
     };
   
     // Save guardian in the database
-    StudentStatus.create(studentStatus)
+    StudentStatus.create(StudentStatus)
     .then(data => {
       res.send(data);
     })

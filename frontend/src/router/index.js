@@ -82,7 +82,13 @@ component:()=>import("../views/enroll.vue"),
   path:"/parents/:GuardianID",
   name:"viewParent",
   component:()=>import("../views/parentProfile.vue")
-}
+},
+{
+  path:"/students/:StudentID",
+  name:"viewStudent",
+  component:()=>import("../views/StudentProfile.vue")
+},
+
 ]})
 
 
