@@ -55,11 +55,11 @@
 <script>
     import axios from "axios";
     export default {
-        name: "AddTeacher",
+        name: "AddFaculty",
         data() {
             return {
                faculty: { 
-                     FacultyID:"",
+                    FacultyID:"",
                     FirstName: "",
                     LastName:"",
                     Email:"",
