@@ -47,6 +47,29 @@ require("./app/routes/report.routes")(app);
 require("./app/routes/guardian.routes")(app);
 require("./app/routes/guardian_student.routes")(app);
 require("./app/routes/guardianRelationship.routes")(app);
+//
+require("./app/routes/class_room.routes")(app);
+require("./app/routes/classStatus.routes")(app);
+require("./app/routes/course.routes")(app);
+require("./app/routes/courseStatus.routes")(app);
+require("./app/routes/day.routes")(app);
+require("./app/routes/faculty_class.routes")(app);
+require("./app/routes/faculty.routes")(app);
+require("./app/routes/facultyStatus.routes")(app);
+require("./app/routes/guardianStatus.routes")(app);
+require("./app/routes/location.routes")(app);
+require("./app/routes/locationStatus.routes")(app);
+require("./app/routes/medical.routes")(app);
+require("./app/routes/room.routes")(app);
+require("./app/routes/roomStatus.routes")(app);
+require("./app/routes/semester.routes")(app);
+require("./app/routes/student_class.routes")(app);
+require("./app/routes/student_classStatus.routes")(app);
+require("./app/routes/student_medical.routes")(app);
+require("./app/routes/studentStatus.routes")(app);
+require("./app/routes/teacher.routes")(app);
+require("./app/routes/timeblock.routes")(app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8082;
