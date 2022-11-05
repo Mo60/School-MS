@@ -56,6 +56,16 @@ const router= createRouter({
    {path:"/addParent/:studentID",
   name:"addParent2",
 component:()=>import("../views/addParent.vue")},
+  
+  {path:"/addRoom",
+    name:"addsRoom",
+    component:()=>import("../views/addRoom.vue"),
+  },
+    {path:"/addLocation",
+    name:"addLocation",
+    component:()=>import("../views/addLocation.vue"),
+  },
+  
 // Import Edit views
     {path:"/EditStudent",
     name:"EditStudent",
@@ -88,6 +98,14 @@ component:()=>import("../views/enroll.vue"),
   name:"viewStudent",
   component:()=>import("../views/StudentProfile.vue")
 },
+  {path:"/EditRoom",
+    name:"EditRoom",
+    component:()=>import("../views/EditRoom.vue"),
+  },
+    {path:"/EditLocation",
+    name:"EditLocation",
+    component:()=>import("../views/EditLocation.vue"),
+  },
 
 ]})
 
