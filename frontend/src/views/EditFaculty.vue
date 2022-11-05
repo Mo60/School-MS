@@ -56,7 +56,7 @@
         name: "EditFaculty",
         data() {
             return {
-               teachers: { 
+               Faculty: { 
                     FacultyID:"",
                     FirstName:"",
                     LastName:"",
