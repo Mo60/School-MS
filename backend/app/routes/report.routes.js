@@ -7,6 +7,6 @@ module.exports = app => {
   router.get("/view_students", Reports.view_students);   //
   router.get("/due_balance", Reports.due_balance);
   router.get("/student_status", Reports.student_status);
-  
+  router.get("/guardian_student_view")
   app.use('/api/reports', router);
 };

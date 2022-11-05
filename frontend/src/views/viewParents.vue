@@ -12,13 +12,14 @@
 <div class="wrapper" v-else>
     <table class="table table-striped mt-5">
         <thead class="table">
-          <tr>
+          <tr class="text-center">
            <th>ID</th>
            <th>First Name</th>
            <th>Last Name</th>
            <th>Phone</th>
            <th>Cell</th>
            <th>Email</th>
+           <th colspan="2" class="">Actions</th>
           </tr>
         </thead>  
         <tbody v-for="p in parent" :key=p.GuardianID>
@@ -27,8 +28,10 @@
            <td>{{p.guardian_first_name}}</td>
            <td>{{p.guardian_last_name}}</td>
            <td>{{p.PhoneNumber}}</td>
-           <td>{{p.Cell}}</td>
+           <td>{{p.CellNumber}}</td>
            <td><a v-bind:href="`mailto:${p.Email}`">{{p.Email}}</a></td>
+           <td><router-link class="btn" :to="{name:'viewParent',params:{GuardianID:p.GuardianID}}">See-more</router-link></td>
+           <!-- <td><router-link class="btn" :to="{name:'editParent',params:{GuardianID:p.GuardianID}}">Edit</router-link></td> -->
         </tr>
       </tbody>
       

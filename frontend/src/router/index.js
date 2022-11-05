@@ -73,6 +73,11 @@ component:()=>import("../views/addParent.vue")},
   name:"enroll",
 component:()=>import("../views/enroll.vue"),
 },
+{
+  path:"/parents/:GuardianID",
+  name:"viewParent",
+  component:()=>import("../views/parentProfile.vue")
+}
 ]})
 
 

@@ -45,9 +45,9 @@ h1 {
   color: rgb(124, 122, 122);
 }
 
-h2 {
-  text-align: center;
-  color: lightgray;
+h2{
+color: rgb(55, 53, 53);
+text-align: center;
 }
 
 .wrapper {
@@ -219,4 +219,25 @@ div.d-flex>router-link{
 
 thead{
   background-color: #b1bea5;
+}
+
+.box-wrapper{
+  display: flex;
+  justify-content: space-around;
+  margin: 40px auto;
+  width: 90%;
+
+  height: 260px;
+}
+
+.box{
+  background-color:#888c647d;
+  padding:20px 30px;
+  width:30%;
+  border-radius: 20px;
+  overflow: auto;
+}
+
+.rows>.label{
+  font-size: 18px;
 }
