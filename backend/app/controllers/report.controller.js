@@ -55,8 +55,8 @@ exports.student_status = (req, res) => {
 };
 
 exports.guardian_student_view = (req, res) => {
-
-  const guardian_student_view = db.sequelize.query("SELECT * FROM guardian_student_view", { type: QueryTypes.SELECT })
+  const id = req.params.id;
+  const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE GuardianID = ${id}`, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -69,3 +69,16 @@ exports.guardian_student_view = (req, res) => {
   
 };
 
+exports.guardian_student_view_all = (req, res) => {
+  const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
