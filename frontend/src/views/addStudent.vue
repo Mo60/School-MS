@@ -15,6 +15,14 @@
             />
           </div>
           <div class="col">
+            <label for="fName" class="form-label">Middle Name</label>
+            <input
+              type="text"
+              class="form-control"
+              v-model="student.MiddleName"
+            />
+          </div>
+          <div class="col">
             <label for="lName" class="form-label">Last Name</label>
             <input
               type="text"
@@ -78,7 +86,7 @@
           </div>
           <div class="col">
             <label for="" class="form-label">Relationship to Child</label
-            ><select name="" class="form-select" v-model="guardian_student.guardianRelationship" ><option selected disabled>Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.status}}</option></select>
+            ><select name="" class="form-select" v-model="guardian_student.RelationshipID" ><option selected disabled>Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.Relationship}}</option></select>
           </div>
           <div class="col-sm">
             <label for="" class="form-label">Emergency Contact</label
@@ -117,6 +125,7 @@ export default {
     return {
       student: {
         FirstName: "",
+        MiddleName:"",
         LastName: "",
         DOB: "",
         Email: "",
@@ -131,7 +140,7 @@ export default {
       CanPickup: false,
       StudentID: "",
       GuardianID:"",
-      guardianRelationship:""
+      RelationshipID:""
       },
       relationships:[],
       guardian:"",
@@ -173,14 +182,10 @@ export default {
           });
       }
       this.$router.push("/");
-
-
       })
       .catch((error) => {
         console.log(error);
-      });
-      
-      
+      });   
     },
     register() {
       let apiURL = `http://172.26.54.21:8082/api/student/`;

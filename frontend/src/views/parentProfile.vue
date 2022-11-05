@@ -34,7 +34,7 @@
 </div>
   <div class="d-flex justify-content-center ">
        <router-link class="btn" :to="{name:'EditParent',params:{GuardianID:guardianID}}">Edit </router-link>
-       <button class="btn mx-3">Add New Student</button>
+       <router-link class="btn mx-3" :to="{name:'addStudent2',params:{GuardianID:guardianID}}">Add New Student</router-link>
   </div >
 </template>
 <script>
