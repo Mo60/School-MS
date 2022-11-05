@@ -53,4 +53,19 @@ exports.student_status = (req, res) => {
   });
   
 };
-//due_balance
+
+exports.guardian_student_view = (req, res) => {
+
+  const guardian_student_view = db.sequelize.query("SELECT * FROM guardian_student_view", { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
+
