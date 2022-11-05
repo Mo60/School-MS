@@ -1,8 +1,8 @@
 <template>
       <h1 class="mt-5">Parents and Guardians</h1>
-<div class="flex-wrapper" v-if="parent.length == 0 && loaded" >
+<div class="flex-wrapper" v-if="parent.length == 0 && loaded" v-cloak>
 
-    <div class="empty-arr" v-cloak >
+    <div class="empty-arr" >
         <p>No Parents or Guardians Found</p>
         <a class="btn mt-3"><router-link :to="{name:'addparent'}">Add Parent</router-link></a>
       </div>
@@ -25,13 +25,13 @@
         <tbody v-for="p in parent" :key=p.GuardianID>
           
            <tr><td>{{p.GuardianID}}</td>
-           <td>{{p.guardian_first_name}}</td>
-           <td>{{p.guardian_last_name}}</td>
+           <td>{{p.FirstName}}</td>
+           <td>{{p.LastName}}</td>
            <td>{{p.PhoneNumber}}</td>
            <td>{{p.CellNumber}}</td>
            <td><a v-bind:href="`mailto:${p.Email}`">{{p.Email}}</a></td>
            <td><router-link class="btn" :to="{name:'viewParent',params:{GuardianID:p.GuardianID}}">See-more</router-link></td>
-           <!-- <td><router-link class="btn" :to="{name:'editParent',params:{GuardianID:p.GuardianID}}">Edit</router-link></td> -->
+           <td><router-link class="btn" :to="{name:'EditParent',params:{GuardianID:p.GuardianID}}">Edit</router-link></td>
         </tr>
       </tbody>
       
@@ -51,7 +51,7 @@ loaded:false
 }},
 
   created(){
-  let apiURL='http://172.26.54.21:8082/api/reports/view_students'
+  let apiURL='http://172.26.54.21:8082/api/guardian'
   axios
       .get(apiURL)
       .then((res) => {

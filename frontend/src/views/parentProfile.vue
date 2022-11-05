@@ -1,9 +1,9 @@
 <template>
-    <h1 class="mt-4">{{guardian.FirstName}} {{guardian.LastName}}</h1>
+    <h1 class="mt-5">{{guardian.FirstName}} {{guardian.MiddleName}} {{guardian.LastName}}</h1>
 
    <div class="box-wrapper" >
     <div class="box">
-    <h2 class="mb-4">Contact Information</h2>
+    <h2 class="mb-3">Contact Information</h2>
     <div class="body">
         <div class="rows"><span class="label">ID:</span><span>{{guardian.GuardianID}}</span></div>
         <div class="rows" v-if="guardian.PhoneNumber!=''"><span class="label">Phone Number</span> <span>{{guardian.PhoneNumber}}</span></div>
@@ -12,24 +12,30 @@
 
     </div>
     </div>
-    <div class="box"><h2>Address</h2>
+    <div class="box"><h2 class="mb-3">Address</h2>
         <div class="rows"><span class="label">Address Line 1</span><span>{{guardian.AddressLine1}}</span></div>
          <div class="rows" v-if="guardian.AddressLine2!=''"><span class="label">Address Line 2</span><span>{{guardian.AddressLine2}}</span></div>
          <div class="rows" v-if="guardian.State!=''"><span class="label">State</span><span>{{guardian.State}}</span></div>
          <div class="rows"><span class="label">City</span><span>{{guardian.City}}</span></div>
          <div class="rows"><span class="label">Zip Code</span><span>{{guardian.Zip}}</span></div>
-     
-
         </div>
-    <div class="box"><h2>Students</h2>
-   
-        <div v-for="student in guardian.students" :key="student.StudentID" >
-          <h5 mt-4>  {{student.FirstName}} {{student.LastName}}</h5>
-            <div class="rows"><span class="label">Authorized to Pick up</span> <span>{{student.CanPickup}}</span></div>
+    <div class="box"><h2 class="mb-3">Students</h2>
+        <div v-for="student in students" :key="student.StudentID" class="mb-4">
+         <div class="rows"> <span class="label name">  {{student.FirstName}} {{student.LastName}}</span></div >
+          <div class="rows"><span class="label">Relationship</span> <span>{{student.Relationship}}</span></div>
+            <div class="rows"><span class="label">Authorized to Pick up</span> <span v-if="student.CanPickup">Yes</span><span v-else>No</span></div>
+            <div class="rows"><span class="label">Emergency Contact</span><span v-if="student.isEmergency">Yes</span><span v-else>No</span> </div> 
         </div>
-    
     </div>
    </div>
+
+   <div class="box2 mb-4" v-if="guardian.Notes!=''"><h2>Notes</h2>
+<div class="rows">{{guardian.Notes}}</div>
+</div>
+  <div class="d-flex justify-content-center ">
+       <router-link class="btn" :to="{name:'EditParent',params:{GuardianID:guardianID}}">Edit </router-link>
+       <button class="btn mx-3">Add New Student</button>
+  </div >
 </template>
 <script>
 import axios from "axios";
@@ -38,7 +44,7 @@ export default {
     return {
       guardianID: this.$route.params.GuardianID,
       guardian: [],
-      guardian_student:[],
+      students:[],
    
     };
   },
@@ -49,8 +55,11 @@ export default {
       .get(apiURL)
       .then((res) => {
         this.guardian = res.data;
-      }).then((res)=>{
-        let apiURL2=  `http://172.26.54.21:8082/api/guardian_student/`
+      }).then(()=>{
+        let apiURL2=  `http://172.26.54.21:8082/api/reports/guardian_student_view/${this.guardianID}`
+axios.get(apiURL2).then((res)=>{
+    this.students=res.data
+})
       }
        
       )
@@ -60,10 +69,6 @@ export default {
     this.loaded = true;
   },
 
-  computed(guardian){
-for(student in guardian.students){
-students.push(student)
-}
-  }
+  
 };
 </script>
