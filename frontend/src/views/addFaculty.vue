@@ -72,11 +72,11 @@
 
         methods:{
             submitForm(){
-                let apiURL = "http://172.26.54.21:8082/api/teacher/"
+                let apiURL = "http://172.26.54.21:8082/api/faculty/"
                 axios.post(apiURL,this.faculty).catch(error => {
         console.log(error)
       });
-      this.$router.push("/teachers")
+      this.$router.push("/faculty")
 } 
      }
         }
