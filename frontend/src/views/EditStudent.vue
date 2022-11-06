@@ -218,6 +218,8 @@
                 let apiURL4=`http://172.26.54.21:8082/api/student/${this.StudentID}`
                 axios.get(apiURL4).then((res4)=>{
                     this.student=res4.data
+                }).then(()=>{
+                    let apiUrl5=`http://172.26.54.21:8082/api/guardian_student/${this.StudentID}`
                 })
             })
             
@@ -228,7 +230,14 @@
     },
     methods:{
 submitForm(){
-
+let apiURL="http://172.26.54.21:8082/api/student/${this.StudentID}"
+axios.put(apiURL,this.student).then((res) => {
+              console.log(res);
+              this.$router.push("/students")
+            })
+            .catch((error) => {
+              console.log(error);
+            });
 }
     }
 }

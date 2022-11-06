@@ -55,6 +55,17 @@ h2{
   width: 70%;
   margin: 40px auto;
 }
+
+.tablewrapper{
+  max-height: 50vh;
+  width: 70%;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+.tablewrapper::-webkit-scrollbar{
+  display: none;
+}
 .wrapper2{
   width: 25%;
   margin:40px auto;
@@ -221,6 +232,8 @@ thead{
   background-color: #b1bea5;
 }
 
+
+
 .box-wrapper{
   display: grid;
   justify-content: space-around;
@@ -246,7 +259,7 @@ grid-gap: 50px;
 .box:nth-child(3){
   overflow: auto;
 }
-.box::-webkit-scrollbar {
+.box::-webkit-scrollbar{
   width: 20px;
 }
 .box::-webkit-scrollbar-track { 

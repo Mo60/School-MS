@@ -8,9 +8,9 @@
       >
     </div>
   </div>
-  <div class="wrapper" v-else>
-    <table class="table table-striped mt-5">
-      <thead class="table">
+  <div class="tablewrapper" v-else>
+    <table class="table table-striped">
+      <thead>
         <tr class="text-center">
           <th>ID</th>
           <th>First Name</th>
@@ -24,12 +24,12 @@
       <tbody v-for="student in students" :key="student.StudentID">
       <tr>
         <td>{{student.StudentID}}</td>
-      <td>{{student.student_first_name}}</td>
-      <td>{{student.student_middle_name}}</td>
-      <td>{{student.student_last_name}}</td>
+      <td>{{student.FirstName}}</td>
+      <td>{{student.MiddleName}}</td>
+      <td>{{student.LastName}}</td>
       <td>{{student.DOB}}</td>
       <td>{{student.Status}}</td>
-      <td><router-link class="btn" :to="{name:'viewStudent',params:{StudentID:student.StudentID}}">See-more</router-link></td>
+      <td><router-link class="btn" :to="{name:'viewStudent',params:{StudentID:student.StudentID}}">See More</router-link></td>
            <td><router-link class="btn" :to="{name:'EditStudent',params:{StudentID:student.StudentID}}">Edit</router-link></td>
       </tr>
       </tbody>
@@ -45,7 +45,7 @@ export default {
     };
   },
   created() {
-    let apiURL = "http://172.26.54.21:8082/api/reports/view_students";
+    let apiURL = "http://172.26.54.21:8082/api/student/";
     axios
       .get(apiURL)
       .then((res) => {

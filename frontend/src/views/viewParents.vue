@@ -7,8 +7,8 @@
 </div> 
 <!-- <div class="cont" v-else><parentsCard :parents="p" :fName="p.guardian_first_name" :lName="p.guardian_last_name" :id="p.GuardianID" :phone="p.PhoneNumber" :sFName="p.student_first_name" :sLName="p.student_last_name" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div > -->
 <div class="wrapper" v-else>
-    <table class="table table-striped mt-5">
-        <thead class="table">
+    <table class="table table-striped">
+        <thead>
           <tr class="text-center">
            <th>ID</th>
            <th>First Name</th>

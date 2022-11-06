@@ -38,8 +38,8 @@
           </div>
           <div class="col">
             <label for="lName" class="form-label">Status</label>
-            <select name="" id="" class="form-select" v-model="student.Status">
-              <option selected disabled>Select an Option</option>
+            <select name="" id="" class="form-select" v-model="student.StatusID">
+              <option selected disabled value="">Select an Option</option>
               <option
                 :value="status.StatusID"
                 v-for="status in statuses"
@@ -120,7 +120,7 @@
               class="form-select"
               v-model="guardian_student.RelationshipID"
             >
-              <option selected disabled>Select an Option</option>
+              <option selected disabled value="">Select an Option</option>
               <option
                 :value="r.RelationshipID"
                 v-for="r in relationships"
@@ -133,7 +133,7 @@
           <div class="col-sm">
             <label for="" class="form-label">Emergency Contact</label
             ><select class="form-select" v-model="guardian_student.isEmergency">
-              <option selected disabled>Select an Option</option>
+              <option selected disabled value="">Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
@@ -141,7 +141,7 @@
           <div class="col-sm">
             <label for="" class="form-label">Can Pick Up</label
             ><select class="form-select" v-model="guardian_student.CanPickup">
-              <option selected disabled>Select an Option</option>
+              <option selected disabled value="">Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
@@ -188,7 +188,7 @@
               class="form-select"
               v-model="guardian_student2.RelationshipID"
             >
-              <option selected disabled>Select an Option</option>
+              <option selected disabled value="">Select an Option</option>
               <option
                 :value="r.RelationshipID"
                 v-for="r in relationships"
@@ -201,7 +201,7 @@
           <div class="col-sm">
             <label for="" class="form-label">Emergency Contact</label
             ><select class="form-select" v-model="guardian_student2.isEmergency">
-              <option selected disabled>Select an Option</option>
+              <option selected disabled value="">Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
@@ -249,14 +249,14 @@ export default {
       value: false,
       value2: false,
       guardian_student: {
-        CanPickup: false,
+        CanPickup: "",
         StudentID: "",
         GuardianID: "",
         RelationshipID: "",
         isEmergency:""
       },
       guardian_student2: {
-        CanPickup: false,
+        CanPickup: "",
         StudentID: "",
         GuardianID: "",
         RelationshipID: "",

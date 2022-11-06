@@ -1,7 +1,7 @@
 <template>
   <h1 class="mt-5">Enter Parent or Guardian Information</h1>
   <div class="wrapper">
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="">
       <fieldset class="form-control">
         <legend>Contact Information</legend>
         <div class="row mb-4">
@@ -100,7 +100,8 @@
         </div>
       </fieldset>
 
-      <button class="btn mt-4">Submit</button>
+      <button class="btn mt-4" @click="submitForm">Submit</button>
+      <button class="btn mt-4 mx-3" @click="register" v-if="guardianStudent.length>=1">Add Another Parent</button>
     </form>
   </div>
 </template>
@@ -135,7 +136,8 @@ export default {
       },
       relationships:[],
       student:[],
-      sameAddress:false
+      sameAddress:false,
+      guardianStudent:[]
     }
   },
   methods: {
@@ -156,7 +158,26 @@ export default {
        
       });
 
-     }
+     },
+     register() {
+      let apiURL = `http://172.26.54.21:8082/api/guardian/`;
+      axios.post(apiURL, this.guardian).then((res) => {
+       this.guardian_student.GuardianID = res.data.GuardianID
+      // guardian.guardian_student.GuardianID = 5;//res.data.GuardianID
+       console.log(this.guardian_student.GuardianID);
+       console.log(res);
+        let apiURL2="http://172.26.54.21:8082/api/guardian_student/"
+        axios.post(apiURL2,this.guardian_student)
+      }).catch(error => {
+        console.log(error)
+       
+      }).then((res) => {
+          this.$router.push(`/addParent/${this.guardian_student.StudentID}`);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     },
     watch:{
       sameAddress(value){
@@ -188,7 +209,20 @@ this.guardian.Zip=""
             })
             .catch(error => {
                 console.log(error)
-            });
+            }).then(res=>{
+              let apiURL3=`http://172.26.54.21:8082/api/reports/guardian_student_view/studentid/${this.guardian_student.StudentID}`
+              axios.get(apiURL3).then(res=>{
+                  this.guardianStudent=res.data
+                  console.log(this.guardianStudent.length)
+                })
+                .catch(error => {
+                console.log(error)
+            })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            
             
         },
     
