@@ -53,7 +53,8 @@ exports.student_status = (req, res) => {
   });
   
 };
-
+// ** get guardian student view **
+// get by guardianID
 exports.guardian_student_view = (req, res) => {
   const id = req.params.id;
   const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE GuardianID = ${id}`, { type: QueryTypes.SELECT })
@@ -66,11 +67,57 @@ exports.guardian_student_view = (req, res) => {
         err.message || "Some error occurred while retrieving info."
     });
   });
-  
 };
 
+  //// get by StudentID
+  exports.guardian_student_view_byStudentID = (req, res) => {
+    const id = req.params.id;
+    const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE StudentID = ${id}`, { type: QueryTypes.SELECT })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving info."
+      });
+    });
+  };
+  
+
+// all rows in guat=rian student view
 exports.guardian_student_view_all = (req, res) => {
   const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
+/// methods to retrieve course_view (it includes the status name)
+// first by id
+exports.course_view_byId = (req, res) => {
+  const id = req.params.id;
+  const view = db.sequelize.query(`SELECT * FROM course_view WHERE CourseID = ${id}`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
+// and all rows
+exports.course_view_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM course_view`, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
