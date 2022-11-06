@@ -9,15 +9,15 @@
                  <div class="row mb-3" >
                        <div class="col">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control"  required v-model="faculty.FirstName">
+                                <input type="text" class="form-control"   v-model="faculty.FirstName">
                        </div >
                        <div class="col">   
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" v-model="faculty.LastName" required>
+                                <input type="text" class="form-control" v-model="faculty.LastName" >
                        </div >
                        <div class="col">
                         <div class="form-label">Title</div>
-                        <input type="text" class="form-control" v-model="faculty.Title" required>
+                        <input type="text" class="form-control" v-model="faculty.Title" >
                        </div>
                  </div >
                     <div class="row mb-3">
@@ -59,7 +59,7 @@
         data() {
             return {
                faculty: { 
-                    FacultyID:"",
+                    
                     FirstName: "",
                     LastName:"",
                     Email:"",
@@ -72,11 +72,12 @@
 
         methods:{
             submitForm(){
-                let apiURL = "http://172.26.54.21:8082/api/teacher/"
-                axios.post(apiURL,this.faculty).catch(error => {
+                let apiURL = "http://172.26.54.21:8082/api/faculty/"
+                axios.post(apiURL,this.faculty).then( res =>{ this.$router.push("/teachers")
+            }).catch(error => {
         console.log(error)
       });
-      this.$router.push("/teachers")
+      
 } 
      }
         }

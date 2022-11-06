@@ -6,7 +6,7 @@
         <tr>
           <th>Day ID</th>
           <th>Week Day</th>  
-       /tr>
+        </tr>
       </thead>
       <tbody>   
         <tr v-for="day in Days" :key="day.DayID">
@@ -19,6 +19,5 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
+        </div>  
 </template>

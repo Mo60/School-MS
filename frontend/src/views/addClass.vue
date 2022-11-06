@@ -117,9 +117,9 @@
         }
         ,
      created(){
-            let apiURL = 'http://172.26.54.21:8082/api/teacher/';
+            let apiURL = 'http://172.26.54.21:8082/api/faculty/';
             axios.get(apiURL).then(res => {
-                this.teacherList = res.data;
+                this.TeacherList = res.data;
                 
             }).catch(error => {
                 console.log(error)
