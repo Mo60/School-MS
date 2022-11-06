@@ -67,7 +67,7 @@ component:()=>import("../views/addParent.vue")},
   },
   
 // Import Edit views
-    {path:"/EditStudent",
+    {path:"/EditStudent/:StudentID",
     name:"EditStudent",
     component:()=>import("../views/EditStudent.vue"),
   },

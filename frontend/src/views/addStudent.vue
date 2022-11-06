@@ -31,7 +31,7 @@
             />
           </div>
         </div>
-        <div class="row">
+        <div class="row mb-4">
           <div class="col">
             <label for="lName" class="form-label">Date of Birth</label>
             <input type="date" class="form-control" v-model="student.DOB" />
@@ -39,7 +39,15 @@
           <div class="col">
             <label for="lName" class="form-label">Status</label>
             <select name="" id="" class="form-select" v-model="student.Status">
-            <option value="" selected >Select an Option</option></select>
+              <option selected disabled>Select an Option</option>
+              <option
+                :value="status.StatusID"
+                v-for="status in statuses"
+                :key="status.StatusID"
+              >
+                {{ status.Status }}
+              </option>
+            </select>
           </div>
         </div>
       </fieldset>
@@ -124,7 +132,7 @@
           </div>
           <div class="col-sm">
             <label for="" class="form-label">Emergency Contact</label
-            ><select class="form-select">
+            ><select class="form-select" v-model="guardian_student.isEmergency">
               <option selected disabled>Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -132,7 +140,75 @@
           </div>
           <div class="col-sm">
             <label for="" class="form-label">Can Pick Up</label
-            ><select class="form-select">
+            ><select class="form-select" v-model="guardian_student.CanPickup">
+              <option selected disabled>Select an Option</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                v-model="value2"
+                id="defaultCheck1"
+              />
+              <label class="form-check-label" for="defaultCheck1">
+                Add Another
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row" v-show="value2">
+          <div class="col">
+            <label for="" class="form-label">Guardian ID</label>
+            <select
+              name=""
+              class="form-select"
+              v-model="guardian_student2.GuardianID"
+            >
+              <option value="" disabled selected>Select an Option</option>
+              <option
+                :value="g.GuardianID"
+                class="form-select"
+                v-for="g in guardian"
+                :key="g.GuardianID"
+              >
+                {{ g.FirstName }} {{ g.LastName }} - {{ g.GuardianID }}
+              </option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="" class="form-label">Relationship to Child</label
+            ><select
+              name=""
+              class="form-select"
+              v-model="guardian_student2.RelationshipID"
+            >
+              <option selected disabled>Select an Option</option>
+              <option
+                :value="r.RelationshipID"
+                v-for="r in relationships"
+                :key="r.RelationshipID"
+              >
+                {{ r.Relationship }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm">
+            <label for="" class="form-label">Emergency Contact</label
+            ><select class="form-select" v-model="guardian_student2.isEmergency">
+              <option selected disabled>Select an Option</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div class="col-sm">
+            <label for="" class="form-label">Can Pick Up</label
+            ><select class="form-select" v-model="guardian_student2.CanPickup">
               <option selected disabled>Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -167,17 +243,28 @@ export default {
         AddressLine2: "",
         City: "",
         Zip: "",
+        StatusID: "",
       },
       // value is for v-show for the guardian feild
       value: false,
+      value2: false,
       guardian_student: {
         CanPickup: false,
         StudentID: "",
         GuardianID: "",
         RelationshipID: "",
+        isEmergency:""
+      },
+      guardian_student2: {
+        CanPickup: false,
+        StudentID: "",
+        GuardianID: "",
+        RelationshipID: "",
+        isEmergency:""
+
       },
       relationships: [],
-      statuses:[],
+      statuses: [],
       guardian: "",
       studentID: "",
     };
@@ -194,18 +281,21 @@ export default {
           .get(apiURL2)
           .then((res2) => {
             this.guardian = res2.data;
-          }).catch((error) => {
+          })
+          .catch((error) => {
             console.log(error);
           })
           .then(() => {
-            let apiURL3="http://172.26.54.21:8082/api/student_status"
-            axios.get(apiURL3).then((res3)=>{
-              this.statuses=res3.data
-            }) .catch((error) => {
-            console.log(error);
-          })
-          })
-          
+            let apiURL3 = "http://172.26.54.21:8082/api/studentStatus";
+            axios
+              .get(apiURL3)
+              .then((res3) => {
+                this.statuses = res3.data;
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -215,25 +305,36 @@ export default {
     submitForm() {
       let apiURL = `http://172.26.54.21:8082/api/student/`;
 
-      axios
-        .post(apiURL, this.student)
-        .then((res) => {
-          // if guardian selected post information in the guardian_STUDENT TABLE
-          if (this.guardian_student.GuardianID != "") {
-            this.guardian_student.StudentID = res.data.StudentID;
-            let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/`;
-            axios
-              .post(apiURL2, this.guardian_student)
+      axios.post(apiURL, this.student).then((res) => {
+        // if guardian selected post information in the guardian_STUDENT TABLE
+        if (this.guardian_student.GuardianID != "") {
+          this.guardian_student.StudentID = res.data.StudentID;
+          let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/`;
+          axios
+            .post(apiURL2, this.guardian_student)
 
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-          this.$router.push("/");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+            .catch((error) => {
+              console.log(error);
+            })
+            .then(() => {
+              if (this.value2 && this.guardian_student2 !== "") {
+                let apiURL3=`http://172.26.54.21:8082/api/guardian_student/`;
+                this.guardian_student2.StudentID = res.data.StudentID;
+          axios
+            .post(apiURL3, this.guardian_student2)
+
+            .catch((error) => {
+              console.log(error);
+            })
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      });
+
+      this.$router.push("/");
     },
     register() {
       let apiURL = `http://172.26.54.21:8082/api/student/`;
