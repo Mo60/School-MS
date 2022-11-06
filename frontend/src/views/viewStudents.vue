@@ -8,12 +8,13 @@
       >
     </div>
   </div>
-  <div class="wrapper3" v-else>
+  <div class="wrapper" v-else>
     <table class="table table-striped mt-5">
       <thead class="table">
         <tr class="text-center">
           <th>ID</th>
           <th>First Name</th>
+          <th>Middle Name</th>
           <th>Last Name</th>
           <th>DOB</th>
           <th>Student Status</th>
@@ -24,6 +25,7 @@
       <tr>
         <td>{{student.StudentID}}</td>
       <td>{{student.student_first_name}}</td>
+      <td>{{student.student_middle_name}}</td>
       <td>{{student.student_last_name}}</td>
       <td>{{student.DOB}}</td>
       <td>{{student.Status}}</td>
