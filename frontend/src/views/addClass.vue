@@ -3,15 +3,15 @@
         
           <h1 class="mt-5">Add Class</h1>
           <div class="wrapper3 ">
-                      <form @submit.prevent="handleUpdateForm" class="mb-5">
+                      <form @submit.prevent="handleSubmitForm" class="mb-5">
             <fieldset class="form-control">
 
                <div class="row mb-4">
                    
-                           <div class="col">
+                           <!-- <div class="col">
                                 <label class="form-label">Teacher</label>
-                                <select name="" id="" class="form-select"><option value="{{teacher.TeacherID}}" v-for="teacher in TeacherList" :key="teacher.TeacherID">{{teacher.FirstName}} {{TeacherList.LastName}}</option></select>
-                            </div>
+                                 <select name="" id="" class="form-select"><option value="{{teacher.TeacherID}}" v-for="teacher in TeacherList" :key="teacher.TeacherID">{{teacher.FirstName}} {{TeacherList.LastName}}</option></select> 
+                            </div> -->
                             <div class="col">
                                 <label class="form-label">Start Date</label>
                                 <input type="date" class="form-control"  required>
@@ -75,13 +75,14 @@
         data() {
             return {
                class: { 
-                    ClassID:"",
-                    TeacherID: "",
-                    ClassStartDate:"",
-                    ClassEndDate:"",
-                    ClassStartTime:"",
-                    ClassEndTime:"",
-                    NumStudents: "",
+                ClassID:"",
+                    CourseID: "",
+                    SemesterID:"",
+                    TimeBlockID:"",
+                    DayID:"",
+                    ClassStatusID:"",
+                    Capacity: "",
+                    ////
                     MaxCapacity:"",
                     Lesson:"",
                     Notes: ""
@@ -93,19 +94,20 @@
     methods: {
             handleSubmitForm(){
                 
-                let apiURL = 'http://172.26.54.21:8082/api/class/"';
+                let apiURL = 'http://172.26.54.21:8082/api/class/';
                 
                 axios.post(apiURL, this.class).then(() => {
                     //changing the view to the list
                   this.$router.push('/classes')
                   this.class = {
                     ClassID:"",
-                    TeacherID: "",
-                    ClassStartDate:"",
-                    ClassEndDate:"",
-                    ClassStartTime:"",
-                    ClassEndTime:"",
-                    NumStudents: "",
+                    CourseID: "",
+                    SemesterID:"",
+                    TimeBlockID:"",
+                    DayID:"",
+                    ClassStatusID:"",
+                    Capacity: "",
+                    ////
                     MaxCapacity:"",
                     Lesson:"",
                     Notes: ""

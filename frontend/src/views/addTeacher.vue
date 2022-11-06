@@ -73,7 +73,7 @@
         methods:{
             submitForm(){
                 let apiURL = "http://172.26.54.21:8082/api/faculty/"
-                axios.post(apiURL,this.faculty).then( res =>{ this.$router.push("/teachers")
+                axios.post(apiURL,this.faculty).then( (res) => { this.$router.push("/teachers")
             }).catch(error => {
         console.log(error)
       });
