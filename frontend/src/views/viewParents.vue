@@ -27,12 +27,12 @@
            <td>{{p.PhoneNumber}}</td>
            <td>{{p.CellNumber}}</td>
            <td><a v-bind:href="`mailto:${p.Email}`">{{p.Email}}</a></td>
-           <td><router-link class="btn" :to="{name:'viewParent',params:{GuardianID:p.GuardianID}}">See-more</router-link></td>
+           <td><router-link class="btn" :to="{name:'viewParent',params:{GuardianID:p.GuardianID}}">See More</router-link></td>
            <td><router-link class="btn" :to="{name:'EditParent',params:{GuardianID:p.GuardianID}}">Edit</router-link></td>
         </tr>
-      </tbody>
-      
+      </tbody>    
     </table>  
+    
 </div> 
 </template>       
         
