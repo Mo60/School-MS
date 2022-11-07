@@ -101,7 +101,7 @@
       </fieldset>
 
       <button class="btn mt-4" @click="submitForm">Submit</button>
-      <button class="btn mt-4 mx-3" @click="register" v-if="guardianStudent.length>=1">Add Another Parent</button>
+      <button class="btn mt-4 mx-3" @click="register" v-if="guardianStudent<1">Add Another Parent</button>
     </form>
   </div>
 </template>
@@ -137,7 +137,7 @@ export default {
       relationships:[],
       student:[],
       sameAddress:false,
-      guardianStudent:[]
+      guardianStudent:""
     }
   },
   methods: {
@@ -167,12 +167,29 @@ export default {
        console.log(this.guardian_student.GuardianID);
        console.log(res);
         let apiURL2="http://172.26.54.21:8082/api/guardian_student/"
-        axios.post(apiURL2,this.guardian_student)
+        axios.post(apiURL2,this.guardian_student).then(()=>{
+          this.guardian= {
+        GuardianID:undefined,
+        FirstName: "",
+        MiddleName:"",
+        LastName: "",
+        CellNumber:"",
+        PhoneNumber: "",
+        Email: "",
+        AddressLine1: "",
+        AddressLine2:"",
+        City: "",
+        Zip: "",
+        Notes: "",
+        IsEmergency:boolean
+        }
+        })   
       }).catch(error => {
         console.log(error)
        
       }).then((res) => {
           this.$router.push(`/addParent/${this.guardian_student.StudentID}`);
+
         })
         .catch((error) => {
           console.log(error);
@@ -210,10 +227,11 @@ this.guardian.Zip=""
             .catch(error => {
                 console.log(error)
             }).then(res=>{
+              
               let apiURL3=`http://172.26.54.21:8082/api/reports/guardian_student_view/studentid/${this.guardian_student.StudentID}`
               axios.get(apiURL3).then(res=>{
-                  this.guardianStudent=res.data
-                  console.log(this.guardianStudent.length)
+                  this.guardianStudent=res.data.length
+                  console.log(this.guardianStudent)
                 })
                 .catch(error => {
                 console.log(error)

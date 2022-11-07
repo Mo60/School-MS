@@ -73,7 +73,7 @@
                     </li>
                     <li>
                       <a class="dropdown-item">
-                        <router-link class="nav-link" to="/addcourse">Course</router-link>
+                        <router-link class="nav-link" to="/addCourse">Course</router-link>
                       </a>
                     </li>
                     <li>

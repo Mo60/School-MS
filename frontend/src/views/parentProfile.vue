@@ -1,14 +1,15 @@
 <template>
-    <h1 class="mt-5">{{guardian.FirstName}} {{guardian.MiddleName}} {{guardian.LastName}}</h1>
+    <h1 class="mt-5">Parent Information</h1>
 
    <div class="box-wrapper" >
     <div class="box">
     <h2 class="mb-3">Contact Information</h2>
     <div class="body">
+        <div class="rows"><span class="label">Name:</span>{{guardian.FirstName}} {{guardian.MiddleName}} {{guardian.LastName}}</div>
         <div class="rows"><span class="label">ID:</span><span>{{guardian.GuardianID}}</span></div>
         <div class="rows" v-if="guardian.PhoneNumber!=''"><span class="label">Phone Number</span> <span>{{guardian.PhoneNumber}}</span></div>
-        <div class="rows" v-if="guardian.CellNumber!=''"><div class="label">Cell Number</div>{{guardian.CellNumber}}</div>
-        <div class="rows" v-if="guardian.Email!=''"><div class="label">Email</div> <a :href="`mailto:${guardian.Email}`">{{guardian.Email}}</a></div>
+        <div class="rows" v-if="guardian.CellNumber!=''"><span class="label">Cell Number</span>{{guardian.CellNumber}}</div>
+        <div class="rows" v-if="guardian.Email!=''"><span class="label">Email</span> <a :href="`mailto:${guardian.Email}`">{{guardian.Email}}</a></div>
 
     </div>
     </div>
@@ -21,7 +22,7 @@
         </div>
     <div class="box"><h2 class="mb-3">Students</h2>
         <div v-for="student in students" :key="student.StudentID" class="mb-4">
-         <div class="rows"> <span class="label name">  {{student.FirstName}} {{student.LastName}}</span></div >
+         <div class="rows"> <router-link class="label name" :to="{name:'viewStudent',params:{StudentID:student.StudentID}}">  {{student.FirstName}} {{student.LastName}}</router-link></div >
           <div class="rows"><span class="label">Relationship</span> <span>{{student.Relationship}}</span></div>
             <div class="rows"><span class="label">Authorized to Pick up</span> <span v-if="student.CanPickup">Yes</span><span v-else>No</span></div>
             <div class="rows"><span class="label">Emergency Contact</span><span v-if="student.isEmergency">Yes</span><span v-else>No</span> </div> 

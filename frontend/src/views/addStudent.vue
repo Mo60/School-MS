@@ -12,6 +12,7 @@
               type="text"
               class="form-control"
               v-model="student.FirstName"
+              required
             />
           </div>
           <div class="col">
@@ -28,6 +29,7 @@
               type="text"
               class="form-control"
               v-model="student.LastName"
+              required
             />
           </div>
         </div>
@@ -75,16 +77,23 @@
             <label for="" class="form-label">City</label
             ><input type="text" class="form-control" v-model="student.City" />
           </div>
-          <div class="col-sm-2">
+         
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <label for="" class="form-label">State</label
+            ><input type="number" class="form-control" v-model="student.State" />
+          </div>
+          <div class="col">
             <label for="" class="form-label">Zip</label
             ><input type="number" class="form-control" v-model="student.Zip" />
           </div>
         </div>
       </fieldset>
       <!-- this button show or hide guardian feild -->
-      <button class="btn mt-4" @click="value = !value">
+      <span class="btn mt-4" @click="value = !value">
         {{ value ? "Hide guardian field" : "Show guardian field" }}
-      </button>
+      </span>
       <!-- v-show show the element if true -->
       <fieldset v-show="value" class="form-control mt-4">
         <legend>
@@ -162,7 +171,7 @@
             </div>
           </div>
         </div>
-        <div class="row" v-show="value2">
+        <div class="row mb-4" v-show="value2">
           <div class="col">
             <label for="" class="form-label">Guardian ID</label>
             <select
@@ -242,6 +251,7 @@ export default {
         AddressLine1: "",
         AddressLine2: "",
         City: "",
+        State:"",
         Zip: "",
         StatusID: "",
       },
@@ -261,7 +271,6 @@ export default {
         GuardianID: "",
         RelationshipID: "",
         isEmergency:""
-
       },
       relationships: [],
       statuses: [],

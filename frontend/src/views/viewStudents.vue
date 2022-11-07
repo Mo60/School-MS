@@ -17,7 +17,7 @@
           <th>Middle Name</th>
           <th>Last Name</th>
           <th>DOB</th>
-          <th>Student Status</th>
+  
           <th colspan="2" class="">Actions</th>
         </tr>
       </thead>
@@ -28,7 +28,6 @@
       <td>{{student.MiddleName}}</td>
       <td>{{student.LastName}}</td>
       <td>{{student.DOB}}</td>
-      <td>{{student.Status}}</td>
       <td><router-link class="btn" :to="{name:'viewStudent',params:{StudentID:student.StudentID}}">See More</router-link></td>
            <td><router-link class="btn" :to="{name:'EditStudent',params:{StudentID:student.StudentID}}">Edit</router-link></td>
       </tr>

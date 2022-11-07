@@ -45,19 +45,22 @@ h1 {
   color: rgb(124, 122, 122);
 }
 
-h2{
+h2,h4{
   color: rgb(124, 122, 122);
 
 }
 
+#router{
+color: black;
 
+}
 .wrapper {
   width: 70%;
   margin: 40px auto;
 }
 
 .tablewrapper{
-  max-height: 50vh;
+  max-height: 52vh;
   width: 70%;
   margin: auto;
   overflow-y: scroll;
@@ -160,7 +163,7 @@ background-color: rgba(255, 255, 255, 0.16);
 .rows {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .label {
