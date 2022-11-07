@@ -1,5 +1,5 @@
 <template>
-  <h1 class="mt-5">Enter Student Information</h1>
+  <h1 class="mt-5">Edit Student Information</h1>
 
   <div class="wrapper">
     <form @submit.prevent="">
@@ -240,14 +240,14 @@ export default {
         StudentID: "",
         GuardianID: "",
         RelationshipID: "",
-        isEmergency: "",
+        isEmergency: false,
       },
       guardian_student2: {
         CanPickup: false,
         StudentID: "",
         GuardianID: "",
         RelationshipID: "",
-        isEmergency: "",
+        isEmergency: false,
       },
       relationships: [],
       statuses: [],
@@ -255,6 +255,8 @@ export default {
       StudentID: this.$route.params.StudentID,
       guardianStudents: [],
       guardians: [],
+      guardianStudentID1:"",
+      guardianStudentID2:""
     };
   },
 
@@ -321,7 +323,10 @@ export default {
                   res4.data.guardians[1].guardian_student.RelationshipID,
                 CanPickup: res4.data.guardians[1].guardian_student.CanPickup
               };
-              console.log(this.guardians);
+              this.guardianStudentID1=res4.data.guardians[0].guardian_student._id
+              this.guardianStudentID2=res4.data.guardians[1].guardian_student._id
+             
+
             });
           });
       })
@@ -337,33 +342,22 @@ export default {
         .then((res) => {
         
           this.guardian_student.StudentID = res.data.StudentID;
-          let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/`;
-          axios
-            .put(apiURL2, this.guardian_student)
-
-            .catch((error) => {
-              console.log(error);
-            })
-            .then(() => {
-              if (this.guardian_student2 !== "") {
-                let apiURL3=`http://172.26.54.21:8082/api/guardian_student/`;
-                this.guardian_student2.StudentID = res.data.StudentID;
-          axios
-            .post(apiURL3, this.guardian_student2)
-
-            .catch((error) => {
-              console.log(error);
-            })
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            })
+          
           this.$router.push("/students");
+        }).then(()=>{
+          let apiURL2=`http://172.26.54.21:8082/api/guardian_student/${this.guardianStudentID1}`
+          axios.put(apiURL2,this.guardianStudentID1).catch((error) => {
+          console.log(error);
+        }).then(()=>{
+          let apiURL3=`http://172.26.54.21:8082/api/guardian_student/${this.guardianStudentID2}`
+          axios.put(apiURL3,this.guardianStudentID2).catch((error) => {
+          console.log(error);
+        })
         })
         .catch((error) => {
           console.log(error);
         });
+      })
     },
   },
 };
