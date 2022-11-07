@@ -95,7 +95,8 @@
             </div>
             <div class="col">
               <label for="" class="form-label">Relationship to Child</label
-              ><select name="" class="form-select"  v-model="guardian_student.RelationshipID" required ><option selected disabled>Select an Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.Relationship}}</option></select>
+              ><select name="" class="form-select"  v-model="guardian_student.RelationshipID" required >
+              <option selected disabled value="null">Select one Option</option><option :value=r.RelationshipID v-for="r in relationships" :key="r.RelationshipID">{{r.Relationship}}</option></select>
             </div>
             <div class="col-sm">
               <label for="" class="form-label">Emergency Contact</label
@@ -146,7 +147,7 @@
         CanPickup: false,
         StudentID: "",
         GuardianID:this.$route.params.GuardianID,
-        RelationshipID:""
+        RelationshipID: null
         },
         relationships:[],
         guardian:[],
