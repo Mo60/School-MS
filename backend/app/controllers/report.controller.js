@@ -126,6 +126,36 @@ exports.course_view_all = (req, res) => {
       message:
         err.message || "Some error occurred while retrieving info."
     });
+  });  
+};
+
+/// methods to retrieve faculty_class_list (it includes the status name)
+// first by id
+exports.faculty_class_list_byFacultyId = (req, res) => {
+  const id = req.params.id;
+  const view = db.sequelize.query(`SELECT * FROM faculty_class_list WHERE FacultyID = ${id}`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
+// and all rows
+exports.faculty_class_list_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM faculty_class_list`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
   });
   
 };
