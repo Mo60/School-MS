@@ -189,3 +189,34 @@ exports.class_view_all = (req, res) => {
   });
   
 };
+/// class_detail_list1
+/// methods to retrieve class_detail_list1 (it includes the status name)
+// first by id
+exports.class_detail_list1_byClassID = (req, res) => {
+  const id = req.params.id;
+  const view = db.sequelize.query(`SELECT * FROM class_detail_list1 WHERE ClassID = ${id}`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
+// and all rows
+exports.class_detail_list1_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM class_detail_list1`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
