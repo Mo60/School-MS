@@ -2,32 +2,32 @@ const db = require("../models");
 const Medical = db.medical;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new guardian
+// Create and Save a new medical
 exports.create = (req, res) => {
   
 };
 
-// Retrieve all guardians from the database.
+// Retrieve all medicals from the database.
 exports.findAll = (req, res) => {
   
 };
 
-// Find a single guardian with an id
+// Find a single medical with an id
 exports.findOne = (req, res) => {
   
 };
 
-// Update a guardian by the id in the request
+// Update a medical by the id in the request
 exports.update = (req, res) => {
   
 };
 
-// Delete a guardian with the specified id in the request
+// Delete a medical with the specified id in the request
 exports.delete = (req, res) => {
   
 };
 
-// Delete all guardians from the database.
+// Delete all medicals from the database.
 exports.deleteAll = (req, res) => {
   
 };
@@ -36,13 +36,13 @@ exports.deleteAll = (req, res) => {
 
 exports.create = (req, res) => {
   
-    // Create a guardian
+    // Create a medical
     const medical = {
       MedicalID: req.body.MedicalID,
       Condition: req.body.Condition
     };
   
-    // Save guardian in the database
+    // Save medical in the database
     Medical.create(medical)
     .then(data => {
       res.send(data);
@@ -50,7 +50,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the guardianRelationship."
+          err.message || "Some error occurred while creating the medicalRelationship."
       });
     });
     }
@@ -58,10 +58,10 @@ exports.create = (req, res) => {
   ;
 // bulk
  exports.createmany = (req, res) => {
-    // Create a guardian
+    // Create a medical
     const medicals = req.body;
   
-    // Save guardian in the database
+    // Save medical in the database
     Medical.bulkCreate(medicals)
       .then(data => {
         res.send(data);
@@ -69,7 +69,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the guardian."
+            err.message || "Some error occurred while creating the medical."
         });
       });
   };
@@ -82,7 +82,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving guardians."
+            err.message || "Some error occurred while retrieving medicals."
         });
       });
   };
@@ -96,7 +96,7 @@ exports.create = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Guardian_student with id=" + id
+          message: "Error retrieving medical_student with id=" + id
         });
       });
   };
@@ -105,22 +105,22 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Medical.update(req.body, {
-      where: { _id: id }
+      where: { MedicalID: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "guardian was updated successfully."
+            message: "medical was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update guardian with id=${id}. Maybe guardian was not found or req.body is empty!`
+            message: `Cannot update medical with id=${id}. Maybe medical was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating guardian with id=" + id
+          message: "Error updating medical with id=" + id
         });
       });
   };
@@ -129,22 +129,22 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Medical.destroy({
-      where: { _id: id }
+      where: { MedicalID: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "guardian was deleted successfully!"
+            message: "medical was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete guardian with id=${id}. Maybe guardian was not found!`
+            message: `Cannot delete medical with id=${id}. Maybe medical was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete guardian with id=" + id
+          message: "Could not delete medical with id=" + id
         });
       });
   };
@@ -156,12 +156,12 @@ exports.create = (req, res) => {
       truncate: false
     })
       .then(nums => {
-        res.send({ message: `${nums} guardians were deleted successfully!` });
+        res.send({ message: `${nums} medicals were deleted successfully!` });
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all guardians."
+            err.message || "Some error occurred while removing all medicals."
         });
       });
   };
@@ -174,7 +174,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving guardians."
+            err.message || "Some error occurred while retrieving medicals."
         });
       });
   };
