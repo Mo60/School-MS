@@ -71,11 +71,26 @@
               v-model="student.AddressLine2"
             />
           </div>
+        
           <div class="col">
-            <label for="" class="form-label">City</label
-            ><input type="text" class="form-control" v-model="student.City" />
+            <label class="form-label">City</label>
+            <input
+              type="text"
+              class="form-control"
+              v-model="student.City"
+            />
           </div>
-          <div class="col-sm-2">
+        
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="" class="form-label">State</label
+            ><select name="" id="" v-model="student.State" class="form-select">
+            <option value="">Select an Option</option>
+            <option value="" v-for="state in states" :key="state.ste_code">{{state.ste_name}}</option>
+            </select>
+          </div>
+          <div class="col">
             <label for="" class="form-label">Zip</label
             ><input type="number" class="form-control" v-model="student.Zip" />
           </div>
@@ -230,6 +245,7 @@ export default {
         AddressLine1: "",
         AddressLine2: "",
         City: "",
+        State:"",
         Zip: "",
         StatusID: "",
       },
@@ -258,11 +274,13 @@ export default {
       guardianStudents: [],
       guardians: [],
       guardianStudentID1:"",
-      guardianStudentID2:""
+      guardianStudentID2:"",
+      states:[]
     };
   },
 
   created() {
+  
     let apiURL = "http://172.26.54.21:8082/api/guardianRelationship/";
     axios
       .get(apiURL)
@@ -318,6 +336,7 @@ export default {
                   res4.data.guardians[0].guardian_student.RelationshipID,
                 CanPickup: res4.data.guardians[0].guardian_student.CanPickup
               };
+          
               this.guardian_student2 = {
                 _id: res4.data.guardians[1].guardian_student._id,
                 GuardianID: res4.data.guardians[1].guardian_student.GuardianID,
@@ -329,9 +348,16 @@ export default {
               };
               this.guardianStudentID1=res4.data.guardians[0].guardian_student._id
               this.guardianStudentID2=res4.data.guardians[1].guardian_student._id
-             
+            
 
             });
+          }).then(()=>{
+            let APIURL5="/api/records/1.0/search/?dataset=georef-united-states-of-america-state&q=&sort=year&facet=year&facet=ste_code&facet=ste_name&facet=ste_type"
+            axios.get(APIURL5).then((res5)=>{
+              this.states=res5.data
+            }).catch((error) => {
+        console.log(error);
+      });
           });
       })
       .catch((error) => {
