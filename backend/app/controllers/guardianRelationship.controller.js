@@ -2,32 +2,32 @@ const db = require("../models");
 const GuardianRelationship = db.guardianRelationship;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new guardian
+// Create and Save a new guardianRelationship
 exports.create = (req, res) => {
   
 };
 
-// Retrieve all guardians from the database.
+// Retrieve all guardianRelationship from the database.
 exports.findAll = (req, res) => {
   
 };
 
-// Find a single guardian with an id
+// Find a single guardianRelationship with an id
 exports.findOne = (req, res) => {
   
 };
 
-// Update a guardian by the id in the request
+// Update a guardianRelationship by the id in the request
 exports.update = (req, res) => {
   
 };
 
-// Delete a guardian with the specified id in the request
+// Delete a guardianRelationship with the specified id in the request
 exports.delete = (req, res) => {
   
 };
 
-// Delete all guardians from the database.
+// Delete all guardianRelationships from the database.
 exports.deleteAll = (req, res) => {
   
 };
@@ -69,7 +69,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the guardian."
+            err.message || "Some error occurred while creating the guardianRelationship."
         });
       });
   };
@@ -82,7 +82,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving guardians."
+            err.message || "Some error occurred while retrieving guardianRelationships."
         });
       });
   };
@@ -96,7 +96,7 @@ exports.create = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Guardian_student with id=" + id
+          message: "Error retrieving guardianRelationship with id=" + id
         });
       });
   };
@@ -105,22 +105,22 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     GuardianRelationship.update(req.body, {
-      where: { _id: id }
+      where: { RelationshipID: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "guardian was updated successfully."
+            message: "guardianRelationship was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update guardian with id=${id}. Maybe guardian was not found or req.body is empty!`
+            message: `Cannot update guardianRelationship with id=${id}. Maybe guardianRelationship was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating guardian with id=" + id
+          message: "Error updating guardianRelationship with id=" + id
         });
       });
   };
@@ -129,22 +129,22 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     GuardianRelationship.destroy({
-      where: { _id: id }
+      where: { RelationshipID: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "guardian was deleted successfully!"
+            message: "guardian was guardianRelationship successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete guardian with id=${id}. Maybe guardian was not found!`
+            message: `Cannot delete guardianRelationship with id=${id}. Maybe guardianRelationship was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete guardian with id=" + id
+          message: "Could not delete guardianRelationship with id=" + id
         });
       });
   };
@@ -161,7 +161,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all guardians."
+            err.message || "Some error occurred while removing all guardianRelationships."
         });
       });
   };
@@ -174,7 +174,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving guardians."
+            err.message || "Some error occurred while retrieving guardianRelationships."
         });
       });
   };
