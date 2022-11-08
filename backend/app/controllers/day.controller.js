@@ -2,32 +2,32 @@ const db = require("../models");
 const Day = db.day;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new guardian
+// Create and Save a new day
 exports.create = (req, res) => {
   
 };
 
-// Retrieve all guardians from the database.
+// Retrieve all days from the database.
 exports.findAll = (req, res) => {
   
 };
 
-// Find a single guardian with an id
+// Find a single day with an id
 exports.findOne = (req, res) => {
   
 };
 
-// Update a guardian by the id in the request
+// Update a day by the id in the request
 exports.update = (req, res) => {
   
 };
 
-// Delete a guardian with the specified id in the request
+// Delete a day with the specified id in the request
 exports.delete = (req, res) => {
   
 };
 
-// Delete all guardians from the database.
+// Delete all days from the database.
 exports.deleteAll = (req, res) => {
   
 };
@@ -36,13 +36,13 @@ exports.deleteAll = (req, res) => {
 
 exports.create = (req, res) => {
   
-    // Create a guardian
+    // Create a day
     const day = {
       DayID: req.body.DayID,
       WeekDay: req.body.WeekDay
     };
   
-    // Save guardian in the database
+    // Save day in the database
     Day.create(day)
     .then(data => {
       res.send(data);
@@ -50,7 +50,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the guardianRelationship."
+          err.message || "Some error occurred while creating the dayRelationship."
       });
     });
     }
@@ -58,10 +58,10 @@ exports.create = (req, res) => {
   ;
 // bulk
  exports.createmany = (req, res) => {
-    // Create a guardian
+    // Create a day
     const days = req.body;
   
-    // Save guardian in the database
+    // Save day in the database
     Day.bulkCreate(days)
       .then(data => {
         res.send(data);
@@ -69,7 +69,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the guardian."
+            err.message || "Some error occurred while creating the day."
         });
       });
   };
@@ -82,7 +82,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving guardians."
+            err.message || "Some error occurred while retrieving days."
         });
       });
   };
@@ -96,7 +96,7 @@ exports.create = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Guardian_student with id=" + id
+          message: "Error retrieving day_student with id=" + id
         });
       });
   };
@@ -105,22 +105,22 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Day.update(req.body, {
-      where: { _id: id }
+      where: { DayID: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "guardian was updated successfully."
+            message: "day was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update guardian with id=${id}. Maybe guardian was not found or req.body is empty!`
+            message: `Cannot update day with id=${id}. Maybe day was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating guardian with id=" + id
+          message: "Error updating day with id=" + id
         });
       });
   };
@@ -129,22 +129,22 @@ exports.create = (req, res) => {
     const id = req.params.id;
   
     Day.destroy({
-      where: { _id: id }
+      where: { DayID: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "guardian was deleted successfully!"
+            message: "day was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete guardian with id=${id}. Maybe guardian was not found!`
+            message: `Cannot delete day with id=${id}. Maybe day was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete guardian with id=" + id
+          message: "Could not delete day with id=" + id
         });
       });
   };
@@ -156,12 +156,12 @@ exports.create = (req, res) => {
       truncate: false
     })
       .then(nums => {
-        res.send({ message: `${nums} guardians were deleted successfully!` });
+        res.send({ message: `${nums} days were deleted successfully!` });
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all guardians."
+            err.message || "Some error occurred while removing all days."
         });
       });
   };
@@ -174,7 +174,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving guardians."
+            err.message || "Some error occurred while retrieving days."
         });
       });
   };
