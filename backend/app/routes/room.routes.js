@@ -5,6 +5,7 @@ module.exports = app => {
   
     // Create a new room
     router.post("/", room.create);
+    
     router.post("/bulk", room.createmany);
   
     // Retrieve all room(s)
