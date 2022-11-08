@@ -4,6 +4,7 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new locationStatus  router.post("/", locationStatus.create);
+    router.post("/", locationStatus.create);
     router.post("/bulk", locationStatus.createmany);
   
     // Retrieve all locationStatus(s)
