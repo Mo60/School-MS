@@ -173,7 +173,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving Classs."
+            err.message || "Some error occurred while retrieving Class."
         });
       });
   };
