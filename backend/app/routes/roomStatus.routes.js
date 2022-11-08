@@ -4,6 +4,7 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Create a new roomStatus  router.post("/", roomStatus.create);
+    router.post("/", roomStatus.create);
     router.post("/bulk", roomStatus.createmany);
   
     // Retrieve all roomStatus(s)
