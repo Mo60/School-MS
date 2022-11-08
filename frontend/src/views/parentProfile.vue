@@ -25,7 +25,7 @@
          <div class="rows"> <router-link class="label name" :to="{name:'viewStudent',params:{StudentID:student.StudentID}}">  {{student.FirstName}} {{student.LastName}}</router-link></div >
           <div class="rows"><span class="label">Relationship</span> <span>{{student.Relationship}}</span></div>
             <div class="rows"><span class="label">Authorized to Pick up</span> <span v-if="student.CanPickup">Yes</span><span v-else>No</span></div>
-            <div class="rows"><span class="label">Emergency Contact</span><span v-if="student.isEmergency">Yes</span><span v-else>No</span> </div> 
+            <div class="rows"><span class="label">Emergency Contact</span><span v-if="student.IsEmergency">Yes</span><span v-else>No</span> </div> 
         </div>
     </div>
    </div>

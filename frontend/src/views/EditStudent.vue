@@ -132,7 +132,7 @@
           </div>
           <div class="col-sm">
             <label for="" class="form-label">Emergency Contact</label
-            ><select class="form-select" v-model="guardian_student.isEmergency">
+            ><select class="form-select" v-model="guardian_student.IsEmergency">
               <option selected disabled>Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -173,7 +173,7 @@
               class="form-select"
               v-model="guardian_student2.RelationshipID"
             >
-              <option selected disabled>Select an Option</option>
+              <option selected disabled value="null">Select an Option</option>
               <option
                 :value="r.RelationshipID"
                 v-for="r in relationships"
@@ -187,9 +187,9 @@
             <label for="" class="form-label">Emergency Contact</label
             ><select
               class="form-select"
-              v-model="guardian_student2.isEmergency"
+              v-model="guardian_student2.IsEmergency"
             >
-              <option selected disabled>Select an Option</option>
+              <option selected disabled value="">Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
@@ -197,7 +197,7 @@
           <div class="col-sm">
             <label for="" class="form-label">Can Pick Up</label
             ><select class="form-select" v-model="guardian_student2.CanPickup">
-              <option selected disabled>Select an Option</option>
+              <option selected disabled value="">Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
@@ -236,18 +236,20 @@ export default {
       // value is for v-show for the guardian feild
       value: false,
       guardian_student: {
+        _id: "",
         CanPickup: false,
         StudentID: "",
         GuardianID: "",
-        RelationshipID: "",
-        isEmergency: false,
+        RelationshipID: null,
+        IsEmergency: false,
       },
       guardian_student2: {
+        _id: "",
         CanPickup: false,
         StudentID: "",
         GuardianID: "",
         RelationshipID: "",
-        isEmergency: false,
+        IsEmergency: false,
       },
       relationships: [],
       statuses: [],
@@ -308,17 +310,19 @@ export default {
               this.student = res4.data;
               this.guardians = res4.data.guardians;
               this.guardian_student = {
+                _id: res4.data.guardians[0].guardian_student._id,
                 GuardianID: res4.data.guardians[0].guardian_student.GuardianID,
-                isEmergency:
-                  res4.data.guardians[0].guardian_student.isEmergency,
+                IsEmergency:
+                  res4.data.guardians[0].guardian_student.IsEmergency,
                 RelationshipID:
                   res4.data.guardians[0].guardian_student.RelationshipID,
                 CanPickup: res4.data.guardians[0].guardian_student.CanPickup
               };
               this.guardian_student2 = {
+                _id: res4.data.guardians[1].guardian_student._id,
                 GuardianID: res4.data.guardians[1].guardian_student.GuardianID,
-                isEmergency:
-                  res4.data.guardians[1].guardian_student.isEmergency,
+                IsEmergency:
+                  res4.data.guardians[1].guardian_student.IsEmergency,
                 RelationshipID:
                   res4.data.guardians[1].guardian_student.RelationshipID,
                 CanPickup: res4.data.guardians[1].guardian_student.CanPickup
@@ -339,21 +343,26 @@ export default {
       let apiURL = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
       axios
         .put(apiURL, this.student)
+        .then(()=>{
+          let apiURL2=`http://172.26.54.21:8082/api/guardian_student/${this.guardian_student._id}`
+          axios.put(apiURL2,this.guardian_student).catch((error) => {
+          console.log(error);
+        })
+        .catch((error) => {
+          console.log(error);
+        }).then(()=>{
+          let apiURL3=`http://172.26.54.21:8082/api/guardian_student/${this.guardian_student2._id}`
+          axios.put(apiURL3,this.guardian_student2).catch((error) => {
+          console.log(error);
+        })
+        })
+        .catch((error) => {
+          console.log(error);
+        })
         .then((res) => {
         
-          this.guardian_student.StudentID = res.data.StudentID;
-          
-          this.$router.push("/students");
-        }).then(()=>{
-          let apiURL2=`http://172.26.54.21:8082/api/guardian_student/${this.guardianStudentID1}`
-          axios.put(apiURL2,this.guardianStudentID1).catch((error) => {
-          console.log(error);
-        }).then(()=>{
-          let apiURL3=`http://172.26.54.21:8082/api/guardian_student/${this.guardianStudentID2}`
-          axios.put(apiURL3,this.guardianStudentID2).catch((error) => {
-          console.log(error);
-        })
-        })
+        this.$router.push("/students");
+      })
         .catch((error) => {
           console.log(error);
         });
