@@ -2,32 +2,32 @@ const db = require("../models");
 const Class_Room = db.class_room;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new guardian
+// Create and Save a new class_room
 exports.create = (req, res) => {
   
 };
 
-// Retrieve all guardians from the database.
+// Retrieve all class_rooms from the database.
 exports.findAll = (req, res) => {
   
 };
 
-// Find a single guardian with an id
+// Find a single class_room with an id
 exports.findOne = (req, res) => {
   
 };
 
-// Update a guardian by the id in the request
+// Update a class_room by the id in the request
 exports.update = (req, res) => {
   
 };
 
-// Delete a guardian with the specified id in the request
+// Delete a class_room with the specified id in the request
 exports.delete = (req, res) => {
   
 };
 
-// Delete all guardians from the database.
+// Delete all class_rooms from the database.
 exports.deleteAll = (req, res) => {
   
 };
@@ -36,13 +36,13 @@ exports.deleteAll = (req, res) => {
 
 exports.create = (req, res) => {
   
-    // Create a guardian
+    // Create a class_room
     const class_room = {
       ClassID: req.body.ClassID,
       RoomID: req.body.RoomID
     };
   
-    // Save guardian in the database
+    // Save class_room in the database
     Class_Room.create(class_room)
     .then(data => {
       res.send(data);
@@ -50,7 +50,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the guardianRelationship."
+          err.message || "Some error occurred while creating the class_roomRelationship."
       });
     });
     }
@@ -58,10 +58,10 @@ exports.create = (req, res) => {
   ;
 // bulk
  exports.createmany = (req, res) => {
-    // Create a guardian
+    // Create a class_room
     const class_rooms = req.body;
   
-    // Save guardian in the database
+    // Save class_room in the database
     Class_Room.bulkCreate(class_rooms)
       .then(data => {
         res.send(data);
@@ -69,7 +69,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while creating the guardian."
+            err.message || "Some error occurred while creating the class_room."
         });
       });
   };
@@ -82,7 +82,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving guardians."
+            err.message || "Some error occurred while retrieving class_rooms."
         });
       });
   };
@@ -96,7 +96,7 @@ exports.create = (req, res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Guardian_student with id=" + id
+          message: "Error retrieving class_room_student with id=" + id
         });
       });
   };
@@ -110,17 +110,17 @@ exports.create = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "guardian was updated successfully."
+            message: "class_room was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update guardian with id=${id}. Maybe guardian was not found or req.body is empty!`
+            message: `Cannot update class_room with id=${id}. Maybe class_room was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating guardian with id=" + id
+          message: "Error updating class_room with id=" + id
         });
       });
   };
@@ -134,17 +134,17 @@ exports.create = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "guardian was deleted successfully!"
+            message: "class_room was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete guardian with id=${id}. Maybe guardian was not found!`
+            message: `Cannot delete class_room with id=${id}. Maybe class_room was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete guardian with id=" + id
+          message: "Could not delete class_room with id=" + id
         });
       });
   };
@@ -156,12 +156,12 @@ exports.create = (req, res) => {
       truncate: false
     })
       .then(nums => {
-        res.send({ message: `${nums} guardians were deleted successfully!` });
+        res.send({ message: `${nums} class_rooms were deleted successfully!` });
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all guardians."
+            err.message || "Some error occurred while removing all class_rooms."
         });
       });
   };
@@ -174,7 +174,7 @@ exports.create = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving guardians."
+            err.message || "Some error occurred while retrieving class_rooms."
         });
       });
   };
