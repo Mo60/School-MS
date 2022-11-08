@@ -37,7 +37,7 @@ exports.deleteAll = (req, res) => {
 exports.create = (req, res) => {
   
     // Create a courseStatus
-    const Coursestatus = {
+    const courseStatus = {
       CourseStatusID: req.body.CourseStatusID,
       Status: req.body.Status
     };

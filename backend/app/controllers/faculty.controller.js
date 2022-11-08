@@ -43,6 +43,7 @@ exports.create = (req, res) => {
       MiddleName: req.body.MiddleName,
       LastName: req.body.LastName,
       PhoneNumber: req.body.PhoneNumber,
+      CellNumber: req.body.CellNumber,
       Email: req.body.Email,
       Title: req.body.Title,
       FacultyStatusID: req.body.FacultyStatusID
