@@ -159,3 +159,33 @@ exports.faculty_class_list_all = (req, res) => {
   });
   
 };
+/// methods to retrieve class_view (it includes the status name)
+// first by id
+exports.class_view_byClassID = (req, res) => {
+  const id = req.params.id;
+  const view = db.sequelize.query(`SELECT * FROM class_view WHERE ClassID = ${id}`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
+// and all rows
+exports.class_view_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM class_view`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
