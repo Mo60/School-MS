@@ -1,16 +1,23 @@
 <template>
+  
+
   <h1 class="mt-5">Classes</h1>
 <div class="flex-wrapper" v-if="Class.length == 0 && loaded">
 
      <div class="empty-arr" >
         <p>No Classes Found</p>
         <a class="btn mt-3"><router-link :to="{name:'addclass'}">Add Class</router-link></a>
-      </div>
+     </div>
 </div>
     <div class="wrapper" v-else>
-      <table class="table table-striped mt-5">
-      <thead class="table">
-        <tr>
+      <div class="row mb-4">
+        <div class="col-md-4">
+      <input type="search" v-model="searchStatus" class="form-control"  @input="searchByStatus" placeholder="Search Status" aria-label="Search" aria-describedby="search-addon" />
+      </div>
+      </div> 
+      <table class="table table-striped" >
+      <thead >
+        <tr class="text-left">
          <th>Class ID</th>
          <th>Class</th>
          <th>Teacher</th>
@@ -21,7 +28,7 @@
          <th>Actions</th>
         </tr>
       </thead>  
-      <tbody v-for="c in Class" :key=c.ClassID>
+      <tbody v-for="c in ClassList" :key=c.ClassID>
         
         <tr><td>{{c.ClassID}}</td>
           <td>{{c.CourseName}}</td>
@@ -34,8 +41,7 @@
       </tr>
     </tbody>
     
-  </table></div> 
-
+  </table></div>
   </template>
   <script>
   import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -43,22 +49,24 @@ import axios from "axios";
   
   export default {
     data() {
-        return {
-            Class: [],
-            loaded: false,
-            sortedBYEnroll: false,
-            
-        };
+      return {
+        Class: [],
+        ClassList: [],
+      loaded:false,
+      sortedBYEnroll: false,
+      searchStatus : ""
+      }
     },
     created() {
-        // Get all the classes from database
-        axios.get("http://172.26.54.21:8082/api/reports/class_view/")
-            .then(res => {
-            this.Class = res.data;
-        }).catch(err => {
-            alert("Data could not be fetched");
-        });
-        this.loaded = true;
+      // Get all the classes from database
+      axios.get('http://172.26.54.21:8082/api/reports/class_view/')
+      .then(res => {
+        this.Class = res.data
+        this.ClassList = this.Class
+      }).catch(err => {
+        alert("Data could not be fetched")
+      })
+      this.loaded=true
     },
 computed:{
 sortEnrollment(){
