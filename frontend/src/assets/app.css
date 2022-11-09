@@ -82,6 +82,14 @@ color: black;
 th{
  background-color: #b1bea5;
 }
+
+th>a:hover{
+  cursor:default;
+}
+
+tr.thead> .table th{
+  background-color:#b1bea5 ;
+}
 .wrapper2{
   width: 25%;
   margin:40px auto;
@@ -232,8 +240,7 @@ div.d-flex>router-link{
 
 .links{
  margin-right: 30px;
- display: flex;
- justify-content: space-between;
+
 }
 
 .rounded{
@@ -270,7 +277,7 @@ th>a{
   padding:20px 30px;
   border-radius: 20px;
   overflow: auto;
-  height: 280px;;
+  height: 300px;;
   box-shadow:  1px 2px 4px rgb(125, 125, 125);
 }
 .box::-webkit-scrollbar{

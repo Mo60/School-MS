@@ -5,7 +5,7 @@ import router from './router'
 // Import our custom CSS
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-import { faAngleDown ,faAngleUp} from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown ,faAngleUp,faArrowsUpDown} from '@fortawesome/free-solid-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { initializeApp } from "firebase/app";
@@ -17,6 +17,7 @@ app.use(router)
 app.mount("#app")
 library.add(faAngleDown)
 library.add(faAngleUp)
+library.add(faArrowsUpDown)
 
 
 app.component('font-awesome-icon', FontAwesomeIcon)

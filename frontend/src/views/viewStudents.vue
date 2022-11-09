@@ -18,7 +18,7 @@
       </div>  
       <table class="table table-striped">
       <thead>
-        <tr class="text-left">
+        <tr class="thead">
           <th>ID</th>
           <th>First Name</th>
           <th>Middle Name</th>

@@ -21,10 +21,10 @@
          <th>Class ID</th>
          <th>Class</th>
          <th>Teacher</th>
-         <th><a @click="sortBySemester" >Semester <font-awesome-icon icon="fa-solid fa-angle-down" class="mt-5"/></a></th>
+         <th><a @click="sortBySemester" >Semester <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
          <th>Class Time</th>
-         <th><a @click="sortByEnorllmentTotal">Enrollment Total <font-awesome-icon :icon=sortEnrollment /></a></th>
-         <th><a @click="sortByClassStatus">Status <font-awesome-icon icon="fa-solid fa-angle-down" class="mt-5"/></a></th>
+         <th><a @click="sortByEnorllmentTotal">Enrollment Total <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
+         <th><a @click="sortByClassStatus">Status <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
          <th>Actions</th>
         </tr>
       </thead>  
@@ -54,6 +54,7 @@ import axios from "axios";
         ClassList: [],
       loaded:false,
       sortedBYEnroll: false,
+      sortedBySemester:true,
       searchStatus : ""
       }
     },
@@ -68,12 +69,7 @@ import axios from "axios";
       })
       this.loaded=true
     },
-computed:{
-sortEnrollment(){
 
-  return this.sortedBYEnroll? ["fa-solid", "fa-angle-down"] :["fa-solid", "fa-angle-up"]
-}
-},
     methods: {
         // Handles deleting of classes
         deleteClass(class_id) {
@@ -106,6 +102,7 @@ sortEnrollment(){
             this.sortedBYEnroll = !this.sortedBYEnroll;
         },
         sortBySemester() {
+          if(this.sortedBySemester){
             this.Class.sort((a, b) => {
                 const nameA = a.Semester.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.Semester.toUpperCase(); // ignore upper and lowercase
@@ -113,13 +110,20 @@ sortEnrollment(){
                     return -1;
                 }
                 if (nameA > nameB) {
+                  this.sortBySemester=!this.sortBySemester
                     return 1;
                 }
-            });
+              })
+            }
+              else {
+              this.Class.reverse
+              }
+        
+            
         },
         async searchByStatus() {
             const result = this.Class.find(({ name }) => name === 1);
-            //  this.Class = result;
+             this.Class = result;
             console.log(result);
         },
     },
