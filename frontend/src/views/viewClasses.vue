@@ -7,30 +7,30 @@
         <a class="btn mt-3"><router-link :to="{name:'addclass'}">Add Class</router-link></a>
       </div>
 </div>
-    <div class="wrapper4" v-else>
+    <div class="wrapper" v-else>
       <table class="table table-striped mt-5" >
       <thead class="table">
         <tr>
          <th>Class ID</th>
-         <th>Class Title</th>
-         <th>Teacher ID</th>
-         <th>Enrollment Period</th>
+         <th>Class</th>
+         <th>Teacher</th>
+         <th>Semester</th>
          <th>Class Time</th>
          <th>Enrollment Total</th>
-         <th>Max Capacity</th>
-         <th>Notes</th>
+         <th>Status</th>
+         <th>Actions</th>
         </tr>
       </thead>  
       <tbody v-for="c in Class" :key=c.ClassID>
         
         <tr><td>{{c.ClassID}}</td>
-          <td>{{c.Lesson}}</td>
-      <td>{{c.TeacherID}}</td>
-      <td>{{c.ClassStartDate.slice(0,10)}} - {{c.ClassEndDate.slice(0,10)}}</td>
-      <td>{{c.ClassTime}}</td>
+          <td>{{c.CourseName}}</td>
+      <td>{{c.FirstName}} {{c.LastName}}</td>
+      <td>{{c.Semester}}</td>
+      <td>{{c.StartTime}} - {{c.EndTime}}</td>
       <td>{{c.NumStudents}}</td>
-      <td>{{c.MaxCapacity}}</td>
-      <td>{{c.Notes}}</td>
+      <td>{{c.Status}}</td>
+      <td><router-link class="btn" :to="{name:'EditClass',params:{ClassID:c.ClassID}}">Edit</router-link></td>
       </tr>
     </tbody>
     
@@ -48,7 +48,7 @@
     },
     created() {
       // Get all the classes from database
-      axios.get('http://172.26.54.21:8082/api/class/')
+      axios.get('http://172.26.54.21:8082/api/reports/class_view/')
       .then(res => {
         this.Class = res.data
       }).catch(err => {

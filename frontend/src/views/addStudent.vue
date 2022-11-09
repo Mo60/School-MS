@@ -82,7 +82,10 @@
         <div class="row mb-4">
           <div class="col">
             <label for="" class="form-label">State</label
-            ><input type="number" class="form-control" v-model="student.State" />
+            ><select name="" v-model="student.State" class="form-select">
+            <option value="">Select an Option</option>
+            <option :value="state.name" v-for="(state,index) in states" :key="index">{{state.name}}</option>
+            </select>
           </div>
           <div class="col">
             <label for="" class="form-label">Zip</label
@@ -236,6 +239,7 @@
 </template>
 
 <script>
+
 import axios from "axios";
 import { boolean } from "webidl-conversions";
 
@@ -276,6 +280,7 @@ export default {
       statuses: [],
       guardian: "",
       studentID: "",
+      states:[]
     };
   },
   created() {
@@ -303,13 +308,22 @@ export default {
               })
               .catch((error) => {
                 console.log(error);
-              });
+              }).then(()=>{
+            let APIURL5="https://public.opendatasoft.com/api/records/1.0/search/?dataset=georef-united-states-of-america-state&q=&sort=year&facet=year&facet=ste_code&facet=ste_name&facet=ste_type&refine.ste_type=state"
+            axios.get(APIURL5).then((res5)=>{
+              this.states=res5.data.facet_groups[2].facets
+              console.log(this.states)
+            }).catch((error) => {
+        console.log(error);
+      });
           });
       })
       .catch((error) => {
         console.log(error);
-      });
-  },
+      })
+    })
+  }
+  ,
   methods: {
     submitForm() {
       let apiURL = `http://172.26.54.21:8082/api/student/`;

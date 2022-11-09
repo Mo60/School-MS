@@ -253,14 +253,9 @@ grid-gap: 50px;
   background-color:#888c647d;
   padding:20px 30px;
   border-radius: 20px;
-  
+  overflow: auto;
   height: 280px;;
   box-shadow:  1px 2px 4px rgb(125, 125, 125);
-  
-}
-
-.box:nth-child(3){
-  overflow: auto;
 }
 .box::-webkit-scrollbar{
   width: 20px;

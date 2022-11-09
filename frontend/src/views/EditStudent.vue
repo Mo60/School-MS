@@ -38,8 +38,8 @@
           </div>
           <div class="col">
             <label for="lName" class="form-label">Status</label>
-            <select name="" id="" class="form-select" v-model="student.Status">
-              <option selected disabled>Select an Option</option>
+            <select name="" id="" class="form-select" v-model="student.StatusID">
+              <option selected disabled value="">Select an Option</option>
               <option
                 :value="status.StatusID"
                 v-for="status in statuses"
@@ -85,9 +85,9 @@
         <div class="row mb-3">
           <div class="col">
             <label for="" class="form-label">State</label
-            ><select name="" id="" v-model="student.State" class="form-select">
+            ><select name="" v-model="student.State" class="form-select">
             <option value="">Select an Option</option>
-            <option value="" v-for="state in states" :key="state.ste_code">{{state.ste_name}}</option>
+            <option :value="state.name" v-for="(state,index) in states" :key="index">{{state.name}}</option>
             </select>
           </div>
           <div class="col">
@@ -336,7 +336,7 @@ export default {
                   res4.data.guardians[0].guardian_student.RelationshipID,
                 CanPickup: res4.data.guardians[0].guardian_student.CanPickup
               };
-          
+              if(this.guardian_student2.GuardianID!=""){
               this.guardian_student2 = {
                 _id: res4.data.guardians[1].guardian_student._id,
                 GuardianID: res4.data.guardians[1].guardian_student.GuardianID,
@@ -348,13 +348,14 @@ export default {
               };
               this.guardianStudentID1=res4.data.guardians[0].guardian_student._id
               this.guardianStudentID2=res4.data.guardians[1].guardian_student._id
-            
+              }
 
             });
           }).then(()=>{
-            let APIURL5="/api/records/1.0/search/?dataset=georef-united-states-of-america-state&q=&sort=year&facet=year&facet=ste_code&facet=ste_name&facet=ste_type"
+            let APIURL5="https://public.opendatasoft.com/api/records/1.0/search/?dataset=georef-united-states-of-america-state&q=&sort=year&facet=year&facet=ste_code&facet=ste_name&facet=ste_type&refine.ste_type=state"
             axios.get(APIURL5).then((res5)=>{
-              this.states=res5.data
+              this.states=res5.data.facet_groups[2].facets
+              console.log(this.states)
             }).catch((error) => {
         console.log(error);
       });
