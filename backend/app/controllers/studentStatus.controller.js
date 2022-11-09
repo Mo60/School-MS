@@ -37,20 +37,20 @@ exports.deleteAll = (req, res) => {
 exports.create = (req, res) => {
   
     // Create a studentStatus
-    const StudentStatus = {
+    const studentStatus = {
       StudentStatusID: req.body.StudentStatusID,
       Status: req.body.Status
     };
   
     // Save studentStatus in the database
-    StudentStatus.create(StudentStatus)
+    StudentStatus.create(studentStatus)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the studentStatusRelationship."
+          err.message || "Some error occurred while creating the studentStatus."
       });
     });
     }

@@ -17,6 +17,9 @@ module.exports = app => {
 
   router.get("/class_view/:id", Reports.class_view_byClassID);
   router.get("/class_view", Reports.class_view_all);
+  //class_detail_list1
+  router.get("/class_detail_list1/:id", Reports.class_detail_list1_byClassID);
+  router.get("/class_detail_list1", Reports.class_detail_list1_all);
 
   app.use('/api/reports', router);
 };

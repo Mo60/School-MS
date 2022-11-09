@@ -4,12 +4,13 @@
   <form @submit.prevent="submitForm" class="wrapper2">
     <fieldset class="form-control p-4">
       <label for="" class="form-label">Student</label>
-      <select name="" id="" class="form-select mb-4" v-model="studentsID" >
-        <option  v-for="(student,index) in students" :key="index" :value="student.studentID">{{student.studentName}}</option>
+      <select name="" id="" class="form-select mb-4" v-model="student.StudentID" >
+        <option  v-for="(student,index) in students" :key="index" :value="student.StudentID">{{student.FirstName}} {{student.MiddleName}} {{student.LastName}}</option>
       </select>
       <label for="" class="form-label">Class</label>
-      <select name="" id="" v-model="className" class="form-select mb-3">
-        <option  v-for="(Class,index) in classes" :key="index" :value="Class.classID">{{Class.className}}</option>
+      <select name="" id="" v-model="Class.ClassID" class="form-select mb-3">
+        <option  v-for="(Class,index) in classes" :key="index" :value="Class.ClassID">{{Class.ClassID}} {{Class.CourseName}}|{{Class.WeekDay}}
+                                                                {{Class.StartTime}}-{{Class.EndTime}}| {{Class.Status}}</option>
     </select>
       
     </fieldset>
@@ -18,26 +19,75 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
   data() {
     return {
-      students: [
-        {
-          studentID: "1",
-          studentName: "Alexis Enriquez",
-        },
-        { studentID: "2", studentName: "Lauren Potter" },
-      ],
+      student: {
+
+              StudentID: "",
+              FirstName: "",
+              MiddleName: "",
+              LastName: ""
+      },
+
+      Class: {
+              ClassID: "",
+              CourseName: "",
+              Status: "",
+              WeekDay: "",
+              StartTime: "",
+              EndTime: ""
+      },
+      student_class: {
+              ClassID: "",
+              StudentID: "",
+              StudentClassStatusID: null
+
+      },
+
+      students: [],
       
-    classes:[{classID:"1", className:"Drawing 101"},{ classID:"2",className:"Painting 101"}],
+    classes:[],
       studentsID: "",
      classID:"",
     };
 
   },
+  async created() {
+    let apiURL = "http://172.26.54.21:8082/api/student/";
+   await axios
+      .get(apiURL)
+      .then((res) => {
+        this.students = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      // get avilable classes info
+      let apiURL1 = "http://172.26.54.21:8082/api/reports/class_detail_list1";
+   await axios
+      .get(apiURL1)
+      .then((res) => {
+        this.classes = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
 
   methods: {
-    submitForm() {
+   async submitForm() {
+      let apiURL2 = `http://172.26.54.21:8082/api/student_class/`;
+          this.student_class.ClassID = this.Class.ClassID;
+          this.student_class.StudentID = this.student.StudentID
+      await    axios.post(apiURL2, this.student_class)
+
+            .catch((error) => {
+              console.log(error);
+            })
+      await this.$router.push(`/students/${this.student.StudentID}`);      
      
     },
   },
