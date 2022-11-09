@@ -2,9 +2,12 @@
   
 
   <h1 class="mt-5">Classes</h1>
-  
 <div class="flex-wrapper" v-if="Class.length == 0 && loaded">
 
+     <div class="empty-arr" >
+        <p>No Classes Found</p>
+        <a class="btn mt-3"><router-link :to="{name:'addclass'}">Add Class</router-link></a>
+     </div>
 </div>
     <div class="wrapper" v-else>
       <div class="row mb-4">
