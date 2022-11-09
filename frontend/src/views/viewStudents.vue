@@ -11,7 +11,7 @@
   <div class="tablewrapper" v-else>
     <table class="table table-striped">
       <thead>
-        <tr class="text-center">
+        <tr class="text-center head">
           <th>ID</th>
           <th>First Name</th>
           <th>Middle Name</th>

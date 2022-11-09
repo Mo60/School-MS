@@ -36,6 +36,7 @@ student:[]
         console.log(error);
       });
 
+      let apiURL2=`http://172.26.54.21:8082/api/reports/student_class`
 }
 }
 </script>

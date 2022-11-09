@@ -60,7 +60,7 @@ color: black;
 }
 
 .tablewrapper{
-  max-height: 52vh;
+  max-height: 65vh;
   width: 70%;
   margin: auto;
   overflow-y: scroll;
@@ -68,6 +68,19 @@ color: black;
 
 .tablewrapper::-webkit-scrollbar{
   display: none;
+}
+
+.table{
+  position: relative;
+}
+
+.table th{ 
+  position: sticky;
+  top: 0;
+  background-color: #b1bea5;
+}
+th{
+ background-color: #b1bea5;
 }
 .wrapper2{
   width: 25%;
@@ -249,6 +262,9 @@ grid-gap: 50px;
  
 }
 
+th>a{
+
+}
 .box{
   background-color:#888c647d;
   padding:20px 30px;
