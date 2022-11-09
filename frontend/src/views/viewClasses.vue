@@ -14,10 +14,10 @@
          <th>Class ID</th>
          <th>Class</th>
          <th>Teacher</th>
-         <th>Semester</th>
+         <th><a @click="sortBySemester">Semester</a></th>
          <th>Class Time</th>
-         <th>Enrollment Total</th>
-         <th>Status</th>
+         <th><a @click="sortByEnorllmentTotal">Enrollment Total</a></th>
+         <th><a @click="sortByClassStatus">Status</a></th>
          <th>Actions</th>
         </tr>
       </thead>  
@@ -34,7 +34,8 @@
       </tr>
     </tbody>
     
-  </table></div>   
+  </table></div> 
+  <button @click="searchByStatus"> open Class </button>  
   </template>
   <script>
   import axios from "axios";
@@ -43,7 +44,8 @@
     data() {
       return {
         Class: [],
-      loaded:false
+      loaded:false,
+      sortedBYEnroll: false
       }
     },
     created() {
@@ -66,8 +68,52 @@
             alert("Class could not be deleted")
           });
         }
-      }
-    }
+      },
+      sortByClassStatus() {
+        this.Class.sort((a, b) => {
+          const nameA = a.Status.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.Status.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+
+        }) ;
+       },
+       sortByEnorllmentTotal(){
+        if (this.sortedBYEnroll)
+        this.Class.sort((a, b) => a.EnrollmentTotal - b.EnrollmentTotal);
+        else {
+          this.Class.sort((a, b) => b.EnrollmentTotal - a.EnrollmentTotal);
+        }
+        this.sortedBYEnroll= !this.sortedBYEnroll;
+
+       },
+       sortBySemester() {
+        this.Class.sort((a, b) => {
+          const nameA = a.Semester.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.Semester.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+
+        }) ;
+       },
+     async  searchByStatus(){
+                 
+                     const result = this.Class.find(({ name }) => name === 1);
+                    //  this.Class = result;
+                      console.log(result)
+                     
+       },
+      
+
+  }
   }
 
 </script>
