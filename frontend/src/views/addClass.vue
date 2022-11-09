@@ -212,7 +212,7 @@ handleSubmitForm() {
     // get options from the api
    
     let apiURL = 'http://172.26.54.21:8082/api/faculty/';
-    axios.get(apiURL).then(res => {
+   await axios.get(apiURL).then(res => {
         this.TeacherList = res.data;
 
     }).catch(error => {
