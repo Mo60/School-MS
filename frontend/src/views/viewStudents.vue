@@ -4,24 +4,32 @@
     <div class="empty-arr">
       <p>No Students Found</p>
       <a class="btn mt-3"
-        ><router-link :to="{ name: 'addstudent' }">Add Student</router-link></a
-      >
+        ><router-link :to="{ name: 'addstudent' }">Add Student</router-link></a>
     </div>
   </div>
   <div class="tablewrapper" v-else>
-    <table class="table table-striped">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <input type="search" v-model="searchFirstName" class="form-control"  @input="searchByFirstName" placeholder="Search First Name" aria-label="Search" aria-describedby="search-addon" />
+        </div>
+        <div class="col-md-4">
+          <input type="search" v-model="searchLastName" class="form-control"  @input="searchByLastName" placeholder="Search Last Name" aria-label="Search" aria-describedby="search-addon" />
+        </div>
+      </div>  
+      <table class="table table-striped">
       <thead>
-        <tr class="text-center">
+        <tr class="text-left">
           <th>ID</th>
           <th>First Name</th>
           <th>Middle Name</th>
-          <th>Last Name</th>
+          <th>Last Name<br></th>
           <th>DOB</th>
   
           <th colspan="2" class="">Actions</th>
         </tr>
       </thead>
-      <tbody v-for="student in students" :key="student.StudentID">
+      <!-- use the filtered list -->
+      <tbody v-for="student in studentList" :key="student.StudentID">
       <tr>
         <td>{{student.StudentID}}</td>
       <td>{{student.FirstName}}</td>
@@ -41,7 +49,12 @@ import axios from "axios";
 export default {
   data() {
     return {
+      // this to store the original list
       students: [],
+      // this to store the filtered list
+      studentList:[],
+      searchLastName: "",
+      searchFirstName: "",
     };
   },
   created() {
@@ -50,11 +63,31 @@ export default {
       .get(apiURL)
       .then((res) => {
         this.students = res.data;
+        this.studentList = this.students
       })
       .catch((error) => {
         console.log(error);
       });
     this.loaded = true;
   },
+  methods:{
+    searchByLastName(){
+                      this.searchFirstName = "";
+                      const result = this.students.filter(student => student.LastName.toUpperCase().indexOf(this.searchLastName.toUpperCase()) !== -1 );
+                      //save the results in the filtering list
+                      this.studentList = result;
+                       console.log(result);
+                    
+     },
+     searchByFirstName(){
+                      this.searchLastName = "";
+                      const result = this.students.filter(student => student.FirstName.toUpperCase().indexOf(this.searchFirstName.toUpperCase()) !== -1 );
+                      //save the results in the filtering list
+                      this.studentList = result;
+                       console.log(result);
+                      
+        },
+        
+  }
 };
 </script>
