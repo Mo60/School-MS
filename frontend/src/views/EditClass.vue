@@ -169,14 +169,24 @@ export default {
   },
 
   methods: {
-    handleSubmitForm() {
+  async  handleSubmitForm() {
       let apiURL = `http://172.26.54.21:8082/api/class/${this.ClassID}`;
 
-      axios
+    await  axios
         .put(apiURL, this.Class)
         .then((res) => {
+          let apiURL2 = `http://172.26.54.21:8082/api/faculty_class/${this.faculty_class_id}`;
+          axios.put(apiURL2,this.Faculty_Class) .catch((error) => {
+          console.log(res);
+        });
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .then((res) => {
+          
           //changing the view to the list
-          this.$router.push("/classes");
+          
           this.Class = {
             CourseID: "",
             SemesterID: "",
@@ -193,15 +203,9 @@ export default {
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          let apiURL2 = `http://172.26.54.21:8082/api/faculty_class/${this.faculty_class_id}`;
-          axios.put(apiURL2,this.Faculty_Class) .catch((error) => {
-          console.log(error);
-        });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        ;
+         setTimeout(() => {  his.$router.push("/classes"); }, 500);
+        
     },
   },
   async created() {
