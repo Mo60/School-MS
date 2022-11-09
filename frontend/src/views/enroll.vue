@@ -9,7 +9,7 @@
       </select>
       <label for="" class="form-label">Class</label>
       <select name="" id="" v-model="Class.ClassID" class="form-select mb-3">
-        <option  v-for="(Class,index) in classes" :key="index" :value="Class.ClassID">{{Class.ClassID}} {{Class.CourseName}}|{{Class.WeekDay}}
+        <option  v-for="(Class,index) in classes" :key="index" :value="Class.ClassID">{{Class.CourseName}}|{{Class.WeekDay}}
                                                                 {{Class.StartTime}}-{{Class.EndTime}}| {{Class.Status}}</option>
     </select>
       
@@ -69,7 +69,7 @@ export default {
    await axios
       .get(apiURL1)
       .then((res) => {
-        this.classes = res.data;
+        this.classes = res.data.filter((x)=>x.Status!=="Closed" || x.Status!=="Cancelled")
       })
       .catch((error) => {
         console.log(error);

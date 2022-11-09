@@ -6,7 +6,7 @@
         <div class="row mb-4">
           <div class="col">
             <label for="" class="form-label">Teacher ID</label>
-            <select name="" id="" class="form-select" v-model="Class.FacultyID" required>
+            <select name="" id="" class="form-select" v-model="Faculty_Class.FacultyID" required>
               <option
                 :value="teacher.FacultyID"
                 v-for="teacher in TeacherList"
