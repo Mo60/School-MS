@@ -38,9 +38,7 @@
         
 <script>
  import axios from "axios";
- import parentsCard from "../components/parentsCard.vue";
 export default{
-  components:{parentsCard},
   data(){
 return{
 parent:[],

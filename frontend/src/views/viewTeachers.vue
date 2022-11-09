@@ -43,10 +43,10 @@
 </template>
   <script>
     import axios from "axios";
-    import TeacherCard from "../components/teacherCard.vue"
+
     export default {
         components:{
-            TeacherCard
+      
         },
         data() {
             return {

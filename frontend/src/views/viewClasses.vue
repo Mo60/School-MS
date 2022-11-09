@@ -28,7 +28,7 @@
       <td>{{c.FirstName}} {{c.LastName}}</td>
       <td>{{c.Semester}}</td>
       <td>{{c.StartTime}} - {{c.EndTime}}</td>
-      <td>{{c.NumStudents}}</td>
+      <td>{{c.EnrollmentTotal}}</td>
       <td>{{c.Status}}</td>
       <td><router-link class="btn" :to="{name:'EditClass',params:{ClassID:c.ClassID}}">Edit</router-link></td>
       </tr>
