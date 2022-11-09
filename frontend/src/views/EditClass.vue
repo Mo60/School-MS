@@ -175,10 +175,19 @@ export default {
     await  axios
         .put(apiURL, this.Class)
         .then((res) => {
+          if (this.faculty_class_id) {
           let apiURL2 = `http://172.26.54.21:8082/api/faculty_class/${this.faculty_class_id}`;
           axios.put(apiURL2,this.Faculty_Class) .catch((error) => {
           console.log(res);
+        });}
+        else {
+          let apiURL2 = `http://172.26.54.21:8082/api/faculty_class`;
+          axios.post(apiURL2,this.Faculty_Class) .catch((error) => {
+          console.log(res);
         });
+
+
+        }
         })
         .catch((error) => {
           console.log(error);
@@ -204,7 +213,7 @@ export default {
           console.log(error);
         })
         ;
-         setTimeout(() => {  his.$router.push("/classes"); }, 500);
+         setTimeout(() => {  this.$router.push("/classes"); }, 500);
         
     },
   },
