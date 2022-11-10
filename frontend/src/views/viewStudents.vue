@@ -16,7 +16,7 @@
           <input type="search" v-model="searchLastName" class="form-control"  @input="searchByLastName" placeholder="Search Last Name" aria-label="Search" aria-describedby="search-addon" />
         </div>
       </div>  
-      <table class="table table-striped">
+      <table class="text-center">
       <thead>
         <tr class="thead">
           <th>ID</th>

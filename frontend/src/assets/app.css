@@ -61,7 +61,7 @@ color: black;
 
 .tablewrapper{
   max-height: 65vh;
-  width: 70%;
+  width: 75%;
   margin: auto;
   overflow-y: scroll;
 }
@@ -70,24 +70,26 @@ color: black;
   display: none;
 }
 
-.table{
+table{
   position: relative;
+  width: 100%;
+  background-color: rgba(152, 150, 150, 0.073);
 }
 
-.table th{ 
+table th{ 
   position: sticky;
   top: 0;
-  background-color: #b1bea5;
 }
 th{
  background-color: #b1bea5;
+ padding: 10px;
 }
 
 th>a:hover{
   cursor:default;
 }
 
-tr.thead> .table th{
+tr.thead> table th{
   background-color:#b1bea5 ;
 }
 .wrapper2{
@@ -139,8 +141,6 @@ justify-content:center;
   text-decoration: none;
   color: black;
 }
-
-
 
 .display {
   width: 25vw;

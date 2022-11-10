@@ -15,15 +15,15 @@
       <input type="search" v-model="searchStatus" class="form-control"  @input="searchByStatus" placeholder="Search Status" aria-label="Search" aria-describedby="search-addon" />
       </div>
       </div> 
-      <table class="table table-striped" >
+      <table class="" >
       <thead >
-        <tr class="text-left">
+        <tr class="text-center">
          <th>Class ID</th>
          <th>Class</th>
          <th>Teacher</th>
          <th><a @click="sortBySemester" >Semester <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
          <th>Class Time</th>
-         <th><a @click="sortByEnorllmentTotal">Enrollment Total <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
+         <th><a @click="sortByEnrollmentTotal">Enrollment Total <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
          <th><a @click="sortByClassStatus">Status <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
          <th>Actions</th>
         </tr>
@@ -54,7 +54,8 @@ import axios from "axios";
         ClassList: [],
       loaded:false,
       sortedBYEnroll: false,
-      sortedBySemester:true,
+      sortedBySemester:false,
+      sortedByClassStatus:false,
       searchStatus : ""
       }
     },
@@ -71,17 +72,9 @@ import axios from "axios";
     },
 
     methods: {
-        // Handles deleting of classes
-        deleteClass(class_id) {
-            if (window.confirm("Do you really want to delete this class?")) {
-                axios.delete(``).then(() => {
-                    this.Classes.splice(this.Classes.findIndex(i => i.class_id === class_id), 1);
-                }).catch(error => {
-                    alert("Class could not be deleted");
-                });
-            }
-        },
+       
         sortByClassStatus() {
+          if(this.sortedByClassStatus){
             this.Class.sort((a, b) => {
                 const nameA = a.Status.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.Status.toUpperCase(); // ignore upper and lowercase
@@ -91,9 +84,13 @@ import axios from "axios";
                 if (nameA > nameB) {
                     return 1;
                 }
-            });
+            })
+            this.sortedByClassStatus=!this.sortedByClassStatus
+          }
+          else{  this.Class.sort().reverse()
+               this.sortedByClassStatus=!this.sortedByClassStatus}
         },
-        sortByEnorllmentTotal() {
+        sortByEnrollmentTotal() {
             if (this.sortedBYEnroll)
                 this.Class.sort((a, b) => a.EnrollmentTotal - b.EnrollmentTotal);
             else {
@@ -109,17 +106,16 @@ import axios from "axios";
                 if (nameA < nameB) {
                     return -1;
                 }
-                if (nameA > nameB) {
-                  this.sortBySemester=!this.sortBySemester
+                if (nameA > nameB) { 
                     return 1;
                 }
               })
+              this.sortedBySemester=!this.sortedBySemester
             }
               else {
-              this.Class.reverse
-              }
-        
-            
+                this.Class.sort().reverse()
+               this.sortedBySemester=!this.sortedBySemester
+              }      
         },
         async searchByStatus() {
             const result = this.Class.find(({ name }) => name === 1);

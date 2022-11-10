@@ -7,7 +7,7 @@
         </div>
    </div> 
    <div class="tablewrapper" v-else>
-    <table class="table table-striped">
+    <table class="">
       <thead>
         <tr class="text-center">
           <th>ID</th>

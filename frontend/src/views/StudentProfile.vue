@@ -25,7 +25,8 @@ export default{
     data(){
         return{
 studentID:this.$route.params.StudentID,
-student:[]
+student:[],
+student_class:[]
         }
     },
     created(){
@@ -36,7 +37,10 @@ student:[]
         console.log(error);
       });
 
-      let apiURL2=`http://172.26.54.21:8082/api/reports/student_class`
+      let apiURL2=`http://172.26.54.21:8082/api/reports/student_class/studentid/${this.studentID}`
+      axios.get(apiURL2).then((res)=>{
+this.student_class=res.data
+      })
 }
 }
 </script>
