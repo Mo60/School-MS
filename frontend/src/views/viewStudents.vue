@@ -1,48 +1,87 @@
 <template>
-  <h1 class="mt-5 mb-5">Students</h1>
+  <h1 class="mt-4 mb-4">Students</h1>
   <div class="flex-wrapper" v-if="students.length == 0 && loaded" v-cloak>
     <div class="empty-arr">
       <p>No Students Found</p>
       <a class="btn mt-3"
-        ><router-link :to="{ name: 'addstudent' }">Add Student</router-link></a>
+        ><router-link :to="{ name: 'addstudent' }">Add Student</router-link></a
+      >
     </div>
   </div>
   <div class="tablewrapper" v-else>
-      <div class="row mb-4">
-        <div class="col-md-4">
-          <input type="search" v-model="searchFirstName" class="form-control"  @input="searchByFirstName" placeholder="Search First Name" aria-label="Search" aria-describedby="search-addon" />
-        </div>
-        <div class="col-md-4">
-          <input type="search" v-model="searchLastName" class="form-control"  @input="searchByLastName" placeholder="Search Last Name" aria-label="Search" aria-describedby="search-addon" />
-        </div>
-      </div>  
-      <table class="text-center">
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <input
+          type="search"
+          v-model="searchFirstName"
+          class="form-control"
+          @input="searchByFirstName"
+          placeholder="Search First Name"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+      </div>
+      <div class="col-md-4">
+        <input
+          type="search"
+          v-model="searchLastName"
+          class="form-control"
+          @input="searchByLastName"
+          placeholder="Search Last Name"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+      </div>
+    </div>
+    <table class="text-center">
       <thead>
         <tr class="thead">
           <th>ID</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name<br></th>
-          <th>DOB</th>
-  
+          <th @click="sortByFName">First Name &nbsp;  <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByFName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+          <th @click="sortByMName">Middle Name &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByMName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+          <th @click="sortByLName">Last Name &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByLName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+          <th @click="sortByDOB">DOB &nbsp;  <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByDOB"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+
           <th colspan="2" class="">Actions</th>
         </tr>
       </thead>
       <!-- use the filtered list -->
       <tbody v-for="student in studentList" :key="student.StudentID">
-      <tr>
-        <td>{{student.StudentID}}</td>
-      <td>{{student.FirstName}}</td>
-      <td>{{student.MiddleName}}</td>
-      <td>{{student.LastName}}</td>
-      <td>{{student.DOB}}</td>
-      <td><router-link class="btn" :to="{name:'viewStudent',params:{StudentID:student.StudentID}}">See More</router-link></td>
-           <td><router-link class="btn" :to="{name:'EditStudent',params:{StudentID:student.StudentID}}">Edit</router-link></td>
-      </tr>
+        <tr>
+          <td>{{ student.StudentID }}</td>
+          <td>{{ student.FirstName }}</td>
+          <td>{{ student.MiddleName }}</td>
+          <td>{{ student.LastName }}</td>
+          <td>{{ student.DOB }}</td>
+          <td>
+            <router-link
+              class="btn"
+              :to="{
+                name: 'viewStudent',
+                params: { StudentID: student.StudentID },
+              }"
+              ><font-awesome-icon icon="fa-solid fa-eye"></font-awesome-icon></router-link
+            >
+          </td>
+          <td>
+            <router-link
+              class="btn"
+              :to="{
+                name: 'EditStudent',
+                params: { StudentID: student.StudentID },
+              }"
+              >Edit</router-link
+            >
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
-  <div class="d-flex justify-content-center mt-5">  <router-link class="btn " :to="{name:'addstudent'}">Add Student </router-link></div >
+  <div class="d-flex justify-content-center mt-5">
+    <router-link class="btn" :to="{ name: 'addstudent' }"
+      >Add Student
+    </router-link>
+  </div>
 </template>
 <script>
 import axios from "axios";
@@ -52,9 +91,13 @@ export default {
       // this to store the original list
       students: [],
       // this to store the filtered list
-      studentList:[],
+      studentList: [],
       searchLastName: "",
       searchFirstName: "",
+      sortedByFName: false,
+      sortedByLName: false,
+      sortedByMName: false,
+      sortedByDOB: false,
     };
   },
   created() {
@@ -63,31 +106,121 @@ export default {
       .get(apiURL)
       .then((res) => {
         this.students = res.data;
-        this.studentList = this.students
+        this.studentList = this.students;
       })
       .catch((error) => {
         console.log(error);
       });
     this.loaded = true;
   },
-  methods:{
-    searchByLastName(){
-                      this.searchFirstName = "";
-                      const result = this.students.filter(student => student.LastName.toUpperCase().indexOf(this.searchLastName.toUpperCase()) !== -1 );
-                      //save the results in the filtering list
-                      this.studentList = result;
-                       console.log(result);
-                    
-     },
-     searchByFirstName(){
-                      this.searchLastName = "";
-                      const result = this.students.filter(student => student.FirstName.toUpperCase().indexOf(this.searchFirstName.toUpperCase()) !== -1 );
-                      //save the results in the filtering list
-                      this.studentList = result;
-                       console.log(result);
-                      
-        },
+  methods: {
+    searchByLastName() {
+      this.searchFirstName = "";
+      const result = this.students.filter(
+        (student) =>
+          student.LastName.toUpperCase().indexOf(
+            this.searchLastName.toUpperCase()
+          ) !== -1
+      );
+      //save the results in the filtering list
+      this.studentList = result;
+      console.log(result);
+    },
+    searchByFirstName() {
+      this.searchLastName = "";
+      const result = this.students.filter(
+        (student) =>
+          student.FirstName.toUpperCase().indexOf(
+            this.searchFirstName.toUpperCase()
+          ) !== -1
+      );
+      //save the results in the filtering list
+      this.studentList = result;
+      console.log(result);
+    },
+    sortByFName() {
+      if (!this.sortedByFName) {
+        this.students.sort((a, b) => {
+          const nameA = a.FirstName.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.FirstName.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+        })
+        this.sortedByFName = !this.sortedByFName;
+      } else {
+        this.students.sort().reverse();
+        this.sortedByFName = !this.sortedByFName;
+      }
+    },
+    sortByMName() {
+      if (!this.sortedByMName) {
+        this.students.sort((a, b) => {
+         let  nameA =a.MiddleName // ignore upper and lowercase
+        let nameB=b.MiddleName // ignore upper and lowercase
+            if(nameA!=null){
+           nameA = a.MiddleName.toUpperCase(); // ignore upper and lowercase
+            }
+            if(nameB!=null)
+           nameB = b.MiddleName.toUpperCase(); // ignore upper and lowercase
+
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+      
+        })
+        this.sortedByMName = !this.sortedByMName;
+      } else {
+        this.students.sort().reverse();
+        this.sortedByMName = !this.sortedByMName;
+      }
+    },
+    sortByLName() {
+      if (!this.sortedByLName) {
+        this.students.sort((a, b) => {
+          const nameA = a.LastName.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.LastName.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+        })
+        this.sortedByLName = !this.sortedByLName;
+      } else {
+        this.students.sort().reverse();
+        this.sortedByLName = !this.sortedByLName;
+      }
+    },
+
+    sortByDOB()
+    {
+      if (!this.sortedByDOB) {
+        this.students.sort((a, b) => {
+          const nameA = a.DOB.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.DOB.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
         
-  }
+        })
+        this.sortedByDOB = !this.sortedByDOB;
+      } else {
+        this.students.sort().reverse();
+        this.sortedByDOB = !this.sortedByDOB;
+      }
+    }
+ 
+  },
 };
 </script>

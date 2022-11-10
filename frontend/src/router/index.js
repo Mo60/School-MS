@@ -27,6 +27,10 @@ const router= createRouter({
     name:"classes",
     component:()=>import("../views/viewClasses.vue"),
   },
+  {path:"/classes/:ClassID",
+    name:"classes2",
+    component:()=>import("../views/viewClasses.vue"),
+  },
  // import add views   
     {path:"/addStudent",
     name:"addstudent",

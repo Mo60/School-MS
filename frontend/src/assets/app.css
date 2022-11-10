@@ -83,10 +83,13 @@ table th{
 th{
  background-color: #b1bea5;
  padding: 10px;
+ -webkit-user-select: none; /* Safari */
+ -ms-user-select: none; /* IE 10 and IE 11 */
+ user-select: none; /* Standard syntax */
 }
 
-th>a:hover{
-  cursor:default;
+th:hover{
+  cursor:pointer;
 }
 
 tr.thead> table th{
@@ -254,8 +257,6 @@ div.d-flex>router-link{
 thead{
   background-color: #b1bea5;
 }
-
-
 
 .box-wrapper{
   display: grid;

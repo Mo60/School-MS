@@ -19,13 +19,13 @@
       <thead >
         <tr class="text-center">
          <th>Class ID</th>
-         <th>Class</th>
+         <th @click="sortByClass">Class &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByClass"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
          <th>Teacher</th>
-         <th><a @click="sortBySemester" >Semester <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
+         <th @click="sortBySemester">Semester &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedBySemester"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
          <th>Class Time</th>
-         <th><a @click="sortByEnrollmentTotal">Enrollment Total <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
-         <th><a @click="sortByClassStatus">Status <font-awesome-icon icon="fa-solid fa-arrows-up-down" /></a></th>
-         <th>Actions</th>
+         <th @click="sortByEnrollmentTotal"># Enrolled  &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedBYEnroll"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+         <th @click="sortByClassStatus">Status &nbsp;  <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByClassStatus"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+         <th colspan="2">Actions</th>
         </tr>
       </thead>  
       <tbody v-for="c in ClassList" :key=c.ClassID>
@@ -37,6 +37,7 @@
       <td>{{c.StartTime}} - {{c.EndTime}}</td>
       <td>{{c.EnrollmentTotal}}</td>
       <td>{{c.Status}}</td>
+      <td><router-link  class="btn" :to="{name:'classes2',params:{ClassID:c.ClassID}}"><font-awesome-icon icon="fa-solid fa-eye"></font-awesome-icon></router-link></td>
       <td><router-link class="btn" :to="{name:'EditClass',params:{ClassID:c.ClassID}}">Edit</router-link></td>
       </tr>
     </tbody>
@@ -56,6 +57,7 @@ import axios from "axios";
       sortedBYEnroll: false,
       sortedBySemester:false,
       sortedByClassStatus:false,
+      sortedByClass:false,
       searchStatus : ""
       }
     },
@@ -70,11 +72,10 @@ import axios from "axios";
       })
       this.loaded=true
     },
-
     methods: {
        
         sortByClassStatus() {
-          if(this.sortedByClassStatus){
+          if(!this.sortedByClassStatus){
             this.Class.sort((a, b) => {
                 const nameA = a.Status.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.Status.toUpperCase(); // ignore upper and lowercase
@@ -86,12 +87,14 @@ import axios from "axios";
                 }
             })
             this.sortedByClassStatus=!this.sortedByClassStatus
+        
           }
           else{  this.Class.sort().reverse()
                this.sortedByClassStatus=!this.sortedByClassStatus}
+            
         },
         sortByEnrollmentTotal() {
-            if (this.sortedBYEnroll)
+            if (!this.sortedBYEnroll)
                 this.Class.sort((a, b) => a.EnrollmentTotal - b.EnrollmentTotal);
             else {
                 this.Class.sort((a, b) => b.EnrollmentTotal - a.EnrollmentTotal);
@@ -99,7 +102,7 @@ import axios from "axios";
             this.sortedBYEnroll = !this.sortedBYEnroll;
         },
         sortBySemester() {
-          if(this.sortedBySemester){
+          if(!this.sortedBySemester){
             this.Class.sort((a, b) => {
                 const nameA = a.Semester.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.Semester.toUpperCase(); // ignore upper and lowercase
@@ -116,7 +119,28 @@ import axios from "axios";
                 this.Class.sort().reverse()
                this.sortedBySemester=!this.sortedBySemester
               }      
+
         },
+
+        sortByClass() {
+          if(!this.sortedByClass){
+            this.Class.sort((a, b) => {
+                const nameA = a.Semester.toUpperCase(); // ignore upper and lowercase
+                const nameB = b.Semester.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) { 
+                    return 1;
+                }
+              })
+              this.sortedByClass=!this.sortedByClass
+            }
+              else {
+                this.Class.sort().reverse()
+               this.sortedByClass=!this.sortedByClass
+              }  
+            },    
         async searchByStatus() {
             const result = this.Class.find(({ name }) => name === 1);
              this.Class = result;

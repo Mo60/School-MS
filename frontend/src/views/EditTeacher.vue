@@ -12,6 +12,10 @@
                           <input type="text" class="form-control"   v-model="faculty.FirstName">
                  </div >
                  <div class="col">   
+                                <label class="form-label">Middle Name</label>
+                                <input type="text" class="form-control" v-model="faculty.MiddleName" >
+                       </div >
+                 <div class="col">   
                           <label class="form-label">Last Name</label>
                           <input type="text" class="form-control" v-model="faculty.LastName" >
                  </div >
@@ -61,6 +65,7 @@ export default {
          faculty: { 
               
               FirstName: "",
+              MiddleName:"",
               LastName:"",
               Email:"",
               PhoneNumber: "",
