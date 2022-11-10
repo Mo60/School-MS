@@ -34,7 +34,7 @@
       <td><a :href="`mailto:${f.Email}`">{{f.Email}}</a></td>
    
       <td><router-link class="btn" :to="{name:'faculty2',params:{FacultyID:f.FacultyID}}"><font-awesome-icon icon="fa-solid fa-eye"></font-awesome-icon></router-link></td>
-           <td><router-link class="btn" :to="{name:'EditFaculty',params:{FacultyID:f.FacultyID}}">Edit</router-link></td>
+           <td><router-link class="btn" :to="{name:'EditFaculty',params:{FacultyID:f.FacultyID}}"><font-awesome-icon icon="fa-solid fa-pen-to-square"></font-awesome-icon></router-link></td>
       </tr>
       </tbody>
     </table>

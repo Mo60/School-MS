@@ -70,7 +70,7 @@
                 name: 'EditStudent',
                 params: { StudentID: student.StudentID },
               }"
-              >Edit</router-link
+              ><font-awesome-icon icon="fa-solid fa-pen-to-square"></font-awesome-icon></router-link
             >
           </td>
         </tr>
