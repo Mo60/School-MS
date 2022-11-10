@@ -89,12 +89,8 @@
                   </ul>
                 </li>
               </ul>
-              <li class="nav-item"></li>
+         
 
-              <div class="col-md-4">
-  <input type="search" class="form-control rounded " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
- 
-</div>
             </div>
      
   </div >

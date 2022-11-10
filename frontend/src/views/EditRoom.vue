@@ -40,7 +40,7 @@
         name: "EditRoom",
         data() {
             return {
-               Room: { 
+               room: { 
                     RoomID:"",
                     LocationID:"",
                     Capacity:"",

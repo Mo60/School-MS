@@ -73,12 +73,21 @@
             <label for="" class="form-label">City</label
             ><input type="text" class="form-control" v-model="guardian.City" />
           </div>
+          
+          </div>
+          <div class="row"> <div class="col">
+            <label for="" class="form-label">State</label
+            ><select name="" v-model="guardian.State" class="form-select">
+            <option value="">Select an Option</option>
+            <option :value="state.name" v-for="(state,index) in states" :key="index">{{state.name}}</option>
+            </select>
+          </div>
           <div class="col">
             <label for="" class="form-label">Zip</label
             ><input type="number" class="form-control" v-model="guardian.Zip" />
           </div>
         </div>
-       
+      
        
        
       </fieldset>
@@ -119,11 +128,13 @@ export default {
         AddressLine1: "",
         AddressLine2: "",
         City: "",
+        State:"",
         Zip: "",
         Notes: "",
         IsEmergency: boolean,
       },
       GuardianID: this.$route.params.GuardianID,
+      states:[]
     };
   },
   created() {
@@ -135,7 +146,17 @@ export default {
       })
       .catch((error) => {
         console.log(error);
-      });
+      }).then(()=>{
+            let APIURL4="https://public.opendatasoft.com/api/records/1.0/search/?dataset=georef-united-states-of-america-state&q=&sort=year&facet=year&facet=ste_code&facet=ste_name&facet=ste_type&refine.ste_type=state"
+            axios.get(APIURL4).then((res5)=>{
+              this.states=res5.data.facet_groups[2].facets
+              console.log(this.states)
+            }).catch((error) => {
+        console.log(error);
+      })  .catch((error) => {
+        console.log(error);
+      })
+    })
   },
   methods: {
     submitForm() {

@@ -61,7 +61,7 @@ color: black;
 
 .tablewrapper{
   max-height: 65vh;
-  width: 70%;
+  width: 75%;
   margin: auto;
   overflow-y: scroll;
 }
@@ -70,17 +70,30 @@ color: black;
   display: none;
 }
 
-.table{
+table{
   position: relative;
+  width: 100%;
+  background-color: rgba(152, 150, 150, 0.073);
 }
 
-.table th{ 
+table th{ 
   position: sticky;
   top: 0;
-  background-color: #b1bea5;
 }
 th{
  background-color: #b1bea5;
+ padding: 10px;
+ -webkit-user-select: none; /* Safari */
+ -ms-user-select: none; /* IE 10 and IE 11 */
+ user-select: none; /* Standard syntax */
+}
+
+th:hover{
+  cursor:pointer;
+}
+
+tr.thead> table th{
+  background-color:#b1bea5 ;
 }
 .wrapper2{
   width: 25%;
@@ -131,8 +144,6 @@ justify-content:center;
   text-decoration: none;
   color: black;
 }
-
-
 
 .display {
   width: 25vw;
@@ -232,8 +243,7 @@ div.d-flex>router-link{
 
 .links{
  margin-right: 30px;
- display: flex;
- justify-content: space-between;
+
 }
 
 .rounded{
@@ -247,8 +257,6 @@ div.d-flex>router-link{
 thead{
   background-color: #b1bea5;
 }
-
-
 
 .box-wrapper{
   display: grid;
@@ -270,7 +278,7 @@ th>a{
   padding:20px 30px;
   border-radius: 20px;
   overflow: auto;
-  height: 280px;;
+  height: 300px;;
   box-shadow:  1px 2px 4px rgb(125, 125, 125);
 }
 .box::-webkit-scrollbar{

@@ -15,17 +15,17 @@
       <input type="search" v-model="searchStatus" class="form-control"  @input="searchByStatus" placeholder="Search Status" aria-label="Search" aria-describedby="search-addon" />
       </div>
       </div> 
-      <table class="table table-striped" >
+      <table class="" >
       <thead >
-        <tr class="text-left">
+        <tr class="text-center">
          <th>Class ID</th>
-         <th>Class</th>
+         <th @click="sortByClass">Class &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByClass"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
          <th>Teacher</th>
-         <th><a @click="sortBySemester" >Semester <font-awesome-icon icon="fa-solid fa-angle-down" class="mt-5"/></a></th>
+         <th @click="sortBySemester">Semester &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedBySemester"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
          <th>Class Time</th>
-         <th><a @click="sortByEnorllmentTotal">Enrollment Total <font-awesome-icon :icon=sortEnrollment /></a></th>
-         <th><a @click="sortByClassStatus">Status <font-awesome-icon icon="fa-solid fa-angle-down" class="mt-5"/></a></th>
-         <th>Actions</th>
+         <th @click="sortByEnrollmentTotal"># Enrolled  &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedBYEnroll"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+         <th @click="sortByClassStatus">Status &nbsp;  <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByClassStatus"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+         <th colspan="2">Actions</th>
         </tr>
       </thead>  
       <tbody v-for="c in ClassList" :key=c.ClassID>
@@ -37,6 +37,7 @@
       <td>{{c.StartTime}} - {{c.EndTime}}</td>
       <td>{{c.EnrollmentTotal}}</td>
       <td>{{c.Status}}</td>
+      <td><router-link  class="btn" :to="{name:'classes2',params:{ClassID:c.ClassID}}"><font-awesome-icon icon="fa-solid fa-eye"></font-awesome-icon></router-link></td>
       <td><router-link class="btn" :to="{name:'EditClass',params:{ClassID:c.ClassID}}">Edit</router-link></td>
       </tr>
     </tbody>
@@ -54,6 +55,9 @@ import axios from "axios";
         ClassList: [],
       loaded:false,
       sortedBYEnroll: false,
+      sortedBySemester:false,
+      sortedByClassStatus:false,
+      sortedByClass:false,
       searchStatus : ""
       }
     },
@@ -68,24 +72,10 @@ import axios from "axios";
       })
       this.loaded=true
     },
-computed:{
-sortEnrollment(){
-
-  return this.sortedBYEnroll? ["fa-solid", "fa-angle-down"] :["fa-solid", "fa-angle-up"]
-}
-},
     methods: {
-        // Handles deleting of classes
-        deleteClass(class_id) {
-            if (window.confirm("Do you really want to delete this class?")) {
-                axios.delete(``).then(() => {
-                    this.Classes.splice(this.Classes.findIndex(i => i.class_id === class_id), 1);
-                }).catch(error => {
-                    alert("Class could not be deleted");
-                });
-            }
-        },
+       
         sortByClassStatus() {
+          if(!this.sortedByClassStatus){
             this.Class.sort((a, b) => {
                 const nameA = a.Status.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.Status.toUpperCase(); // ignore upper and lowercase
@@ -95,10 +85,16 @@ sortEnrollment(){
                 if (nameA > nameB) {
                     return 1;
                 }
-            });
+            })
+            this.sortedByClassStatus=!this.sortedByClassStatus
+        
+          }
+          else{  this.Class.sort().reverse()
+               this.sortedByClassStatus=!this.sortedByClassStatus}
+            
         },
-        sortByEnorllmentTotal() {
-            if (this.sortedBYEnroll)
+        sortByEnrollmentTotal() {
+            if (!this.sortedBYEnroll)
                 this.Class.sort((a, b) => a.EnrollmentTotal - b.EnrollmentTotal);
             else {
                 this.Class.sort((a, b) => b.EnrollmentTotal - a.EnrollmentTotal);
@@ -106,20 +102,48 @@ sortEnrollment(){
             this.sortedBYEnroll = !this.sortedBYEnroll;
         },
         sortBySemester() {
+          if(!this.sortedBySemester){
             this.Class.sort((a, b) => {
                 const nameA = a.Semester.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.Semester.toUpperCase(); // ignore upper and lowercase
                 if (nameA < nameB) {
                     return -1;
                 }
-                if (nameA > nameB) {
+                if (nameA > nameB) { 
                     return 1;
                 }
-            });
+              })
+              this.sortedBySemester=!this.sortedBySemester
+            }
+              else {
+                this.Class.sort().reverse()
+               this.sortedBySemester=!this.sortedBySemester
+              }      
+
         },
+
+        sortByClass() {
+          if(!this.sortedByClass){
+            this.Class.sort((a, b) => {
+                const nameA = a.Semester.toUpperCase(); // ignore upper and lowercase
+                const nameB = b.Semester.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) { 
+                    return 1;
+                }
+              })
+              this.sortedByClass=!this.sortedByClass
+            }
+              else {
+                this.Class.sort().reverse()
+               this.sortedByClass=!this.sortedByClass
+              }  
+            },    
         async searchByStatus() {
             const result = this.Class.find(({ name }) => name === 1);
-            //  this.Class = result;
+             this.Class = result;
             console.log(result);
         },
     },
