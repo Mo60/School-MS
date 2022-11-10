@@ -12,6 +12,8 @@ module.exports = app => {
   
     // Retrieve a single student_class with id
     router.get("/:id", student_class.findOne);
+    // findAllByStudentId
+    router.get( "/studentid/:StudentID", student_class.findAllByStudentId)
   
     // Update a student_class with id
     router.put("/:id", student_class.update);
@@ -21,6 +23,7 @@ module.exports = app => {
   
     // Delete all student_class(s)
     router.delete("/", student_class.deleteAll);
-  
+    
+    
     app.use('/api/student_class', router);
   };

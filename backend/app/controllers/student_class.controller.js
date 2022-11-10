@@ -179,3 +179,17 @@ exports.create = (req, res) => {
         });
       });
   };
+
+  exports.findAllByStudentId = (req,res) => {
+    Student_Class.findAll({ where: { StudentID: req.params.StudentID } })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving student_classs."
+        });
+      });
+
+  }
