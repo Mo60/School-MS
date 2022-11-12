@@ -18,7 +18,11 @@ module.exports = (sequelize, Sequelize) => {
           model: 'courseStatus', 
           key: 'CourseStatusID', 
         }
-        }
+    },
+    IsDeleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+      }
   
   }, 
   { tableName: "course",
