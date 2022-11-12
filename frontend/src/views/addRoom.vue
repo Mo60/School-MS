@@ -1,4 +1,4 @@
-<h1 class="mt-5">Add Room</h1>
+<!-- <h1 class="mt-5">Add Room</h1>
           <div class="wrapper">
                       <form @submit.prevent="submitForm" >
              <fieldset class="form-control p-3">
@@ -15,7 +15,6 @@
                        <div class="col">
                         <div class="form-label">Capacity</div>
                         <input type="number" class="form-control" v-model="room.Capacity" required>
-                       </div>
                  </div >
                     <div class="row mb-3">
                         <div class="col">
@@ -35,7 +34,7 @@
             </form>
         </div>
  
-</template>
+</template> -->
 
 <script>
     import axios from "axios";

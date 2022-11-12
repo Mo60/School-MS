@@ -1,4 +1,4 @@
-<h1 class="mt-5">Add Location</h1>
+<!-- <h1 class="mt-5">Add Location</h1>
           <div class="wrapper">
              <form @submit.prevent="submitForm" >
              <fieldset class="form-control p-3">
@@ -26,30 +26,30 @@
             </form>
         </div>
  
-</template>
+</template> -->
 
 <script>
-    import axios from "axios";
-    export default {
-        name: "AddLocation",
-        data() {
-            return {
-               location: { 
-                    LocationID:"",
-                    Location Name: "",
-                    LocationStatusID: ""
-                }, 
-            };
-        },    
-        methods:{
-            submitForm(){
-                let apiURL = "http://172.26.54.21:8082/api/location/"
-                axios.post(apiURL,this.location).catch(error => {
-        console.log(error)
-      });
-      this.$router.push("/location")
-} 
-     }
-        }
+//     import axios from "axios";
+//     export default {
+//         name: "AddLocation",
+//         data() {
+//             return {
+//                location: { 
+//                     LocationID:"",
+//                     Location Name: "",
+//                     LocationStatusID: ""
+//                 }, 
+//             };
+//         },    
+//         methods:{
+//             submitForm(){
+//                 let apiURL = "http://172.26.54.21:8082/api/location/"
+//                 axios.post(apiURL,this.location).catch(error => {
+//         console.log(error)
+//       });
+//       this.$router.push("/location")
+// } 
+//      }
+//         }
     
 </script>

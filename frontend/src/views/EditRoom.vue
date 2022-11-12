@@ -60,10 +60,10 @@
     //               this.$router.push('/')
     //               this.room = {
     //               RoomID:"",
-                    LocationID:"",
-                    Capacity:"",
-                    RoomName:"",
-                    RoomStatusID: ""
+                    // LocationID:"",
+                    // Capacity:"",
+                    // RoomName:"",
+                    // RoomStatusID: ""
     //               }
     //             }).catch(error => {
     //                 console.log(error)
