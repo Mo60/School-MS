@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Medical.findAll()
+    Medical.findAll({where: {IsDeleted : 0} })
       .then(data => {
         res.send(data);
       })

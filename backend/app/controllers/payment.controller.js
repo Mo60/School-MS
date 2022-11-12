@@ -72,7 +72,7 @@ exports.create = (req, res) => {
     const PaymentID = req.query.PaymentID;
     var condition = PaymentID ? { PaymentID: { [Op.like]: `%${PaymentID}%` } } : null;
   
-    Payment.findAll({ where: condition })
+    Payment.findAll({ where: {IsDeleted : 0} })
       .then(data => {
         res.send(data);
       })

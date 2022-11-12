@@ -78,7 +78,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Room.findAll()
+    Room.findAll({ where: {IsDeleted : 0} })
       .then(data => {
         res.send(data);
       })

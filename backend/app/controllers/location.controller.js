@@ -76,7 +76,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Location.findAll()
+    Location.findAll({ where: {IsDeleted : 0} })
       .then(data => {
         res.send(data);
       })

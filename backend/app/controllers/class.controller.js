@@ -54,7 +54,8 @@ exports.create = (req, res) => {
       TimeBlockID: req.body.TimeBlockID,
       DayID: req.body.DayID,
       ClassStatusID: req.body.ClassStatusID,
-      Capacity: req.body.Capacity
+      Capacity: req.body.Capacity,
+      IsDeleted: req.body.IsDeleted
     };
   
     // Save Class in the database
@@ -74,7 +75,7 @@ exports.create = (req, res) => {
     const ClassID = req.query.ClassID;
     var condition = ClassID ? { ClassID: { [Op.like]: `%${ClassID}%` } } : null;
   
-    Class.findAll({ where: condition })
+    Class.findAll({ where: {IsDeleted : 0} })
       .then(data => {
         res.send(data);
       })

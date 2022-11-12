@@ -76,7 +76,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Student_Class.findAll()
+    Student_Class.findAll({ where: {IsDeleted : 0} })
       .then(data => {
         res.send(data);
       })

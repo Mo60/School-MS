@@ -109,7 +109,7 @@ exports.create = (req, res) => {
   exports.findAll = (req, res) => {
     const GuardianID = req.query.GuardianID;
 
-    Guardian.findAll({ include: Student })
+    Guardian.findAll({ where: {IsDeleted : 0} },{ include: Student })
       .then(data => {
         res.send(data);
       })
