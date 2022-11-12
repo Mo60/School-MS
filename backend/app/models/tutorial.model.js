@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize) => {
       },
       published: {
         type: Sequelize.BOOLEAN
+      },
+      IsDeleted: {
+        type: Sequelize.BIT,
+        defaultValue: "0",
       }
     }, 
     {tableName: "tutorial"});
