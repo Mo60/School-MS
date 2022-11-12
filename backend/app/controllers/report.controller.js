@@ -218,5 +218,64 @@ exports.class_detail_list1_all = (req, res) => {
         err.message || "Some error occurred while retrieving info."
     });
   });
+};
+// student_class_view
+/// methods to retrieve student_class_view (it includes the status name)
+// first by id
+exports.student_class_view_byStudentID = (req, res) => {
+  const id = req.params.StudentID;
+  const view = db.sequelize.query(`SELECT * FROM student_class_view WHERE StudentID = ${id}`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
   
+};
+// and all rows in student_class_view
+exports.student_class_view_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM student_class_view`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+};
+//student_medical_view
+/// methods to retrieve student_medical_view (it includes the status name)
+// first by id
+exports.student_medical_view_byStudentID = (req, res) => {
+  const id = req.params.StudentID;
+  const view = db.sequelize.query(`SELECT * FROM student_medical_view WHERE StudentID = ${id}`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
+// and all rows in student_medical_view
+exports.student_medical_view_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM student_medical_view`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
 };

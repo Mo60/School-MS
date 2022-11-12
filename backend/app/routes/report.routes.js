@@ -20,6 +20,13 @@ module.exports = app => {
   //class_detail_list1
   router.get("/class_detail_list1/:id", Reports.class_detail_list1_byClassID);
   router.get("/class_detail_list1", Reports.class_detail_list1_all);
-
+  // student_class_view
+  // pass the StudentID
+  router.get("/student_class_view/:StudentID", Reports.student_class_view_byStudentID);
+  router.get("/student_class_view", Reports.student_class_view_all);
+  //student_medical_view
+  router.get("/student_medical_view/:StudentID", Reports.student_medical_view_byStudentID);
+  router.get("/student_medical_view", Reports.student_medical_view_all);
+  
   app.use('/api/reports', router);
 };
