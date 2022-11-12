@@ -19,6 +19,10 @@ module.exports = (sequelize, Sequelize) => {
           key: 'RoomID', 
         }
     },
+    IsDeleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+      }
   },
                            
                                
