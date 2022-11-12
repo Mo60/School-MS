@@ -166,7 +166,7 @@ export default {
             .put(apiURL, this.guardian)
             .then((res) => {
               console.log(res);
-              this.$router.push("/parents")
+              this.$router.push(`/parents/${this.GuardianID}`)
             })
             .catch((error) => {
               console.log(error);

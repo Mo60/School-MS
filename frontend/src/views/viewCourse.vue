@@ -1,17 +1,18 @@
 <template>
   <div class="wrapper4">
    <h1 class="mb-3 mt-3">Course</h1>
-   <div class="empty-arr mt-5" v-if="Class.length == 0 && loaded">
+   <div class="empty-arr mt-5" v-if="Course.length == 0 && loaded">
       <p>No Courses Found</p>
       <a class="btn mt-3"><router-link :to="{name:'addcourse'}">Add Course</router-link></a>
     </div>
-      <table class="table table-striped mt-5" v-else>
-      <thead class="table">
+      <table class="mt-5" v-else>
+      <thead class="">
         <tr>
          <th>Course ID</th>
          <th>Course Status ID</th>
          <th>Course Name</th>
          <th>Description</th>
+         <th>Action</th>
         </tr>
       </thead>  
       <tbody v-for="c in Course" :key=c.CourseID>
@@ -20,6 +21,7 @@
          <td>{{c.CourseStatusID}}</td>
          <td>{{c.CourseName}}</td>
          <td>{{c.Description}}</td>
+         <td><router-link :to="{name:'EditCourse',params:{CourseID:c.CourseID}}"></router-link></td>
       </tr>
     </tbody>
     

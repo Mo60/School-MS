@@ -31,6 +31,11 @@ const router= createRouter({
     name:"classes2",
     component:()=>import("../views/viewClasses.vue"),
   },
+  {path:"/courses",
+    name:"courses",
+    component:()=>import("../views/viewCourse.vue"),
+  },
+
  // import add views   
     {path:"/addStudent",
     name:"addstudent",
@@ -95,6 +100,11 @@ component:()=>import("../views/addParent.vue")},
 component:()=>import("../views/enroll.vue"),
 },
 {
+  path:"/enroll/:StudentID",
+  name:"enroll2",
+  component:()=>import('../views/enroll2.vue')
+},
+{
   path:"/parents/:GuardianID",
   name:"viewParent",
   component:()=>import("../views/parentProfile.vue")
@@ -112,7 +122,10 @@ component:()=>import("../views/enroll.vue"),
     name:"EditLocation",
     component:()=>import("../views/EditLocation.vue"),
   },
-
+{path:"/EditCourse/:CourseID",
+name:"EditCourse",
+component:()=>import("../views/EditCourse.vue")
+}
 ]})
 
 

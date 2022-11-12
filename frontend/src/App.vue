@@ -76,11 +76,7 @@
                         <router-link class="nav-link" to="/addCourse">Course</router-link>
                       </a>
                     </li>
-                    <li>
-                      <a href="" class="dropdown-item">
-                        <router-link class="nav-link" to="/enroll">Enrollment</router-link>
-                      </a>
-                    </li>
+                    
                     <!-- <li>
                       <a href="" class="dropdown-item">
                         <router-link class="nav-link" to="/"></router-link>

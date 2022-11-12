@@ -14,7 +14,10 @@
         <div class="col-md-4">
       <input type="search" v-model="searchStatus" class="form-control"  @input="searchByStatus" placeholder="Search Status" aria-label="Search" aria-describedby="search-addon" />
       </div>
+      
+      <div class="col-md-4"><input type="search" class="form-control" @input="searchTable" v-model="search"></div>
       </div> 
+
       <table class="" >
       <thead >
         <tr class="text-center">
@@ -58,7 +61,8 @@ import axios from "axios";
       sortedBySemester:false,
       sortedByClassStatus:false,
       sortedByClass:false,
-      searchStatus : ""
+      searchStatus : "",
+      search:""
       }
     },
     created() {
@@ -146,6 +150,18 @@ import axios from "axios";
              this.Class = result;
             console.log(result);
         },
+
+        searchTable(){
+          let result=[]
+for(let c in this.Class){
+if(c.includes(this.search))
+{
+  result.push[this.Class[c]]
+  console.log(this.Class[c])
+}
+this.ClassList=result
+}
+        }
     },
     components: { FontAwesomeIcon }
 }

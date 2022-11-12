@@ -38,8 +38,9 @@
       </tr>
       </tbody>
     </table>
+    <div class="d-flex justify-content-center mt-5">  <router-link class="btn " :to="{name:'addfaculty'}">Add Faculty </router-link></div >
   </div>
-<div class="d-flex justify-content-center mt-5">  <router-link class="btn " :to="{name:'addfaculty'}">Add Faculty </router-link></div >
+
 </template>
   <script>
     import axios from "axios";
@@ -127,8 +128,14 @@
     sortByMName() {
       if (!this.sortedByMName) {
         this.faculty.sort((a, b) => {
-          const nameA = a.MiddleName.toUpperCase(); // ignore upper and lowercase
-          const nameB = b.MiddleName.toUpperCase(); // ignore upper and lowercase
+          let nameA = a.MiddleName // ignore upper and lowercase
+          let nameB = b.MiddleName // ignore upper and lowercase
+          if(nameA!==null){
+            nameA = a.MiddleName.toUpperCase();
+          }
+          if(nameB!==null){
+            nameB = b.MiddleName.toUpperCase();
+          }
           if (nameA < nameB) {
             return -1;
           }

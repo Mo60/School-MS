@@ -17,10 +17,11 @@
     "@popperjs/core": "^2.11.6",
     "axios": "^1.1.3",
     "bootstrap": "^5.2.2",
+    "bootstrap-vue": "^2.23.1",
     "dotenv": "^16.0.3",
     "firebase": "^9.12.1",
     "js-crud-sql-server": "file:backend",
-    "vue": "^3.2.37",
+    "vue": "^3.2.45",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {

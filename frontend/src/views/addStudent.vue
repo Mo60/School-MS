@@ -80,14 +80,14 @@
          
         </div>
         <div class="row mb-4">
-          <div class="col">
+          <div class="col-md-4">
             <label for="" class="form-label">State</label
             ><select name="" v-model="student.State" class="form-select">
             <option value="">Select an Option</option>
             <option :value="state.name" v-for="(state,index) in states" :key="index">{{state.name}}</option>
             </select>
           </div>
-          <div class="col">
+          <div class="col-sm-2">
             <label for="" class="form-label">Zip</label
             ><input type="number" class="form-control" v-model="student.Zip" />
           </div>
@@ -95,7 +95,7 @@
       </fieldset>
       <!-- this button show or hide guardian feild -->
       <span class="btn mt-4" @click="value = !value">
-        {{ value ? "Hide guardian field" : "Show guardian field" }}
+        {{ value ? "Hide guardian information" : "Show guardian information" }}
       </span>
       <!-- v-show show the element if true -->
       <fieldset v-show="value" class="form-control mt-4">
