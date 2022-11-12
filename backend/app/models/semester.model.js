@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize) => {
     Semester: {
       type: Sequelize.STRING
     },
+    IsDeleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+      }
   }, 
   {tableName: "semester",
   timestamps: false,
