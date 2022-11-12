@@ -33,6 +33,10 @@ module.exports = (sequelize, Sequelize) => {
           key: 'FacultyStatusID', 
         }
     },
+    IsDeleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+      }
   },
                            
                                
