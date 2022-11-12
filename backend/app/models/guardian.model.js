@@ -50,7 +50,11 @@ module.exports = (sequelize, Sequelize) => {
           model: 'guardianStatus', 
           key: 'GuardianStatusID', 
         }
-        }
+     },
+    IsDeleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+      }
     },
                            
                                
