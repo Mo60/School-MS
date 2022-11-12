@@ -21,7 +21,11 @@ module.exports = (sequelize, Sequelize) => {
     },
     Description: {
       type: Sequelize.STRING
-    }
+    },
+    IsDeleted: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0,
+      }
   }, 
                            
                                
