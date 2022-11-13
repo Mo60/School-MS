@@ -15,6 +15,7 @@
           <th @click="sortByFName">First Name &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByFName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByMName">Middle Name &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByMName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByLName">Last Name &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByLName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+          <th><a>Classes Taught</a></th>
           <th>Cell</th>
           <th>Phone</th>
           <th>Email</th>
@@ -29,6 +30,7 @@
       <td>{{f.FirstName}}</td>
       <td>{{f.MiddleName}}</td>
       <td>{{f.LastName}}</td>
+      <!-- <td>{{}}</td> -->
       <td>{{f.CellNumber}}</td>
       <td>{{f.PhoneNumber}}</td>
       <td><a :href="`mailto:${f.Email}`">{{f.Email}}</a></td>

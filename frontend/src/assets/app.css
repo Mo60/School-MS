@@ -396,3 +396,25 @@ justify-content: center;
   background-color:transparent;
   color: black;
 }
+
+.grid{
+  display: grid;
+  grid-template-columns:auto auto auto;
+ grid-gap: 30px;
+  width: 54vw;
+justify-self: center;
+align-self: center;
+}
+
+.grid>.box{
+box-shadow: 2px 2px 5px rgb(77, 76, 76);
+border-radius: 10px;
+}
+
+.grid>.box:nth-child(2n){
+  background-color: #ffa101;;
+}
+
+.profile>.grid{
+  align-self: center;
+}
