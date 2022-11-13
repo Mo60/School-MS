@@ -69,7 +69,7 @@ require("./app/routes/student_medical.routes")(app);
 require("./app/routes/studentStatus.routes")(app);
 require("./app/routes/teacher.routes")(app);
 require("./app/routes/timeblock.routes")(app);
-
+require("./app/routes/student_medical.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8082;
