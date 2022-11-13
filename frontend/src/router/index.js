@@ -41,6 +41,17 @@ const router= createRouter({
     name:"viewTimeblock",
     component:()=>import("../views/viewTimeblock.vue"),
   },
+  //view Days viewDays
+  {path:"/viewDays",
+  name:"viewDays",
+  component:()=>import("../views/viewDays.vue"),
+  },
+  //viewSemester
+  {path:"/viewSemester",
+  name:"viewSemester",
+  component:()=>import("../views/viewSemester.vue"),
+  },
+
  // import add views   
     {path:"/addStudent",
     name:"addstudent",
@@ -98,7 +109,6 @@ component:()=>import("../views/addParent.vue")},
     {path:"/EditClass/:ClassID",
     name:"EditClass",
     component:()=>import("../views/EditClass.vue"),
-  
   },
     {path:"/enroll",
   name:"enroll",

@@ -5,8 +5,8 @@
       <p>No Courses Found</p>
       <a class="btn mt-3"><router-link :to="{name:'addcourse'}">Add Course</router-link></a>
     </div>
-      <table class="mt-5" v-else>
-      <thead class="">
+      <table class="table table-striped" v-else>
+      <thead class="table-dark">
         <tr>
          <th>Course ID</th>
          <th>Course Status ID</th>

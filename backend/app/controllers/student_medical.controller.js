@@ -40,7 +40,8 @@ exports.create = (req, res) => {
     const student_medical = {
       StudentID: req.body.StudentID,
       MedicalID: req.body.MedicalID,
-      Description: req.body.Description
+      Description: req.body.Description,
+      StudentMedicalStatusID: req.body.StudentMedicalStatusID
     };
   
     // Save student_medical in the database

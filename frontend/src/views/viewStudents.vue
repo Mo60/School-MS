@@ -33,8 +33,8 @@
         />
       </div>
     </div>
-    <table class="text-center">
-      <thead>
+    <table class="table table-striped">
+      <thead class="table-dark">
         <tr class="thead">
           <th>ID</th>
           <th @click="sortByFName">First Name &nbsp;  <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByFName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>

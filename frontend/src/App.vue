@@ -103,7 +103,7 @@
                     </li>
                     <li>
                       <a  class="dropdown-item">
-                        <router-link class="nav-link" to="/viewDay">Days</router-link>
+                        <router-link class="nav-link" to="/viewDays">Days</router-link>
                       </a>
                     </li>
                   </ul>

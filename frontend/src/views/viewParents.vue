@@ -7,8 +7,8 @@
 </div> 
 <!-- <div class="cont" v-else><parentsCard :parents="p" :fName="p.guardian_first_name" :lName="p.guardian_last_name" :id="p.GuardianID" :phone="p.PhoneNumber" :sFName="p.student_first_name" :sLName="p.student_last_name" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div > -->
 <div class="tablewrapper" v-else>
-    <table class="">
-        <thead>
+    <table class="table table-striped">
+        <thead class="table-dark">
           <tr class="text-center">
            <th>ID</th>
            <th @click="sortByFName">First Name &nbsp;  <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByFName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>

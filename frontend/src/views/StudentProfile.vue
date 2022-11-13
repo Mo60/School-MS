@@ -93,8 +93,8 @@
               No class record
             </div>
             <div class="table-wrapper" v-else>
-              <table>
-                <thead>
+              <table class="table table-striped">
+                <thead class="table-dark">
                   <tr>
                     <th>Course</th>
                     <th>Day</th>

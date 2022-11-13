@@ -18,8 +18,8 @@
       <div class="col-md-4"><input type="search" class="form-control" @input="searchTable" v-model="search"></div>
       </div> 
 
-      <table class="" >
-      <thead >
+      <table class="table table-striped" >
+      <thead class="table-dark" >
         <tr class="text-center">
          <th>Class ID</th>
          <th @click="sortByClass">Class &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByClass"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
