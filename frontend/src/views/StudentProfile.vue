@@ -1,7 +1,7 @@
 <template>
     <div class="cont2">
       <div class="box-wrapper">
-        <div class="box">
+        <div class="box pt-3">
           <h2 class="mb-3">Student Information</h2>
           <div class="rows">
             <span class="label">Name:</span
@@ -14,8 +14,8 @@
             <span class="label">ID:</span><span>{{ student.StudentID }}</span>
           </div>
           <div class="rows"><span class="label">DOB:</span>{{ student.DOB }}</div>
-          <div class="rows"><div class="label">Status</div></div>
-          <h4>Parents/Guardians</h4>
+          <div class="rows"><div class="label">Status</div>{{student.Status}} </div>
+          <h4 class="mt-4">Parents/Guardians</h4>
           <div>
             <router-link
               class=""
@@ -26,12 +26,12 @@
                 name: 'viewParent',
                 params: { GuardianID: guardian.GuardianID },
               }"
-              >{{ guardian.FirstName }} {{ guardian.LastName }}
+              >{{ guardian.FirstName }} {{ guardian.LastName }} 
             </router-link>
           </div>
         </div>
-        <div class="box">
-          <h2 class="mb-3">Address</h2>
+        <div class="box pt-3">
+          <h4 class="mb-3">Address</h4>
           <div class="rows">
             <span class="label">Address Line 1</span
             ><span>{{ student.AddressLine1 }}</span>
@@ -99,6 +99,7 @@
                     <th>Course</th>
                     <th>Day</th>
                     <th>Time</th>
+                    <th>Semester</th>
                     <th>Course Status</th>
                     <th>Actions</th>
                   </tr>
@@ -107,6 +108,7 @@
                   <td>{{ s.CourseName }}</td>
                   <td>{{ s.WeekDay }}</td>
                   <td>{{ s.StartTime }} - {{ s.EndTime }}</td>
+                  <td>{{s.Semester}}</td>
                   <td>{{ s.Status }}</td>
                   <td>
                 <button type="button"  class="btn" @click="getID(s._id)"
@@ -589,6 +591,7 @@
         .get(apiURL)
         .then((res) => {
           this.student = res.data;
+          console.log(this.student)
         })
         .catch((error) => {
           console.log(error);
