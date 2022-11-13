@@ -2,7 +2,28 @@ li {
   list-style: none;
   
 }
-
+.navbar-nav {
+  --bs-nav-link-padding-x: 0;
+  --bs-nav-link-padding-y: 0.5rem;
+  --bs-nav-link-font-weight: ;
+  --bs-nav-link-color: #ffa101;
+  --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
+  --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.navbar-brand {
+  padding-top: var(--bs-navbar-brand-padding-y);
+  padding-bottom: var(--bs-navbar-brand-padding-y);
+  margin-right: var(--bs-navbar-brand-margin-end);
+  font-size: var(--bs-navbar-brand-font-size);
+  color: #ffa101;
+  text-decoration: none;
+  white-space: nowrap;
+}
 #app {
 
   height: 100vh;
@@ -19,35 +40,36 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EED991", en
 
 }
 nav {
-  background-color:#8C7F3E;
+  background-color:#31525B;
 }
 input,select,textarea{
   box-shadow: inset 1px 2px 1px rgb(209, 204, 204);
 }
 fieldset.form-control{
-  background-color: #b1bea5;;
+  background-color: #FAE6B1;
+  color :rgb(4, 4, 4)
  
 }
 ul.dropdown-menu {
-  background-color: #888c64;
+  background-color: #394142;
 }
 
 .dropdown-menu > .dropdown-item:hover {
-  background-color: #888c64;
+  background-color: #b3dee5;
 }
 
 .dropdown-menu > li > a:hover {
   background-image: none;
-  background-color: #b1bea5;
+  background-color: #b3b3b3;
 }
 
 h1 {
   text-align: center;
-  color: rgb(124, 122, 122);
+  color: black;
 }
 
 h2,h4{
-  color: rgb(83, 82, 82);
+  color: black;
 
 }
 
@@ -75,7 +97,7 @@ width: 35vw;
 }
 
 .info{
-  background-color: white;
+  background-color: #b3dee5;
   height:fit-content;
   border-radius: 5px;
   padding: 20px;
@@ -86,7 +108,7 @@ width: 35vw;
 table{
   position: relative;
   width: 100%;
-  background-color: rgba(152, 150, 150, 0.073);
+  background-color: #f6e8c5;
 }
 
 table th{ 
@@ -94,7 +116,7 @@ table th{
   top: 0;
 }
 th{
- background-color:#C4D9BF;
+ background-color:#ffa101;
  padding: 10px;
  -webkit-user-select: none; /* Safari */
  -ms-user-select: none; /* IE 10 and IE 11 */
@@ -106,7 +128,7 @@ th:hover{
 }
 
 tr.thead> table th{
-  background-color:#8C7F3E ;
+  background-color:#ffa101 ;
 }
 .wrapper2{
   width: 25%;
@@ -141,7 +163,7 @@ justify-content:center;
   flex-direction: column;
   border-radius: 15px;
   text-align: center;
-  filter: drop-shadow(1px 3px 5px rgb(168, 167, 167));
+  filter: drop-shadow(1px 3px 5px #b3dee5);
 }
 .empty-arr p {
   font-size: 25px;
@@ -176,7 +198,7 @@ height: 25vh;
 
 .display {
   width: 25vw;
-  background-color: #888c64;
+  background-color: #FAE6B1;
   margin: 50px auto;
   border-radius: 15px;
   padding: 25px 20px;
@@ -195,7 +217,7 @@ height: 25vh;
   
   overflow-y: auto;
   grid-template-columns: auto auto auto;
-background-color: rgba(255, 255, 255, 0.16);
+background-color: #31525B;
 
 }
 
@@ -222,6 +244,7 @@ margin: 0;
 
 .body {
   margin-top: 10px;
+  color: black
 }
 
 .rows {
@@ -307,12 +330,12 @@ grid-template-rows: auto auto;
   grid-template-columns: 1fr 1fr;
   padding: 0 25px;
   gap: 20px;
-
+  
 
   
 }
 .box{
-  background-color: #b1bea5;
+  background-color: #d7eff1;
   padding:20px 30px;
   height: fit-content
   /* box-shadow:  1px 2px 4px rgb(125, 125, 125); */

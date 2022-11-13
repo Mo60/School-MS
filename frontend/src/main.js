@@ -9,7 +9,8 @@ import { faAngleDown ,faAngleUp,faArrowsUpDown,faEye,faPenToSquare, faPlus} from
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // Import all of Bootstrap's JS
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
+import "bootstrap";
+import "./assets/app.css";
 
 const app= createApp(App)
 app.use(router)
