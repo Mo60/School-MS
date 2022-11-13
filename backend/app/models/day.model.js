@@ -7,10 +7,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     WeekDay: {
       type: Sequelize.STRING
-      },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
       }
   }, 
   {tableName: "day",

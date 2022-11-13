@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    LocationStatus.findAll({ where: {IsDeleted : 0} })
+    LocationStatus.findAll(   )
       .then(data => {
         res.send(data);
       })

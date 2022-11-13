@@ -20,10 +20,7 @@ module.exports = (sequelize, Sequelize) => {
           key: 'FacultyID', 
         }
     },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+      
   }, 
   { tableName: "faculty_class",
   timestamps: false,

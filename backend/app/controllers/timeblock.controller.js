@@ -76,7 +76,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Timeblock.findAll({ where: {IsDeleted : 0} })
+    Timeblock.findAll(   )
       .then(data => {
         res.send(data);
       })

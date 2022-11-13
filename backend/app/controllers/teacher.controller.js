@@ -72,7 +72,7 @@ exports.create = (req, res) => {
     const TeacherID = req.query.TeacherID;
     var condition = TeacherID ? { TeacherID: { [Op.like]: `%${TeacherID}%` } } : null;
   
-    Teacher.findAll({ where: {IsDeleted : 0} })
+    Teacher.findAll(   )
       .then(data => {
         res.send(data);
       })

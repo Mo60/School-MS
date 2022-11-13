@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    GuardianRelationship.findAll({ where: {IsDeleted : 0} })
+    GuardianRelationship.findAll(   )
       .then(data => {
         res.send(data);
       })

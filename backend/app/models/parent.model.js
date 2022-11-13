@@ -35,10 +35,7 @@ module.exports = (sequelize, Sequelize) => {
     Notes: {
       type: Sequelize.STRING
       },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+      
   }
   , 
   {tableName: "parent",

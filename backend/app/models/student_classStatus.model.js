@@ -8,10 +8,7 @@ module.exports = (sequelize, Sequelize) => {
     Status: {
       type: Sequelize.STRING
     },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+      
   },
                            
                                

@@ -15,10 +15,7 @@ module.exports = (sequelize, Sequelize) => {
           key: 'LocationStatusID', 
         }
     },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+      
   }, 
                            
                                

@@ -10,10 +10,7 @@ module.exports = (sequelize, Sequelize) => {
     Relationship: {
       type: Sequelize.STRING
     },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+      
   }, 
   { tableName: "guardianRelationship",
   timestamps: false,

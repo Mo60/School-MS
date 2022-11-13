@@ -9,10 +9,7 @@ module.exports = (sequelize, Sequelize) => {
     Condition: {
       type: Sequelize.STRING
     },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+      
   
   }, 
   { tableName: "medical",

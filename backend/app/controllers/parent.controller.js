@@ -85,7 +85,7 @@ exports.create = (req, res) => {
     const ParentsID = req.query.ParentsID;
     var condition = ParentsID ? { ParentsID: { [Op.like]: `%${ParentsID}%` } } : null;
   
-    Parent.findAll({ where: {IsDeleted : 0} })
+    Parent.findAll(   )
       .then(data => {
         res.send(data);
       })

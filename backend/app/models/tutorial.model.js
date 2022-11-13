@@ -9,10 +9,7 @@ module.exports = (sequelize, Sequelize) => {
       published: {
         type: Sequelize.BOOLEAN
       },
-      IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+        
     }, 
     {tableName: "tutorial"});
   

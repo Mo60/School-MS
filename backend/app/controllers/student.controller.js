@@ -112,7 +112,7 @@ exports.create = (req, res) => {
   exports.findAll = (req, res) => {
     const StudentID = req.query.StudentID;
   
-    Student.findAll({ where: {IsDeleted : 0} },{include: guardian })
+    Student.findAll({include: guardian })
       .then(data => {
         res.send(data);
       })

@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    FacultyStatus.findAll({ where: {IsDeleted : 0} })
+    FacultyStatus.findAll()
       .then(data => {
         res.send(data);
       })

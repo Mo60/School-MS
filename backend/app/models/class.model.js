@@ -42,11 +42,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     Capacity: {
       type: Sequelize.INTEGER
-    },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+    }
   }, 
   {tableName: "class",
   timestamps: false,

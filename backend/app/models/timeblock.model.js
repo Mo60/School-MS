@@ -11,10 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     EndTime: {
       type: Sequelize.STRING
     },
-    IsDeleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: 0,
-      }
+      
   }, 
   {tableName: "timeblock",
   timestamps: false,

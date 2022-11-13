@@ -77,7 +77,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Guardian_student.findAll({ where: {IsDeleted : 0} })
+    Guardian_student.findAll( )
       .then(data => {
         res.send(data);
       })
