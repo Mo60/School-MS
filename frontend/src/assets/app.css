@@ -2,6 +2,9 @@ li {
   list-style: none;
   
 }
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+  opacity: 1;
+}
 .form-control:disabled {
   background-color: #00000000;
   opacity: 01;
