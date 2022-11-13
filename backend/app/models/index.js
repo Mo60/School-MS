@@ -51,7 +51,7 @@ db.room = require("./room.model")(sequelize, Sequelize);
 db.location = require("./location.model")(sequelize, Sequelize);
 db.locationStatus = require("./locationStatus.model")(sequelize, Sequelize);
 db.roomStatus = require("./roomStatus.model")(sequelize, Sequelize);
-
+db.student_medicalStatus = require("./student_medicalStatus.model")(sequelize, Sequelize);
 
 
 
