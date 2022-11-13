@@ -30,12 +30,12 @@
       <td>{{f.FirstName}}</td>
       <td>{{f.MiddleName}}</td>
       <td>{{f.LastName}}</td>
-      <!-- <td>{{}}</td> -->
+      <td>{{f.NoOfClasses}}</td>
       <td>{{f.CellNumber}}</td>
       <td>{{f.PhoneNumber}}</td>
       <td><a :href="`mailto:${f.Email}`">{{f.Email}}</a></td>
    
-      <td><router-link class="btn" :to="{name:'faculty2',params:{FacultyID:f.FacultyID}}"><font-awesome-icon icon="fa-solid fa-eye"></font-awesome-icon></router-link></td>
+      <td></td>
            <td><router-link class="btn" :to="{name:'EditFaculty',params:{FacultyID:f.FacultyID}}"><font-awesome-icon icon="fa-solid fa-pen-to-square"></font-awesome-icon></router-link></td>
       </tr>
       </tbody>
@@ -63,7 +63,7 @@
         },
         // this is using created hook 
         created() {
-            let apiURL = 'http://172.26.54.21:8082/api/faculty/';
+            let apiURL = 'http://172.26.54.21:8082/api/reports/faculty_class_list';
             axios.get(apiURL).then(res => {
                 this.faculty = res.data;
                 
