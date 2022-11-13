@@ -471,14 +471,14 @@
         classes: [],
         statuses: [],
         student_class: {
-          StudentID: this.$route.params.StudentID,
+          StudentID: parseInt( this.$route.params.StudentID) ,
           ClassID: "",
           StudentClassStatusID: "",
         },
         student_class2: [],
         val:"",
         editData:{
-          StudentID:this.$route.params.StudentID ,
+          StudentID:parseInt( this.$route.params.StudentID) ,
           ClassID: "",
           StudentClassStatusID: "",
         },
@@ -588,10 +588,12 @@
       enroll() {
         let apiURL2 = `http://172.26.54.21:8082/api/student_class/`;
         axios
-          .post(apiURL2, this.student_class)
+          .post(apiURL2, this.student_class)    .catch((error) => {
+            console.log(error);
+          })
           .then(() => {
             console.log(this.student_class);
-          location.reload();
+        //   location.reload();
           })
   
           .catch((error) => {

@@ -181,7 +181,7 @@ justify-content:center;
   flex-direction: column;
   margin:0 auto;
   width: 80%;
-justify-content: center;
+
 }
 
 .profile .empty-arr{
@@ -189,6 +189,8 @@ height: 25vh;
 }
 .profile.table-wrapper{
   align-self: center;
+  max-height: 30vh;
+  overflow-y: auto;
 }
  .empty-arr 
  a:hover {
@@ -340,14 +342,14 @@ grid-template-rows: auto auto;
   height: fit-content
   /* box-shadow:  1px 2px 4px rgb(125, 125, 125); */
 }
-.box::-webkit-scrollbar, .info::-webkit-scrollbar{
+.box::-webkit-scrollbar, .info::-webkit-scrollbar, .profile.table-wrapper::-webkit-scrollbar{
   width: 20px;
 }
-.box::-webkit-scrollbar-track, .info::-webkit-scrollbar-track{ 
+.box::-webkit-scrollbar-track, .info::-webkit-scrollbar-track , .profile.table-wrapper::-webkit-scrollbar-track{ 
   background-color: transparent;
 }
 
-.box::-webkit-scrollbar-thumb , .info::-webkit-scrollbar-thumb{
+.box::-webkit-scrollbar-thumb , .info::-webkit-scrollbar-thumb, .profile.table-wrapper::-webkit-scrollbar-thumb{
   background-color: #6d6d6d;
   border-radius: 20px;
   background-clip: content-box;
