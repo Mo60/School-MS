@@ -12,10 +12,12 @@
 
               <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="" role="button" data-bs-toggle="dropdown" aria-expanded="false">View</a>
-                  <ul class="dropdown-menu " aria-labelledby="">
-                    <li>
+
+                 <!-- view frop down -->
+                  <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" href="#" id="" role="button" data-bs-toggle="dropdown" aria-expanded="false">View</a>
+                   <ul class="dropdown-menu " aria-labelledby="">
+                     <li>
                       <a href="" class="dropdown-item">
                         <router-link class="nav-link" to="/students">Students</router-link>
                       </a>
@@ -51,8 +53,9 @@
                         <router-link class="nav-link" to="/"></router-link>
                       </a>
                     </li> -->
-                  </ul>
-                </li>
+                     </ul>
+                   </li>
+                <!-- create drop down -->
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Create</a>
                   <ul class="dropdown-menu " aria-labelledby="">
@@ -84,6 +87,28 @@
                     </li> -->
                   </ul>
                 </li>
+                <!--Settings -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
+                  <ul class="dropdown-menu " aria-labelledby="">
+                    <li>
+                      <a href="" class="dropdown-item">
+                        <router-link class="nav-link" to="/viewTimeblock">Timeblocks</router-link>
+                      </a>
+                    </li>
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/viewSemester">Semesters</router-link>
+                      </a>
+                    </li>
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/viewDay">Days</router-link>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                
               </ul>
          
 

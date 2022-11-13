@@ -35,7 +35,12 @@ const router= createRouter({
     name:"courses",
     component:()=>import("../views/viewCourse.vue"),
   },
-
+            // viewTimeblock
+  ,
+  {path:"/viewTimeblock",
+    name:"viewTimeblock",
+    component:()=>import("../views/viewTimeblock.vue"),
+  },
  // import add views   
     {path:"/addStudent",
     name:"addstudent",
