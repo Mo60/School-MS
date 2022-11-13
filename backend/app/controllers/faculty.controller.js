@@ -82,7 +82,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Faculty.findAll({ where: {IsDeleted : 0} })
+    Faculty.findAll()
       .then(data => {
         res.send(data);
       })

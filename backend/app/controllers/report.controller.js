@@ -23,6 +23,20 @@ exports.view_students = (req, res) => {
   });
   
 };
+exports.view_students_byId = (req, res) => {
+
+  const view_students = db.sequelize.query(`SELECT * FROM view_student WHERE StudentID = ${req.params.StudentID}`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
 //due_balance
 exports.due_balance = (req, res) => {
 

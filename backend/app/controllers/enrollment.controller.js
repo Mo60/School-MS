@@ -70,7 +70,7 @@ exports.create = (req, res) => {
     const EnrollmentID = req.query.EnrollmentID;
     var condition = EnrollmentID ? { EnrollmentID: { [Op.like]: `%${EnrollmentID}%` } } : null;
     
-    Enrollment.findAll({ where: {IsDeleted : 0} })
+    Enrollment.findAll()
       .then(data => {
         res.send(data);
       })

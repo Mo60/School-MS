@@ -40,7 +40,7 @@ exports.create = (req, res) => {
     const class_room = {
       ClassID: req.body.ClassID,
       RoomID: req.body.RoomID,
-      IsDeleted: req.body.IsDeleted
+      
     };
   
     // Save class_room in the database
@@ -76,7 +76,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Class_Room.findAll({ where: {IsDeleted : 0} })
+    Class_Room.findAll()
       .then(data => {
         res.send(data);
       })

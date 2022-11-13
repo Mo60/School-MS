@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Day.findAll({ where: {IsDeleted : 0} })
+    Day.findAll()
       .then(data => {
         res.send(data);
       })

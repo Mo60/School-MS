@@ -40,7 +40,7 @@ exports.create = (req, res) => {
     const classStatus = {
       ClassStatusID: req.body.ClassStatusID,
       Status: req.body.Status,
-      IsDeleted: req.body.IsDeleted
+     
     };
   
     // Save classStatus in the database
@@ -76,7 +76,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    ClassStatus.findAll({ where: {IsDeleted : 0} })
+    ClassStatus.findAll()
       .then(data => {
         res.send(data);
       })
