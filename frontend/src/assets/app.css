@@ -30,6 +30,14 @@ li {
   text-decoration: none;
   white-space: nowrap;
 }
+.table.table-striped {
+  color: var(--bs-black);
+
+}
+.table-dark {
+  color: #ffffff;
+  --bs-table-bg: #31525b;
+}
 #app {
 
   height: 100vh;
@@ -271,7 +279,7 @@ margin: 0;
   font-weight: 600;
 }
 form > .btn ,fieldset>.btn , td>.btn, .d-flex>.btn{
-  background-color: #2b2f07;
+  background-color: #31525b;
   font-weight:600;
   color: rgb(255, 255, 255);
 }

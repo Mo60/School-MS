@@ -7,9 +7,9 @@
         </div>
    </div> 
    <div class="tablewrapper" v-else>
-    <table class="">
-      <thead>
-        <tr class="text-center">
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr class="thead">
           <th>ID</th>
           <th @click="sortByTitle">Title &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByTitle"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByFName">First Name &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByFName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>

@@ -4,7 +4,7 @@
         <h3 class="text-center">List of Students</h3>
         <h5 class="text-muted text-center mb-5 pb-5">List of all Students on record</h5>
         <div class="col-md-12">
-            <table class="table table-hover">
+            <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
                         <th>Student ID</th>
