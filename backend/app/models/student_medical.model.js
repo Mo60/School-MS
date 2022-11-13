@@ -22,6 +22,13 @@ module.exports = (sequelize, Sequelize) => {
     Description: {
       type: Sequelize.STRING
     },
+    StudentMedicalStatusID: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: 'student_medicalStatus', 
+          key: 'StudentMedicalStatusID', 
+        }
+    },
       
   }, 
                            
