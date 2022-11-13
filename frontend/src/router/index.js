@@ -51,7 +51,11 @@ const router= createRouter({
   name:"viewSemester",
   component:()=>import("../views/viewSemester.vue"),
   },
-
+  //facultyStatus
+  {path:"/facultyStatus",
+  name:"facultyStatus",
+  component:()=>import("../views/facultyStatus.vue"),
+  },
  // import add views   
     {path:"/addStudent",
     name:"addstudent",

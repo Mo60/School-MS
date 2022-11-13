@@ -6,7 +6,7 @@ module.exports = app => {
   // Retrieve all student eith view
   router.get("/view_students", Reports.view_students);
      // by STudentid
-     router.get("/view_students/:StudenID", Reports.view_students);
+  router.get("/view_students/:StudentID", Reports.view_students_byId);
   router.get("/due_balance", Reports.due_balance);
   router.get("/student_status", Reports.student_status);
   router.get("/guardian_student_view/:id", Reports.guardian_student_view);// by GuardianID
