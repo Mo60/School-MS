@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
-  const MedicalStatus = sequelize.define("medicalStatus", {
+  const Student_MedicalStatus = sequelize.define("student_medicalStatus", {
     
-    MedicalStatusID: {
+    StudentMedicalStatusID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
@@ -11,10 +11,10 @@ module.exports = (sequelize, Sequelize) => {
     }
   
   }, 
-  { tableName: "medicalStatus",
+  { tableName: "student_medicalStatus",
   timestamps: false,
   createdAt: false,
   updatedAt: false,});
 
-  return MedicalStatus;
+  return Student_MedicalStatus;
 };
