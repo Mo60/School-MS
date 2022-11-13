@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar " v-if="!$route.meta.hideNavbar">
-  <div class="container-fluid">
+  <div class="container">
     
         <a class="navbar-brand" href="/">The Academy of Art</a>
         <div class="links">

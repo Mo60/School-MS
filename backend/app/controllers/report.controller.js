@@ -147,7 +147,7 @@ exports.course_view_all = (req, res) => {
 // first by id
 exports.faculty_class_list_byFacultyId = (req, res) => {
   const id = req.params.id;
-  const view = db.sequelize.query(`SELECT * FROM faculty_class_list WHERE FacultyID = ${id}    `, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM faculty_class_list WHERE FacultyID = ${id}`, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -161,7 +161,7 @@ exports.faculty_class_list_byFacultyId = (req, res) => {
 };
 // and all rows
 exports.faculty_class_list_all = (req, res) => {
-  const view = db.sequelize.query(`SELECT * FROM faculty_class_list    `, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM faculty_class_list`, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })

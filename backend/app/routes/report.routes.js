@@ -15,7 +15,7 @@ module.exports = app => {
   router.get("/course_view", Reports.course_view_all);
   router.get("/guardian_student_view/studentid/:id", Reports.guardian_student_view_byStudentID);
   router.get("/faculty_class_list/:id", Reports.faculty_class_list_byFacultyId);
-  router.get("/faculty_class_list", Reports.course_view_all);
+  router.get("/faculty_class_list", Reports.faculty_class_list_all);
 
   router.get("/class_view/:id", Reports.class_view_byClassID);
   router.get("/class_view", Reports.class_view_all);
