@@ -20,7 +20,7 @@
                    </td>
               </tr>
               <tr>
-                <td> <input class="form-control ds-input" style="width: 100px" disabled  placeholder="Add new Class Days: "></td>
+                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add new Class Days: "></td>
                 <td><input  class="form-control ds-input" style="width: 250px;" v-model="day.WeekDay" ></td>
                 <td><button class="btn" @click="saveNew(day)" >Save</button></td>
               </tr>

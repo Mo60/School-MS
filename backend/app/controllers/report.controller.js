@@ -86,7 +86,7 @@ exports.guardian_student_view = (req, res) => {
   //// get by StudentID
   exports.guardian_student_view_byStudentID = (req, res) => {
     const id = req.params.id;
-    const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE StudentID = ${id} AND  IsDeleted = 0`, { type: QueryTypes.SELECT })
+    const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE StudentID = ${id}`, { type: QueryTypes.SELECT })
     .then(data => {
       res.send(data);
     })
