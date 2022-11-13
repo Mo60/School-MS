@@ -56,22 +56,36 @@
           <div class="info">
             <h2>Health Information</h2>
             <div v-for="sm in student_medical" :key="sm.StudentID">
-              <div class="rows">
-                <span class="label">Medical Condition:</span>
-                <span>{{ sm.Condition }}</span>
+              <div>
+                  <div class="rows">
+                    <span class="label">Medical Condition:</span>
+                    <span>{{ sm.Condition }}</span>
+                  </div>
+                  <div class="rows">
+                    <span class="label">Description:</span> {{ sm.Description }}
+                    
+                  </div>
               </div>
-              <div class="rows mb-4">
-                <span class="label">Description:</span> {{ sm.Description }}
-              </div>
+           <div class="d-flex justify-content-end">
+                  <button type="button"  class="btn mb-2" @click="getID2(sm._id)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal4">
+                            <font-awesome-icon
+                              icon="fa-solid fa-pen-to-square"
+                            ></font-awesome-icon>
+                    </button>
+           </div>
             </div>
-            <button
-              type="button"
-              class="btn"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-            >
-              <font-awesome-icon icon="fa-solid fa-plus" class="" />
-            </button>
+         
+                <button
+                  type="button"
+                  class="btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  <font-awesome-icon icon="fa-solid fa-plus" class="" />
+                </button>
+        
           </div>
           <div>
             <h2 class="mb-4">Course History</h2>
@@ -379,7 +393,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
-                    Enroll in a Class
+                    Edit Enrollment
                   </h5>
   
                   <button
@@ -450,6 +464,83 @@
               </div>
             </div>
           </div>
+          <div
+            class="modal fade"
+            id="exampleModal4"
+            tabindex="0"
+            aria-labelledby="exampleModalLabel2"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel4">
+                    Edit Health Condition
+                  </h5>
+  
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form @submit.prevent="editMedical">
+                    <fieldset>
+                      <div class="row mb-3">
+                        <div class="col">
+                          <label for="">Condition</label>
+                          <select
+                            name=""
+                            id=""
+                            class="form-select"
+                            v-model="editHealthData.MedicalID"
+                          >
+                            <option>Select an Option</option>
+                            <option
+                              :value="m.MedicalID"
+                              v-for="m in medical"
+                              :key="m.MedicalID"
+                            >
+                              {{ m.Condition }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col">
+                          <label for="">Description</label>
+                          <input
+                            type="text"
+                            v-model="editHealthData.Description"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+    
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    @click="editMedical"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -482,7 +573,13 @@
           ClassID: "",
           StudentClassStatusID: "",
         },
-        editID:""
+        editHealthData:{
+            StudentID: parseInt(this.$route.params.StudentID),
+          MedicalID: "",
+          Description: "",
+        },
+        editID:"",
+        editID2:""
       };
     },
     created() {
@@ -610,7 +707,7 @@
           })
           .then(() => {
             console.log(this.editData);
-          // location.reload();
+          location.reload();
           })
   
           .catch((error) => {
@@ -626,7 +723,33 @@
          }) .catch((error) => {
             console.log(error);
           });
+      },
+      getID2(value){
+        let apiURL= `http://172.26.54.21:8082/api/student_medical/${value}`
+        axios.get(apiURL).then((res)=>{
+    this.editHealthData=res.data;
+    this.editID2=value;
+}).catch((error) => {
+            console.log(error);
+          });
       }
-    },
-  };
+      ,
+      editMedical(){
+let apiURL= `http://172.26.54.21:8082/api/student_medical/${this.editID2}`
+axios
+          .put(apiURL, this.editHealthData)   .catch((error) => {
+            console.log(error);
+          })
+          .then(() => {
+            console.log(this.editHealthData);
+          location.reload();
+          })
+  
+          .catch((error) => {
+            console.log(error);
+          });
+
+  }
+}
+  }
   </script>
