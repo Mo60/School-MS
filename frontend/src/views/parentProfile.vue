@@ -6,7 +6,7 @@
      <div class="box-wrapper" >
       <div class="box">
       <h2 class="mb-3">Contact Information</h2>
-      <router-link class="btn" :to="{name:'EditParent',params:{GuardianID:p.GuardianID}}"><font-awesome-icon icon="fa-solid fa-pen-to-square"></font-awesome-icon></router-link>
+      <router-link class="btn" :to="{name:'EditParent',params:{GuardianID:guardian.GuardianID}}"><font-awesome-icon icon="fa-solid fa-pen-to-square"></font-awesome-icon></router-link>
       <div class="body">
           <div class="rows"><span class="label">Name:</span>{{guardian.FirstName}} {{guardian.MiddleName}} {{guardian.LastName}}</div>
           <div class="rows"><span class="label">ID:</span><span>{{guardian.GuardianID}}</span></div>
