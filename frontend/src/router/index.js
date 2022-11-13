@@ -46,6 +46,11 @@ const router= createRouter({
   name:"viewDays",
   component:()=>import("../views/viewDays.vue"),
   },
+  //viewSemester
+  {path:"/viewSemester",
+  name:"viewSemester",
+  component:()=>import("../views/viewSemester.vue"),
+  },
 
  // import add views   
     {path:"/addStudent",
