@@ -3,30 +3,39 @@
       <div class="box-wrapper">
         <div class="box pt-3">
           <h2 class="mb-3">Student Information</h2>
+          <router-link
+              class="btn"
+              :to="{
+                name: 'EditStudent',
+                params: { StudentID: student[0].StudentID },
+              }"
+              ><font-awesome-icon icon="fa-solid fa-pen-to-square"></font-awesome-icon></router-link
+            >
+        
           <div class="rows">
             <span class="label">Name:</span
             ><span>
-              {{ student.FirstName }} {{ student.MiddleName }}
-              {{ student.LastName }}</span
+              {{ student[0].student_first_name }} {{ student[0].student_middle_name}}
+              {{ student[0].student_last_name }}</span
             >
           </div>
           <div class="rows">
-            <span class="label">ID:</span><span>{{ student.StudentID }}</span>
+            <span class="label">ID:</span><span>{{ student[0].StudentID }}</span>
           </div>
-          <div class="rows"><span class="label">DOB:</span>{{ student.DOB }}</div>
-          <div class="rows"><div class="label">Status</div>{{student.Status}} </div>
+          <div class="rows"><span class="label">DOB:</span>{{ student[0].DOB }}</div>
+          <div class="rows"><div class="label">Status</div>{{student[0].Status}} </div>
           <h4 class="mt-4">Parents/Guardians</h4>
           <div>
             <router-link
-              class=""
+              class="mx-3"
               id="router"
-              v-for="guardian in student.guardians"
+              v-for="guardian in student_guardian"
               :key="guardian.GuardianID"
               :to="{
                 name: 'viewParent',
                 params: { GuardianID: guardian.GuardianID },
               }"
-              >{{ guardian.FirstName }} {{ guardian.LastName }} 
+              >{{ guardian.gFName }} {{ guardian.gLName }} 
             </router-link>
           </div>
         </div>
@@ -34,20 +43,20 @@
           <h4 class="mb-3">Address</h4>
           <div class="rows">
             <span class="label">Address Line 1</span
-            ><span>{{ student.AddressLine1 }}</span>
+            ><span>{{ student[0].AddressLine1 }}</span>
           </div>
-          <div class="rows" v-if="student.AddressLine2 != ''">
+          <div class="rows" v-if="student[0].AddressLine2 != ''">
             <span class="label">Address Line 2</span
-            ><span>{{ student.AddressLine2 }}</span>
+            ><span>{{ student[0].AddressLine2 }}</span>
           </div>
           <div class="rows" v-if="student.State != ''">
-            <span class="label">State</span><span>{{ student.State }}</span>
+            <span class="label">State</span><span>{{ student[0].State }}</span>
           </div>
           <div class="rows">
-            <span class="label">City</span><span>{{ student.City }}</span>
+            <span class="label">City</span><span>{{ student[0].City }}</span>
           </div>
           <div class="rows">
-            <span class="label">Zip Code</span><span>{{ student.Zip }}</span>
+            <span class="label">Zip Code</span><span>{{ student[0].Zip }}</span>
           </div>
         </div>
       </div>
@@ -554,6 +563,7 @@
       return {
         studentID: this.$route.params.StudentID,
         student: [],
+        student_guardian:[],
         medical: [],
         student_medical: [],
         student_medical2: {
@@ -585,8 +595,7 @@
       };
     },
     created() {
-      console.log(`value is ${this.val}`)
-      let apiURL = `http://172.26.54.21:8082/api/student/${this.studentID}`;
+      let apiURL = `http://172.26.54.21:8082/api/reports/view_students/${this.studentID}`;
       axios
         .get(apiURL)
         .then((res) => {
@@ -648,6 +657,14 @@
                                   x.Status.includes("Waitlist")
                               );
                               console.log(this.classes);
+                            }).then(()=>{
+                              let apiURL7=`http://172.26.54.21:8082/api/reports/guardian_student_view/studentid/${this.studentID}`
+                              axios.get(apiURL7).then((res)=>{
+                                this.student_guardian=res.data
+                                console.log(this.student_guardian)
+                              }) .catch((error) => {
+                              console.log(error);
+                            });
                             })
                             .catch((error) => {
                               console.log(error);
