@@ -20,7 +20,6 @@
     </div>
     </div>
     <div class="profile"> 
-        <h1 class="mt-4 mb-5">Student Profile</h1>
 
     <div class="profile-body mt-5">
             
@@ -156,24 +155,45 @@ student_medical2:{
     StudentID:this.$route.params.StudentID,
     MedicalID:"",
     Description:""
-}
+    }
         }
     },
     created(){
-         let apiURL=`http://172.26.54.21:8082/api/student/${this.studentID}`
-         axios.get(apiURL).then((res) => {
-        this.student = res.data;
-    }).catch((error) => {
-        console.log(error);
-      }).then(()=>{
-        let apiURL2=`http://172.26.54.21:8082/api/reports/student_class_view/${this.studentID}`
-      axios.get(apiURL2).then((res2)=>{
-this.student_class=res2.data
-console.log(this.student_class)
-      }).catch((error) => {
-        console.log(error);
-      }).then(()=>{
-        let apiURL3=`http://172.26.54.21:8082/api/medical`
+                  let apiURL=`http://172.26.54.21:8082/api/student/${this.studentID}`
+                  axios.get(apiURL).then((res) => {
+                  this.student = res.data;
+              }).catch((error) => {
+                  console.log(error);
+                }).then(()=>{
+                  let apiURL2=`http://172.26.54.21:8082/api/reports/student_class_view/${this.studentID}`
+                axios.get(apiURL2).then((res2)=>{
+          this.student_class=res2.data
+          console.log(this.student_class)
+                }).catch((error) => {
+                  console.log(error);
+                }).then(()=>{
+                  let apiURL3=`http://172.26.54.21:8082/api/medical`
+                  axios.get(apiURL3).then((res)=>{
+                      this.medical=res.data
+                  }).then(()=>{
+                      let apiURL4=`http://172.26.54.21:8082/api/reports/student_medical_view/${this.studentID}`
+                      axios.get(apiURL4).then((res)=>{
+                      this.student_medical=res.data
+
+                      }).catch((error) => {
+                  console.log(error);
+                  }) .catch((error) => {
+                  console.log(error);
+                })
+                }).catch((error) => {
+                  console.log(error);
+                })
+
+                }).catch((error) => {
+                  console.log(error);
+                })   
+              })
+              let apiURL3=`http://172.26.54.21:8082/api/medical`
         axios.get(apiURL3).then((res)=>{
             this.medical=res.data
         }).then(()=>{
@@ -186,16 +206,8 @@ console.log(this.student_class)
         }) .catch((error) => {
         console.log(error);
       })
-      }).catch((error) => {
-        console.log(error);
-      })
-
-      }).catch((error) => {
-        console.log(error);
-      })   
-    })
-
-},
+        })
+    },
 methods:{
     addMedicalCondition(){
 let apiURL=`http://172.26.54.21:8082/api/student_medical`
@@ -205,21 +217,8 @@ axios.post(apiURL,this.student_medical2).catch((error) => {
     }
 }
 ,updated(){
-    let apiURL3=`http://172.26.54.21:8082/api/medical`
-        axios.get(apiURL3).then((res)=>{
-            this.medical=res.data
-        }).then(()=>{
-            let apiURL4=`http://172.26.54.21:8082/api/reports/student_medical_view/${this.studentID}`
-            axios.get(apiURL4).then((res)=>{
-            this.student_medical=res.data
-
-            }).catch((error) => {
-        console.log(error);
-        }) .catch((error) => {
-        console.log(error);
-      })
-})
-}
+   
+  }
 
 }
 </script>
