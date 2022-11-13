@@ -19,7 +19,8 @@ module.exports = (sequelize, Sequelize) => {
           model: 'faculty', 
           key: 'FacultyID', 
         }
-        }
+    },
+      
   }, 
   { tableName: "faculty_class",
   timestamps: false,

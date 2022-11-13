@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    RoomStatus.findAll()
+    RoomStatus.findAll(   )
       .then(data => {
         res.send(data);
       })

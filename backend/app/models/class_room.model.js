@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
           model: 'room', 
           key: 'RoomID', 
         }
-    },
+    }
   },
                            
                                

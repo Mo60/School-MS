@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    GuardianStatus.findAll()
+    GuardianStatus.findAll(   )
       .then(data => {
         res.send(data);
       })

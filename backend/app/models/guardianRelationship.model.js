@@ -9,7 +9,8 @@ module.exports = (sequelize, Sequelize) => {
     },
     Relationship: {
       type: Sequelize.STRING
-    }
+    },
+      
   }, 
   { tableName: "guardianRelationship",
   timestamps: false,

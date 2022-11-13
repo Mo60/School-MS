@@ -32,7 +32,8 @@ module.exports = (sequelize, Sequelize) => {
     },
     IsEmergency: {
       type: Sequelize.BOOLEAN
-    }
+    },
+      
   }, 
   { tableName: "guardian_student",
   timestamps: false,

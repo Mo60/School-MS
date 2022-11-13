@@ -8,6 +8,7 @@ module.exports = (sequelize, Sequelize) => {
     Status: {
       type: Sequelize.STRING
     },
+      
   },
                            
                                

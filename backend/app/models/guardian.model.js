@@ -50,7 +50,8 @@ module.exports = (sequelize, Sequelize) => {
           model: 'guardianStatus', 
           key: 'GuardianStatusID', 
         }
-        }
+     },
+      
     },
                            
                                

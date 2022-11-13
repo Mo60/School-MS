@@ -39,7 +39,8 @@ module.exports = (sequelize, Sequelize) => {
           model: 'studentStatus', 
           key: 'StudentStatusID', 
         }
-        }
+     },
+      
   
   }, 
   { tableName: "student",

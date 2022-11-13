@@ -8,7 +8,8 @@ module.exports = (sequelize, Sequelize) => {
       },
       published: {
         type: Sequelize.BOOLEAN
-      }
+      },
+        
     }, 
     {tableName: "tutorial"});
   

@@ -9,6 +9,7 @@ module.exports = (sequelize, Sequelize) => {
     Condition: {
       type: Sequelize.STRING
     },
+      
   
   }, 
   { tableName: "medical",

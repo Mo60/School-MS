@@ -50,7 +50,8 @@ exports.create = (req, res) => {
     const tutorial = {
       title: req.body.title,
       description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      published: req.body.published ? req.body.published : false,
+      IsDeleted: req.body.IsDeleted
     };
   
     // Save Tutorial in the database
@@ -70,7 +71,7 @@ exports.create = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
-    Tutorial.findAll({ where: condition })
+    Tutorial.findAll(   )
       .then(data => {
         res.send(data);
       })

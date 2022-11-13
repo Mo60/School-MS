@@ -11,6 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     EndTime: {
       type: Sequelize.STRING
     },
+      
   }, 
   {tableName: "timeblock",
   timestamps: false,

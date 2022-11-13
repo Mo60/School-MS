@@ -25,6 +25,7 @@ module.exports = (sequelize, Sequelize) => {
           key: 'RoomStatusID', 
         }
     },
+      
   }, 
                            
                                

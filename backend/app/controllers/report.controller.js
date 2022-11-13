@@ -11,7 +11,7 @@ const db = require("../models");
 // and in server.js 
 exports.view_students = (req, res) => {
 
-  const view_students = db.sequelize.query("SELECT * FROM view_student", { type: QueryTypes.SELECT })
+  const view_students = db.sequelize.query("SELECT * FROM view_student ", { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -41,7 +41,7 @@ exports.due_balance = (req, res) => {
 
 exports.student_status = (req, res) => {
 
-  const view_students = db.sequelize.query("SELECT * FROM student_status", { type: QueryTypes.SELECT })
+  const view_students = db.sequelize.query("SELECT * FROM student_status    ", { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -57,7 +57,7 @@ exports.student_status = (req, res) => {
 // get by guardianID
 exports.guardian_student_view = (req, res) => {
   const id = req.params.id;
-  const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE GuardianID = ${id}`, { type: QueryTypes.SELECT })
+  const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE GuardianID = ${id}    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -72,7 +72,7 @@ exports.guardian_student_view = (req, res) => {
   //// get by StudentID
   exports.guardian_student_view_byStudentID = (req, res) => {
     const id = req.params.id;
-    const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE StudentID = ${id}`, { type: QueryTypes.SELECT })
+    const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view WHERE StudentID = ${id} AND  IsDeleted = 0`, { type: QueryTypes.SELECT })
     .then(data => {
       res.send(data);
     })
@@ -87,7 +87,7 @@ exports.guardian_student_view = (req, res) => {
 
 // all rows in guat=rian student view
 exports.guardian_student_view_all = (req, res) => {
-  const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view`, { type: QueryTypes.SELECT })
+  const guardian_student_view = db.sequelize.query(`SELECT * FROM guardian_student_view    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -103,7 +103,7 @@ exports.guardian_student_view_all = (req, res) => {
 // first by id
 exports.course_view_byId = (req, res) => {
   const id = req.params.id;
-  const view = db.sequelize.query(`SELECT * FROM course_view WHERE CourseID = ${id}`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM course_view WHERE CourseID = ${id}    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -117,7 +117,7 @@ exports.course_view_byId = (req, res) => {
 };
 // and all rows
 exports.course_view_all = (req, res) => {
-  const view = db.sequelize.query(`SELECT * FROM course_view`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM course_view    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -133,7 +133,7 @@ exports.course_view_all = (req, res) => {
 // first by id
 exports.faculty_class_list_byFacultyId = (req, res) => {
   const id = req.params.id;
-  const view = db.sequelize.query(`SELECT * FROM faculty_class_list WHERE FacultyID = ${id}`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM faculty_class_list WHERE FacultyID = ${id}    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -147,7 +147,7 @@ exports.faculty_class_list_byFacultyId = (req, res) => {
 };
 // and all rows
 exports.faculty_class_list_all = (req, res) => {
-  const view = db.sequelize.query(`SELECT * FROM faculty_class_list`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM faculty_class_list    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -163,7 +163,7 @@ exports.faculty_class_list_all = (req, res) => {
 // first by id
 exports.class_view_byClassID = (req, res) => {
   const id = req.params.id;
-  const view = db.sequelize.query(`SELECT * FROM class_view WHERE ClassID = ${id}`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM class_view WHERE ClassID = ${id}    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -177,7 +177,7 @@ exports.class_view_byClassID = (req, res) => {
 };
 // and all rows
 exports.class_view_all = (req, res) => {
-  const view = db.sequelize.query(`SELECT * FROM class_view`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM class_view    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -194,7 +194,7 @@ exports.class_view_all = (req, res) => {
 // first by id
 exports.class_detail_list1_byClassID = (req, res) => {
   const id = req.params.id;
-  const view = db.sequelize.query(`SELECT * FROM class_detail_list1 WHERE ClassID = ${id}`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM class_detail_list1 WHERE ClassID = ${id}    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -208,7 +208,7 @@ exports.class_detail_list1_byClassID = (req, res) => {
 };
 // and all rows
 exports.class_detail_list1_all = (req, res) => {
-  const view = db.sequelize.query(`SELECT * FROM class_detail_list1`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM class_detail_list1    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -224,7 +224,7 @@ exports.class_detail_list1_all = (req, res) => {
 // first by id
 exports.student_class_view_byStudentID = (req, res) => {
   const id = req.params.StudentID;
-  const view = db.sequelize.query(`SELECT * FROM student_class_view WHERE StudentID = ${id}`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM student_class_view WHERE StudentID = ${id}    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -238,7 +238,7 @@ exports.student_class_view_byStudentID = (req, res) => {
 };
 // and all rows in student_class_view
 exports.student_class_view_all = (req, res) => {
-  const view = db.sequelize.query(`SELECT * FROM student_class_view`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM student_class_view    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -254,7 +254,7 @@ exports.student_class_view_all = (req, res) => {
 // first by id
 exports.student_medical_view_byStudentID = (req, res) => {
   const id = req.params.StudentID;
-  const view = db.sequelize.query(`SELECT * FROM student_medical_view WHERE StudentID = ${id}`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM student_medical_view WHERE StudentID = ${id}    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })
@@ -268,7 +268,7 @@ exports.student_medical_view_byStudentID = (req, res) => {
 };
 // and all rows in student_medical_view
 exports.student_medical_view_all = (req, res) => {
-  const view = db.sequelize.query(`SELECT * FROM student_medical_view`, { type: QueryTypes.SELECT })
+  const view = db.sequelize.query(`SELECT * FROM student_medical_view    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);
   })

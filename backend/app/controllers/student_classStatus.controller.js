@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Student_ClassStatus.findAll()
+    Student_ClassStatus.findAll(   )
       .then(data => {
         res.send(data);
       })

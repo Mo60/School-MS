@@ -8,6 +8,7 @@ module.exports = (sequelize, Sequelize) => {
     Semester: {
       type: Sequelize.STRING
     },
+      
   }, 
   {tableName: "semester",
   timestamps: false,

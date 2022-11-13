@@ -69,7 +69,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Invoice.findAll()
+    Invoice.findAll(   )
       .then(data => {
         res.send(data);
       })

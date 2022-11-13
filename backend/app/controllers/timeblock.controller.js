@@ -76,7 +76,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Timeblock.findAll()
+    Timeblock.findAll(   )
       .then(data => {
         res.send(data);
       })

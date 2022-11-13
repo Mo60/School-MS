@@ -75,7 +75,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Semester.findAll()
+    Semester.findAll(   )
       .then(data => {
         res.send(data);
       })

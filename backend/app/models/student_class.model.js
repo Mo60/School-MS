@@ -26,7 +26,8 @@ module.exports = (sequelize, Sequelize) => {
           model: 'student_classStatus', 
           key: 'StudentClassStatusID', 
       }
-    }
+    },
+      
   }, 
   { tableName: "student_class",
   timestamps: false,

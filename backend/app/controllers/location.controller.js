@@ -76,7 +76,7 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Location.findAll()
+    Location.findAll(   )
       .then(data => {
         res.send(data);
       })
