@@ -117,6 +117,12 @@
                         <router-link class="nav-link" to="/courseStatus">Course Status</router-link>
                       </a>
                     </li>
+                    <!-- student_medicalStatus -->
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/student_medicalStatus">Student_Medical Status</router-link>
+                      </a>
+                    </li>
                   </ul>
                 </li>
                 

@@ -61,6 +61,11 @@ const router= createRouter({
   name:"courseStatus",
   component:()=>import("../views/courseStatus.vue"),
   },
+  // student_medicalStatus
+  {path:"/student_medicalStatus",
+  name:"student_medicalStatus",
+  component:()=>import("../views/student_medicalStatus.vue"),
+  },
  // import add views   
     {path:"/addStudent",
     name:"addstudent",
