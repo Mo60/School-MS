@@ -733,7 +733,7 @@
           })
           .then(() => {
             console.log(this.editData);
-          location.reload();
+            this.$router.go()
           })
   
           .catch((error) => {
@@ -755,6 +755,7 @@
         axios.get(apiURL).then((res)=>{
     this.editHealthData=res.data;
     this.editID2=value;
+    console.log(this.editID2)
 }).catch((error) => {
             console.log(error);
           });
@@ -768,7 +769,7 @@ axios
           })
           .then(() => {
             console.log(this.editHealthData);
-          location.reload();
+            this.$router.go()
           })
   
           .catch((error) => {
