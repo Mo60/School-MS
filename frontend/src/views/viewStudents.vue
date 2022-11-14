@@ -9,8 +9,8 @@
     </div>
   </div>
   <div class="tablewrapper" v-else>
-    <div class="row mb-4">
-      <div class="col-md-4">
+    <div class="d-flex mb-4 justify-content-center">
+      <div class="col-md-4 mx-4">
         <input
           type="search"
           v-model="searchFirstName"
@@ -21,6 +21,7 @@
           aria-describedby="search-addon"
         />
       </div>
+    
       <div class="col-md-4">
         <input
           type="search"

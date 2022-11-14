@@ -61,6 +61,26 @@ const router= createRouter({
   name:"courseStatus",
   component:()=>import("../views/courseStatus.vue"),
   },
+  {path:"/studentStatus",
+  name:"studentStatus",
+  component:()=>import("../views/studentStatus.vue"),
+  },
+  {
+    path:"/parentStatus",
+  name:"parentStatus",
+  component:()=>import("../views/guardianStatus.vue"),
+  },
+  {
+    path:"/classStatus",
+  name:"classStatus",
+  component:()=>import("../views/classStatus.vue"),
+  },
+  {
+    path:"/studentclassStatus",
+  name:"studentClassStatus",
+  component:()=>import("../views/studentClassStatus.vue"),
+  },
+  
   // student_medicalStatus
   {path:"/student_medicalStatus",
   name:"student_medicalStatus",
