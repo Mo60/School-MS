@@ -293,3 +293,33 @@ exports.student_medical_view_all = (req, res) => {
     });
   });
 };
+//count_class_by_faculty
+/// methods to retrieve count_class_by_faculty (it includes the status name)
+// first by id
+exports.count_class_by_faculty_byFacultyID = (req, res) => {
+  const id = req.params.FacultyID;
+  const view = db.sequelize.query(`SELECT * FROM count_class_by_faculty WHERE FacultyID = ${id}    `, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+  
+};
+// and all rows in count_class_by_faculty
+exports.count_class_by_faculty_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM count_class_by_faculty`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+};

@@ -29,6 +29,9 @@ module.exports = app => {
   //student_medical_view
   router.get("/student_medical_view/:StudentID", Reports.student_medical_view_byStudentID);
   router.get("/student_medical_view", Reports.student_medical_view_all);
-  
+  // count_class_by_faculty
+  router.get("/count_class_by_faculty/:FacultyID", Reports.count_class_by_faculty_byFacultyID);
+  router.get("/count_class_by_faculty", Reports.count_class_by_faculty_all);
+
   app.use('/api/reports', router);
 };
