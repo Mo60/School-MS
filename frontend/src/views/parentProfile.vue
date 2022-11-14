@@ -40,10 +40,7 @@
      </div> -->
   
     
-    <!-- <div class="d-flex justify-content-center ">
-         <router-link class="btn" :to="{name:'EditParent',params:{GuardianID:guardianID}}">Edit </router-link>
-         <router-link class="btn mx-3" :to="{name:'addStudent2',params:{GuardianID:guardianID}}">Add New Student</router-link>
-    </div > -->
+
  </div>
  <div class="profile">
    <h1 class="mt-3 mb-5">Students</h1>
@@ -56,8 +53,11 @@
               <div class="rows"><span class="label">Authorized to Pick up</span> <span v-if="student.CanPickup">Yes</span><span v-else>No</span></div>
               <div class="rows"><span class="label">Emergency Contact</span><span v-if="student.IsEmergency">Yes</span><span v-else>No</span> </div> 
           </div>
+          
  </div>
-
+ <div class="d-flex justify-content-center align-items-center">
+         <router-link class="btn mx-3" :to="{name:'addStudent2',params:{GuardianID:guardianID}}"><font-awesome-icon icon="fa-solid fa-plus"></font-awesome-icon></router-link>
+  </div>
  </div>
  </div>
  </div>

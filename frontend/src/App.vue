@@ -120,7 +120,27 @@
                     <!-- student_medicalStatus -->
                     <li>
                       <a  class="dropdown-item">
-                        <router-link class="nav-link" to="/student_medicalStatus">Student_Medical Status</router-link>
+                        <router-link class="nav-link" to="/student_medicalStatus">Student Medical Status</router-link>
+                      </a>
+                    </li>
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/studentStatus">Student Status</router-link>
+                      </a>
+                    </li>
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/parentStatus">Parent Status</router-link>
+                      </a>
+                    </li>
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/classStatus">Class Status</router-link>
+                      </a>
+                    </li>
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/studentclassStatus">Student Class Status</router-link>
                       </a>
                     </li>
                   </ul>
