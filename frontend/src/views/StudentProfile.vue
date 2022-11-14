@@ -45,7 +45,7 @@
                 name: 'addParent2',
                 params: { studentID: student[0].StudentID },
               }"
-              ><font-awesome-icon icon="fa-solid fa-plus" class="" /></router-link>
+              ><font-awesome-icon icon="fa-solid fa-plus" class="" v-if="student_guardian.length<2"/></router-link>
             
           </div>
         </div>

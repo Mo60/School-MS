@@ -7,6 +7,31 @@
 </div> 
 <!-- <div class="cont" v-else><parentsCard :parents="p" :fName="p.guardian_first_name" :lName="p.guardian_last_name" :id="p.GuardianID" :phone="p.PhoneNumber" :sFName="p.student_first_name" :sLName="p.student_last_name" :email="p.Email" v-for="p in parent" :key="p.id"></parentsCard></div > -->
 <div class="tablewrapper" v-else>
+  <div class="d-flex mb-4 justify-content-center">
+      <div class="col-md-4 mx-4">
+        <input
+          type="search"
+          v-model="searchFirstName"
+          class="form-control"
+          @input="searchByFirstName"
+          placeholder="Search First Name"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+      </div>
+    
+      <div class="col-md-4">
+        <input
+          type="search"
+          v-model="searchLastName"
+          class="form-control"
+          @input="searchByLastName"
+          placeholder="Search Last Name"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+      </div>
+    </div>
     <table class="table table-striped">
         <thead class="table-dark">
           <tr class="text-center">
@@ -19,7 +44,7 @@
            <th colspan="2" class="">Actions</th>
           </tr>
         </thead>  
-        <tbody v-for="p in parent" :key=p.GuardianID>
+        <tbody v-for="p in parentList" :key=p.GuardianID>
           
            <tr><td>{{p.GuardianID}}</td>
            <td>{{p.FirstName}}</td>
@@ -42,9 +67,12 @@ export default{
   data(){
 return{
 parent:[],
+parentList:[],
 loaded:false,
 sortedByFName:false,
-sortedByLName:false
+sortedByLName:false,
+searchFirstName:"",
+searchLastName:""
 }},
 
   created(){
@@ -53,6 +81,7 @@ sortedByLName:false
       .get(apiURL)
       .then((res) => {
         this.parent = res.data;
+        this.parentList=res.data
        
       })
       .catch((error) => {
@@ -97,6 +126,30 @@ methods:{
         this.parent.sort().reverse();
         this.sortedByLName = !this.sortedByLName;
       }
+    },
+    searchByLastName() {
+      this.searchFirstName = "";
+      const result = this.parent.filter(
+        (parent) =>
+          parent.LastName.toUpperCase().indexOf(
+            this.searchLastName.toUpperCase()
+          ) !== -1
+      );
+      //save the results in the filtering list
+      this.parentList = result;
+      console.log(result);
+    },
+    searchByFirstName() {
+      this.searchLastName = "";
+      const result = this.parent.filter(
+        (p) =>
+          p.FirstName.toUpperCase().indexOf(
+            this.searchFirstName.toUpperCase()
+          ) !== -1
+      );
+      //save the results in the filtering list
+      this.parentList = result;
+      console.log(result);
     },
 
 }
