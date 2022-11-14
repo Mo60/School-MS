@@ -14,11 +14,11 @@
             <tbody>   
                 <tr v-for="t in CourseStatuses" :key="t.CourseStatusID">
                     <td >{{t.CourseStatusID}}</td>
-                    <td><input :id=" t.CourseStatusID+1789147" class="form-control ds-input" style="width: 150px;" v-model="t.Status" disabled ></td>
+                    <td><input :id=" t.CourseStatusID+17189147" class="form-control ds-input" style="width: 150px;" v-model="t.Status" disabled ></td>
                     <td>
                  
-                        <button  :id="t.CourseStatusID+3789147" class="btn" @click="editBt(t.CourseStatusID)">Edit</button> |
-                        <button  :id="t.CourseStatusID+4789147" class="btn" @click="saveBt(t.CourseStatusID,t)" disabled>Save</button> 
+                        <button  :id="t.CourseStatusID+37189147" class="btn" @click="editBt(t.CourseStatusID)">Edit</button> |
+                        <button  :id="t.CourseStatusID+47189147" class="btn" @click="saveBt(t.CourseStatusID,t)" disabled>Save</button> 
                      </td>
                 </tr>
                 <tr>
@@ -60,16 +60,16 @@
         },
         methods :{
             editBt(id) {
-                document.getElementById(`${id+1789147}`).disabled = false;
+                document.getElementById(`${id+17189147}`).disabled = false;
       
-                document.getElementById(`${id+3789147}`).disabled = true;
-                document.getElementById(`${id+4789147}`).disabled = false;
+                document.getElementById(`${id+37189147}`).disabled = true;
+                document.getElementById(`${id+47189147}`).disabled = false;
             },
             saveBt(id,t) {
-                document.getElementById(`${id+1789147}`).disabled = true;
+                document.getElementById(`${id+17189147}`).disabled = true;
           
-                document.getElementById(`${id+3789147}`).disabled = false;
-                document.getElementById(`${id+4789147}`).disabled = true;
+                document.getElementById(`${id+37189147}`).disabled = false;
+                document.getElementById(`${id+47189147}`).disabled = true;
                 //save the change in DB
                 //http://localhost:8082/api/courseStatus
                 let apiURL = `http://172.26.54.21:8082/api/courseStatus/${t.CourseStatusID}`;

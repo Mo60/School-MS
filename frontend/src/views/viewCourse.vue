@@ -33,7 +33,7 @@
                    </td>
               </tr>
               <tr>
-                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add new CourseName: "></td>
+                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add new Course: "></td>
                 <td><input  class="form-control ds-input" style="width: 150px;" v-model="course.CourseName" ></td>
                 <td><input  class="form-control ds-input" style="width: 300px;" v-model="course.Description" ></td>
                 <td><select  name="" class="form-select"  v-model="course.CourseStatusID">
@@ -52,13 +52,18 @@
           </table>    
       
   </div>
-
+  <button class="texet-center" @click="shoComA">click</button>
+  <ComponentA style ="display: none;" id="comA"/>
   
 </template>
 <script>
+  import ComponentA from './courseStatus.vue'
   import axios from "axios";
 
   export default {
+    components: {
+    ComponentA
+  },
       data() {
           return {
               courses: [],
@@ -91,6 +96,14 @@
           });
       },
       methods :{
+          shoComA() {
+              var x = document.getElementById("comA");
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            },
           editBt(id) {
               document.getElementById(`${id+1789147}`).disabled = false;
               document.getElementById(`${id+2789147}`).disabled = false;
