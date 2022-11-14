@@ -82,10 +82,13 @@
            async  saveNew(guardianStatus) {
            if (guardianStatus.Status){
              let apiURL = `http://172.26.54.21:8082/api/guardianStatus/`;
-         await axios.post(apiURL,guardianStatus).catch(error => {
+         await axios.post(apiURL,guardianStatus).then(res =>{
+            this.guardianStatuses.push(res.data);
+                this.guardianStatus.Status="";
+         }).catch(error => {
              console.log(error)
          });
-         this.$router.go()
+         
            }
            
          

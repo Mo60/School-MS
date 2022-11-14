@@ -84,8 +84,9 @@
             if (timeBlock.StartTime && timeBlock.EndTime ){
               let apiURL = `http://172.26.54.21:8082/api/timeblock/`;
           await axios.post(apiURL,timeBlock).then(res => {
-                this.Semesters.push(res.data);
-                this.semester.Semester=""
+                this.Timeblocks.push(res.data);
+                this.timeBlock.StartTime="";
+                this.timeBlock.EndTime=""
           }).catch(error => {
               console.log(error)
           });

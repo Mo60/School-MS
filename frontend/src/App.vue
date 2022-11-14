@@ -143,6 +143,17 @@
                         <router-link class="nav-link" to="/studentclassStatus">Student Class Status</router-link>
                       </a>
                     </li>
+                    <!-- guardianRelationship and medica; -->
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/guardianRelationship">Guardian Relationship</router-link>
+                      </a>
+                    </li>
+                    <li>
+                      <a  class="dropdown-item">
+                        <router-link class="nav-link" to="/Medical">Medical Condition</router-link>
+                      </a>
+                    </li>
                   </ul>
                 </li>
                 

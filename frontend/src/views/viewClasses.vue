@@ -11,12 +11,19 @@
 </div>
     <div class="wrapper" v-else>
       <div class="row mb-4">
-        <div class="col-md-4">
-      <input type="search" v-model="searchStatus" class="form-control"  @input="searchByStatus" placeholder="Search Status" aria-label="Search" aria-describedby="search-addon" />
-      </div>
-      
-      <div class="col-md-4"><input type="search" class="form-control" @input="searchTable" v-model="search"></div>
-      </div> 
+     <!-- search bar -->
+     <div class="col-md-4">
+        <input
+          type="search"
+          v-model="searchAll"
+          class="form-control"
+          @input="searchByall"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+      </div>  
+    </div>
 
       <table class="table table-striped" >
       <thead class="table-dark" >
@@ -56,13 +63,14 @@ import axios from "axios";
       return {
         Class: [],
         ClassList: [],
+        searchAll: "",
       loaded:false,
-      sortedBYEnroll: false,
-      sortedBySemester:false,
-      sortedByClassStatus:false,
-      sortedByClass:false,
-      searchStatus : "",
-      search:""
+      sortedBYEnroll: 0,
+      sortedBySemester:0,
+      sortedByClassStatus: 0,
+      sortedByClass:0,
+      
+      
       }
     },
     created() {
@@ -77,10 +85,39 @@ import axios from "axios";
       this.loaded=true
     },
     methods: {
+      //search using filter and indexOf
+      searchByall() {
+      // this.searchLastName = "";
+      const result = this.Class.filter(
+        (item) =>
+          item.CourseName.toUpperCase().indexOf(
+            this.searchAll.toUpperCase()
+          ) !== -1 || item.Status.toUpperCase().indexOf(
+            this.searchAll.toUpperCase()
+          ) !== -1 || item.WeekDay.toUpperCase().indexOf(
+            this.searchAll.toUpperCase()
+          ) !== -1 || item.StartTime.toUpperCase().indexOf(
+            this.searchAll.toUpperCase()
+          ) !== -1 || item.EndTime.toUpperCase().indexOf(
+            this.searchAll.toUpperCase()
+          ) !== -1 || item.FirstName.toUpperCase().indexOf(
+            this.searchAll.toUpperCase()
+          ) !== -1 || item.LastName.toUpperCase().indexOf(
+            this.searchAll.toUpperCase()
+          ) !== -1 || item.Semester.toUpperCase().indexOf(
+            this.searchAll.toUpperCase()
+          ) !== -1
+      );
+      //save the results in the filtering list
+      this.ClassList = result;
+    },
        
         sortByClassStatus() {
-          if(!this.sortedByClassStatus){
-            this.Class.sort((a, b) => {
+          this.sortedByClass= 0;
+          this.sortedBySemester= 0;
+          this.sortedBYEnroll =0
+          if(!(this.sortedByClassStatus === 1)){
+            this.ClassList.sort((a, b) => {
                 const nameA = a.Status.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.Status.toUpperCase(); // ignore upper and lowercase
                 if (nameA < nameB) {
@@ -90,23 +127,41 @@ import axios from "axios";
                     return 1;
                 }
             })
-            this.sortedByClassStatus=!this.sortedByClassStatus
+           this.sortedByClassStatus= 1
         
           }
-          else{  this.Class.sort().reverse()
-               this.sortedByClassStatus=!this.sortedByClassStatus}
+          else{ this.ClassList.sort((a, b) => {
+                const nameA = b.Status.toUpperCase(); // ignore upper and lowercase
+                const nameB = a.Status.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+            })
+            this.sortedByClassStatus= -1
+          }
             
         },
         sortByEnrollmentTotal() {
-            if (!this.sortedBYEnroll)
-                this.Class.sort((a, b) => a.EnrollmentTotal - b.EnrollmentTotal);
-            else {
-                this.Class.sort((a, b) => b.EnrollmentTotal - a.EnrollmentTotal);
+          this.sortedByClassStatus= 0;
+          this.sortedByClass= 0;
+          this.sortedBySemester= 0
+            if (!(this.sortedBYEnroll ===1)){
+                this.ClassList.sort((a, b) => a.EnrollmentTotal - b.EnrollmentTotal);
+                this.sortedBYEnroll = 1;
             }
-            this.sortedBYEnroll = !this.sortedBYEnroll;
+            else {
+                this.ClassList.sort((a, b) => b.EnrollmentTotal - a.EnrollmentTotal);
+                this.sortedBYEnroll = -1;
+            }
         },
         sortBySemester() {
-          if(!this.sortedBySemester){
+          this.sortedBYEnroll = 0;
+          this.sortedByClassStatus= 0;
+          this.sortedByClass =0
+          if(!(this.sortedBySemester === 1)){
             this.Class.sort((a, b) => {
                 const nameA = a.Semester.toUpperCase(); // ignore upper and lowercase
                 const nameB = b.Semester.toUpperCase(); // ignore upper and lowercase
@@ -117,20 +172,32 @@ import axios from "axios";
                     return 1;
                 }
               })
-              this.sortedBySemester=!this.sortedBySemester
+              this.sortedBySemester=1
             }
               else {
-                this.Class.sort().reverse()
-               this.sortedBySemester=!this.sortedBySemester
+                this.Class.sort((a, b) => {
+                const nameA = b.Semester.toUpperCase(); // ignore upper and lowercase
+                const nameB = a.Semester.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) { 
+                    return 1;
+                }
+              })
+               this.sortedBySemester= -1
               }      
 
         },
 
         sortByClass() {
-          if(!this.sortedByClass){
-            this.Class.sort((a, b) => {
-                const nameA = a.Semester.toUpperCase(); // ignore upper and lowercase
-                const nameB = b.Semester.toUpperCase(); // ignore upper and lowercase
+          this.sortedByClassStatus= 0;
+          this.sortedBySemester= 0;
+          this.sortedBYEnroll =0;
+          if(!(this.sortedByClass ==1)){
+            this.ClassList.sort((a, b) => {
+                const nameA = a.CourseName.toUpperCase(); // ignore upper and lowercase
+                const nameB = b.CourseName.toUpperCase(); // ignore upper and lowercase
                 if (nameA < nameB) {
                     return -1;
                 }
@@ -138,30 +205,28 @@ import axios from "axios";
                     return 1;
                 }
               })
-              this.sortedByClass=!this.sortedByClass
+              this.sortedByClass=1
             }
               else {
-                this.Class.sort().reverse()
-               this.sortedByClass=!this.sortedByClass
+                this.ClassList.sort((a, b) => {
+                const nameA = b.CourseName.toUpperCase(); // ignore upper and lowercase
+                const nameB = a.CourseName.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) { 
+                    return 1;
+                }
+              })
+              this.sortedByClass=-1
               }  
             },    
-        async searchByStatus() {
-            const result = this.Class.find(({ name }) => name === 1);
-             this.Class = result;
-            console.log(result);
-        },
-
-        searchTable(){
-          let result=[]
-for(let c in this.Class){
-if(c.includes(this.search))
-{
-  result.push[this.Class[c]]
-  console.log(this.Class[c])
-}
-this.ClassList=result
-}
-        }
+            //seach by find
+        // async searchByStatus() {
+        //     const result = this.Class.find(({ name }) => name === 1);
+        //      this.ClassList = result;
+        //     console.log(result);
+        // }, 
     },
     components: { FontAwesomeIcon }
 }

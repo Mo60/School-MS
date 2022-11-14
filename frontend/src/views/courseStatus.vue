@@ -83,10 +83,11 @@
             if (courseStatus.Status){
               let apiURL = `http://172.26.54.21:8082/api/courseStatus/`;
           await axios.post(apiURL,courseStatus).then(res => {
+            this.CourseStatuses.push(res.data);
+                this.courseStatus.Status="";
           }).catch(error => {
               console.log(error)
           });
-          this.$router.go()
             }
             
           

@@ -83,10 +83,12 @@
             async  saveNew(studentStatus) {
             if (studentStatus.Status){
               let apiURL = `http://172.26.54.21:8082/api/studentStatus/`;
-          await axios.post(apiURL,studentStatus).catch(error => {
+          await axios.post(apiURL,studentStatus).then(res =>{
+            this.StudentStatuses.push(res.data);
+                this.studentStatus.Status="";
+          }).catch(error => {
               console.log(error)
           });
-          this.$router.go()
             }
             
           
