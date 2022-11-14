@@ -1,99 +1,132 @@
 <template>
-  <div class="wrapper4">
-   <h1 class="mb-3 mt-3">Course</h1>
-   <div class="empty-arr mt-5" v-if="Course.length == 0 && loaded">
-      <p>No Courses Found</p>
-      <a class="btn mt-3"><router-link :to="{name:'addcourse'}">Add Course</router-link></a>
-    </div>
-      <table class="table table-striped" v-else>
-      <thead class="table-dark">
-        <tr>
-         <th>Course ID</th>
-         <th>Course Status ID</th>
-         <th>Course Name</th>
-         <th>Description</th>
-         <th>Action</th>
-        </tr>
-      </thead>  
-      <tbody v-for="c in Course" :key=c.CourseID>
-        
-         <tr><td>{{c.CourseID}}</td>
-         <td>{{c.CourseStatusID}}</td>
-         <td>{{c.CourseName}}</td>
-         <td>{{c.Description}}</td>
-         <td><router-link :to="{name:'EditCourse',params:{CourseID:c.CourseID}}"></router-link></td>
-      </tr>
-    </tbody>
-    
-  </table></div>
-  
-  
-  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Show a second modal and hide this one with the button below.
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
-      </div>
-    </div>
+  <div class="tablewrapper" > 
+      
+      <h1 class="mb-3 mt-3">Course</h1>
+          <table class="table table-striped">
+          <thead class="table-dark">
+              <tr>
+              <th>Medical ID</th>
+              <th>Course Name</th>
+              <th>Descreption</th>
+              <th>Status</th>
+              <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>   
+              <tr v-for="t in courses" :key="t.CourseID">
+                  <td >{{t.CourseID}}</td>
+                  <td><input :id=" t.CourseID+1789147" class="form-control ds-input" style="width: 200px;" v-model="t.CourseName" disabled ></td>
+                  <td><input :id=" t.CourseID+2789147" class="form-control ds-input" style="width: 300px;" v-model="t.Description" disabled ></td>
+                  <td><select :id=" t.CourseID+21789147" disabled name="" class="form-select"  v-model="t.CourseStatusID">
+                        <option 
+                          :value="g.CourseStatusID"
+                          class="form-select"
+                          v-for="g in courseStatuses"
+                          :key="g.CourseStatusID">
+                          {{ g.Status }}
+                        </option>
+                      </select>
+                  </td>
+                  <td>
+                      <button  :id="t.CourseID+3789147" class="btn" @click="editBt(t.CourseID)">Edit</button> |
+                      <button  :id="t.CourseID+4789147" class="btn" @click="saveBt(t.CourseID,t)" disabled>Save</button> 
+                   </td>
+              </tr>
+              <tr>
+                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add new CourseName: "></td>
+                <td><input  class="form-control ds-input" style="width: 150px;" v-model="course.CourseName" ></td>
+                <td><input  class="form-control ds-input" style="width: 300px;" v-model="course.Description" ></td>
+                <td><select  name="" class="form-select"  v-model="course.CourseStatusID">
+                        <option 
+                          :value="g.CourseStatusID"
+                          class="form-select"
+                          v-for="g in courseStatuses"
+                          :key="g.CourseStatusID">
+                          {{ g.Status }}
+                        </option>
+                      </select>
+                  </td>
+                <td><button class="btn" @click="saveNew(course)" >Save</button></td>
+              </tr>
+          </tbody>
+          </table>    
+      
   </div>
-</div>
-<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Hide this modal and show the first with the button below.
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-  </template>
-  <script>
+  
+</template>
+<script>
   import axios from "axios";
-  
-  export default {
-    data() {
-      return {
-        Course: [],
-      loaded:false
-      }
-    },
-    created() {
-      // Get all the courses from database
-      axios.get('http://172.26.54.21:8082/api/course/')
-      .then(res => {
-        this.Course = res.data
-      }).catch(err => {
-        alert("Data could not be fetched")
-      })
-      this.loaded=true
-    },
-    methods: {
-      // Handles deleting of courses
-      deleteCourse(course_id){
-        if (window.confirm("Do you really want to delete this course?")) {
-          axios.delete(``).then(() => {
-            this.Course.splice(this.Course.findIndex(i => i.course_id === course_id), 1);
-          }).catch(error => {
-            alert("Course could not be deleted")
-          });
-        }
-      }
-    }
-  }
 
+  export default {
+      data() {
+          return {
+              courses: [],
+              course: {
+                CourseID: null,
+                CourseName: "",
+                Description: "",
+                CourseStatusID: ""
+              },
+              courseStatuses:[],
+              courseStatus: {
+                CourseStatusID: "",
+                Status: "",
+              }
+          }
+      },
+    async  created() {
+          let apiURL = 'http://172.26.54.21:8082/api/course';
+       await   axios.get(apiURL).then(res => {
+              this.courses = res.data;
+              // console.log(this.course_views)
+          }).catch(error => {
+              console.log(error)
+          });
+          let apiURL2 = 'http://172.26.54.21:8082/api/courseStatus';
+          axios.get(apiURL2).then(res => {
+              this.courseStatuses = res.data;
+          }).catch(error => {
+              console.log(error)
+          });
+      },
+      methods :{
+          editBt(id) {
+              document.getElementById(`${id+1789147}`).disabled = false;
+              document.getElementById(`${id+2789147}`).disabled = false;
+              document.getElementById(`${id+21789147}`).disabled = false;
+              document.getElementById(`${id+3789147}`).disabled = true;
+              document.getElementById(`${id+4789147}`).disabled = false;
+          },
+          saveBt(id,t) {
+              document.getElementById(`${id+1789147}`).disabled = true;
+              document.getElementById(`${id+2789147}`).disabled = true;
+              document.getElementById(`${id+21789147}`).disabled = true;
+              document.getElementById(`${id+3789147}`).disabled = false;
+              document.getElementById(`${id+4789147}`).disabled = true;
+              //save the change in DB
+              //http://localhost:8082/api/timeBlock
+              let apiURL = `http://172.26.54.21:8082/api/course/${t.CourseID}`;
+          axios.put(apiURL,t).then(res => {
+          }).catch(error => {
+              console.log(error)
+          });
+          },
+   async  saveNew(course) {
+            if (course.CourseName){
+              let apiURL = `http://172.26.54.21:8082/api/course/`;
+          await axios.post(apiURL,course).then(res => {
+            this.courses.push(res.data);
+                this.course.CourseName="";
+                this.course.Description="",
+                this.course.CourseStatusID=""
+          }).catch(error => {
+              console.log(error)
+          });
+            }
+            
+          
+          }
+      }
+  }
 </script>

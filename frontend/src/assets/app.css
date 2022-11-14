@@ -11,6 +11,12 @@ li {
   box-shadow: inset 1px 2px 1px rgb(209 204 204 / 0%);
   border: 1px solid #ced4da00;
 }
+.form-select:disabled {
+  background-color: #e9efee00;
+  opacity: 01;
+  box-shadow: inset 1px 2px 1px rgb(209 204 204 / 0%);
+  border: 1px solid #ced4da00;
+}
 .navbar-nav {
   --bs-nav-link-padding-x: 0;
   --bs-nav-link-padding-y: 0.5rem;
