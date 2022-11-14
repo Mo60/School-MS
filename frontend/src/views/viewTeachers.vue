@@ -79,7 +79,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel2">
-                    Class Taught
+                    Classes Taught
                   </h5>
   
                   <button
@@ -90,7 +90,7 @@
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <div class="row" v-if="faculty_Class.length==0">No classes taught</div>
+                  <div class="rows" v-if="faculty_Class.length==0">No classes taught</div>
                 <div class="rows" v-for="ct in faculty_Class" :key="ct.FacultyID" v-else>
                  {{ct.CourseName}}: {{ct.Semester}} - {{ct.WeekDay}}s at {{ct.StartTime}} - {{ct.EndTime}}
 
@@ -98,20 +98,7 @@
                 </div>
                 </div>
                 <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    @click="addMedicalCondition"
-                  >
-                    Save changes
-                  </button>
+
                 </div>
               </div>
             </div>
@@ -156,7 +143,7 @@
         methods:{
           sortByFName() {
       if (!this.sortedByFName) {
-        this.faculty.sort((a, b) => {
+        this.facultyList.sort((a, b) => {
           const nameA = a.FirstName.toUpperCase(); // ignore upper and lowercase
           const nameB = b.FirstName.toUpperCase(); // ignore upper and lowercase
           if (nameA < nameB) {
@@ -168,13 +155,13 @@
         })
         this.sortedByFName = !this.sortedByFName;
       } else {
-        this.faculty.sort().reverse();
+        this.facultyList.sort().reverse();
         this.sortedByFName = !this.sortedByFName;
       }
     },
     sortByLName() {
       if (!this.sortedByLName) {
-        this.faculty.sort((a, b) => {
+        this.facultyList.sort((a, b) => {
           const nameA = a.LastName.toUpperCase(); // ignore upper and lowercase
           const nameB = b.LastName.toUpperCase(); // ignore upper and lowercase
           if (nameA < nameB) {
@@ -186,13 +173,13 @@
         })
         this.sortedByLName = !this.sortedByLName;
       } else {
-        this.faculty.sort().reverse();
+        this.facultyList.sort().reverse();
         this.sortedByLName = !this.sortedByLName;
       }
     },
     sortByTitle() {
       if (!this.sortedByTitle) {
-        this.faculty.sort((a, b) => {
+        this.facultyList.sort((a, b) => {
           const nameA = a.Title.toUpperCase(); // ignore upper and lowercase
           const nameB = b.Title.toUpperCase(); // ignore upper and lowercase
           if (nameA < nameB) {
@@ -204,13 +191,13 @@
         })
         this.sortedByTitle = !this.sortedByTitle;
       } else {
-        this.faculty.sort().reverse();
+        this.facultyList.sort().reverse();
         this.sortedByTitle = !this.sortedByTitle;
       }
     },
     sortByMName() {
       if (!this.sortedByMName) {
-        this.faculty.sort((a, b) => {
+        this.facultyList.sort((a, b) => {
           let nameA = a.MiddleName // ignore upper and lowercase
           let nameB = b.MiddleName // ignore upper and lowercase
           if(nameA!==null){
@@ -228,15 +215,15 @@
         })
         this.sortedByMName = !this.sortedByMName;
       } else {
-        this.faculty.sort().reverse();
+        this.facultyList.sort().reverse();
         this.sortedByMName = !this.sortedByMName;
       }
     },
     sortByCT() {
             if (!this.sortedByCT)
-                this.Class.sort((a, b) => a.EnrollmentTotal - b.EnrollmentTotal);
+                this.faculty.sort((a, b) => a.NoOfClass - b.NoOfClass);
             else {
-                this.Class.sort((a, b) => b.EnrollmentTotal - a.EnrollmentTotal);
+                this.faculty.sort((a, b) => b.NoOfClass - a.NoOfClass);
             }
             this.sortedByCT = !this.sortedByCT;
         },

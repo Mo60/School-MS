@@ -640,7 +640,7 @@
                     .get(apiURL4)
                     .then((res) => {
                       this.student_medical = res.data;
-                      router.push("/");
+                     
                     })
                     .catch((error) => {
                       console.log(error);
@@ -705,7 +705,7 @@
       addMedicalCondition() {
         let apiURL = `http://172.26.54.21:8082/api/student_medical`;
         axios
-          .post(apiURL, this.student_medical2).then((res)=>{
+          .post(apiURL, this.student_medical2).then(()=>{
             let apiURL4 = `http://172.26.54.21:8082/api/reports/student_medical_view/${this.studentID}`;
                   axios
                     .get(apiURL4)
@@ -764,7 +764,19 @@
           })
           .then(() => {
             console.log(this.editData);
-            this.$router.go()
+            let apiURL2 = `http://172.26.54.21:8082/api/reports/student_class_view/${this.studentID}`;
+          axios
+            .get(apiURL2)
+            .then((res2) => {
+              this.student_class2 = res2.data;
+              this.student_class={
+                ClassID: "",
+          StudentClassStatusID: "",
+              }
+            }).catch((error) => {
+            console.log(error);
+          });
+  
           })
   
           .catch((error) => {
@@ -795,12 +807,19 @@
       editMedical(){
 let apiURL= `http://172.26.54.21:8082/api/student_medical/${this.editID2}`
 axios
-          .put(apiURL, this.editHealthData)   .catch((error) => {
-            console.log(error);
-          })
+          .put(apiURL, this.editHealthData) 
           .then(() => {
-            console.log(this.editHealthData);
-            this.$router.go()
+            let apiURL4 = `http://172.26.54.21:8082/api/reports/student_medical_view/${this.studentID}`;
+                  axios
+                    .get(apiURL4)
+                    .then((res) => {
+                      this.student_medical = res.data;
+                     
+                     
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    })
           })
   
           .catch((error) => {
