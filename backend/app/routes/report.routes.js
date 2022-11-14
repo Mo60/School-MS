@@ -32,6 +32,9 @@ module.exports = app => {
   // count_class_by_faculty
   router.get("/count_class_by_faculty/:FacultyID", Reports.count_class_by_faculty_byFacultyID);
   router.get("/count_class_by_faculty", Reports.count_class_by_faculty_all);
+  //Student_in_class_view
+  router.get("/students_in_class_view/:ClassID", Reports.students_in_class_view_byClassID);
+  router.get("/", Reports.students_in_class_view_all);
 
   app.use('/api/reports', router);
 };
