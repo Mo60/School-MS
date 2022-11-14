@@ -132,14 +132,15 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core'
+import {required} from '@vuelidate/validators'
 import axios from "axios";
 export default {
   api_host: "172.26.54.21",
   api_port: "8082",
-
-  name: "AddClass",
   data() {
     return {
+      v$:useVuelidate(),
       Class: {
         CourseID: "",
         SemesterID: "",
@@ -147,7 +148,6 @@ export default {
         DayID: "",
         ClassStatusID: "",
         Capacity: "",
-        ////
         MaxCapacity: "",
         Lesson: "",
         Notes: "",
@@ -168,7 +168,26 @@ export default {
   },
 
   methods: {
+    validations(){
+      return{
+        Class: {
+        CourseID: {required},
+        SemesterID: {required},
+        TimeBlockID: {required},
+        DayID: {required},
+        ClassStatusID: {required},
+        Lesson: {required},
+   
+      },
+      Faculty_Class: {
+        ClassID: {required},
+        FacultyID: {required},
+      },
+      }
+    },
 handleSubmitForm() {
+
+  console.log(this.v$)
       let apiURL = "http://172.26.54.21:8082/api/class/";
 
       axios
@@ -197,9 +216,7 @@ handleSubmitForm() {
           console.log(error);
         }).then(()=>{
           let apiURL2 = 'http://172.26.54.21:8082/api/faculty_class/';
-          axios.post(apiURL2,this.Faculty_Class).then((res)=>{
-          console.log(res.data)
-        }).catch((error) => {
+          axios.post(apiURL2,this.Faculty_Class).catch((error) => {
           console.log(error);
         })
         }).catch((error) => {

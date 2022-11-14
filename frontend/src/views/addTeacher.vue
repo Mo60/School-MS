@@ -9,7 +9,7 @@
                  <div class="row mb-3" >
                        <div class="col">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control"   v-model="faculty.FirstName">
+                                <input type="text" class="form-control"   v-model="faculty.FirstName" required>
                        </div >
                        <div class="col">   
                                 <label class="form-label">Middle Name</label>
@@ -19,12 +19,13 @@
                                 <label class="form-label">Last Name</label>
                                 <input type="text" class="form-control" v-model="faculty.LastName" >
                        </div >
-                       <div class="col">
-                        <div class="form-label">Title</div>
-                        <input type="text" class="form-control" v-model="faculty.Title" >
-                       </div>
+                      
                  </div >
                     <div class="row mb-3">
+                        <div class="col">
+                        <div class="form-label">Position</div>
+                        <input type="text" class="form-control" v-model="faculty.Title" >
+                       </div>
                         <div class="col">
                             <label class="form-label">Email</label>
                             <input type="email" class="form-control" v-model="faculty.Email">

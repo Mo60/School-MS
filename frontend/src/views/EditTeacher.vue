@@ -19,12 +19,13 @@
                           <label class="form-label">Last Name</label>
                           <input type="text" class="form-control" v-model="faculty.LastName" >
                  </div >
-                 <div class="col">
+                 
+           </div >
+              <div class="row mb-3">
+                <div class="col">
                   <div class="form-label">Title</div>
                   <input type="text" class="form-control" v-model="faculty.Title" >
                  </div>
-           </div >
-              <div class="row mb-3">
                   <div class="col">
                       <label class="form-label">Email</label>
                       <input type="email" class="form-control" v-model="faculty.Email">
