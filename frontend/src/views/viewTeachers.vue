@@ -3,10 +3,35 @@
  <div class="flex-wrapper" v-if="faculty.length == 0 && loaded">
         <div class="empty-arr" >
           <p>No faculty Found</p>
-          <a class="btn mt-3"><router-link :to="{name:'addfaculty'}">Add Teacher</router-link></a>
+          <a class="btn mt-3"><router-link :to="{name:'addfaculty'}">Add faculty</router-link></a>
         </div>
    </div> 
    <div class="tablewrapper" v-else>
+    <div class="d-flex mb-4 justify-content-center">
+      <div class="col-md-4 mx-4">
+        <input
+          type="search"
+          v-model="searchFirstName"
+          class="form-control"
+          @input="searchByFirstName"
+          placeholder="Search First Name"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+      </div>
+    
+      <div class="col-md-4">
+        <input
+          type="search"
+          v-model="searchLastName"
+          class="form-control"
+          @input="searchByLastName"
+          placeholder="Search Last Name"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+      </div>
+    </div>
     <table class="table table-striped">
       <thead class="table-dark">
         <tr class="thead">
@@ -15,7 +40,7 @@
           <th @click="sortByFName">First Name &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByFName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByMName">Middle Name &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByMName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByLName">Last Name &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByLName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
-          <th><a>Classes Taught</a></th>
+          <th @click="sortByCT"><a>Classes Taught</a> <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByCT"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th>Cell</th>
           <th>Phone</th>
           <th>Email</th>
@@ -23,14 +48,15 @@
           <th colspan="2" class="">Actions</th>
         </tr>
       </thead>
-      <tbody v-for="f in faculty" :key="f.FacultyID">
+      <tbody v-for="f in facultyList" :key="f.FacultyID">
       <tr>
         <td>{{f.FacultyID}}</td>
         <td>{{f.Title}}</td>
       <td>{{f.FirstName}}</td>
       <td>{{f.MiddleName}}</td>
       <td>{{f.LastName}}</td>
-      <td>{{f.NoOfClasses}}</td>
+      <td><a class="numClasses"  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal" @click="getID(f.FacultyID)">{{f.NoOfClass}}</a></td>
       <td>{{f.CellNumber}}</td>
       <td>{{f.PhoneNumber}}</td>
       <td><a :href="`mailto:${f.Email}`">{{f.Email}}</a></td>
@@ -41,6 +67,55 @@
       </tbody>
     </table>
     <div class="d-flex justify-content-center mt-5">  <router-link class="btn " :to="{name:'addfaculty'}">Add Faculty </router-link></div >
+
+      <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="0"
+            aria-labelledby="exampleModalLabel2"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel2">
+                    Class Taught
+                  </h5>
+  
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row" v-if="faculty_Class.length==0">No classes taught</div>
+                <div class="rows" v-for="ct in faculty_Class" :key="ct.FacultyID" v-else>
+                 {{ct.CourseName}}: {{ct.Semester}} - {{ct.WeekDay}}s at {{ct.StartTime}} - {{ct.EndTime}}
+
+                  
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    @click="addMedicalCondition"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
   </div>
 
 </template>
@@ -58,14 +133,20 @@
                 sortedByTitle:false,
                 sortedByFName:false,
                 sortedByLName:false,
-                sortedByMName:false
+                sortedByMName:false,
+                sortedByCT:false,
+                faculty_Class:[],
+                searchFirstName:"",
+                searchLastName:"",
+                facultyList:[]
             }
         },
         // this is using created hook 
         created() {
-            let apiURL = 'http://172.26.54.21:8082/api/reports/faculty_class_list';
+            let apiURL = 'http://172.26.54.21:8082/api/reports/count_class_by_faculty';
             axios.get(apiURL).then(res => {
                 this.faculty = res.data;
+                this.facultyList = res.data;
                 
             }).catch(error => {
                 console.log(error)
@@ -150,6 +231,47 @@
         this.faculty.sort().reverse();
         this.sortedByMName = !this.sortedByMName;
       }
+    },
+    sortByCT() {
+            if (!this.sortedByCT)
+                this.Class.sort((a, b) => a.EnrollmentTotal - b.EnrollmentTotal);
+            else {
+                this.Class.sort((a, b) => b.EnrollmentTotal - a.EnrollmentTotal);
+            }
+            this.sortedByCT = !this.sortedByCT;
+        },
+    getID(value){
+
+      let apiURL=`http://172.26.54.21:8082/api/reports/faculty_class_list/${value}`
+      axios.get(apiURL).then((res)=>{
+this.faculty_Class=res.data
+      })
+    },
+
+    
+    searchByLastName() {
+      this.searchFirstName = "";
+      const result = this.faculty.filter(
+        (f) =>
+          f.LastName.toUpperCase().indexOf(
+            this.searchLastName.toUpperCase()
+          ) !== -1
+      );
+      //save the results in the filtering list
+      this.facultyList = result;
+      console.log(result);
+    },
+    searchByFirstName() {
+      this.searchLastName = "";
+      const result = this.faculty.filter(
+        (p) =>
+          p.FirstName.toUpperCase().indexOf(
+            this.searchFirstName.toUpperCase()
+          ) !== -1
+      );
+      //save the results in the filtering list
+      this.facultyList = result;
+      console.log(result);
     },
         }
     }

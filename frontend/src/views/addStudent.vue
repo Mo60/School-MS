@@ -144,7 +144,7 @@
           </div>
           <div class="col-sm">
             <label for="" class="form-label">Emergency Contact</label
-            ><select class="form-select" v-model="guardian_student.isEmergency">
+            ><select class="form-select" v-model="guardian_student.IsEmergency">
               <option selected disabled value="">Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -212,7 +212,7 @@
           </div>
           <div class="col-sm">
             <label for="" class="form-label">Emergency Contact</label
-            ><select class="form-select" v-model="guardian_student2.isEmergency">
+            ><select class="form-select" v-model="guardian_student2.IsEmergency">
               <option selected disabled value="">Select an Option</option>
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -267,14 +267,14 @@ export default {
         StudentID: "",
         GuardianID: "",
         RelationshipID: null,
-        isEmergency:""
+        IsEmergency:""
       },
       guardian_student2: {
         CanPickup: "",
         StudentID: "",
         GuardianID: "",
         RelationshipID: null,
-        isEmergency:""
+        IsEmergency:""
       },
       relationships: [],
       statuses: [],

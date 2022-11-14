@@ -77,12 +77,13 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div class="d-flex justify-content-center mt-5">
+    <div class="d-flex justify-content-center mt-5">
     <router-link class="btn" :to="{ name: 'addstudent' }"
       >Add Student
     </router-link>
   </div>
+  </div>
+
 </template>
 <script>
 import axios from "axios";

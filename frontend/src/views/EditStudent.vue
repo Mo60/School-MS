@@ -257,7 +257,7 @@ export default {
         StudentID: "",
         GuardianID: "",
         RelationshipID: null,
-        IsEmergency: false,
+        IsEmergency: boolean,
       },
       guardian_student2: {
         _id: "",
@@ -265,7 +265,7 @@ export default {
         StudentID: "",
         GuardianID: "",
         RelationshipID: "",
-        IsEmergency: false,
+        IsEmergency: boolean,
       },
       relationships: [],
       statuses: [],
@@ -306,21 +306,6 @@ export default {
               .catch((error) => {
                 console.log(error);
               })
-              .then(() => {
-                let apiURL5 =
-                  "http://172.26.54.21:8082/api/guardianRelationship";
-                axios
-                  .get(apiURL5)
-                  .then((res) => {
-                    this.relationships = res.data;
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
-              })
-              .catch((error) => {
-                console.log(error);
-              });
           })
           .then(() => {
             let apiURL4 = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
@@ -336,7 +321,7 @@ export default {
                   res4.data.guardians[0].guardian_student.RelationshipID,
                 CanPickup: res4.data.guardians[0].guardian_student.CanPickup
               };
-              if(this.guardian_student2.GuardianID!=""){
+             
               this.guardian_student2 = {
                 _id: res4.data.guardians[1].guardian_student._id,
                 GuardianID: res4.data.guardians[1].guardian_student.GuardianID,
@@ -348,7 +333,7 @@ export default {
               };
               this.guardianStudentID1=res4.data.guardians[0].guardian_student._id
               this.guardianStudentID2=res4.data.guardians[1].guardian_student._id
-              }
+              
 
             });
           }).then(()=>{

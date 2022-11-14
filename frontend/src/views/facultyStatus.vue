@@ -5,7 +5,7 @@
             <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
-                <th>Faculty Statuse ID</th>
+                <th>Faculty Status ID</th>
                 <th>Faculty Status</th>
                 
                 <th>Action</th>

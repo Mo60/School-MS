@@ -429,3 +429,7 @@ border-radius: 10px;
 .profile>.grid{
   align-self: center;
 }
+
+.numClasses{
+  cursor: pointer;
+}
