@@ -709,8 +709,14 @@
             console.log(error);
           })
           .then(() => {
-            console.log(this.student_class);
-        //   location.reload();
+            let apiURL2 = `http://172.26.54.21:8082/api/reports/student_class_view/${this.studentID}`;
+          axios
+            .get(apiURL2)
+            .then((res2) => {
+              this.student_class2 = res2.data;
+              console.log(this.student_class);
+            })
+           ;
           })
   
           .catch((error) => {

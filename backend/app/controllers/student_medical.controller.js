@@ -77,14 +77,14 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    Student_Medical.findAll(   )
+    Student_Medical.findAll()
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving student_medicals."
+            err.message || "Some error occurred while retrieving info."
         });
       });
   };

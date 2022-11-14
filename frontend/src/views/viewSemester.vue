@@ -84,10 +84,11 @@
             if (semester.Semester ){
               let apiURL = `http://172.26.54.21:8082/api/semester/`;
           await axios.post(apiURL,semester).then(res => {
+                this.Semesters.push(res.data);
+                this.semester.Semester=""
           }).catch(error => {
               console.log(error)
           });
-          this.$router.go()
             }
             
           
