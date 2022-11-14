@@ -26,17 +26,27 @@
           <div class="rows"><div class="label">Status</div>{{student[0].Status}} </div>
           <h4 class="mt-4">Parents/Guardians</h4>
           <div>
+          <div class="rows">
+              <router-link
+                class="mx-3"
+                id="router"
+                v-for="guardian in student_guardian"
+                :key="guardian.GuardianID"
+                :to="{
+                  name: 'viewParent',
+                  params: { GuardianID: guardian.GuardianID },
+                }"
+                >{{ guardian.gFName }} {{ guardian.gLName }} 
+              </router-link>
+          </div>
             <router-link
-              class="mx-3"
-              id="router"
-              v-for="guardian in student_guardian"
-              :key="guardian.GuardianID"
+              class="btn"
               :to="{
-                name: 'viewParent',
-                params: { GuardianID: guardian.GuardianID },
+                name: 'addParent2',
+                params: { studentID: student[0].StudentID },
               }"
-              >{{ guardian.gFName }} {{ guardian.gLName }} 
-            </router-link>
+              ><font-awesome-icon icon="fa-solid fa-plus" class="" /></router-link>
+            
           </div>
         </div>
         <div class="box pt-3">
@@ -387,7 +397,7 @@
                     Close
                   </button>
                   <button type="submit" class="btn btn-primary" @click="enroll">
-                    Save changes
+                   Add
                   </button>
                 </div>
               </div>
@@ -433,6 +443,7 @@
                               :value="Class.ClassID"
                               
                             >
+
                               {{ Class.CourseName }}&nbsp;|&nbsp;
                               {{ Class.WeekDay }}&nbsp;|&nbsp;
                               {{ Class.StartTime }}-{{ Class.EndTime }}
@@ -694,12 +705,26 @@
       addMedicalCondition() {
         let apiURL = `http://172.26.54.21:8082/api/student_medical`;
         axios
-          .post(apiURL, this.student_medical2)
+          .post(apiURL, this.student_medical2).then((res)=>{
+            let apiURL4 = `http://172.26.54.21:8082/api/reports/student_medical_view/${this.studentID}`;
+                  axios
+                    .get(apiURL4)
+                    .then((res) => {
+                      this.student_medical = res.data;
+                    this.student_medical2={
+                      MedicalID: "",
+          Description: "",
+                    }
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    })
+          })
           .catch((error) => {
             console.log(error);
           })
           .then(() => {
-            this.$router.go();
+  
           });
       },
       enroll() {
@@ -714,9 +739,15 @@
             .get(apiURL2)
             .then((res2) => {
               this.student_class2 = res2.data;
+              this.student_class={
+                ClassID: "",
+          StudentClassStatusID: "",
+              }
               console.log(this.student_class);
-            })
-           ;
+            }) .catch((error) => {
+            console.log(error);
+          });
+           
           })
   
           .catch((error) => {

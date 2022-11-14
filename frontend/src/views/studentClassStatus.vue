@@ -1,5 +1,5 @@
 <template>
-    <h1 class="mb-5 mt-5">Student Status</h1>
+    <h1 class="mb-5 mt-5">Student Class Status</h1>
    <div class="tablewrapper" > 
        
       

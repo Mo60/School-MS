@@ -30,7 +30,8 @@
       <td>{{f.FirstName}}</td>
       <td>{{f.MiddleName}}</td>
       <td>{{f.LastName}}</td>
-      <td>{{f.NoOfClasses}}</td>
+      <td><a class="numClasses"  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal" @click="getID(f.FacultyID)">{{f.NoOfClass}}</a></td>
       <td>{{f.CellNumber}}</td>
       <td>{{f.PhoneNumber}}</td>
       <td><a :href="`mailto:${f.Email}`">{{f.Email}}</a></td>
@@ -41,6 +42,55 @@
       </tbody>
     </table>
     <div class="d-flex justify-content-center mt-5">  <router-link class="btn " :to="{name:'addfaculty'}">Add Faculty </router-link></div >
+
+      <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="0"
+            aria-labelledby="exampleModalLabel2"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel2">
+                    Class Taught
+                  </h5>
+  
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row" v-if="faculty_Class.length==0">No classes taught</div>
+                <div class="rows" v-for="ct in faculty_Class" :key="ct.FacultyID" v-else>
+                 {{ct.CourseName}}: {{ct.Semester}} - {{ct.WeekDay}}s at {{ct.StartTime}} - {{ct.EndTime}}
+
+                  
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    @click="addMedicalCondition"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
   </div>
 
 </template>
@@ -58,12 +108,13 @@
                 sortedByTitle:false,
                 sortedByFName:false,
                 sortedByLName:false,
-                sortedByMName:false
+                sortedByMName:false,
+                faculty_Class:[]
             }
         },
         // this is using created hook 
         created() {
-            let apiURL = 'http://172.26.54.21:8082/api/reports/faculty_class_list';
+            let apiURL = 'http://172.26.54.21:8082/api/reports/count_class_by_faculty';
             axios.get(apiURL).then(res => {
                 this.faculty = res.data;
                 
@@ -151,6 +202,13 @@
         this.sortedByMName = !this.sortedByMName;
       }
     },
+    getID(value){
+
+      let apiURL=`http://172.26.54.21:8082/api/reports/faculty_class_list/${value}`
+      axios.get(apiURL).then((res)=>{
+this.faculty_Class=res.data
+      })
+    }
         }
     }
 </script>
