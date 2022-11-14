@@ -327,7 +327,7 @@ exports.count_class_by_faculty_all = (req, res) => {
 /// methods to retrieve students_in_class_view (it includes the status name)
 // first by id
 exports.students_in_class_view_byClassID = (req, res) => {
-  const id = req.params.FacultyID;
+  const id = req.params.ClassID;
   const view = db.sequelize.query(`SELECT * FROM students_in_class_view WHERE ClassID = ${id}    `, { type: QueryTypes.SELECT })
   .then(data => {
     res.send(data);

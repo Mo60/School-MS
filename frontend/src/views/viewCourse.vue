@@ -52,18 +52,14 @@
           </table>    
       
   </div>
-  <button class="texet-center" @click="shoComA">click</button>
-  <ComponentA style ="display: none;" id="comA"/>
+
   
 </template>
 <script>
-  import ComponentA from './courseStatus.vue'
+
   import axios from "axios";
 
   export default {
-    components: {
-    ComponentA
-  },
       data() {
           return {
               courses: [],
@@ -96,14 +92,6 @@
           });
       },
       methods :{
-          shoComA() {
-              var x = document.getElementById("comA");
-              if (x.style.display === "none") {
-                x.style.display = "block";
-              } else {
-                x.style.display = "none";
-              }
-            },
           editBt(id) {
               document.getElementById(`${id+1789147}`).disabled = false;
               document.getElementById(`${id+2789147}`).disabled = false;
