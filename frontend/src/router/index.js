@@ -80,7 +80,19 @@ const router= createRouter({
   name:"studentClassStatus",
   component:()=>import("../views/studentClassStatus.vue"),
   },
-  
+  //guardianRelationship
+  {
+  path:"/guardianRelationship",
+  name:"guardianRelationship",
+  component:()=>import("../views/guardianRelationship.vue"),
+  },
+  //medical
+  {
+    path:"/medical",
+    name:"medical",
+    component:()=>import("../views/medical.vue"),
+    },
+    
   // student_medicalStatus
   {path:"/student_medicalStatus",
   name:"student_medicalStatus",

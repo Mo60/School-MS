@@ -78,14 +78,15 @@
             if (day.WeekDay){
               let apiURL = `http://172.26.54.21:8082/api/day/`;
           await axios.post(apiURL,day).then(res => {
+            this.days.push(res.data);
+                this.day.WeekDay="";
           }).catch(error => {
               console.log(error)
           });
-          this.$router.go()
             }
             
           
           }
-      }
+      } 
   }
 </script>
