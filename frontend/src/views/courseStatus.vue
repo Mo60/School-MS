@@ -49,10 +49,10 @@
                 CourseStatuses: []
             }
         },
-        created() {
-            console.log(this.CourseStatuses)
+       async created() {
+            await setTimeout(() =>  5000);
             let apiURL = 'http://172.26.54.21:8082/api/courseStatus';
-            axios.get(apiURL).then(res => {
+          await  axios.get(apiURL).then(res => {
                 this.CourseStatuses = res.data;
                 // console.log(this.CourseStatuses)
             }).catch(error => {
