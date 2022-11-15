@@ -81,9 +81,13 @@
                     <span>{{ sm.Condition }}</span>
                   </div>
                   <div class="rows">
-                    <span class="label">Description:</span> {{ sm.Description }}
+                    <span class="label">Description:</span> <span>{{ sm.Description }}</span>
                     
                   </div>
+                  <div class="rows">
+                    <span class="label">Condition Status</span> <span>{{sm.Status}}</span>
+                  </div>
+                
               </div>
            <div class="d-flex justify-content-end">
                   <button type="button"  class="btn mb-2" @click="getID2(sm._id)"
@@ -208,6 +212,19 @@
                             v-model="student_medical2.Description"
                             class="form-control"
                           />
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col">
+                          <label for="">Condition Status</label>
+                          <select
+                         
+                            v-model="student_medical2.StudentMedicalStatusID"
+                            class="form-select"
+                          >
+                          <option>Select an Option</option>
+                          <option :value="status.StudentMedicalStatusID" v-for="status in medicalStatus" :key="status.StudentMedicalStatusID">{{status.Status}}</option>
+                        </select>
                         </div>
                       </div>
                     </fieldset>
@@ -540,6 +557,19 @@
                           />
                         </div>
                       </div>
+                      <div class="row mb-3">
+                        <div class="col">
+                          <label for="">Condition Status</label>
+                          <select
+                         
+                            v-model="editHealthData.StudentMedicalStatusID"
+                            class="form-select"
+                          >
+                          <option>Select an Option</option>
+                          <option :value="status.StudentMedicalStatusID" v-for="status in medicalStatus" :key="status.StudentMedicalStatusID">{{status.Status}}</option>
+                        </select>
+                        </div>
+                      </div>
                     </fieldset>
                   </form>
                 </div>
@@ -576,11 +606,13 @@
         student: [],
         student_guardian:[],
         medical: [],
+        medicalStatus:[],
         student_medical: [],
         student_medical2: {
           StudentID: this.$route.params.StudentID,
           MedicalID: "",
           Description: "",
+          StudentMedicalStatusID:""
         },
         classes: [],
         statuses: [],
@@ -600,6 +632,7 @@
             StudentID: parseInt(this.$route.params.StudentID),
           MedicalID: "",
           Description: "",
+          StudentMedicalStatusID:""
         },
         editID:"",
         editID2:""
@@ -673,7 +706,15 @@
                               axios.get(apiURL7).then((res)=>{
                                 this.student_guardian=res.data
                                 console.log(this.student_guardian)
-                              }) .catch((error) => {
+                              }) .then(()=>{
+                                let apiURL8="http://172.26.54.21:8082/api/student_medicalstatus"
+                                axios.get(apiURL8).then((res)=>{
+                                  this.medicalStatus=res.data
+                                }).catch((error) => {
+                              console.log(error);
+                            });
+                              })
+                              .catch((error) => {
                               console.log(error);
                             });
                             })
@@ -714,6 +755,7 @@
                     this.student_medical2={
                       MedicalID: "",
           Description: "",
+          StudentMedicalStatusID:""
                     }
                     })
                     .catch((error) => {

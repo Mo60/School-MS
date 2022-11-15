@@ -110,7 +110,7 @@
       </fieldset>
 
       <button class="btn mt-4" @click="submitForm">Submit</button>
-      <button class="btn mt-4 mx-3" @click="register" v-if="guardianStudent<1">Add Another Parent</button>
+      <button class="btn mt-4 mx-3" @click="register" v-if="guardianStudent!=1">Add Another Parent</button>
     </form>
   </div>
 </template>
@@ -136,13 +136,14 @@ export default {
         Zip: "",
         State:"",
         Notes: "",
-        IsEmergency:boolean
+       
       },
       guardian_student:{
       CanPickup:boolean,
       StudentID:this.$route.params.studentID,
       GuardianID:"",
-      guardianRelationship:""
+      guardianRelationship:"",
+      IsEmergency:boolean
       },
       relationships:[],
       student:[],
@@ -192,9 +193,15 @@ export default {
         City: "",
         Zip: "",
         Notes: "",
-        IsEmergency:boolean
+       
         }
-        })   
+       this. guardian_student={
+        IsEmergency:"",
+      CanPickup:"",
+      GuardianID:"",
+      guardianRelationship:""
+      }
+        })  
       }).catch(error => {
         console.log(error)
        
@@ -213,6 +220,7 @@ export default {
 this.guardian.AddressLine1=this.student.AddressLine1
 this.guardian.AddressLine2=this.student.AddressLine2
 this.guardian.City=this.student.City
+this.guardian.State=this.student.State
 this.guardian.Zip=this.student.Zip
       }
       else{

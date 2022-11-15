@@ -32,13 +32,18 @@
           </div>
         </div>
         <div class="row mb-4">
-          <div class="col">
+          <div class="col-md-4">
             <label for="lName" class="form-label">Date of Birth</label>
             <input type="date" class="form-control" v-model="student.DOB" />
           </div>
-          <div class="col">
+          <div class="col-md-4">
             <label for="lName" class="form-label">Status</label>
-            <select name="" id="" class="form-select" v-model="student.StatusID">
+            <select
+              name=""
+              id=""
+              class="form-select"
+              v-model="student.StatusID"
+            >
               <option selected disabled value="">Select an Option</option>
               <option
                 :value="status.StatusID"
@@ -71,23 +76,24 @@
               v-model="student.AddressLine2"
             />
           </div>
-        
+
           <div class="col">
             <label class="form-label">City</label>
-            <input
-              type="text"
-              class="form-control"
-              v-model="student.City"
-            />
+            <input type="text" class="form-control" v-model="student.City" />
           </div>
-        
         </div>
         <div class="row mb-3">
           <div class="col">
             <label for="" class="form-label">State</label
             ><select name="" v-model="student.State" class="form-select">
-            <option value="">Select an Option</option>
-            <option :value="state.name" v-for="(state,index) in states" :key="index">{{state.name}}</option>
+              <option value="">Select an Option</option>
+              <option
+                :value="state.name"
+                v-for="(state, index) in states"
+                :key="index"
+              >
+                {{ state.name }}
+              </option>
             </select>
           </div>
           <div class="col">
@@ -221,7 +227,11 @@
       </fieldset>
       <div class="d-flex">
         <button class="btn mt-4" @click="submitForm">Submit</button>
-        <button class="btn mt-4 mx-3" @click="register">
+        <button
+          class="btn mt-4 mx-3"
+          @click="register"
+          v-if="guardianStudent != 2"
+        >
           Submit and Register Parent
         </button>
       </div>
@@ -271,7 +281,7 @@ export default {
       statuses: [],
       guardian: [],
       StudentID: this.$route.params.StudentID,
-      guardianStudents: [],
+      guardianStudent: [],
       guardians: [],
       guardianStudentID1:"",
       guardianStudentID2:"",
@@ -334,6 +344,8 @@ export default {
               this.guardianStudentID1=res4.data.guardians[0].guardian_student._id
               this.guardianStudentID2=res4.data.guardians[1].guardian_student._id
               
+              this.guardianStudent=res4.data.guardians.length
+              console.log(this.guardianStudent)
 
             });
           }).then(()=>{
@@ -343,13 +355,17 @@ export default {
               console.log(this.states)
             }).catch((error) => {
         console.log(error);
-      });
-          });
-      })
-      .catch((error) => {
+      }).then(res=>{
+              
+         
+          }) .catch((error) => {
         console.log(error);
       });
-  },
+      })
+    })
+  }
+     
+  ,
   methods: {
     submitForm() {
       let apiURL = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
@@ -380,6 +396,6 @@ export default {
         });
       })
     },
-  },
+  }
 };
 </script>

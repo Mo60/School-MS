@@ -1,13 +1,20 @@
 <template>
+  <div class="flex-wrapper" v-if="courses.length == 0 && loaded">
+
+<div class="empty-arr" >
+   <p>No Courses Found</p>
+   <a class="btn mt-3"><router-link :to="{name:'addcourse'}">Add Course</router-link></a>
+</div>
+</div>
   <div class="tablewrapper" > 
       
       <h1 class="mb-3 mt-3">Course</h1>
           <table class="table table-striped">
           <thead class="table-dark">
               <tr>
-              <th>Medical ID</th>
+              <th>Course ID</th>
               <th>Course Name</th>
-              <th>Descreption</th>
+              <th>Description</th>
               <th>Status</th>
               <th>Action</th>
               </tr>

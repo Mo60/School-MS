@@ -2,7 +2,7 @@
   <h1 class="mt-5">Enter Student Information</h1>
 
   <div class="wrapper">
-    <form @submit.prevent="">
+    <form @submit.prevent="submitForm">
       <fieldset class="form-control">
         <legend>Personal Information</legend>
         <div class="row mb-4">
@@ -34,11 +34,11 @@
           </div>
         </div>
         <div class="row mb-4">
-          <div class="col">
+          <div class="col-md-4">
             <label for="lName" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" v-model="student.DOB" />
+            <input type="date" class="form-control" v-model="student.DOB" required />
           </div>
-          <div class="col">
+          <div class="col-md-4">
             <label for="lName" class="form-label">Status</label>
             <select name="" id="" class="form-select" v-model="student.StatusID">
               <option selected disabled value="">Select an Option</option>
@@ -158,6 +158,7 @@
               <option value="false">No</option>
             </select>
           </div>
+      
         </div>
         <div class="row mb-4">
           <div class="col">
@@ -239,19 +240,20 @@
 </template>
 
 <script>
-
+import useVuelidate from '@vuelidate/core'
+import {required} from '@vuelidate/validators'
 import axios from "axios";
 import { boolean } from "webidl-conversions";
 
 export default {
   data() {
     return {
+      v$:useVuelidate(),
       student: {
         FirstName: "",
         MiddleName: "",
         LastName: "",
         DOB: "",
-        Email: "",
         AddressLine1: "",
         AddressLine2: "",
         City: "",
@@ -325,7 +327,18 @@ export default {
   }
   ,
   methods: {
+    validations(){
+      return{
+        student: {
+        FirstName: {required},
+        LastName: {required},
+        DOB: {required},
+        StatusID: {required},
+      },
+      }
+    },
     submitForm() {
+      this.validate()
       let apiURL = `http://172.26.54.21:8082/api/student/`;
 
       axios.post(apiURL, this.student).then((res) => {
@@ -343,6 +356,7 @@ export default {
               if (this.value2 && this.guardian_student2 !== "") {
                 let apiURL3=`http://172.26.54.21:8082/api/guardian_student/`;
                 this.guardian_student2.StudentID = res.data.StudentID;
+                // this.$router.push("/");
           axios
             .post(apiURL3, this.guardian_student2)
 
@@ -357,7 +371,7 @@ export default {
         }
       });
 
-      this.$router.push("/");
+  
     },
     register() {
       let apiURL = `http://172.26.54.21:8082/api/student/`;
@@ -373,6 +387,23 @@ export default {
           console.log(error);
         });
     },
+    clear(value){
+      if(value==1){
+        this.guardian_student= {
+        CanPickup: "",
+        GuardianID: "",
+        RelationshipID: null,
+        IsEmergency:""
+      }}
+      else {
+        this.guardian_student2= {
+        CanPickup: "",
+        GuardianID: "",
+        RelationshipID: null,
+        IsEmergency:"" 
+      }
+      }
+    }
   },
 };
 </script>

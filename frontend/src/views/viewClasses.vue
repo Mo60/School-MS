@@ -9,7 +9,7 @@
         <a class="btn mt-3"><router-link :to="{name:'addclass'}">Add Class</router-link></a>
      </div>
 </div>
-    <div class="wrapper" v-else>
+    <div class="tablewrapper" v-else>
       <div class="row mb-4">
      <!-- search bar -->
      <div class="col-md-4">
