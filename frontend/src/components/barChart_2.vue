@@ -23,6 +23,8 @@
     },
     data() {
       return {
+        fields: [],
+        numberOfFields: null,
         _array1:[],
         _array2:[],
         data:[{FacultyID:"",NoOfClass:"",LastName:""}],
@@ -43,6 +45,10 @@
       }
     },
    async updated (){
+         this.fields= await Object.getOwnPropertyNames(this.dataList[0])
+        this.numberOfFields= await this.fields.length;
+        console.log(this.fields);
+        console.log(this.numberOfFields)
     await     this.dataList.forEach(faculty => {
               this._array1.push(faculty.LastName);
               this._array2.push(faculty.NoOfClass)

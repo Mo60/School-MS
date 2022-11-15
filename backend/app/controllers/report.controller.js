@@ -353,3 +353,31 @@ exports.students_in_class_view_all = (req, res) => {
     });
   });
 };
+//count_students_course_view
+/// methods to retrieve count_students_course_view 
+// all rows in count_students_course_view
+exports.count_students_course_view_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM count_students_course_view`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+};
+//count_students_by_semester
+exports.count_students_by_semester_all = (req, res) => {
+  const view = db.sequelize.query(`SELECT * FROM count_students_by_semester`, { type: QueryTypes.SELECT })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving info."
+    });
+  });
+};

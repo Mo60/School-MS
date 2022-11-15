@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import "./assets/app.css";
-import Vuelidate from 'vuelidate'
+import Vuelidate from '@vuelidate/core'
 
 const app= createApp(App)
 app.use(router)
