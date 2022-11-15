@@ -133,6 +133,10 @@
         },
         methods:{
           sortByFName() {
+            this.sortedByTitle=false;
+                this.sortedByLName=false;
+                this.sortedByMName=false,
+                this.sortedByCT=false;
       if (!this.sortedByFName) {
         this.facultyList.sort((a, b) => {
           const nameA = a.FirstName.toUpperCase(); // ignore upper and lowercase
@@ -151,6 +155,10 @@
       }
     },
     sortByLName() {
+      this.sortedByTitle=false;
+                this.sortedByFName=false;
+                this.sortedByMName=false,
+                this.sortedByCT=false;
       if (!this.sortedByLName) {
         this.facultyList.sort((a, b) => {
           const nameA = a.LastName.toUpperCase(); // ignore upper and lowercase
@@ -169,6 +177,10 @@
       }
     },
     sortByTitle() {
+      this.sortedByFName=false;
+                this.sortedByLName=false;
+                this.sortedByMName=false,
+                this.sortedByCT=false;
       if (!this.sortedByTitle) {
         this.facultyList.sort((a, b) => {
           const nameA = a.Title.toUpperCase(); // ignore upper and lowercase
@@ -187,6 +199,10 @@
       }
     },
     sortByMName() {
+      this.sortedByTitle=false;
+                this.sortedByLName=false;
+                this.sortedByFName=false,
+                this.sortedByCT=false;
       if (!this.sortedByMName) {
         this.facultyList.sort((a, b) => {
           let nameA = a.MiddleName // ignore upper and lowercase
@@ -211,6 +227,10 @@
       }
     },
     sortByCT() {
+      this.sortedByTitle=false;
+                this.sortedByLName=false;
+                this.sortedByMName=false,
+                this.sortedByFName=false;
             if (!this.sortedByCT)
                 this.faculty.sort((a, b) => a.NoOfClass - b.NoOfClass);
             else {
@@ -239,7 +259,13 @@ this.faculty_Class=res.data
             this.searchByAll.toUpperCase()
           ) !==-1 || item.Email.toUpperCase().indexOf(
             this.searchByAll.toUpperCase()
+<<<<<<< HEAD
           ) !==-1 
+=======
+          )!==-1 || item.CellNumber.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          )!==-1 
+>>>>>>> 574bf0ee8d479f579ed8171010ce72a86bcff456
           
       );
       //save the results in the filtering list

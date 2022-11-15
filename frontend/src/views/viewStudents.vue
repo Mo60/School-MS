@@ -107,6 +107,9 @@ export default {
   methods: {
   
     sortByFName() {
+      this.sortedByLName= false;
+      this.sortedByMName= false;
+      this.sortedByDOB=false;
       if (!this.sortedByFName) {
         this.studentList.sort((a, b) => {
           const nameA = a.FirstName.toUpperCase(); // ignore upper and lowercase
@@ -125,6 +128,9 @@ export default {
       }
     },
     sortByMName() {
+      this.sortedByLName= false;
+      this.sortedByFName= false;
+      this.sortedByDOB=false;
       if (!this.sortedByMName) {
         this.studentList.sort((a, b) => {
          let  nameA =a.MiddleName // ignore upper and lowercase
@@ -150,6 +156,9 @@ export default {
       }
     },
     sortByLName() {
+      this.sortedByFName= false;
+      this.sortedByMName= false;
+      this.sortedByDOB=false;
       if (!this.sortedByLName) {
         this.studentList.sort((a, b) => {
           const nameA = a.LastName.toUpperCase(); // ignore upper and lowercase
@@ -170,6 +179,9 @@ export default {
 
     sortByDOB()
     {
+      this.sortedByLName= false;
+      this.sortedByMName= false;
+      this.sortedByFName=false;
       if (!this.sortedByDOB) {
         this.studentList.sort((a, b) => {
           const nameA = a.DOB.toUpperCase(); // ignore upper and lowercase

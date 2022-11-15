@@ -1,7 +1,7 @@
 <template>
   <div class="tablewrapper" > 
       
-      <h1 class="mb-3 mt-3">Relationships</h1>
+      <h1 class="mb-5 mt-5">Relationships</h1>
           <table class="table table-striped">
           <thead class="table-dark">
               <tr>
@@ -11,6 +11,11 @@
               </tr>
           </thead>
           <tbody>   
+            <tr>
+                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add Relationship: "></td>
+                <td><input  class="form-control ds-input" style="width: 250px;" v-model="guardianRelationship.Relationship" ></td>
+                <td><button class="btn" @click="saveNew(guardianRelationship)" >Save</button></td>
+              </tr>
               <tr v-for="t in guardianRelationships" :key="t.RelationshipID">
                   <td >{{t.RelationshipID}}</td>
                   <td><input :id=" t.RelationshipID+1789147" class="form-control ds-input" style="width: 200px;" v-model="t.Relationship" disabled ></td>
@@ -19,11 +24,7 @@
                       <button  :id="t.RelationshipID+4789147" class="btn" @click="saveBt(t.RelationshipID,t)" disabled>Save</button> 
                    </td>
               </tr>
-              <tr>
-                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add Relationship: "></td>
-                <td><input  class="form-control ds-input" style="width: 250px;" v-model="guardianRelationship.Relationship" ></td>
-                <td><button class="btn" @click="saveNew(guardianRelationship)" >Save</button></td>
-              </tr>
+              
           </tbody>
           </table>    
       

@@ -1,9 +1,11 @@
 <template>
+    <h1 class="mb-5 mt-5">Semesters</h1>
     <div class="tablewrapper" > 
         
-        <h1 class="mb-3 mt-3">Semesters</h1>
+        
             <table class="table table-striped">
             <thead class="table-dark">
+                
                 <tr>
                 <th>Semester ID</th>
                 <th>Name</th>
@@ -12,6 +14,12 @@
                 </tr>
             </thead>
             <tbody>   
+                <tr>
+                <td> <input class="form-control ds-input" style="100px" disabled  placeholder="Add new Semester: "></td>
+                <td><input  class="form-control ds-input" style="width: 150px;" v-model="semester.Semester" ></td>
+               
+                <td><button class="btn" @click="saveNew(semester)" >Save</button></td>
+              </tr>
                 <tr v-for="t in Semesters" :key="t.SemesterID">
                     <td >{{t.SemesterID}}</td>
                     <td><input :id=" t.SemesterID+1789147" class="form-control ds-input" style="width: 150px;" v-model="t.Semester" disabled ></td>
@@ -22,12 +30,7 @@
                         <button  :id="t.SemesterID+4789147" class="btn" @click="saveBt(t.SemesterID,t)" disabled>Save</button> 
                      </td>
                 </tr>
-                <tr>
-                <td> <input class="form-control ds-input" style="100px" disabled  placeholder="Add new Semester: "></td>
-                <td><input  class="form-control ds-input" style="width: 150px;" v-model="semester.Semester" ></td>
                
-                <td><button class="btn" @click="saveNew(semester)" >Save</button></td>
-              </tr>
             </tbody>
             </table>    
         

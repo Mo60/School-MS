@@ -1,7 +1,8 @@
 <template>
+      <h1 class="mb-5 mt-5">Timeblocks</h1>
     <div class="tablewrapper" > 
         
-        <h1 class="mb-3 mt-3">Timeblocks</h1>
+      
             <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
@@ -12,7 +13,14 @@
                 </tr>
             </thead>
             <tbody>   
+                <tr>
+                <td> <input class="form-control ds-input" style="100px" disabled  placeholder="Add new Time Block: "></td>
+                <td><input  class="form-control ds-input" style="width: 100px;" v-model="timeBlock.StartTime" ></td>
+                <td><input  class="form-control ds-input" style="width: 100px;" v-model="timeBlock.EndTime" ></td>
+                <td><button class="btn" @click="saveNew(timeBlock)" >Save</button></td>
+              </tr>
                 <tr v-for="t in Timeblocks" :key="t.TimeblockID">
+
                     <td >{{t.TimeblockID}}</td>
                     <td><input :id=" t.TimeblockID+1789147" class="form-control ds-input" style="width: 100px;" v-model="t.StartTime" disabled ></td>
                     <td><input :id="t.TimeblockID+2789147" class="form-control ds-input" style="width: 100px;" v-model="t.EndTime" disabled ></td>
@@ -22,12 +30,7 @@
                         <button  :id="t.TimeblockID+4789147" class="btn" @click="saveBt(t.TimeblockID,t)" disabled>Save</button> 
                      </td>
                 </tr>
-                <tr>
-                <td> <input class="form-control ds-input" style="100px" disabled  placeholder="Add new Time Block: "></td>
-                <td><input  class="form-control ds-input" style="width: 100px;" v-model="timeBlock.StartTime" ></td>
-                <td><input  class="form-control ds-input" style="width: 100px;" v-model="timeBlock.EndTime" ></td>
-                <td><button class="btn" @click="saveNew(timeBlock)" >Save</button></td>
-              </tr>
+               
             </tbody>
             </table>    
         
