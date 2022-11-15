@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import { Bar } from 'vue-chartjs'
 
 import router from './router'
 // Import our custom CSS
