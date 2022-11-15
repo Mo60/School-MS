@@ -13,22 +13,10 @@
       <div class="col-md-4 mx-4">
         <input
           type="search"
-          v-model="searchFirstName"
+          v-model="searchByAll"
           class="form-control"
-          @input="searchByFirstName"
-          placeholder="Search First Name"
-          aria-label="Search"
-          aria-describedby="search-addon"
-        />
-      </div>
-    
-      <div class="col-md-4">
-        <input
-          type="search"
-          v-model="searchLastName"
-          class="form-control"
-          @input="searchByLastName"
-          placeholder="Search Last Name"
+          @input="searchAll"
+          placeholder="Search Here..."
           aria-label="Search"
           aria-describedby="search-addon"
         />
@@ -95,6 +83,7 @@ export default {
       // this to store the filtered list
       studentList: [],
       searchLastName: "",
+      searchByAll:"",
       searchFirstName: "",
       sortedByFName: false,
       sortedByLName: false,
@@ -116,33 +105,10 @@ export default {
     this.loaded = true;
   },
   methods: {
-    searchByLastName() {
-      this.searchFirstName = "";
-      const result = this.students.filter(
-        (student) =>
-          student.LastName.toUpperCase().indexOf(
-            this.searchLastName.toUpperCase()
-          ) !== -1
-      );
-      //save the results in the filtering list
-      this.studentList = result;
-      console.log(result);
-    },
-    searchByFirstName() {
-      this.searchLastName = "";
-      const result = this.students.filter(
-        (student) =>
-          student.FirstName.toUpperCase().indexOf(
-            this.searchFirstName.toUpperCase()
-          ) !== -1
-      );
-      //save the results in the filtering list
-      this.studentList = result;
-      console.log(result);
-    },
+  
     sortByFName() {
       if (!this.sortedByFName) {
-        this.students.sort((a, b) => {
+        this.studentList.sort((a, b) => {
           const nameA = a.FirstName.toUpperCase(); // ignore upper and lowercase
           const nameB = b.FirstName.toUpperCase(); // ignore upper and lowercase
           if (nameA < nameB) {
@@ -154,13 +120,13 @@ export default {
         })
         this.sortedByFName = !this.sortedByFName;
       } else {
-        this.students.sort().reverse();
+        this.studentList.sort().reverse();
         this.sortedByFName = !this.sortedByFName;
       }
     },
     sortByMName() {
       if (!this.sortedByMName) {
-        this.students.sort((a, b) => {
+        this.studentList.sort((a, b) => {
          let  nameA =a.MiddleName // ignore upper and lowercase
         let nameB=b.MiddleName // ignore upper and lowercase
             if(nameA!=null){
@@ -179,13 +145,13 @@ export default {
         })
         this.sortedByMName = !this.sortedByMName;
       } else {
-        this.students.sort().reverse();
+        this.studentList.sort().reverse();
         this.sortedByMName = !this.sortedByMName;
       }
     },
     sortByLName() {
       if (!this.sortedByLName) {
-        this.students.sort((a, b) => {
+        this.studentList.sort((a, b) => {
           const nameA = a.LastName.toUpperCase(); // ignore upper and lowercase
           const nameB = b.LastName.toUpperCase(); // ignore upper and lowercase
           if (nameA < nameB) {
@@ -197,7 +163,7 @@ export default {
         })
         this.sortedByLName = !this.sortedByLName;
       } else {
-        this.students.sort().reverse();
+        this.studentList.sort().reverse();
         this.sortedByLName = !this.sortedByLName;
       }
     },
@@ -205,7 +171,7 @@ export default {
     sortByDOB()
     {
       if (!this.sortedByDOB) {
-        this.students.sort((a, b) => {
+        this.studentList.sort((a, b) => {
           const nameA = a.DOB.toUpperCase(); // ignore upper and lowercase
           const nameB = b.DOB.toUpperCase(); // ignore upper and lowercase
           if (nameA < nameB) {
@@ -218,11 +184,29 @@ export default {
         })
         this.sortedByDOB = !this.sortedByDOB;
       } else {
-        this.students.sort().reverse();
+        this.studentList.sort().reverse();
         this.sortedByDOB = !this.sortedByDOB;
       }
-    }
- 
+    },
+    searchAll(){
+    const result = this.students.filter(
+        (item) =>
+          item.FirstName.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !== -1 || item.LastName.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !== -1 || item.DOB.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !== -1 || item.MiddleName.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !==-1 
+          
+      );
+      //save the results in the filtering list
+      this.studentList = result;
+}
   },
-};
+
+ 
+}
 </script>

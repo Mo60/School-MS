@@ -11,26 +11,15 @@
       <div class="col-md-4 mx-4">
         <input
           type="search"
-          v-model="searchFirstName"
+          v-model="searchByAll"
           class="form-control"
-          @input="searchByFirstName"
-          placeholder="Search First Name"
+          @input="searchAll"
+          placeholder="Search Here..."
           aria-label="Search"
           aria-describedby="search-addon"
         />
       </div>
-    
-      <div class="col-md-4">
-        <input
-          type="search"
-          v-model="searchLastName"
-          class="form-control"
-          @input="searchByLastName"
-          placeholder="Search Last Name"
-          aria-label="Search"
-          aria-describedby="search-addon"
-        />
-      </div>
+  
     </div>
     <table class="table table-striped">
         <thead class="table-dark">
@@ -71,7 +60,7 @@ parentList:[],
 loaded:false,
 sortedByFName:false,
 sortedByLName:false,
-searchFirstName:"",
+searchByAll:"",
 searchLastName:""
 }},
 
@@ -93,7 +82,7 @@ searchLastName:""
 methods:{
   sortByFName() {
       if (!this.sortedByFName) {
-        this.parent.sort((a, b) => {
+        this.parentList.sort((a, b) => {
           const nameA = a.FirstName.toUpperCase(); // ignore upper and lowercase
           const nameB = b.FirstName.toUpperCase(); // ignore upper and lowercase
           if (nameA < nameB) {
@@ -105,13 +94,13 @@ methods:{
         })
         this.sortedByFName = !this.sortedByFName;
       } else {
-        this.parent.sort().reverse();
+        this.parentList.sort().reverse();
         this.sortedByFName = !this.sortedByFName;
       }
     },
     sortByLName() {
       if (!this.sortedByLName) {
-        this.parent.sort((a, b) => {
+        this.parentList.sort((a, b) => {
           const nameA = a.LastName.toUpperCase(); // ignore upper and lowercase
           const nameB = b.LastName.toUpperCase(); // ignore upper and lowercase
           if (nameA < nameB) {
@@ -123,35 +112,29 @@ methods:{
         })
         this.sortedByLName = !this.sortedByLName;
       } else {
-        this.parent.sort().reverse();
+        this.parentList.sort().reverse();
         this.sortedByLName = !this.sortedByLName;
       }
     },
-    searchByLastName() {
-      this.searchFirstName = "";
-      const result = this.parent.filter(
-        (parent) =>
-          parent.LastName.toUpperCase().indexOf(
-            this.searchLastName.toUpperCase()
-          ) !== -1
+    searchAll(){
+    const result = this.parent.filter(
+        (item) =>
+          item.FirstName.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !== -1 || item.LastName.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !== -1 || item.CellNumber.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !== -1 || item.Email.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !==-1 || item.PhoneNumber.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !==-1 
+          
       );
       //save the results in the filtering list
       this.parentList = result;
-      console.log(result);
-    },
-    searchByFirstName() {
-      this.searchLastName = "";
-      const result = this.parent.filter(
-        (p) =>
-          p.FirstName.toUpperCase().indexOf(
-            this.searchFirstName.toUpperCase()
-          ) !== -1
-      );
-      //save the results in the filtering list
-      this.parentList = result;
-      console.log(result);
-    },
-
+}
 }
   
 }
