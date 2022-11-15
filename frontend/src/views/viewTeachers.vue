@@ -11,32 +11,22 @@
       <div class="col-md-4 mx-4">
         <input
           type="search"
-          v-model="searchFirstName"
+          v-model="searchByAll"
           class="form-control"
-          @input="searchByFirstName"
-          placeholder="Search First Name"
+          @input="searchAll"
+          placeholder="Search Here..."
           aria-label="Search"
           aria-describedby="search-addon"
         />
       </div>
     
-      <div class="col-md-4">
-        <input
-          type="search"
-          v-model="searchLastName"
-          class="form-control"
-          @input="searchByLastName"
-          placeholder="Search Last Name"
-          aria-label="Search"
-          aria-describedby="search-addon"
-        />
-      </div>
+
     </div>
     <table class="table table-striped">
       <thead class="table-dark">
         <tr class="thead">
           <th>ID</th>
-          <th @click="sortByTitle">Title &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByTitle"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
+          <th @click="sortByTitle">Position &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByTitle"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByFName">First Name &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByFName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByMName">Middle Name &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByMName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByLName">Last Name &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByLName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
@@ -125,6 +115,7 @@
                 faculty_Class:[],
                 searchFirstName:"",
                 searchLastName:"",
+                searchByAll:"",
                 facultyList:[]
             }
         },
@@ -235,30 +226,24 @@ this.faculty_Class=res.data
       })
     },
 
-    
-    searchByLastName() {
-      this.searchFirstName = "";
+    searchAll() {
       const result = this.faculty.filter(
-        (f) =>
-          f.LastName.toUpperCase().indexOf(
-            this.searchLastName.toUpperCase()
-          ) !== -1
+        (item) =>
+          item.FirstName.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !== -1 || item.LastName.toUpperCase().indexOf(
+            this.searchByAll
+          ) !== -1 || item.PhoneNumber.toUpperCase().indexOf(
+            this.searchByAll
+          ) !== -1 || item.MiddleName.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !==-1 || item.Email.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          )!==-1 
+          
       );
       //save the results in the filtering list
       this.facultyList = result;
-      console.log(result);
-    },
-    searchByFirstName() {
-      this.searchLastName = "";
-      const result = this.faculty.filter(
-        (p) =>
-          p.FirstName.toUpperCase().indexOf(
-            this.searchFirstName.toUpperCase()
-          ) !== -1
-      );
-      //save the results in the filtering list
-      this.facultyList = result;
-      console.log(result);
     },
         }
     }
