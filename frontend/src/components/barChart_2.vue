@@ -20,6 +20,7 @@
     components: { Bar },
     props: {
     dataList: Array,
+    tableName: String
     },
     data() {
       return {
@@ -32,7 +33,7 @@
           labels: [],
           datasets: [
             {
-              label: 'Data One',
+              label: 'Students',
               backgroundColor: '#ffa101',
               data: []
             }

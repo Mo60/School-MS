@@ -53,20 +53,46 @@
                         </option>
                       </select>
                   </td>
-                <td><button class="btn" @click="saveNew(course)" >Save</button></td>
+                <td><button class="btn" @click="saveNew(course)" >Save</button>
+                    <button data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button>
+                </td>
               </tr>
           </tbody>
           </table>    
       
   </div>
+<!-- model -->
+  <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="0"
+            aria-labelledby="exampleModalLabel2"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                    <div class="modal-body">
+                      <courseStatus/>
+                    </div>
+                    <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
 
   
 </template>
 <script>
-
+  import CourseStatus from "./classStatus.vue";
   import axios from "axios";
 
   export default {
+    components:{
+        CourseStatus  
+        },
       data() {
           return {
               courses: [],

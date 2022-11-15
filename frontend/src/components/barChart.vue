@@ -30,7 +30,7 @@
           labels: [],
           datasets: [
             {
-              label: 'Data One',
+              label: 'Classes',
               backgroundColor: '#ffa101',
               data: []
             }

@@ -28,7 +28,7 @@
           labels: [],
           datasets: [
             {
-              label: 'Data One',
+              label: 'Classes',
               backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD3416','#41B343', '#E34651', '#00D431', '#DDht16',],
               data: []
             }

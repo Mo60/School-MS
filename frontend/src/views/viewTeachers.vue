@@ -24,7 +24,7 @@
     </div>
     <table class="table table-striped">
       <thead class="table-dark">
-        <tr class="thead">
+        <tr class="text-center">
           <th>ID</th>
           <th @click="sortByTitle">Position &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByTitle"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
           <th @click="sortByFName">First Name &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByFName"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
@@ -232,14 +232,14 @@ this.faculty_Class=res.data
           item.FirstName.toUpperCase().indexOf(
             this.searchByAll.toUpperCase()
           ) !== -1 || item.LastName.toUpperCase().indexOf(
-            this.searchByAll
+            this.searchByAll.toUpperCase()
           ) !== -1 || item.PhoneNumber.toUpperCase().indexOf(
-            this.searchByAll
+            this.searchByAll.toUpperCase()
           ) !== -1 || item.MiddleName.toUpperCase().indexOf(
             this.searchByAll.toUpperCase()
           ) !==-1 || item.Email.toUpperCase().indexOf(
             this.searchByAll.toUpperCase()
-          )!==-1 
+          ) !==-1 
           
       );
       //save the results in the filtering list

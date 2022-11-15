@@ -9,7 +9,7 @@
       <PieChart :course-names=data1 />
     </div>
     <div class="col">
-      <BarChart_2 :data-list=semestersEnrollments />
+      <BarChart_2 :data-list=semestersEnrollments :table-name=tableName3 />
     </div>
   </div>
 </div>
@@ -31,7 +31,8 @@ export default {
     return{
       data1: [],
       data2: [],
-      semestersEnrollments: []
+      semestersEnrollments: [],
+      tableName3: "Enrollments By Semester"
     }
   },
   async created(){
