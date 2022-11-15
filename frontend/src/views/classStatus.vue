@@ -12,7 +12,13 @@
              <th>Action</th>
              </tr>
          </thead>
-         <tbody>   
+         <tbody> 
+            <tr>
+             <td> <input class="form-control ds-input" style="150px" disabled  placeholder="Add new Status: "></td>
+             <td><input  class="form-control ds-input" style="width: 150px;" v-model="classStatus.Status" ></td>
+             
+             <td><button class="btn" @click="saveNew(classStatus)" >Save</button></td>
+           </tr>  
              <tr v-for="t in classStatuses" :key="t.ClassStatusID">
                  <td >{{t.ClassStatusID}}</td>
                  <td><input :id=" t.ClassStatusID+1789147" class="form-control ds-input" style="width: 150px;" v-model="t.Status" disabled ></td>
@@ -22,12 +28,7 @@
                      <button  :id="t.ClassStatusID+4789147" class="btn" @click="saveBt(t.ClassStatusID,t)" disabled>Save</button> 
                   </td>
              </tr>
-             <tr>
-             <td> <input class="form-control ds-input" style="150px" disabled  placeholder="Add new Status: "></td>
-             <td><input  class="form-control ds-input" style="width: 150px;" v-model="classStatus.Status" ></td>
-             
-             <td><button class="btn" @click="saveNew(classStatus)" >Save</button></td>
-           </tr>
+            
          </tbody>
          </table>    
      

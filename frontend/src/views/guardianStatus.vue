@@ -13,6 +13,12 @@
                </tr>
            </thead>
            <tbody>   
+            <tr>
+               <td> <input class="form-control ds-input" style="150px" disabled  placeholder="Add new Status: "></td>
+               <td><input  class="form-control ds-input" style="width: 150px;" v-model="guardianStatus.Status" ></td>
+               
+               <td><button class="btn" @click="saveNew(guardianStatus)" >Save</button></td>
+             </tr>
                <tr v-for="t in guardianStatuses" :key="t.GuardianStatusID">
                    <td >{{t.GuardianStatusID}}</td>
                    <td><input :id=" t.GuardianStatusID+1789147" class="form-control ds-input" style="width: 150px;" v-model="t.Status" disabled ></td>
@@ -22,12 +28,7 @@
                        <button  :id="t.GuardianStatusID+4789147" class="btn" @click="saveBt(t.GuardianStatusID,t)" disabled>Save</button> 
                     </td>
                </tr>
-               <tr>
-               <td> <input class="form-control ds-input" style="150px" disabled  placeholder="Add new Status: "></td>
-               <td><input  class="form-control ds-input" style="width: 150px;" v-model="guardianStatus.Status" ></td>
-               
-               <td><button class="btn" @click="saveNew(guardianStatus)" >Save</button></td>
-             </tr>
+           
            </tbody>
            </table>    
        

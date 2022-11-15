@@ -5,7 +5,7 @@ import { Bar } from 'vue-chartjs'
 import router from './router'
 // Import our custom CSS
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faAngleDown ,faAngleUp,faArrowsUpDown,faEye,faTrash,faPenToSquare, faPlus} from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown ,faAngleUp,faArrowsUpDown,faEye,faTrash,faPenToSquare, faPlus, faSave} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // Import all of Bootstrap's JS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,4 +24,5 @@ library.add(faEye)
 library.add(faPenToSquare)
 library.add(faPlus)
 library.add(faTrash)
+library.add(faSave)
 app.component('font-awesome-icon', FontAwesomeIcon)

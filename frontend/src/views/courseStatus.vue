@@ -1,7 +1,7 @@
 <template>
     <div class="tablewrapper" > 
         
-        <h1 class="mb-3 mt-3">Course Status</h1>
+        <h1 class="mb-5 mt-5">Course Status</h1>
             <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
@@ -11,7 +11,13 @@
                 <th>Action</th>
                 </tr>
             </thead>
-            <tbody>   
+            <tbody>  
+                <tr>
+                <td> <input class="form-control ds-input" style="150px" disabled  placeholder="Add new Course Status: "></td>
+                <td><input  class="form-control ds-input" style="width: 150px;" v-model="courseStatus.Status" ></td>
+                
+                <td><button class="btn" @click="saveNew(courseStatus)" >Save</button></td>
+              </tr> 
                 <tr v-for="t in CourseStatuses" :key="t.CourseStatusID">
                     <td >{{t.CourseStatusID}}</td>
                     <td><input :id=" t.CourseStatusID+17189147" class="form-control ds-input" style="width: 150px;" v-model="t.Status" disabled ></td>
@@ -21,12 +27,7 @@
                         <button  :id="t.CourseStatusID+47189147" class="btn" @click="saveBt(t.CourseStatusID,t)" disabled>Save</button> 
                      </td>
                 </tr>
-                <tr>
-                <td> <input class="form-control ds-input" style="150px" disabled  placeholder="Add new Course Status: "></td>
-                <td><input  class="form-control ds-input" style="width: 150px;" v-model="courseStatus.Status" ></td>
-                
-                <td><button class="btn" @click="saveNew(courseStatus)" >Save</button></td>
-              </tr>
+               
             </tbody>
             </table>    
         

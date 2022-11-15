@@ -130,7 +130,7 @@
                     </li>
                     <li>
                       <a  class="dropdown-item">
-                        <router-link class="nav-link" to="/parentStatus">Parent Status</router-link>
+                        <router-link class="nav-link" to="/parentStatus">Guardian Status</router-link>
                       </a>
                     </li>
                     <li>

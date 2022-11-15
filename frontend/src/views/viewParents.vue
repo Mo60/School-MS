@@ -81,6 +81,7 @@ searchLastName:""
   },
 methods:{
   sortByFName() {
+    this.sortedByLName=false
       if (!this.sortedByFName) {
         this.parentList.sort((a, b) => {
           const nameA = a.FirstName.toUpperCase(); // ignore upper and lowercase
@@ -99,6 +100,7 @@ methods:{
       }
     },
     sortByLName() {
+      this.sortedByLName=false
       if (!this.sortedByLName) {
         this.parentList.sort((a, b) => {
           const nameA = a.LastName.toUpperCase(); // ignore upper and lowercase

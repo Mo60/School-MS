@@ -1,7 +1,8 @@
 <template>
+    <h1 class="mb-5 mt-5">Days</h1>
   <div class="tablewrapper" > 
       
-      <h1 class="mb-3 mt-3">Days</h1>
+      
           <table class="table table-striped">
           <thead class="table-dark">
               <tr>
@@ -10,7 +11,12 @@
               <th>Action</th>
               </tr>
           </thead>
-          <tbody>   
+          <tbody>  
+            <tr>
+                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add new Class Days: "></td>
+                <td><input  class="form-control ds-input" style="width: 250px;" v-model="day.WeekDay" ></td>
+                <td><button class="btn" @click="saveNew(day)" >Save</button></td>
+              </tr> 
               <tr v-for="t in days" :key="t.DayID">
                   <td >{{t.DayID}}</td>
                   <td><input :id=" t.DayID+1789147" class="form-control ds-input" style="width: 200px;" v-model="t.WeekDay" disabled ></td>
@@ -19,11 +25,7 @@
                       <button  :id="t.DayID+4789147" class="btn" @click="saveBt(t.DayID,t)" disabled>Save</button> 
                    </td>
               </tr>
-              <tr>
-                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add new Class Days: "></td>
-                <td><input  class="form-control ds-input" style="width: 250px;" v-model="day.WeekDay" ></td>
-                <td><button class="btn" @click="saveNew(day)" >Save</button></td>
-              </tr>
+              
           </tbody>
           </table>    
       

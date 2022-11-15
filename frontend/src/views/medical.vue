@@ -1,7 +1,8 @@
 <template>
+     <h1 class="mb-5 mt-5">Medical Condition</h1>
   <div class="tablewrapper" > 
       
-      <h1 class="mb-3 mt-3">Medical Condition</h1>
+     
           <table class="table table-striped">
           <thead class="table-dark">
               <tr>
@@ -11,6 +12,11 @@
               </tr>
           </thead>
           <tbody>   
+            <tr>
+                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add new Condition: "></td>
+                <td><input  class="form-control ds-input" style="width: 250px;" v-model="medical.Condition" ></td>
+                <td><button class="btn" @click="saveNew(medical)" >Save</button></td>
+              </tr>
               <tr v-for="t in medicals" :key="t.MedicalID">
                   <td >{{t.MedicalID}}</td>
                   <td><input :id=" t.MedicalID+1789147" class="form-control ds-input" style="width: 200px;" v-model="t.Condition" disabled ></td>
@@ -19,11 +25,7 @@
                       <button  :id="t.MedicalID+4789147" class="btn" @click="saveBt(t.MedicalID,t)" disabled>Save</button> 
                    </td>
               </tr>
-              <tr>
-                <td> <input class="form-control ds-input" style="width: 200px" disabled  placeholder="Add new Condition: "></td>
-                <td><input  class="form-control ds-input" style="width: 250px;" v-model="medical.Condition" ></td>
-                <td><button class="btn" @click="saveNew(medical)" >Save</button></td>
-              </tr>
+             
           </tbody>
           </table>    
       
