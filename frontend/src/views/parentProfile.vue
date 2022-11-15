@@ -29,17 +29,6 @@
          <div class="box mb-5 pt-4" v-show="guardian.Notes!=='' || guardian.Notes!==null" ><h2>Notes</h2>
   <div class="rows">{{guardian.Notes}}</div>
   </div>
-      <!-- <div class="box"><h2 class="mb-3">Students</h2>
-          <div v-for="student in students" :key="student.StudentID" class="mb-4">
-           <div class="rows"> <router-link class="label name" :to="{name:'viewStudent',params:{StudentID:student.StudentID}}">  {{student.FirstName}} {{student.LastName}}</router-link></div >
-            <div class="rows"><span class="label">Relationship</span> <span>{{student.Relationship}}</span></div>
-              <div class="rows"><span class="label">Authorized to Pick up</span> <span v-if="student.CanPickup">Yes</span><span v-else>No</span></div>
-              <div class="rows"><span class="label">Emergency Contact</span><span v-if="student.IsEmergency">Yes</span><span v-else>No</span> </div> 
-          </div>
-      </div>
-     </div> -->
-  
-    
 
  </div>
  <div class="profile">

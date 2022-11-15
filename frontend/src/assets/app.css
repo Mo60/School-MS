@@ -429,7 +429,8 @@ align-self: center;
 
 .grid>.box{
 box-shadow: 2px 2px 5px rgb(77, 76, 76);
-border-radius: 10px;
+border-radius: 10px; 
+max-width: 280px;
 }
 
 .grid>.box:nth-child(2n){
