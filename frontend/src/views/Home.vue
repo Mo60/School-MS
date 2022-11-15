@@ -9,7 +9,7 @@
       <PieChart :course-names=data1 />
     </div>
     <div class="col">
-      <BarChart :data-list=data2 />
+      <BarChart_2 :data-list=semestersEnrollments />
     </div>
   </div>
 </div>
@@ -17,18 +17,21 @@
 <script>
 import axios from 'axios';
 import BarChart from '../components/barChart.vue';
+import BarChart_2 from '../components/barChart_2.vue';
 import PieChart from '../components/pieChart.vue';
 
 export default {
   name: 'App',
   components: {
     BarChart,
-    PieChart
+    PieChart,
+    BarChart_2
 },
   data(){
     return{
       data1: [],
-      data2: []
+      data2: [],
+      semestersEnrollments: []
     }
   },
   async created(){
@@ -51,6 +54,7 @@ export default {
         .catch(err=> {
           console.log(err)
         })
+    await this.semestersEnrollments.sort().reverse()
   }
 }
 </script>
