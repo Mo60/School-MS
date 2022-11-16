@@ -2,7 +2,7 @@
   <h1 class="mt-5">Enter Student Information</h1>
 
   <div class="wrapper">
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="">
       <fieldset class="form-control">
         <legend>Personal Information</legend>
         <div class="row mb-4">
@@ -247,7 +247,7 @@ import { boolean } from "webidl-conversions";
 export default {
   data() {
     return {
-  
+ 
       student: {
         FirstName: "",
         MiddleName: "",
@@ -331,12 +331,15 @@ export default {
   ,
   methods: {
     
-    submitForm() {
+   async submitForm() {
     
       let apiURL = `http://172.26.54.21:8082/api/student/`;
 
+     
+
       axios.post(apiURL, this.student)
       .then((res) => {
+        this.studentID=res.data.StudentID
         // if guardian selected post information in the guardian_STUDENT TABLE
         if (this.guardian_student.GuardianID != "") {
           this.guardian_student.StudentID = res.data.StudentID;
@@ -351,7 +354,7 @@ export default {
               if (this.value2 && this.guardian_student2 !== "") {
                 let apiURL3=`http://172.26.54.21:8082/api/guardian_student/`;
                 this.guardian_student2.StudentID = res.data.StudentID;
-                this.$router.push(`/students/${res.data.StudentID}`);
+            
 
           axios
             .post(apiURL3, this.guardian_student2)
@@ -364,11 +367,15 @@ export default {
             .catch((error) => {
               console.log(error);
             });
-        }
+          
+           }
+          
       })
        .catch((error) => {
               console.log(error);
-            });
+            }).then(()=>{
+              this.$router.push(`/students/${this.studentID}`)
+            })
 
   
     },
