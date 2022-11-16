@@ -116,8 +116,9 @@
                 CourseName: "",
                 Description: "",
                 CourseStatusID: "",
-                searchByAll:""
+                
               },
+              searchByAll:"",
               courseStatuses:[],
               courseStatus: {
                 CourseStatusID: "",
