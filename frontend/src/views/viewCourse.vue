@@ -8,7 +8,20 @@
 </div>
 </div>
   <div class="tablewrapper" > 
-      
+    <!-- <div class="d-flex mb-4 justify-content-center">
+      <div class="col-md-4 mx-4">
+        <input
+          type="search"
+          v-model="searchByAll"
+          class="form-control"
+          @input="searchAll"
+          placeholder="Search Here..."
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+      </div>
+  
+    </div> -->
      
           <table class="table table-striped">
           <thead class="table-dark">
@@ -21,7 +34,7 @@
               </tr>
           </thead>
           <tbody>   
-              <tr v-for="t in courses" :key="t.CourseID">
+              <tr v-for="t in courseList" :key="t.CourseID">
                   <td >{{t.CourseID}}</td>
                   <td><input :id=" t.CourseID+1789147" class="form-control ds-input" style="width: 200px;" v-model="t.CourseName" disabled ></td>
                   <td><input :id=" t.CourseID+2789147" class="form-control ds-input" style="width: 300px;" v-model="t.Description" disabled ></td>
@@ -97,11 +110,13 @@
       data() {
           return {
               courses: [],
+              courseList:[],
               course: {
                 CourseID: null,
                 CourseName: "",
                 Description: "",
-                CourseStatusID: ""
+                CourseStatusID: "",
+                searchByAll:""
               },
               courseStatuses:[],
               courseStatus: {
@@ -114,6 +129,7 @@
           let apiURL = 'http://172.26.54.21:8082/api/course';
        await   axios.get(apiURL).then(res => {
               this.courses = res.data;
+              this.courseList=res.data;
               // console.log(this.course_views)
           }).catch(error => {
               console.log(error)
@@ -126,6 +142,19 @@
           });
       },
       methods :{
+        searchAll(){
+          const result = this.courses.filter(
+        (item) =>
+          item.CourseName.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          ) !== -1 || item.Status.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
+          )
+          
+      );
+      //save the results in the filtering list
+      this.courseList = result;
+        },
           editBt(id) {
               document.getElementById(`${id+1789147}`).disabled = false;
               document.getElementById(`${id+2789147}`).disabled = false;

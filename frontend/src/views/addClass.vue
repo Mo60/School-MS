@@ -13,7 +13,7 @@
               id=""
               class="form-select"
               v-model="Class.CourseID"
-              required
+         
             >
 
               <option
@@ -32,7 +32,7 @@
               id=""
               class="form-select"
               v-model="Class.SemesterID"
-              required
+           
             >
 
               <option
@@ -56,7 +56,7 @@
               id=""
               class="form-select"
               v-model="Class.TimeBlockID"
-              required
+         
             >
               <option
                 :value="t.TimeblockID"
@@ -74,7 +74,7 @@
               id=""
               class="form-select"
               v-model="Class.DayID"
-              required
+           
             >
 
               <option :value="d.DayID" v-for="d in days" :key="d.DayID">
@@ -94,7 +94,7 @@
               id=""
               class="form-select"
               v-model="Class.ClassStatusID"
-              required
+              
             >
               <option
                 :value="cs.ClassStatusID"
@@ -112,7 +112,7 @@
               type="number"
               class="form-control"
               v-model="Class.Capacity"
-              required
+         
             />
           </div>
         </div>
@@ -172,12 +172,18 @@ export default {
       }
       }
     },
-handleSubmitForm() {
+async handleSubmitForm() {
 
-  console.log(this.v$)
+  this.v$.$validate()
+    if(!this.v$.$error){
+alert('Class is successfully added')
+    }
+    else{
+      alert('Form failed validation')
+    }
       let apiURL = "http://172.26.54.21:8082/api/class/";
 
-      axios
+    await  axios
         .post(apiURL, this.Class)
         .then((res) => {
           //changing the view to the list

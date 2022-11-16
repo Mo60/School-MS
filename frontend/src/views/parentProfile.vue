@@ -16,7 +16,7 @@
   
       </div>
       </div>
-      <div class="box pt-4"><h2 class="mb-3">Address</h2>
+      <div class="box "><h2 class="mb-3">Address</h2>
 <div class="body">
   
             <div class="rows"><span class="label">Address Line 1</span><span>{{guardian.AddressLine1}}</span></div>
@@ -26,7 +26,7 @@
              <div class="rows"><span class="label">Zip Code</span><span>{{guardian.Zip}}</span></div>
 </div>
          </div>
-         <div class="box mb-5 pt-4" v-show="guardian.Notes!=='' || guardian.Notes!==null" ><h2>Notes</h2>
+         <div class="box pt-4" v-show="guardian.Notes!=='' || guardian.Notes!==null" ><h2>Notes</h2>
   <div class="rows">{{guardian.Notes}}</div>
   </div>
 
