@@ -40,10 +40,10 @@
           </div>
           <div class="col-md-4">
             <label for="lName" class="form-label">* Status</label>
-            <select name="" id="" class="form-select" v-model="student.StatusID" required>
+            <select name="" id="" class="form-select" v-model="student.StudentStatusID" required>
               <option selected disabled value="">Select an Option</option>
               <option
-                :value="status.StatusID"
+                :value="status.StudentStatusID"
                 v-for="status in statuses"
                 :key="status.StatusID"
               >
@@ -258,7 +258,7 @@ export default {
         City: "",
         State:"",
         Zip: "",
-        StatusID: "",
+        StudentStatusID:null ,
       },
       // value is for v-show for the guardian feild
       value: false,

@@ -121,7 +121,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel2">
-                   Add a Teacher
+                   Change Teacher
                   </h5>
   
                   <button

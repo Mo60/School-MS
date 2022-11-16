@@ -67,7 +67,7 @@
     </table>
    
   </div>
-  <div class="d-flex justify-content-center mt-2" v-if="students.length!==0">
+  <div class="d-flex justify-content-center mt-3" v-if="students.length!==0">
     <router-link class="btn" :to="{ name: 'addstudent' }"
       >Add Student
     </router-link>

@@ -21,7 +21,6 @@
               type="text"
               class="form-control"
               v-model="student.MiddleName"
-             
             />
           </div>
           <div class="col">
@@ -37,7 +36,12 @@
         <div class="row mb-4">
           <div class="col-md-4">
             <label for="lName" class="form-label">* Date of Birth</label>
-            <input type="date" class="form-control" v-model="student.DOB" required/>
+            <input
+              type="date"
+              class="form-control"
+              v-model="student.DOB"
+              required
+            />
           </div>
           <div class="col-md-4">
             <label for="lName" class="form-label">Status</label>
@@ -45,13 +49,13 @@
               name=""
               id=""
               class="form-select"
-              v-model="student.StatusID"
+              v-model="student.StudentStatusID"
             >
               <option selected disabled value="">Select an Option</option>
               <option
-                :value="status.StatusID"
+                :value="status.StudentStatusID"
                 v-for="status in statuses"
-                :key="status.StatusID"
+                :key="status.StudentStatusID"
               >
                 {{ status.Status }}
               </option>
@@ -258,9 +262,9 @@ export default {
         AddressLine1: "",
         AddressLine2: "",
         City: "",
-        State:"",
+        State: "",
         Zip: "",
-        StatusID: "",
+        StudentStatusID: null,
       },
       // value is for v-show for the guardian feild
       value: false,
@@ -286,131 +290,132 @@ export default {
       StudentID: this.$route.params.StudentID,
       guardianStudent: [],
       guardians: [],
-      guardianStudentID1:"",
-      guardianStudentID2:"",
-      states:[]
+      guardianStudentID1: "",
+      guardianStudentID2: "",
+      states: [],
     };
   },
 
   created() {
-  
     let apiURL = "http://172.26.54.21:8082/api/guardianRelationship/";
-    axios
-      .get(apiURL)
-      .then((res) => {
-        this.relationships = res.data;
+    axios.get(apiURL).then((res) => {
+      this.relationships = res.data;
 
-        let apiURL2 = "http://172.26.54.21:8082/api/guardian/";
+      let apiURL2 = "http://172.26.54.21:8082/api/guardian/";
+      axios
+        .get(apiURL2)
+        .then((res2) => {
+          this.guardian = res2.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .then(() => {
+          let apiURL3 = "http://172.26.54.21:8082/api/studentStatus";
+          axios
+            .get(apiURL3)
+            .then((res3) => {
+              this.statuses = res3.data;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .then(() => {
+          let apiURL4 = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
+          axios.get(apiURL4).then((res4) => {
+            this.student = res4.data;
+            this.guardians = res4.data.guardians;
+            this.guardian_student = {
+              _id: res4.data.guardians[0].guardian_student._id,
+              GuardianID: res4.data.guardians[0].guardian_student.GuardianID,
+              IsEmergency: res4.data.guardians[0].guardian_student.IsEmergency,
+              RelationshipID:
+                res4.data.guardians[0].guardian_student.RelationshipID,
+              CanPickup: res4.data.guardians[0].guardian_student.CanPickup,
+            };
+
+            this.guardian_student2 = {
+              _id: res4.data.guardians[1].guardian_student._id,
+              GuardianID: res4.data.guardians[1].guardian_student.GuardianID,
+              IsEmergency: res4.data.guardians[1].guardian_student.IsEmergency,
+              RelationshipID:
+                res4.data.guardians[1].guardian_student.RelationshipID,
+              CanPickup: res4.data.guardians[1].guardian_student.CanPickup,
+            };
+            this.guardianStudentID1 =
+              res4.data.guardians[0].guardian_student._id;
+            this.guardianStudentID2 =
+              res4.data.guardians[1].guardian_student._id;
+
+            this.guardianStudent = res4.data.guardians.length;
+            console.log(this.guardianStudent);
+          });
+        })
+        .then(() => {
+          let APIURL5 =
+            "https://public.opendatasoft.com/api/records/1.0/search/?dataset=georef-united-states-of-america-state&q=&sort=year&facet=year&facet=ste_code&facet=ste_name&facet=ste_type&refine.ste_type=state";
+          axios
+            .get(APIURL5)
+            .then((res5) => {
+              this.states = res5.data.facet_groups[2].facets;
+              console.log(this.states);
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+            .then((res) => {})
+            .catch((error) => {
+              console.log(error);
+            });
+        });
+    });
+  },
+
+  methods: {
+    submitForm() {
+      let apiURL = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
+      axios.put(apiURL, this.student).then(() => {
+        let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/${this.guardian_student._id}`;
         axios
-          .get(apiURL2)
-          .then((res2) => {
-            this.guardian = res2.data;
+          .put(apiURL2, this.guardian_student)
+          .catch((error) => {
+            console.log(error);
           })
           .catch((error) => {
             console.log(error);
           })
           .then(() => {
-            let apiURL3 = "http://172.26.54.21:8082/api/studentStatus";
-            axios
-              .get(apiURL3)
-              .then((res3) => {
-                this.statuses = res3.data;
-              })
-              .catch((error) => {
-                console.log(error);
-              })
-          })
-          .then(() => {
-            let apiURL4 = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
-            axios.get(apiURL4).then((res4) => {
-              this.student = res4.data;
-              this.guardians = res4.data.guardians;
-              this.guardian_student = {
-                _id: res4.data.guardians[0].guardian_student._id,
-                GuardianID: res4.data.guardians[0].guardian_student.GuardianID,
-                IsEmergency:
-                  res4.data.guardians[0].guardian_student.IsEmergency,
-                RelationshipID:
-                  res4.data.guardians[0].guardian_student.RelationshipID,
-                CanPickup: res4.data.guardians[0].guardian_student.CanPickup
-              };
-             
-              this.guardian_student2 = {
-                _id: res4.data.guardians[1].guardian_student._id,
-                GuardianID: res4.data.guardians[1].guardian_student.GuardianID,
-                IsEmergency:
-                  res4.data.guardians[1].guardian_student.IsEmergency,
-                RelationshipID:
-                  res4.data.guardians[1].guardian_student.RelationshipID,
-                CanPickup: res4.data.guardians[1].guardian_student.CanPickup
-              };
-              this.guardianStudentID1=res4.data.guardians[0].guardian_student._id
-              this.guardianStudentID2=res4.data.guardians[1].guardian_student._id
-              
-              this.guardianStudent=res4.data.guardians.length
-              console.log(this.guardianStudent)
-
+            let apiURL3 = `http://172.26.54.21:8082/api/guardian_student/${this.guardian_student2._id}`;
+            axios.put(apiURL3, this.guardian_student2).catch((error) => {
+              console.log(error);
             });
-          }).then(()=>{
-            let APIURL5="https://public.opendatasoft.com/api/records/1.0/search/?dataset=georef-united-states-of-america-state&q=&sort=year&facet=year&facet=ste_code&facet=ste_name&facet=ste_type&refine.ste_type=state"
-            axios.get(APIURL5).then((res5)=>{
-              this.states=res5.data.facet_groups[2].facets
-              console.log(this.states)
-            }).catch((error) => {
-        console.log(error);
-      }).then(res=>{
-              
-         
-          }) .catch((error) => {
-        console.log(error);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .then((res) => {
+            this.$router.push(`/students/${this.StudentID}`);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       });
-      })
-    })
-  }
-     
-  ,
-  methods: {
-    submitForm() {
+    },
+    register() {
       let apiURL = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
       axios
         .put(apiURL, this.student)
-        .then(()=>{
-          let apiURL2=`http://172.26.54.21:8082/api/guardian_student/${this.guardian_student._id}`
-          axios.put(apiURL2,this.guardian_student).catch((error) => {
-          console.log(error);
-        })
-        .catch((error) => {
-          console.log(error);
-        }).then(()=>{
-          let apiURL3=`http://172.26.54.21:8082/api/guardian_student/${this.guardian_student2._id}`
-          axios.put(apiURL3,this.guardian_student2).catch((error) => {
-          console.log(error);
-        })
-        })
-        .catch((error) => {
-          console.log(error);
-        })
         .then((res) => {
-        
-        this.$router.push(`/students/${this.StudentID}`);
-      })
-        .catch((error) => {
-          console.log(error);
-        });
-      })
-    },
-    register(){
-      let apiURL = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
-      axios
-        .put(apiURL, this.student)  .then((res) => {
           const studentID = res.data.StudentID;
           console.log(studentID);
-          console.log(res.data.StudentID)
+          console.log(res.data.StudentID);
           this.$router.push(`/addParent/${this.StudentID}`);
-        }) .catch((error) => {
+        })
+        .catch((error) => {
           console.log(error);
         });
-    }
-  }
+    },
+  },
 };
 </script>
