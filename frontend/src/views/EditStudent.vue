@@ -7,11 +7,12 @@
         <legend>Personal Information</legend>
         <div class="row mb-4">
           <div class="col">
-            <label for="fName" class="form-label">First Name</label>
+            <label for="fName" class="form-label">* First Name</label>
             <input
               type="text"
               class="form-control"
               v-model="student.FirstName"
+              required
             />
           </div>
           <div class="col">
@@ -20,21 +21,23 @@
               type="text"
               class="form-control"
               v-model="student.MiddleName"
+             
             />
           </div>
           <div class="col">
-            <label for="lName" class="form-label">Last Name</label>
+            <label for="lName" class="form-label">* Last Name</label>
             <input
               type="text"
               class="form-control"
               v-model="student.LastName"
+              required
             />
           </div>
         </div>
         <div class="row mb-4">
           <div class="col-md-4">
-            <label for="lName" class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" v-model="student.DOB" />
+            <label for="lName" class="form-label">* Date of Birth</label>
+            <input type="date" class="form-control" v-model="student.DOB" required/>
           </div>
           <div class="col-md-4">
             <label for="lName" class="form-label">Status</label>
@@ -267,7 +270,7 @@ export default {
         StudentID: "",
         GuardianID: "",
         RelationshipID: null,
-        IsEmergency: boolean,
+        IsEmergency: false,
       },
       guardian_student2: {
         _id: "",
@@ -275,7 +278,7 @@ export default {
         StudentID: "",
         GuardianID: "",
         RelationshipID: "",
-        IsEmergency: boolean,
+        IsEmergency: false,
       },
       relationships: [],
       statuses: [],

@@ -70,11 +70,15 @@ export default {
       .then((res) => {
         this.guardian = res.data;
         console.log(this.guardian)
+      }).catch((error) => {
+        console.log(error);
       }).then(()=>{
         let apiURL2=  `http://172.26.54.21:8082/api/reports/guardian_student_view/${this.guardianID}`
 axios.get(apiURL2).then((res)=>{
     this.students=res.data
-})
+}).catch((error) => {
+        console.log(error);
+      });
       }
        
       )

@@ -7,7 +7,7 @@
         <legend>Personal Information</legend>
         <div class="row mb-4">
           <div class="col">
-            <label for="fName" class="form-label">First Name</label>
+            <label for="fName" class="form-label">* First Name</label>
             <input
               type="text"
               class="form-control"
@@ -24,7 +24,7 @@
             />
           </div>
           <div class="col">
-            <label for="lName" class="form-label">Last Name</label>
+            <label for="lName" class="form-label">* Last Name</label>
             <input
               type="text"
               class="form-control"
@@ -35,7 +35,7 @@
         </div>
         <div class="row mb-4">
           <div class="col-md-4">
-            <label for="lName" class="form-label">Date of Birth</label>
+            <label for="lName" class="form-label">* Date of Birth</label>
             <input type="date" class="form-control" v-model="student.DOB" />
           </div>
           <div class="col-md-4">

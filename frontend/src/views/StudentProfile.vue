@@ -77,7 +77,7 @@
             <div v-for="sm in student_medical" :key="sm.StudentID">
               <div>
                   <div class="rows">
-                    <span class="label">Medical Condition:</span>
+                    <span class="label"> Medical Condition:</span>
                     <span>{{ sm.Condition }}</span>
                   </div>
                   <div class="rows">
@@ -186,12 +186,13 @@
                     <fieldset>
                       <div class="row mb-3">
                         <div class="col">
-                          <label for="">Condition</label>
+                          <label for="">* Condition</label>
                           <select
                             name=""
                             id=""
                             class="form-select"
                             v-model="student_medical2.MedicalID"
+                            required
                           >
                             <option>Select an Option</option>
                             <option
@@ -216,11 +217,12 @@
                       </div>
                       <div class="row mb-3">
                         <div class="col">
-                          <label for="">Condition Status</label>
+                          <label for="">*Condition Status</label>
                           <select
                          
                             v-model="student_medical2.StudentMedicalStatusID"
                             class="form-select"
+                            required
                           >
                           <option>Select an Option</option>
                           <option :value="status.StudentMedicalStatusID" v-for="status in medicalStatus" :key="status.StudentMedicalStatusID">{{status.Status}}</option>
@@ -276,12 +278,13 @@
                     <fieldset>
                       <div class="row mb-3">
                         <div class="col">
-                          <label for="" class="form-label">Select Class</label>
+                          <label for="" class="form-label">* Select Class</label>
                           <select
                             name=""
                             id=""
                             v-model="student_class.ClassID"
                             class="form-select mb-3"
+                            required
                           >
                             <option selected disabled value="">
                               Select an Option
@@ -296,12 +299,13 @@
                               {{ Class.StartTime }}-{{ Class.EndTime }}
                             </option>
                           </select>
-                          <label for="" class="form-label">Status</label>
+                          <label for="" class="form-label">* Status</label>
                           <select
                             name=""
                             id=""
                             class="form-select"
                             v-model="student_class.StudentClassStatusID"
+                            required
                           >
                             <option selected disabled value="">
                               Select an Option
@@ -361,12 +365,12 @@
                     <fieldset>
                       <div class="row mb-3">
                         <div class="col">
-                          <label for="" class="form-label">Select Class</label>
+                          <label for="" class="form-label">* Select Class</label>
                           <select
                             name=""
                             id=""
                             v-model="student_class.ClassID"
-                            class="form-select mb-3"
+                            class="form-select mb-3" required
                           >
                             <option selected disabled value="">
                               Select an Option
@@ -381,12 +385,13 @@
                               {{ Class.StartTime }}-{{ Class.EndTime }}
                             </option>
                           </select>
-                          <label for="" class="form-label">Status</label>
+                          <label for="" class="form-label">* Status</label>
                           <select
                             name=""
                             id=""
                             class="form-select"
                             v-model="student_class.StudentClassStatusID"
+                            required
                           >
                             <option selected disabled value="">
                               Select an Option
@@ -446,12 +451,12 @@
                     <fieldset>
                       <div class="row mb-3">
                         <div class="col">
-                          <label for="" class="form-label">Select Class</label>
+                          <label for="" class="form-label">* Select Class</label>
                           <select
                             name=""
                             id=""
                             v-model="editData.ClassID"
-                            class="form-select mb-3"
+                            class="form-select mb-3" required
                           >
                            
                             <option
@@ -466,12 +471,13 @@
                               {{ Class.StartTime }}-{{ Class.EndTime }}
                             </option>
                           </select>
-                          <label for="" class="form-label">Status</label>
+                          <label for="" class="form-label">* Status</label>
                           <select
                             name=""
                             id=""
                             class="form-select"
                             v-model="editData.StudentClassStatusID"
+                            required
                           >
                            
                             <option
@@ -529,12 +535,13 @@
                     <fieldset>
                       <div class="row mb-3">
                         <div class="col">
-                          <label for="">Condition</label>
+                          <label for="">* Condition</label>
                           <select
                             name=""
                             id=""
                             class="form-select"
                             v-model="editHealthData.MedicalID"
+                            required
                           >
                             <option>Select an Option</option>
                             <option
@@ -559,11 +566,11 @@
                       </div>
                       <div class="row mb-3">
                         <div class="col">
-                          <label for="">Condition Status</label>
+                          <label for="">* Condition Status</label>
                           <select
                          
                             v-model="editHealthData.StudentMedicalStatusID"
-                            class="form-select"
+                            class="form-select" required
                           >
                           <option>Select an Option</option>
                           <option :value="status.StudentMedicalStatusID" v-for="status in medicalStatus" :key="status.StudentMedicalStatusID">{{status.Status}}</option>

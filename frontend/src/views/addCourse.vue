@@ -3,7 +3,7 @@
     <div class="tablewrapper"><form @submit.prevent="submitForm">
         <fieldset class="form-control p-3">
 <div class="row mb-4">
-    <div class="col"><label for="" class="form-label">Course Name</label> <input type="text" class="form-control" v-model="course.CourseName"></div>
+    <div class="col"><label for="" class="form-label">Course Name</label> <input type="text" class="form-control" v-model="course.CourseName" required></div>
     <div class="col"><label class="form-label">Course Status</label>
     <select name="" id="" class="form-select" v-model="course.Status"><option value="" selected disabled>Select an Option</option>
     <option :value="status.StatusID" v-for="status in statuses" :key="status.StatusID">{{status.Status}}</option>

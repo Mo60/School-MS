@@ -6,7 +6,7 @@
         <legend>Contact Information</legend>
         <div class="row mb-4">
           <div class="col">
-            <label for="" class="form-label">First Name</label>
+            <label for="" class="form-label">* First Name</label>
             <input type="text" class="form-control" v-model="guardian.FirstName" />
           </div>
           <div class="col">
@@ -14,15 +14,15 @@
             <input type="text" class="form-control" v-model="guardian.MiddleName" />
           </div>
           <div class="col">
-            <label for="" class="form-label">Last Name</label>
+            <label for="" class="form-label">* Last Name</label>
             <input type="text" class="form-control" v-model="guardian.LastName" />
           </div>
          
         </div>
         <div class="row mb-4">
           <div class="col">
-            <label for="" class="form-label">Email</label>
-            <input type="email" class="form-control" v-model="guardian.Email" />
+            <label for="" class="form-label">* Email</label>
+            <input type="email" class="form-control" v-model="guardian.Email" required />
           </div>
           <div class="col">
             <label for="" class="form-label">Cell Number</label>

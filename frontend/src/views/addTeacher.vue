@@ -8,7 +8,7 @@
                    
                  <div class="row mb-3" >
                        <div class="col">
-                                <label class="form-label">First Name</label>
+                                <label class="form-label">* First Name</label>
                                 <input type="text" class="form-control"   v-model="faculty.FirstName" required>
                        </div >
                        <div class="col">   
@@ -16,8 +16,8 @@
                                 <input type="text" class="form-control" v-model="faculty.MiddleName" >
                        </div >
                        <div class="col">   
-                                <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" v-model="faculty.LastName" >
+                                <label class="form-label">* Last Name</label>
+                                <input type="text" class="form-control" v-model="faculty.LastName" required >
                        </div >
                       
                  </div >
@@ -27,18 +27,18 @@
                         <input type="text" class="form-control" v-model="faculty.Title" >
                        </div>
                         <div class="col">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" v-model="faculty.Email">
+                            <label class="form-label">* Email</label>
+                            <input type="email" class="form-control" v-model="faculty.Email" required>
                         </div>
                         <div class="col">
                             <label class="form-label">Cell Number</label>
                             <input type="phone" class="form-control"  placeholder="123-456-7890"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" v-model="faculty.CellNumber" required>
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" v-model="faculty.CellNumber">
                         </div> 
                         <div class="col">
                             <label class="form-label">Phone Number</label>
                             <input type="phone" class="form-control"  placeholder="123-456-7890"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" v-model="faculty.PhoneNumber" required>
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" v-model="faculty.PhoneNumber">
                         </div> 
                  </div>
                     <div class="row mb-3">    

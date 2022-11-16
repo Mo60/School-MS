@@ -136,7 +136,7 @@
                     <fieldset>
                       <div class="row mb-3">
                         <div class="col">
-                          <label for="">Teachers</label>
+                          <label for="">* Teachers</label>
                           <select
                             name=""
                             id=""

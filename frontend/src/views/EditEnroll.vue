@@ -9,7 +9,7 @@
                 </div>
                <div class="form-group">
                     <label>Class ID</label>
-                    <input type="number" class="form-control" v-model="enrollment.enrollmentID" required>
+                    <input type="number" class="form-control" v-model="enrollment.enrollmentID" >
                 </div>
                 <div class="form-group">
                     <label>Student ID</label>

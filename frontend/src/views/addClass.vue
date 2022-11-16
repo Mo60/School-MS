@@ -7,13 +7,13 @@
         
 
           <div class="col">
-            <label for="" class="form-label">Course</label>
+            <label for="" class="form-label">* Course</label>
             <select
               name=""
               id=""
               class="form-select"
               v-model="Class.CourseID"
-         
+         required
             >
 
               <option
@@ -26,13 +26,13 @@
             </select>
           </div>
           <div class="col">
-            <label for="" class="form-label">Semester</label>
+            <label for="" class="form-label">* Semester</label>
             <select
               name=""
               id=""
               class="form-select"
               v-model="Class.SemesterID"
-           
+           required
             >
 
               <option
@@ -50,13 +50,13 @@
      
           <!-- TimeBlock -->
           <div class="col">
-            <label for="" class="form-label">Time Block</label>
+            <label for="" class="form-label">* Time Block</label>
             <select
               name=""
               id=""
               class="form-select"
               v-model="Class.TimeBlockID"
-         
+          required
             >
               <option
                 :value="t.TimeblockID"
@@ -68,13 +68,13 @@
             </select>
           </div>
           <div class="col">
-            <label for="" class="form-label">Day</label>
+            <label for="" class="form-label">* Day</label>
             <select
               name=""
               id=""
               class="form-select"
               v-model="Class.DayID"
-           
+           required
             >
 
               <option :value="d.DayID" v-for="d in days" :key="d.DayID">
@@ -88,13 +88,13 @@
          
           <!-- ClassStatus -->
           <div class="col">
-            <label for="" class="form-label">Class Status</label>
+            <label for="" class="form-label">* Class Status</label>
             <select
               name=""
               id=""
               class="form-select"
               v-model="Class.ClassStatusID"
-              
+              required
             >
               <option
                 :value="cs.ClassStatusID"
