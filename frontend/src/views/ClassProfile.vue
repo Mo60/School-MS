@@ -71,7 +71,7 @@
         <div>
             <h2 class="mb-4 mt-5">Assigned Teachers</h2>
             <div class="empty-arr" v-if="faculty_class.length == 0">
-              No class record
+              No Assigned Teachers
             </div>
             <div class="table-wrapper" v-else>
               <table class="table table-striped">

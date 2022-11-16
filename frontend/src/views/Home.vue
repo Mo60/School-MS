@@ -3,12 +3,15 @@
 <div class="container mt-5">
   <div class="dashboard">
     <div class="graph">
+      <h4># of classes taught by Instructor</h4>
       <BarChart :data-list=data2 />
     </div>
     <div class="graph">
+      <h4>Top classes by enrollment</h4>
       <PieChart :course-names=data1 />
     </div>
     <div class="graph">
+      <h4>Enrollments by Semester</h4>
       <BarChart_2 :data-list=semestersEnrollments :table-name=tableName3 />
     </div>
   </div>
