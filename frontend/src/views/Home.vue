@@ -1,14 +1,14 @@
 <template>
-  <h1>Dashboard</h1>
-<div class="container">
-  <div class="row">
-    <div class="col">
+  <h1 class="mb-5 mt-5">Dashboard</h1>
+<div class="container mt-5">
+  <div class="dashboard">
+    <div class="graph">
       <BarChart :data-list=data2 />
     </div>
-    <div class="col">
+    <div class="graph">
       <PieChart :course-names=data1 />
     </div>
-    <div class="col">
+    <div class="graph">
       <BarChart_2 :data-list=semestersEnrollments :table-name=tableName3 />
     </div>
   </div>

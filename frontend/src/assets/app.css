@@ -420,9 +420,11 @@ justify-content: center;
 
 .grid{
   display: grid;
-  grid-template-columns:auto auto auto;
+  grid-template-columns:auto auto auto ;
  grid-gap: 30px;
-  width: 54vw;
+padding: 30px;
+overflow-y: auto;
+max-height: 50vh;
 justify-self: center;
 align-self: center;
 }
@@ -443,4 +445,18 @@ max-width: 280px;
 
 .numClasses{
   cursor: pointer;
+}
+
+.dashboard{
+  display: grid;
+  
+  grid-template-columns: 1fr 1fr 1fr ;
+gap:30px;
+}
+
+.graph{
+ background-color: white;
+ padding: 30px;
+ width: 100%;
+ border-radius: 20px;
 }

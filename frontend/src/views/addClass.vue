@@ -4,18 +4,7 @@
     <form @submit.prevent="handleSubmitForm" class="mb-5">
       <fieldset class="form-control">
         <div class="row mb-4">
-          <div class="col">
-            <label for="" class="form-label">Teacher ID</label>
-            <select name="" id="" class="form-select" v-model="Faculty_Class.FacultyID" required>
-              <option
-                :value="teacher.FacultyID"
-                v-for="teacher in TeacherList"
-                :key="teacher.FacultyID"
-              >
-                {{ teacher.FirstName }} {{ teacher.LastName }}
-              </option>
-            </select>
-          </div>
+        
 
           <div class="col">
             <label for="" class="form-label">Course</label>
@@ -36,9 +25,6 @@
               </option>
             </select>
           </div>
-        </div>
-        <div class="row mb-4">
-          <!-- Semester -->
           <div class="col">
             <label for="" class="form-label">Semester</label>
             <select
@@ -58,6 +44,10 @@
               </option>
             </select>
           </div>
+        </div>
+        <div class="row mb-4">
+          <!-- Semester -->
+     
           <!-- TimeBlock -->
           <div class="col">
             <label for="" class="form-label">Time Block</label>
@@ -77,9 +67,6 @@
               </option>
             </select>
           </div>
-        </div>
-        <!-- Day -->
-        <div class="row mb-4">
           <div class="col">
             <label for="" class="form-label">Day</label>
             <select
@@ -95,6 +82,10 @@
               </option>
             </select>
           </div>
+        </div>
+        <!-- Day -->
+        <div class="row mb-4">
+         
           <!-- ClassStatus -->
           <div class="col">
             <label for="" class="form-label">Class Status</label>
@@ -178,11 +169,7 @@ export default {
         ClassStatusID: {required},
         Lesson: {required},
    
-      },
-      Faculty_Class: {
-        ClassID: {required},
-        FacultyID: {required},
-      },
+      }
       }
     },
 handleSubmitForm() {
@@ -209,16 +196,9 @@ handleSubmitForm() {
             Notes: "",
           };
 
-          this.Faculty_Class.ClassID=res.data.ClassID
-       console.log(this.Faculty_Class.ClassID)
         })
         .catch((error) => {
           console.log(error);
-        }).then(()=>{
-          let apiURL2 = 'http://172.26.54.21:8082/api/faculty_class/';
-          axios.post(apiURL2,this.Faculty_Class).catch((error) => {
-          console.log(error);
-        })
         }).catch((error) => {
           console.log(error)})
        

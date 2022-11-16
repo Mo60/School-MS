@@ -259,13 +259,11 @@ this.faculty_Class=res.data
             this.searchByAll.toUpperCase()
           ) !==-1 || item.Email.toUpperCase().indexOf(
             this.searchByAll.toUpperCase()
-<<<<<<< HEAD
-          ) !==-1 
-=======
           )!==-1 || item.CellNumber.toUpperCase().indexOf(
             this.searchByAll.toUpperCase()
+          )!==-1 || item.Title.toUpperCase().indexOf(
+            this.searchByAll.toUpperCase()
           )!==-1 
->>>>>>> 574bf0ee8d479f579ed8171010ce72a86bcff456
           
       );
       //save the results in the filtering list

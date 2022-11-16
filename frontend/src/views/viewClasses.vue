@@ -30,7 +30,7 @@
         <tr class="text-center">
          <th>Class ID</th>
          <th @click="sortByClass">Class &nbsp;<font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedByClass"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
-         <th>Teacher</th>
+      
          <th @click="sortBySemester">Semester &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedBySemester"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
          <th>Class Time</th>
          <th @click="sortByEnrollmentTotal"># Enrolled  &nbsp; <font-awesome-icon icon='fa-solid fa-angle-down' v-if="sortedBYEnroll"/><font-awesome-icon icon='fa-solid fa-angle-up' v-else/></th>
@@ -42,7 +42,7 @@
         
         <tr><td>{{c.ClassID}}</td>
           <td>{{c.CourseName}}</td>
-      <td>{{c.FirstName}} {{c.LastName}}</td>
+  
       <td>{{c.Semester}}</td>
       <td>{{c.StartTime}} - {{c.EndTime}}</td>
       <td>{{c.EnrollmentTotal}}</td>
