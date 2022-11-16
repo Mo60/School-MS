@@ -3,11 +3,11 @@
 <div class="container mt-5">
   <div class="dashboard">
     <div class="graph">
-      <h4># of classes taught by Instructor</h4>
+      <h4># of Classes Taught by Instructor</h4>
       <BarChart :data-list=data2 />
     </div>
     <div class="graph">
-      <h4>Top classes by enrollment</h4>
+      <h4>Top Classes by enrollment</h4>
       <PieChart :course-names=data1 />
     </div>
     <div class="graph">

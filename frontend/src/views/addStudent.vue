@@ -240,15 +240,14 @@
 </template>
 
 <script>
-import useVuelidate from '@vuelidate/core'
-import {required} from '@vuelidate/validators'
+
 import axios from "axios";
 import { boolean } from "webidl-conversions";
 
 export default {
   data() {
     return {
-      v$:useVuelidate(),
+  
       student: {
         FirstName: "",
         MiddleName: "",
@@ -318,30 +317,26 @@ export default {
             }).catch((error) => {
         console.log(error);
       });
-          });
+          }).catch((error) => {
+        console.log(error);
+      })
       })
       .catch((error) => {
         console.log(error);
       })
-    })
+    }).catch((error) => {
+        console.log(error);
+      })
   }
   ,
   methods: {
-    validations(){
-      return{
-        student: {
-        FirstName: {required},
-        LastName: {required},
-        DOB: {required},
-        StatusID: {required},
-      },
-      }
-    },
+    
     submitForm() {
-      this.validate()
+    
       let apiURL = `http://172.26.54.21:8082/api/student/`;
 
-      axios.post(apiURL, this.student).then((res) => {
+      axios.post(apiURL, this.student)
+      .then((res) => {
         // if guardian selected post information in the guardian_STUDENT TABLE
         if (this.guardian_student.GuardianID != "") {
           this.guardian_student.StudentID = res.data.StudentID;
@@ -356,7 +351,8 @@ export default {
               if (this.value2 && this.guardian_student2 !== "") {
                 let apiURL3=`http://172.26.54.21:8082/api/guardian_student/`;
                 this.guardian_student2.StudentID = res.data.StudentID;
-                // this.$router.push("/");
+                this.$router.push(`/students/${res.data.StudentID}`);
+
           axios
             .post(apiURL3, this.guardian_student2)
 
@@ -369,7 +365,10 @@ export default {
               console.log(error);
             });
         }
-      });
+      })
+       .catch((error) => {
+              console.log(error);
+            });
 
   
     },

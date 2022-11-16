@@ -22,8 +22,8 @@ li {
   --bs-nav-link-padding-y: 0.5rem;
   --bs-nav-link-font-weight: ;
   --bs-nav-link-color: #ffa101;
-  --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
-  --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
+  --bs-nav-link-hover-color:white;
+  --bs-nav-link-disabled-color: white;
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -38,6 +38,10 @@ li {
   color: #ffa101;
   text-decoration: none;
   white-space: nowrap;
+}
+
+.navbar-brand:hover{
+  color: white;
 }
 .table.table-striped {
   color: var(--bs-black);
