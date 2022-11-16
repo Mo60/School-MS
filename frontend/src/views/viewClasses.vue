@@ -1,7 +1,7 @@
 <template>
   
 
-  <h1 class="mt-5">Classes</h1>
+  <h1 class="mt-5 mb-5">Classes</h1>
 <div class="flex-wrapper" v-if="Class.length == 0 && loaded">
 
      <div class="empty-arr" >
@@ -10,7 +10,7 @@
      </div>
 </div>
     <div class="tablewrapper" v-else>
-      <div class="row mb-4">
+      <div class="d-flex mb-4 justify-content-center">
      <!-- search bar -->
      <div class="col-md-4">
         <input
@@ -100,11 +100,7 @@ import axios from "axios";
             this.searchAll.toUpperCase()
           ) !== -1 || item.EndTime.toUpperCase().indexOf(
             this.searchAll.toUpperCase()
-          ) !== -1 || item.FirstName.toUpperCase().indexOf(
-            this.searchAll.toUpperCase()
-          ) !== -1 || item.LastName.toUpperCase().indexOf(
-            this.searchAll.toUpperCase()
-          ) !== -1 || item.Semester.toUpperCase().indexOf(
+          )  !== -1 || item.Semester.toUpperCase().indexOf(
             this.searchAll.toUpperCase()
           ) !== -1
       );

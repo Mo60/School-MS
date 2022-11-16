@@ -100,7 +100,7 @@ methods:{
       }
     },
     sortByLName() {
-      this.sortedByLName=false
+      this.sortedByFName=false
       if (!this.sortedByLName) {
         this.parentList.sort((a, b) => {
           const nameA = a.LastName.toUpperCase(); // ignore upper and lowercase

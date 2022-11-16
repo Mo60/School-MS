@@ -1,5 +1,5 @@
 <template>
-    <h1 class="mt-5">Add a Course</h1>
+    <h1 class="mt-5 mb-5">Add a Course</h1>
     <div class="tablewrapper"><form @submit.prevent="submitForm">
         <fieldset class="form-control p-3">
 <div class="row mb-4">

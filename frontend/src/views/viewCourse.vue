@@ -1,4 +1,5 @@
 <template>
+   <h1 class="mb-5 mt-5">Courses</h1>
   <div class="flex-wrapper" v-if="courses.length == 0 && loaded">
 
 <div class="empty-arr" >
@@ -8,7 +9,7 @@
 </div>
   <div class="tablewrapper" > 
       
-      <h1 class="mb-3 mt-3">Course</h1>
+     
           <table class="table table-striped">
           <thead class="table-dark">
               <tr>
@@ -54,7 +55,7 @@
                       </select>
                   </td>
                 <td><button class="btn" @click="saveNew(course)" >Save</button>
-                    <button data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button>
+                    <!-- <button data-bs-toggle="modal" data-bs-target="#exampleModal">Add</button> -->
                 </td>
               </tr>
           </tbody>

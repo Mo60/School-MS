@@ -1,5 +1,5 @@
 <template>
-  <h1 class="mt-4 mb-4">Students</h1>
+  <h1 class="mt-5 mb-5">Students</h1>
   <div class="flex-wrapper" v-if="students.length == 0 && loaded" v-cloak>
     <div class="empty-arr">
       <p>No Students Found</p>
