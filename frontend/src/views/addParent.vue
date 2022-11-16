@@ -163,7 +163,7 @@ export default {
        console.log(res);
         let apiURL2="http://172.26.54.21:8082/api/guardian_student/"
         axios.post(apiURL2,this.guardian_student)
-        this.$router.push(`/parents`)
+        this.$router.push(`/parents/${this.guardian_student.GuardianID}`)
        console.log("success")
       }).catch(error => {
         console.log(error)

@@ -399,6 +399,18 @@ export default {
         });
       })
     },
+    register(){
+      let apiURL = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
+      axios
+        .put(apiURL, this.student)  .then((res) => {
+          const studentID = res.data.StudentID;
+          console.log(studentID);
+          console.log(res.data.StudentID)
+          this.$router.push(`/addParent/${this.StudentID}`);
+        }) .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>

@@ -375,7 +375,8 @@ grid-template-rows: auto auto;
 .box{
   background-color: #d7eff1;
   padding:20px 30px;
-  height: fit-content
+  height: fit-content;
+  width: 300px;
   /* box-shadow:  1px 2px 4px rgb(125, 125, 125); */
 }
 .box::-webkit-scrollbar, .info::-webkit-scrollbar, .profile.table-wrapper::-webkit-scrollbar{
@@ -431,12 +432,15 @@ overflow-y: auto;
 max-height: 62vh;
 justify-self: center;
 align-self: center;
+background-color: rgba(101, 100, 100, 0.146);
+padding: 20px;
+border-radius: 20px;
 }
 
 .grid>.box{
 box-shadow: 2px 2px 5px rgb(77, 76, 76);
 border-radius: 10px; 
-max-width: 280px;
+max-width: 300px;
 }
 
 .grid>.box:nth-child(2n){
