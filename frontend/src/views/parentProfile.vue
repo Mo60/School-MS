@@ -13,7 +13,7 @@
           <div class="rows" v-if="guardian.PhoneNumber!=''"><span class="label">Phone Number</span> <span>{{guardian.PhoneNumber}}</span></div>
           <div class="rows" v-if="guardian.CellNumber!=''"><span class="label">Cell Number</span>{{guardian.CellNumber}}</div>
           <div class="rows" v-if="guardian.Email!=''"><span class="label">Email</span> <a :href="`mailto:${guardian.Email}`">{{guardian.Email}}</a></div>
-  
+          <div class="rows" v-if="students.Status!=''"><span class="label">Status</span><span>{{students[0].Status}}</span></div>
       </div>
       </div>
       <div class="box "><h2 class="mb-3">Address</h2>

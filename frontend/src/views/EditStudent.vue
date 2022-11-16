@@ -392,7 +392,7 @@ export default {
         })
         .then((res) => {
         
-        this.$router.push("/students");
+        this.$router.push(`/students/${this.StudentID}`);
       })
         .catch((error) => {
           console.log(error);

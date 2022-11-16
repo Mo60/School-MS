@@ -49,6 +49,13 @@
               v-model="guardian.PhoneNumber"
             />
           </div>
+          <div class="col">
+            <label for="" class="form-label">Status</label>
+            <select name="" id="" v-model="guardian.GuardianStatusID" class="form-select">
+            <option value="">Select an Option</option>
+              <option :value="s.GuardianStatusID" v-for="s in statuses" :key=s.GuardianStatusID>{{s.Status}}</option>
+          </select>
+          </div>
         </div>
       </fieldset>
       <fieldset class="form-control mt-5">
@@ -134,9 +141,11 @@ export default {
         Zip: "",
         Notes: "",
         IsEmergency: boolean,
+        GuardianStatusID:""
       },
       GuardianID: this.$route.params.GuardianID,
-      states:[]
+      states:[],
+      statuses:[]
     };
   },
   created() {
@@ -155,10 +164,17 @@ export default {
               console.log(this.states)
             }).catch((error) => {
         console.log(error);
-      })  .catch((error) => {
+      }) .then(()=>{
+        let apiURL="http://172.26.54.21:8082/api/guardianstatus/"
+axios.get(apiURL).then((res)=>{
+  this.statuses=res.data;
+  console.log(this.statuses)
+      }).catch((error) => {
         console.log(error);
       })
+       
     })
+  })
   },
   methods: {
     submitForm() {
