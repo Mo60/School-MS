@@ -121,7 +121,7 @@
         },
         // this is using created hook 
         created() {
-            let apiURL = 'http://172.26.54.21:8082/api/reports/count_class_by_faculty';
+            let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/reports/count_class_by_faculty';
             axios.get(apiURL).then(res => {
                 this.faculty = res.data;
                 this.facultyList = res.data;
@@ -240,7 +240,7 @@
         },
     getID(value){
 
-      let apiURL=`http://172.26.54.21:8082/api/reports/faculty_class_list/${value}`
+      let apiURL=this.APIBASEURL + ":" + this.APIPORT +`/api/reports/faculty_class_list/${value}`
       axios.get(apiURL).then((res)=>{
 this.faculty_Class=res.data
       })

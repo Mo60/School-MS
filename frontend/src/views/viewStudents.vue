@@ -92,7 +92,7 @@ export default {
     };
   },
   created() {
-    let apiURL = "http://172.26.54.21:8082/api/student/";
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/student/";
     axios
       .get(apiURL)
       .then((res) => {
