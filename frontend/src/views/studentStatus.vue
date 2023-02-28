@@ -37,6 +37,7 @@
     
 </template>
 <script>
+    
     import axios from "axios";
 
     export default {
@@ -51,8 +52,8 @@
             }
         },
         created() {
-         
-            let apiURL = 'http://172.26.54.21:8082/api/studentStatus';
+            console.log(this.APIBASEURL)
+            let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/studentStatus';
             axios.get(apiURL).then(res => {
                 this.StudentStatuses = res.data;
                 // console.log(this.Student_medicalStatuses)
@@ -74,7 +75,7 @@
                 document.getElementById(`${id+4789147}`).disabled = true;
                 //save the change in DB
                 //http://localhost:8082/api/student_medicalStatus
-                let apiURL = `http://172.26.54.21:8082/api/studentStatus/${t.StudentStatusID}`;
+                let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/studentStatus/${t.StudentStatusID}`;
             axios.put(apiURL,t).then(res => {
             }).catch(error => {
                 console.log(error)
@@ -83,7 +84,7 @@
             // save new
             async  saveNew(studentStatus) {
             if (studentStatus.Status){
-              let apiURL = `http://172.26.54.21:8082/api/studentStatus/`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/studentStatus/`;
           await axios.post(apiURL,studentStatus).then(res =>{
             this.StudentStatuses.push(res.data);
                 this.studentStatus.Status="";

@@ -51,7 +51,7 @@
         },
        async created() {
             await setTimeout(() =>  5000);
-            let apiURL = 'http://172.26.54.21:8082/api/courseStatus';
+            let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/courseStatus';
           await  axios.get(apiURL).then(res => {
                 this.CourseStatuses = res.data;
                 // console.log(this.CourseStatuses)
@@ -73,7 +73,7 @@
                 document.getElementById(`${id+47189147}`).disabled = true;
                 //save the change in DB
                 //http://localhost:8082/api/courseStatus
-                let apiURL = `http://172.26.54.21:8082/api/courseStatus/${t.CourseStatusID}`;
+                let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/courseStatus/${t.CourseStatusID}`;
             axios.put(apiURL,t).then(res => {
             }).catch(error => {
                 console.log(error)
@@ -82,7 +82,7 @@
             // save new
             async  saveNew(courseStatus) {
             if (courseStatus.Status){
-              let apiURL = `http://172.26.54.21:8082/api/courseStatus/`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/courseStatus/`;
           await axios.post(apiURL,courseStatus).then(res => {
             this.CourseStatuses.push(res.data);
                 this.courseStatus.Status="";

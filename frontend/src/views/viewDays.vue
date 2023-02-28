@@ -48,7 +48,7 @@
       },
       created() {
           console.log(this.days)
-          let apiURL = 'http://172.26.54.21:8082/api/day';
+          let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/day';
           axios.get(apiURL).then(res => {
               this.days = res.data;
               // console.log(this.days)
@@ -70,7 +70,7 @@
               document.getElementById(`${id+4789147}`).disabled = true;
               //save the change in DB
               //http://localhost:8082/api/timeBlock
-              let apiURL = `http://172.26.54.21:8082/api/day/${t.DayID}`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/day/${t.DayID}`;
           axios.put(apiURL,t).then(res => {
           }).catch(error => {
               console.log(error)
@@ -78,7 +78,7 @@
           },
    async  saveNew(day) {
             if (day.WeekDay){
-              let apiURL = `http://172.26.54.21:8082/api/day/`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/day/`;
           await axios.post(apiURL,day).then(res => {
             this.days.push(res.data);
                 this.day.WeekDay="";

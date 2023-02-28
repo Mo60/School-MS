@@ -52,7 +52,7 @@
        },
        created() {
         
-           let apiURL = 'http://172.26.54.21:8082/api/guardianStatus';
+           let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/guardianStatus';
            axios.get(apiURL).then(res => {
                this.guardianStatuses = res.data;
                // console.log(this.Student_medicalStatuses)
@@ -73,7 +73,7 @@
                document.getElementById(`${id+3789147}`).disabled = false;
                document.getElementById(`${id+4789147}`).disabled = true;
                //save the change in DB
-               let apiURL = `http://172.26.54.21:8082/api/guardianStatus/${t.GuardianStatusID}`;
+               let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/guardianStatus/${t.GuardianStatusID}`;
            axios.put(apiURL,t).then(res => {
            }).catch(error => {
                console.log(error)
@@ -82,7 +82,7 @@
            // save new
            async  saveNew(guardianStatus) {
            if (guardianStatus.Status){
-             let apiURL = `http://172.26.54.21:8082/api/guardianStatus/`;
+             let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/guardianStatus/`;
          await axios.post(apiURL,guardianStatus).then(res =>{
             this.guardianStatuses.push(res.data);
                 this.guardianStatus.Status="";

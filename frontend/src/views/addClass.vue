@@ -123,6 +123,7 @@
 </template>
 
 <script>
+const prop = require("../config/config.js")
 import useVuelidate from '@vuelidate/core'
 import {required} from '@vuelidate/validators'
 import axios from "axios";
@@ -181,7 +182,7 @@ alert('Class is successfully added')
     else{
       alert('Form failed validation')
     }
-      let apiURL = "http://172.26.54.21:8082/api/class/";
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/class/";
 
     await  axios
         .post(apiURL, this.Class)
@@ -214,7 +215,7 @@ alert('Class is successfully added')
   async created() {
     // get options from the api
    
-    let apiURL = 'http://172.26.54.21:8082/api/faculty/';
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/faculty/';
    await axios.get(apiURL).then(res => {
         this.TeacherList = res.data;
 
@@ -224,7 +225,7 @@ alert('Class is successfully added')
     //
     //// get Courses
     // courses = getOptions("172.26.54.21","8082","reports/course_view")
-    let apiURL1 = "http://172.26.54.21:8082/api/course/";
+    let apiURL1 = this.APIBASEURL + ":" + this.APIPORT +"/api/course/";
     await axios
       .get(apiURL1)
       .then((res) => {
@@ -234,7 +235,7 @@ alert('Class is successfully added')
         console.log(error);
       });
     // //// get semesters
-    let apiURL2 = "http://172.26.54.21:8082/api/semester/";
+    let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +"/api/semester/";
     await axios
       .get(apiURL2)
       .then((res) => {
@@ -244,7 +245,7 @@ alert('Class is successfully added')
         console.log(error);
       });
     // //// get timeBlocks:[],
-    let apiURL3 = "http://172.26.54.21:8082/api/timeblock/";
+    let apiURL3 = this.APIBASEURL + ":" + this.APIPORT +"/api/timeblock/";
     await axios
       .get(apiURL3)
       .then((res) => {
@@ -254,7 +255,7 @@ alert('Class is successfully added')
         console.log(error);
       });
     // //// get days:[],
-    let apiURL4 = "http://172.26.54.21:8082/api/day/";
+    let apiURL4 = this.APIBASEURL + ":" + this.APIPORT +"/api/day/";
     await axios
       .get(apiURL4)
       .then((res) => {
@@ -264,7 +265,7 @@ alert('Class is successfully added')
         console.log(error);
       });
     ///// get classstatuses:[],
-    let apiURL5 = "http://172.26.54.21:8082/api/classstatus/";
+    let apiURL5 = this.APIBASEURL + ":" + this.APIPORT +"/api/classstatus/";
     await axios
       .get(apiURL5)
       .then((res) => {

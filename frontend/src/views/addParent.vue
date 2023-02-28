@@ -250,14 +250,14 @@ export default {
   methods: {
   
     submitForm() {
-      let apiURL = "http://172.26.54.21:8082/api/guardian/"
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/guardian/"
 
       axios.post(apiURL, this.guardian).then((res) => {
        this.guardian_student.GuardianID = res.data.GuardianID
       // guardian.guardian_student.GuardianID = 5;//res.data.GuardianID
        console.log(this.guardian_student.GuardianID);
        console.log(res);
-        let apiURL2="http://172.26.54.21:8082/api/guardian_student/"
+        let apiURL2=this.APIBASEURL + ":" + this.APIPORT +"/api/guardian_student/"
         axios.post(apiURL2,this.guardian_student).catch(error => {
         console.log(error)
       })
@@ -269,13 +269,13 @@ export default {
 
      },
      register() {
-      let apiURL = `http://172.26.54.21:8082/api/guardian/`;
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/guardian/`;
       axios.post(apiURL, this.guardian).then((res) => {
        this.guardian_student.GuardianID = res.data.GuardianID
       // guardian.guardian_student.GuardianID = 5;//res.data.GuardianID
        console.log(this.guardian_student.GuardianID);
        console.log(res);
-        let apiURL2="http://172.26.54.21:8082/api/guardian_student/"
+        let apiURL2=this.APIBASEURL + ":" + this.APIPORT +"/api/guardian_student/"
         axios.post(apiURL2,this.guardian_student).then(()=>{
           this.guardian= {
         GuardianID:undefined,
@@ -330,16 +330,16 @@ this.guardian.Zip=""
     },
     created(){
   
-      let apiURL="http://172.26.54.21:8082/api/guardianRelationship/"
+      let apiURL=this.APIBASEURL + ":" + this.APIPORT +"/api/guardianRelationship/"
       axios.get(apiURL).then(res => {
                 this.relationships = res.data;
                 
             }).then(res=>{
-                let apiURL2=`http://172.26.54.21:8082/api/student/${this.guardian_student.StudentID}`
+                let apiURL2=this.APIBASEURL + ":" + this.APIPORT +`/api/student/${this.guardian_student.StudentID}`
                 axios.get(apiURL2).then(res=>{
                   this.student=res.data
                 }).then(()=>{
-        let apiURL="http://172.26.54.21:8082/api/guardianstatus/"
+        let apiURL=this.APIBASEURL + ":" + this.APIPORT +"/api/guardianstatus/"
 axios.get(apiURL).then((res)=>{
   this.statuses=res.data;
       }).catch((error) => {
@@ -350,7 +350,7 @@ axios.get(apiURL).then((res)=>{
                 console.log(error)
             }).then(res=>{
               
-              let apiURL3=`http://172.26.54.21:8082/api/reports/guardian_student_view/studentid/${this.guardian_student.StudentID}`
+              let apiURL3=this.APIBASEURL + ":" + this.APIPORT +`/api/reports/guardian_student_view/studentid/${this.guardian_student.StudentID}`
               axios.get(apiURL3).then(res=>{
                   this.guardianStudent=res.data.length
                   console.log(this.guardianStudent)

@@ -82,7 +82,7 @@ export default {
     };
   },
   async created() {
-    let apiURL = "http://172.26.54.21:8082/api/student/";
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/student/";
     await axios
       .get(apiURL)
       .then((res) => {
@@ -92,7 +92,7 @@ export default {
         console.log(error);
       });
     // get avilable classes info
-    let apiURL1 = "http://172.26.54.21:8082/api/reports/class_detail_list1";
+    let apiURL1 = this.APIBASEURL + ":" + this.APIPORT +"/api/reports/class_detail_list1";
     await axios
       .get(apiURL1)
       .then((res) => {
@@ -104,7 +104,7 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-    let apiURL2 = "http://172.26.54.21:8082/api/student_classstatus";
+    let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +"/api/student_classstatus";
     await axios.get(apiURL2).then((res) => {
       this.statuses = res.data;
     });
@@ -112,7 +112,7 @@ export default {
 
   methods: {
     async submitForm() {
-      let apiURL2 = `http://172.26.54.21:8082/api/student_class/`;
+      let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/student_class/`;
       this.student_class.ClassID = this.Class.ClassID;
       this.student_class.StudentID = this.student.StudentID;
       await axios

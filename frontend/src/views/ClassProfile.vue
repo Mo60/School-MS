@@ -274,7 +274,7 @@ FacultyID:"",
     };
   },
   created() {
-    let apiURL = `http://172.26.54.21:8082/api/reports/class_view/${this.classID}`;
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/class_view/${this.classID}`;
     axios
       .get(apiURL)
       .then((res) => {
@@ -284,7 +284,7 @@ FacultyID:"",
         console.log(error);
       })
       .then(() => {
-        let apiURL = `http://172.26.54.21:8082/api/reports/students_in_class_view/${this.classID}`;
+        let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/students_in_class_view/${this.classID}`;
         axios
           .get(apiURL)
           .then((res) => {
@@ -294,7 +294,7 @@ FacultyID:"",
             console.log(error);
           })
           .then(() => {
-            let apiURL2 = `http://172.26.54.21:8082/api/reports/faculty_class_list/`;
+            let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/faculty_class_list/`;
             axios
               .get(apiURL2)
               .then((res) => {
@@ -307,7 +307,7 @@ FacultyID:"",
               .catch((error) => {
                 console.log(error);
               }).then(()=>{
-                let apiURL3=`http://172.26.54.21:8082/api/faculty`
+                let apiURL3=this.APIBASEURL + ":" + this.APIPORT +`/api/faculty`
                 axios.get(apiURL3).then((res)=>{
                 this.facultyList=res.data;
 
@@ -325,16 +325,16 @@ FacultyID:"",
   methods:{
     getID(value){
         this.facultyClassID=value
-let apiURL=`http://172.26.54.21:8082/api/faculty_class/${value} `
+let apiURL= this.APIBASEURL + ":" + this.APIPORT +`/api/faculty_class/${value} `
 axios.get(apiURL).then((res)=>{
 this.editData=res.data;
 })
     },
 
     editTeacher(){
-        let apiURL=`http://172.26.54.21:8082/api/faculty_class/${this.facultyClassID} `
+        let apiURL= this.APIBASEURL + ":" + this.APIPORT +`/api/faculty_class/${this.facultyClassID} `
         axios.put(apiURL,this.editData).then(()=>{
-            let apiURL2 = `http://172.26.54.21:8082/api/reports/faculty_class_list/`;
+            let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/faculty_class_list/`;
             axios
               .get(apiURL2)
               .then((res) => {
@@ -353,12 +353,12 @@ this.editData=res.data;
     },
 
     addTeacher(){
-        let apiURL=`http://172.26.54.21:8082/api/faculty_class/ `
+        let apiURL= this.APIBASEURL + ":" + this.APIPORT +`/api/faculty_class/ `
         axios.post(apiURL,this.faculty_class2).then(()=>{
             this.faculty_class2={
                 facultyID:""
             }
-            let apiURL2 = `http://172.26.54.21:8082/api/reports/faculty_class_list/`;
+            let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +  `/api/reports/faculty_class_list/`;
             axios
               .get(apiURL2)
               .then((res) => {

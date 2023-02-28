@@ -646,7 +646,7 @@
       };
     },
     created() {
-      let apiURL = `http://172.26.54.21:8082/api/reports/view_students/${this.studentID}`;
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/view_students/${this.studentID}`;
       axios
         .get(apiURL)
         .then((res) => {
@@ -657,7 +657,7 @@
           console.log(error);
         })
         .then(() => {
-          let apiURL2 = `http://172.26.54.21:8082/api/reports/student_class_view/${this.studentID}`;
+          let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/student_class_view/${this.studentID}`;
           axios
             .get(apiURL2)
             .then((res2) => {
@@ -668,14 +668,14 @@
               console.log(error);
             })
             .then(() => {
-              let apiURL3 = `http://172.26.54.21:8082/api/medical`;
+              let apiURL3 = this.APIBASEURL + ":" + this.APIPORT +`/api/medical`;
               axios
                 .get(apiURL3)
                 .then((res) => {
                   this.medical = res.data;
                 })
                 .then(() => {
-                  let apiURL4 = `http://172.26.54.21:8082/api/reports/student_medical_view/${this.studentID}`;
+                  let apiURL4 = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/student_medical_view/${this.studentID}`;
                   axios
                     .get(apiURL4)
                     .then((res) => {
@@ -687,7 +687,7 @@
                     })
                     .then(() => {
                       let apiURL5 =
-                        "http://172.26.54.21:8082/api/student_classstatus";
+                      this.APIBASEURL + ":" + this.APIPORT +"/api/student_classstatus";
                       axios
                         .get(apiURL5)
                         .then((res) => {
@@ -698,7 +698,7 @@
                         })
                         .then(() => {
                           let apiURL6 =
-                            "http://172.26.54.21:8082/api/reports/class_detail_list1";
+                          this.APIBASEURL + ":" + this.APIPORT +"/api/reports/class_detail_list1";
                           axios
                             .get(apiURL6)
                             .then((res) => {
@@ -709,12 +709,12 @@
                               );
                               console.log(this.classes);
                             }).then(()=>{
-                              let apiURL7=`http://172.26.54.21:8082/api/reports/guardian_student_view/studentid/${this.studentID}`
+                              let apiURL7=this.APIBASEURL + ":" + this.APIPORT +`/api/reports/guardian_student_view/studentid/${this.studentID}`
                               axios.get(apiURL7).then((res)=>{
                                 this.student_guardian=res.data
                                 console.log(this.student_guardian)
                               }) .then(()=>{
-                                let apiURL8="http://172.26.54.21:8082/api/student_medicalstatus"
+                                let apiURL8=this.APIBASEURL + ":" + this.APIPORT +"/api/student_medicalstatus"
                                 axios.get(apiURL8).then((res)=>{
                                   this.medicalStatus=res.data
                                 }).catch((error) => {
@@ -751,10 +751,10 @@
     },
     methods: {
       addMedicalCondition() {
-        let apiURL = `http://172.26.54.21:8082/api/student_medical`;
+        let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/student_medical`;
         axios
           .post(apiURL, this.student_medical2).then(()=>{
-            let apiURL4 = `http://172.26.54.21:8082/api/reports/student_medical_view/${this.studentID}`;
+            let apiURL4 = this.APIBASEURL + ":" + this.APIPORT +`api/reports/student_medical_view/${this.studentID}`;
                   axios
                     .get(apiURL4)
                     .then((res) => {
@@ -777,13 +777,13 @@
           });
       },
       enroll() {
-        let apiURL2 = `http://172.26.54.21:8082/api/student_class/`;
+        let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/student_class/`;
         axios
           .post(apiURL2, this.student_class)    .catch((error) => {
             console.log(error);
           })
           .then(() => {
-            let apiURL2 = `http://172.26.54.21:8082/api/reports/student_class_view/${this.studentID}`;
+            let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/student_class_view/${this.studentID}`;
           axios
             .get(apiURL2)
             .then((res2) => {
@@ -806,14 +806,14 @@
       },
   
       editStudentClass(){
-          let apiURL2 = `http://172.26.54.21:8082/api/student_class/${this.editID}`;
+          let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/student_class/${this.editID}`;
         axios
           .put(apiURL2, this.editData)   .catch((error) => {
             console.log(error);
           })
           .then(() => {
             console.log(this.editData);
-            let apiURL2 = `http://172.26.54.21:8082/api/reports/student_class_view/${this.studentID}`;
+            let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/student_class_view/${this.studentID}`;
           axios
             .get(apiURL2)
             .then((res2) => {
@@ -834,7 +834,7 @@
   
       }, 
       getID(value){
-         let apiURL=`http://172.26.54.21:8082/api/student_class/${value}`
+         let apiURL=this.APIBASEURL + ":" + this.APIPORT +`/api/student_class/${value}`
          axios.get(apiURL).then((res)=>{
           this.editData=res.data;
           this.editID=value;
@@ -843,7 +843,7 @@
           });
       },
       getID2(value){
-        let apiURL= `http://172.26.54.21:8082/api/student_medical/${value}`
+        let apiURL= this.APIBASEURL + ":" + this.APIPORT +`/api/student_medical/${value}`
         axios.get(apiURL).then((res)=>{
     this.editHealthData=res.data;
     this.editID2=value;
@@ -854,11 +854,11 @@
       }
       ,
       editMedical(){
-let apiURL= `http://172.26.54.21:8082/api/student_medical/${this.editID2}`
+let apiURL= this.APIBASEURL + ":" + this.APIPORT +`api/student_medical/${this.editID2}`
 axios
           .put(apiURL, this.editHealthData) 
           .then(() => {
-            let apiURL4 = `http://172.26.54.21:8082/api/reports/student_medical_view/${this.studentID}`;
+            let apiURL4 = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/student_medical_view/${this.studentID}`;
                   axios
                     .get(apiURL4)
                     .then((res) => {

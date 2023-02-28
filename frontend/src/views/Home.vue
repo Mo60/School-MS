@@ -39,20 +39,20 @@ export default {
     }
   },
   async created(){
-    await   axios.get("http://172.26.54.21:8082/api/reports/count_students_course_view").then(res=> {
+    await   axios.get(this.APIBASEURL + ":" + this.APIPORT +"/api/reports/count_students_course_view").then(res=> {
         this.data1= res.data
         })
         .catch(err=> {
           console.log(err)
         })
-    await   axios.get("http://172.26.54.21:8082/api/reports/count_class_by_faculty").then(res=> {
+    await   axios.get(this.APIBASEURL + ":" + this.APIPORT +"/api/reports/count_class_by_faculty").then(res=> {
         this.data2= res.data   
         })
         .catch(err=> {
           console.log(err)
         })
         //count_students_by_semester
-    await   axios.get("http://172.26.54.21:8082/api/reports/count_students_by_semester").then(res=> {
+    await   axios.get(this.APIBASEURL + ":" + this.APIPORT +"/api/reports/count_students_by_semester").then(res=> {
         this.semestersEnrollments= res.data   
         })
         .catch(err=> {

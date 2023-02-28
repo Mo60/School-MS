@@ -127,7 +127,7 @@
           }
       },
     async  created() {
-          let apiURL = 'http://172.26.54.21:8082/api/course';
+          let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/course';
        await   axios.get(apiURL).then(res => {
               this.courses = res.data;
               this.courseList=res.data;
@@ -135,7 +135,7 @@
           }).catch(error => {
               console.log(error)
           });
-          let apiURL2 = 'http://172.26.54.21:8082/api/courseStatus';
+          let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +'/api/courseStatus';
           axios.get(apiURL2).then(res => {
               this.courseStatuses = res.data;
           }).catch(error => {
@@ -171,7 +171,7 @@
               document.getElementById(`${id+4789147}`).disabled = true;
               //save the change in DB
               //http://localhost:8082/api/timeBlock
-              let apiURL = `http://172.26.54.21:8082/api/course/${t.CourseID}`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/course/${t.CourseID}`;
           axios.put(apiURL,t).then(res => {
           }).catch(error => {
               console.log(error)
@@ -179,7 +179,7 @@
           },
    async  saveNew(course) {
             if (course.CourseName){
-              let apiURL = `http://172.26.54.21:8082/api/course/`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/course/`;
           await axios.post(apiURL,course).then(res => {
             this.courses.push(res.data);
                 this.course.CourseName="";

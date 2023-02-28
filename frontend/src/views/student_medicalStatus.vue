@@ -52,7 +52,7 @@
         },
         created() {
             console.log(this.Student_medicalStatuses)
-            let apiURL = 'http://172.26.54.21:8082/api/student_medicalStatus';
+            let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/student_medicalStatus';
             axios.get(apiURL).then(res => {
                 this.Student_medicalStatuses = res.data;
                 // console.log(this.Student_medicalStatuses)
@@ -74,7 +74,7 @@
                 document.getElementById(`${id+4789147}`).disabled = true;
                 //save the change in DB
                 //http://localhost:8082/api/student_medicalStatus
-                let apiURL = `http://172.26.54.21:8082/api/student_medicalStatus/${t.StudentMedicalStatusID}`;
+                let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/student_medicalStatus/${t.StudentMedicalStatusID}`;
             axios.put(apiURL,t).then(res => {
             }).catch(error => {
                 console.log(error)
@@ -83,7 +83,7 @@
             // save new
             async  saveNew(student_medicalStatus) {
             if (student_medicalStatus.Status){
-              let apiURL = `http://172.26.54.21:8082/api/student_medicalStatus/`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/student_medicalStatus/`;
           await axios.post(apiURL,student_medicalStatus).then(res => {
             this.Student_medicalStatuses.push(res.data);
                 this.student_medicalStatus.Status="";

@@ -48,7 +48,7 @@
       },
       created() {
           console.log(this.medicals)
-          let apiURL = 'http://172.26.54.21:8082/api/medical';
+          let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/medical';
           axios.get(apiURL).then(res => {
               this.medicals = res.data;
               // console.log(this.medicals)
@@ -70,7 +70,7 @@
               document.getElementById(`${id+4789147}`).disabled = true;
               //save the change in DB
               //http://localhost:8082/api/timeBlock
-              let apiURL = `http://172.26.54.21:8082/api/medical/${t.MedicalID}`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/medical/${t.MedicalID}`;
           axios.put(apiURL,t).then(res => {
           }).catch(error => {
               console.log(error)
@@ -78,7 +78,7 @@
           },
    async  saveNew(medical) {
             if (medical.Condition){
-              let apiURL = `http://172.26.54.21:8082/api/medical/`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/medical/`;
           await axios.post(apiURL,medical).then(res => {
             this.medicals.push(res.data);
                 this.medical.Condition="";

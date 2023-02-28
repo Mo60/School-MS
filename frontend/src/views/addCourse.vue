@@ -30,7 +30,7 @@ course:{
         }
     },
     created(){
-        let apiURL='http://172.26.54.21:8082/api/coursestatus'
+        let apiURL=this.APIBASEURL + ":" + this.APIPORT +'/api/coursestatus'
         axios.get(apiURL).then((res)=>{
             this.statuses=res.data;
 
@@ -39,7 +39,7 @@ course:{
     methods:{
 submitForm(course){
     
-    let apiURL='http://172.26.54.21:8082/api/course'
+    let apiURL=this.APIBASEURL + ":" + this.APIPORT +'/api/course'
     axios.post(apiURL,course).then(()=>{
     this.$router.push("/courses")
     }) .catch((error) => {

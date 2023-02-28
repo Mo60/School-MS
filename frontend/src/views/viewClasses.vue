@@ -75,7 +75,7 @@ import axios from "axios";
     },
     created() {
       // Get all the classes from database
-      axios.get('http://172.26.54.21:8082/api/reports/class_view/')
+      axios.get(this.APIBASEURL + ":" + this.APIPORT +'/api/reports/class_view/')
       .then(res => {
         this.Class = res.data
         this.ClassList = this.Class

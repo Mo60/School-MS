@@ -79,7 +79,7 @@ export default {
 
   methods:{
       submitForm(){
-          let apiURL = `http://172.26.54.21:8082/api/faculty/${this.facultyID}`
+          let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/faculty/${this.facultyID}`
           axios.put(apiURL,this.faculty).then( (res) => { this.$router.push("/faculty")
       }).catch(error => {
   console.log(error)
@@ -89,7 +89,7 @@ export default {
 },
 
 created(){
-    let apiURL2=`http://172.26.54.21:8082/api/faculty/${this.facultyID}`
+    let apiURL2=this.APIBASEURL + ":" + this.APIPORT +`/api/faculty/${this.facultyID}`
     axios.get(apiURL2).then((res)=>{
 this.faculty=res.data
     })

@@ -54,7 +54,7 @@
 
         methods:{
             submitForm(){
-                let apiURL = "http://172.26.54.21:8082/api/room/"
+                let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/room/"
                 axios.post(apiURL,this.room).catch(error => {
         console.log(error)
       });

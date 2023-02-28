@@ -297,11 +297,11 @@ export default {
   },
 
   created() {
-    let apiURL = "http://172.26.54.21:8082/api/guardianRelationship/";
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/guardianRelationship/";
     axios.get(apiURL).then((res) => {
       this.relationships = res.data;
 
-      let apiURL2 = "http://172.26.54.21:8082/api/guardian/";
+      let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +"/api/guardian/";
       axios
         .get(apiURL2)
         .then((res2) => {
@@ -311,7 +311,7 @@ export default {
           console.log(error);
         })
         .then(() => {
-          let apiURL3 = "http://172.26.54.21:8082/api/studentStatus";
+          let apiURL3 = this.APIBASEURL + ":" + this.APIPORT +"/api/studentStatus";
           axios
             .get(apiURL3)
             .then((res3) => {
@@ -322,7 +322,7 @@ export default {
             });
         })
         .then(() => {
-          let apiURL4 = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
+          let apiURL4 = this.APIBASEURL + ":" + this.APIPORT +`/api/student/${this.StudentID}`;
           axios.get(apiURL4).then((res4) => {
             this.student = res4.data;
             this.guardians = res4.data.guardians;
@@ -374,9 +374,9 @@ export default {
 
   methods: {
     submitForm() {
-      let apiURL = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/student/${this.StudentID}`;
       axios.put(apiURL, this.student).then(() => {
-        let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/${this.guardian_student._id}`;
+        let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/guardian_student/${this.guardian_student._id}`;
         axios
           .put(apiURL2, this.guardian_student)
           .catch((error) => {
@@ -386,7 +386,7 @@ export default {
             console.log(error);
           })
           .then(() => {
-            let apiURL3 = `http://172.26.54.21:8082/api/guardian_student/${this.guardian_student2._id}`;
+            let apiURL3 = this.APIBASEURL + ":" + this.APIPORT +`/api/guardian_student/${this.guardian_student2._id}`;
             axios.put(apiURL3, this.guardian_student2).catch((error) => {
               console.log(error);
             });
@@ -403,7 +403,7 @@ export default {
       });
     },
     register() {
-      let apiURL = `http://172.26.54.21:8082/api/student/${this.StudentID}`;
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/student/${this.StudentID}`;
       axios
         .put(apiURL, this.student)
         .then((res) => {

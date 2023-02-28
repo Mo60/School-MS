@@ -285,13 +285,13 @@ export default {
     };
   },
   created() {
-    let apiURL = "http://172.26.54.21:8082/api/guardianRelationship/";
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/guardianRelationship/";
     axios
       .get(apiURL)
       .then((res) => {
         this.relationships = res.data;
 
-        let apiURL2 = "http://172.26.54.21:8082/api/guardian/";
+        let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +"/api/guardian/";
         axios
           .get(apiURL2)
           .then((res2) => {
@@ -301,7 +301,7 @@ export default {
             console.log(error);
           })
           .then(() => {
-            let apiURL3 = "http://172.26.54.21:8082/api/studentStatus";
+            let apiURL3 = this.APIBASEURL + ":" + this.APIPORT +"/api/studentStatus";
             axios
               .get(apiURL3)
               .then((res3) => {
@@ -333,7 +333,7 @@ export default {
     
    async submitForm() {
     
-      let apiURL = `http://172.26.54.21:8082/api/student/`;
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/student/`;
 
      
 
@@ -343,7 +343,7 @@ export default {
         // if guardian selected post information in the guardian_STUDENT TABLE
         if (this.guardian_student.GuardianID != "") {
           this.guardian_student.StudentID = res.data.StudentID;
-          let apiURL2 = `http://172.26.54.21:8082/api/guardian_student/`;
+          let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +`/api/guardian_student/`;
           axios
             .post(apiURL2, this.guardian_student)
 
@@ -352,7 +352,7 @@ export default {
             })
             .then(() => {
               if (this.value2 && this.guardian_student2 !== "") {
-                let apiURL3=`http://172.26.54.21:8082/api/guardian_student/`;
+                let apiURL3=this.APIBASEURL + ":" + this.APIPORT +`/api/guardian_student/`;
                 this.guardian_student2.StudentID = res.data.StudentID;
             
 
@@ -380,7 +380,7 @@ export default {
   
     },
     register() {
-      let apiURL = `http://172.26.54.21:8082/api/student/`;
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/student/`;
 
       axios
         .post(apiURL, this.student)

@@ -149,7 +149,7 @@ export default {
     };
   },
   created() {
-    let apiURL = `http://172.26.54.21:8082/api/guardian/${this.GuardianID}`;
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/guardian/${this.GuardianID}`;
     axios
       .get(apiURL)
       .then((res) => {
@@ -165,7 +165,7 @@ export default {
             }).catch((error) => {
         console.log(error);
       }) .then(()=>{
-        let apiURL="http://172.26.54.21:8082/api/guardianstatus/"
+        let apiURL=this.APIBASEURL + ":" + this.APIPORT +"/api/guardianstatus/"
 axios.get(apiURL).then((res)=>{
   this.statuses=res.data;
   console.log(this.statuses)
@@ -178,7 +178,7 @@ axios.get(apiURL).then((res)=>{
   },
   methods: {
     submitForm() {
-        let apiURL=`http://172.26.54.21:8082/api/guardian/${this.GuardianID}`;
+        let apiURL=this.APIBASEURL + ":" + this.APIPORT +`/api/guardian/${this.GuardianID}`;
        
         axios
             .put(apiURL, this.guardian)

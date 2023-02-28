@@ -14,6 +14,12 @@ import "./assets/app.css";
 import Vuelidate from '@vuelidate/core'
 
 const app= createApp(App)
+// set global properties
+app.config.globalProperties.msg = 'hello'
+console.log(app.config.globalProperties)
+app.config.globalProperties.APIBASEURL = 'http://localhost'
+app.config.globalProperties.APIPORT = '8082'
+
 app.use(router)
 app.use(Vuelidate)
 app.mount("#app")

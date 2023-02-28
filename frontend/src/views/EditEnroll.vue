@@ -39,7 +39,7 @@
         },
         methods: {
           handleUpdateForm() {
-            let apiURL = "http://172.26.54.21:8082/api/enrollment/";
+            let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/enrollment/";
             axios.put(apiURL, this.enrollment).then((res) => {
                 console.log(res)
                 this.$router.push()

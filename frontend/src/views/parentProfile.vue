@@ -64,7 +64,7 @@ export default {
   },
 
   created() {
-    let apiURL = `http://172.26.54.21:8082/api/guardian/${this.guardianID}`;
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/guardian/${this.guardianID}`;
     axios
       .get(apiURL)
       .then((res) => {
@@ -73,7 +73,7 @@ export default {
       }).catch((error) => {
         console.log(error);
       }).then(()=>{
-        let apiURL2=  `http://172.26.54.21:8082/api/reports/guardian_student_view/${this.guardianID}`
+        let apiURL2= this.APIBASEURL + ":" + this.APIPORT +`/api/reports/guardian_student_view/${this.guardianID}`
 axios.get(apiURL2).then((res)=>{
     this.students=res.data
 }).catch((error) => {

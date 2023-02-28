@@ -47,7 +47,7 @@
       },
       created() {
           console.log(this.guardianRelationships)
-          let apiURL = 'http://172.26.54.21:8082/api/guardianRelationship';
+          let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/guardianRelationship';
           axios.get(apiURL).then(res => {
               this.guardianRelationships = res.data;
               // console.log(this.guardianRelationships)
@@ -69,7 +69,7 @@
               document.getElementById(`${id+4789147}`).disabled = true;
               //save the change in DB
               //http://localhost:8082/api/timeBlock
-              let apiURL = `http://172.26.54.21:8082/api/guardianRelationship/${t.RelationshipID}`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/guardianRelationship/${t.RelationshipID}`;
           axios.put(apiURL,t).then(res => {
           }).catch(error => {
               console.log(error)
@@ -77,7 +77,7 @@
           },
    async  saveNew(guardianRelationship) {
             if (guardianRelationship.Relationship){
-              let apiURL = `http://172.26.54.21:8082/api/guardianRelationship/`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/guardianRelationship/`;
           await axios.post(apiURL,guardianRelationship).then(res => {
             this.guardianRelationships.push(res.data);
                 this.guardianRelationship.Relationship=null;

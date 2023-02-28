@@ -54,7 +54,7 @@
         },
         created() {
             console.log(this.Timeblocks)
-            let apiURL = 'http://172.26.54.21:8082/api/timeblock';
+            let apiURL = this.APIBASEURL + ":" + this.APIPORT +'/api/timeblock';
             axios.get(apiURL).then(res => {
                 this.Timeblocks = res.data;
                 // console.log(this.Timeblocks)
@@ -76,7 +76,7 @@
                 document.getElementById(`${id+4789147}`).disabled = true;
                 //save the change in DB
                 //http://localhost:8082/api/timeBlock
-                let apiURL = `http://172.26.54.21:8082/api/timeblock/${t.TimeblockID}`;
+                let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/timeblock/${t.TimeblockID}`;
             axios.put(apiURL,t).then(res => {
             }).catch(error => {
                 console.log(error)
@@ -85,7 +85,7 @@
             // save new
             async  saveNew(timeBlock) {
             if (timeBlock.StartTime && timeBlock.EndTime ){
-              let apiURL = `http://172.26.54.21:8082/api/timeblock/`;
+              let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/timeblock/`;
           await axios.post(apiURL,timeBlock).then(res => {
                 this.Timeblocks.push(res.data);
                 this.timeBlock.StartTime="";

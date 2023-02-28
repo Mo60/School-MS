@@ -151,7 +151,7 @@ export default {
 
   methods: {
   async  handleSubmitForm() {
-      let apiURL = `http://172.26.54.21:8082/api/class/${this.ClassID}`;
+      let apiURL = this.APIBASEURL + ":" + this.APIPORT +`/api/class/${this.ClassID}`;
 
     await  axios
         .put(apiURL, this.Class)
@@ -183,7 +183,7 @@ export default {
   async created() {
     // get options from the api
 
-    let apiURL = "http://172.26.54.21:8082/api/faculty/";
+    let apiURL = this.APIBASEURL + ":" + this.APIPORT +"/api/faculty/";
     axios
       .get(apiURL)
       .then((res) => {
@@ -193,7 +193,7 @@ export default {
         console.log(error);
       })
       .then(() => {
-        let apiURL1 = "http://172.26.54.21:8082/api/course/";
+        let apiURL1 = this.APIBASEURL + ":" + this.APIPORT +"/api/course/";
         axios
           .get(apiURL1)
           .then((res) => {
@@ -203,7 +203,7 @@ export default {
             console.log(error);
           })
           .then(() => {
-            let apiURL2 = "http://172.26.54.21:8082/api/semester/";
+            let apiURL2 = this.APIBASEURL + ":" + this.APIPORT +"/api/semester/";
             axios
               .get(apiURL2)
               .then((res) => {
@@ -213,7 +213,7 @@ export default {
                 console.log(error);
               })
               .then(() => {
-                let apiURL3 = "http://172.26.54.21:8082/api/timeblock/";
+                let apiURL3 = this.APIBASEURL + ":" + this.APIPORT +"/api/timeblock/";
                 axios
                   .get(apiURL3)
                   .then((res) => {
@@ -223,7 +223,7 @@ export default {
                     console.log(error);
                   })
                   .then(() => {
-                    let apiURL4 = "http://172.26.54.21:8082/api/day/";
+                    let apiURL4 = this.APIBASEURL + ":" + this.APIPORT +"/api/day/";
                     axios
                       .get(apiURL4)
                       .then((res) => {
@@ -234,7 +234,7 @@ export default {
                       })
                       .then(() => {
                         let apiURL5 =
-                          "http://172.26.54.21:8082/api/classstatus/";
+                        this.APIBASEURL + ":" + this.APIPORT +"/api/classstatus/";
                         axios
                           .get(apiURL5)
                           .then((res) => {
@@ -244,7 +244,7 @@ export default {
                             console.log(error);
                           })
                           .then(() => {
-                            let apiURL7 = `http://172.26.54.21:8082/api/reports/class_view/${this.ClassID}`;
+                            let apiURL7 = this.APIBASEURL + ":" + this.APIPORT +`/api/reports/class_view/${this.ClassID}`;
                             axios
                               .get(apiURL7)
                               .then((res) => {
@@ -256,7 +256,7 @@ export default {
                               })
                           
                                   .then(() => {
-                                    let apiURL8 = `http://172.26.54.21:8082/api/class/${this.ClassID}`;
+                                    let apiURL8 = this.APIBASEURL + ":" + this.APIPORT +`/api/class/${this.ClassID}`;
                                     axios
                                       .get(apiURL8)
                                       .then((res) => {})

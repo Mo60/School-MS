@@ -19,7 +19,7 @@ guardian:[],
 loaded:false
 }},
   created(){
-  let apiURL='http://172.26.54.21:8082/api/reports/view_students'
+  let apiURL=this.APIBASEURL + ":" + this.APIPORT +'/api/reports/view_students'
   axios
       .get(apiURL)
       .then((res) => {

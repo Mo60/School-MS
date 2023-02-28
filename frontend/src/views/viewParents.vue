@@ -65,7 +65,7 @@ searchLastName:""
 }},
 
   created(){
-  let apiURL='http://172.26.54.21:8082/api/guardian'
+  let apiURL=this.APIBASEURL + ":" + this.APIPORT +'/api/guardian'
   axios
       .get(apiURL)
       .then((res) => {
