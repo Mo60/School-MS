@@ -20,7 +20,9 @@ db.sequelize.sync(
 //   });
 
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 
 // parse requests of content-type - application/json
 app.use(express.json());
