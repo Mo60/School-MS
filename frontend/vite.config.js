@@ -6,10 +6,10 @@ import Pages from 'vite-plugin-pages'
 // https://vitejs.dev/config/
 export default defineConfig({
    //when deoplying 
-   // build: {
-   //    outDir: 'C:/dist',
-   //    emptyOutDir: true
-   // },
+   build: {
+      outDir: '../doc',
+      emptyOutDir: false
+   },
    plugins: [vue(),
             Pages({
                dirs: 'src/views',
