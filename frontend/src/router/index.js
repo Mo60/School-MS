@@ -183,7 +183,7 @@ component:()=>import("../views/enroll.vue"),
   },
 {path:"/EditCourse/:CourseID",
 name:"EditCourse",
-component:()=>import("../views/EditCourse.vue")
+component:()=>import("../views/editCourse.vue")
 }
 ]})
 
