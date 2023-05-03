@@ -7,7 +7,7 @@ Code (Front End and Back End) built for client to interact with the database per
   - cd backend
   - npm install
   - npm run start
-  >> requrmentS
+  >> requirements
   - SQL server instance ( can use docker)
   - db.config file in app/config
     your can create it using 
@@ -16,9 +16,9 @@ Code (Front End and Back End) built for client to interact with the database per
     module.exports = {
     HOST: "localhost",
     PORT: "1434",
-    USER: "",
-    PASSWORD: "",
-    DB: "CIS4375Project",
+    USER: "sa",
+    PASSWORD: "strong_password",
+    DB: "schoolAppDB1",
     dialect: "mssql",
     pool: {
       max: 5,
@@ -29,7 +29,7 @@ Code (Front End and Back End) built for client to interact with the database per
   };
 
   // then press enter
-
+  // if the database does not exist the app will create one
   
 
 

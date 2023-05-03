@@ -1,17 +1,62 @@
 const express = require("express");
 const cors = require("cors");
 const { QueryTypes } = require('sequelize');
+var mssql = require('mssql');
+const fs = require('fs');
 // to get the example
 ///https://www.bezkoder.com/node-js-sql-server-crud/
 //
 //
 const app = express();
+const dbConfig = require("./app/config/db.config");
+const { TIMEOUT } = require("dns");
 
-const db = require("./app/models");
-db.sequelize.sync(
-//  {force: true}
-  );
 
+async function connectToDb() {
+  // create database if not exist
+  // https://www.w3schools.com/nodejs/nodejs_mysql_create_db.asp
+  var con = await mssql.connect({
+    server: dbConfig.HOST,
+    user: dbConfig.USER,
+    password: dbConfig.PASSWORD,
+    trustServerCertificate: true
+  });
+  await con.connect(function(err) {
+    if (err) console.log(err);
+    else
+    console.log("Connected!");
+    con.query(`CREATE DATABASE  ${dbConfig.DB}` , function (err, result) {
+      if (err) console.log(`ror: Database ${dbConfig.DB} may already exist`);
+      else
+      console.log("Database created");
+    });
+  });
+  // https://stackoverflow.com/questions/14226803/wait-5-seconds-before-executing-next-line
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+  console.log("Waited 3s for before reconnecting to database");
+  await delay(5000);
+
+  // this will create the tables if they don't exist if force true it will delete any data in tables
+  const db = require("./app/models");
+  await db.sequelize.sync(
+            //  {force: true}
+                );
+ // create the views
+ // load the sql query from the file
+ const dataSql = fs.readFileSync('./SQLQuery to create the views.sql').toString();
+ var arr = dataSql.split("--");
+ for ( i = 0 ; i< arr.length ; i++){
+    try{
+    const [results, metadata] = await db.sequelize.query(arr[i]);
+    console.log('view created')
+    }
+    catch(err){
+      console.log('view not created, may already exist');
+    }
+}
+// Results will be an empty array and metadata will contain the number of affected rows.
+}
+connectToDb();
 //In development, you may need to drop existing tables
 //and re-sync database. Just use force: true as following code:
 
