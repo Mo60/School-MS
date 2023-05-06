@@ -123,7 +123,6 @@
 </template>
 
 <script>
-const prop = require("../config/config.js")
 import useVuelidate from '@vuelidate/core'
 import {required} from '@vuelidate/validators'
 import axios from "axios";
@@ -169,7 +168,6 @@ export default {
         DayID: {required},
         ClassStatusID: {required},
         Lesson: {required},
-   
       }
       }
     },
