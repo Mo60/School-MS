@@ -9,8 +9,9 @@ Code (Front End and Back End) built for client to interact with the database per
   - npm run start
   >> requirements
   - SQL server instance ( can use docker)
-  - db.config file in app/config
-    your can create it using 
+  - db.config file in app/config \n
+
+    you can create it using 
 
     cat >>  backend/app/config/db.config.js
     module.exports = {
