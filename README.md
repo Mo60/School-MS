@@ -15,8 +15,13 @@ Code (Front End and Back End) built for client to interact with the database per
 
     cat >>  backend/app/config/db.config.js
     module.exports = {
+    
     HOST: "localhost",
+    
+
+    
     PORT: "1434",
+    
     USER: "sa",
     PASSWORD: "strong_password",
     DB: "schoolAppDB1",
